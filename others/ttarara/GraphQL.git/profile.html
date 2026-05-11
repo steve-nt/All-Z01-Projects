@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - GraphQL Profile</title>
+    <link rel="stylesheet" href="css/styles.css?v=20260120-6">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="nav-title">Zone01 Dashboard</h2>
+            <button id="logoutBtn" class="btn-logout">Logout</button>
+        </div>
+    </nav>
+
+    <main class="profile-container">
+        <div class="dashboard-grid">
+            <!-- LEFT COLUMN -->
+            <section class="dash-card" id="cardUser">
+                <div class="card-head">
+                    <h3 class="card-title">Student</h3>
+                    <span class="card-badge" id="user-id-badge">ID: -</span>
+                </div>
+                <div class="card-body">
+                    <div class="kv">
+                        <div class="kv-label">Name</div>
+                        <div class="kv-value" id="user-name">Loading…</div>
+                    </div>
+                    <div class="kv">
+                        <div class="kv-label">Login</div>
+                        <div class="kv-value" id="user-login">-</div>
+                    </div>
+                    <div class="kv" id="user-email-row" style="display:none;">
+                        <div class="kv-label">Email</div>
+                        <div class="kv-value" id="user-email">-</div>
+                    </div>
+                    <div class="kv" id="featured-object-row" style="display:none;">
+                        <div class="kv-label">Featured Project</div>
+                        <div class="kv-value" id="featured-object">-</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dash-card" id="cardAudit">
+                <div class="card-head">
+                    <h3 class="card-title">Audit Ratio</h3>
+                </div>
+                <div class="card-body">
+                    <div class="audit-wrap">
+                        <div id="auditGauge" class="audit-gauge"></div>
+                        <div class="audit-metrics">
+                            <div class="metric">
+                                <div class="metric-label">Ratio</div>
+                                <div class="metric-value" id="auditRatioValue">-</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Done</div>
+                                <div class="metric-value" id="auditUpValue">-</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-label">Received</div>
+                                <div class="metric-value" id="auditDownValue">-</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dash-card" id="cardProgress">
+                <div class="card-head">
+                    <h3 class="card-title">Progress</h3>
+                </div>
+                <div class="card-body">
+                    <div class="metrics-3">
+                        <div class="metric">
+                            <div class="metric-label">Total</div>
+                            <div class="metric-value" id="totalProgress">-</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Passed</div>
+                            <div class="metric-value" id="passedProjects">-</div>
+                        </div>
+                        <div class="metric">
+                            <div class="metric-label">Failed</div>
+                            <div class="metric-value" id="failedProjects">-</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dash-card" id="cardSkills">
+                <div class="card-head">
+                    <h3 class="card-title">Top Skills</h3>
+                </div>
+                <div class="card-body">
+                    <div id="skillsList" class="skills-list"></div>
+                    <p id="skillsError" class="muted" style="display:none;"></p>
+                </div>
+            </section>
+
+            <!-- RIGHT COLUMN (BIG XP CARD) -->
+            <section class="dash-card dash-card--span" id="cardXP">
+                <div class="card-head">
+                    <h3 class="card-title">XP (div-01)</h3>
+                    <span class="card-badge" id="xpTxCount">tx: -</span>
+                </div>
+                <div class="card-body">
+                    <div class="xp-hero">
+                        <div class="xp-total" id="totalXP">-</div>
+                        <div class="xp-sub">Total XP</div>
+                    </div>
+
+                    <div class="split-graphs">
+                        <div class="split-card split-card--wide split-card--pie">
+                            <div class="split-title">XP by Project</div>
+                            <div id="xpByProjectPie" class="svg-box">
+                                <p class="graph-placeholder">Loading…</p>
+                            </div>
+                        </div>
+                        <div class="split-card split-card--wide">
+                            <div class="split-title">Latest Projects (Top 5)</div>
+                            <div id="xpLatestDotPlot" class="svg-box">
+                                <p class="graph-placeholder">Loading…</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mandatory graph generation section -->
+                    <div class="stats-head">
+                        <h3 class="card-title">Statistics (SVG)</h3>
+                        <div class="graph-controls">
+                            <button class="btn-graph active" data-graph="xpOverTime">XP Over Time</button>
+                            <button class="btn-graph" data-graph="xpByProjectBar">XP by Project (Bar)</button>
+                            <button class="btn-graph" data-graph="passFailRatio">Pass/Fail Ratio</button>
+                            <button class="btn-graph" data-graph="auditGauge">Audit Gauge</button>
+                        </div>
+                    </div>
+
+                    <div class="graph-container">
+                        <div id="graphDisplay" class="graph-display">
+                            <p class="graph-placeholder">Choose a graph above</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="js/storage.js?v=20260120-6"></script>
+    <script src="js/auth.js?v=20260120-6"></script>
+    <script src="js/graphql.js?v=20260120-6"></script>
+    <script src="js/graphs.js?v=20260120-6"></script>
+    <script src="js/app.js?v=20260120-6"></script>
+</body>
+</html>

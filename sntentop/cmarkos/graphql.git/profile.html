@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>QUEST LOG — PLAYER PROFILE</title>
+    <link rel="stylesheet" href="static/css/retro.css" />
+  </head>
+  <body class="retro-body crt">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="page-wrap">
+      <p class="subtag" style="text-align: center; color: var(--retro-cyan)">▶ SESSION ACTIVE — SCHOOL MAINFRAME</p>
+
+      <div id="loadingState" class="arcade-cabinet" style="min-height: 6rem" aria-live="polite" aria-busy="true">
+        <p>LOADING SAVE DATA</p>
+        <p class="text-muted" style="font-size: 1.1rem; margin-top: 0.5rem">Reading XP transactions…</p>
+      </div>
+
+      <div id="errorMessage" class="error-arcade error-global hidden" role="alert" aria-live="assertive"></div>
+
+      <div id="profileContent" class="hidden" role="main">
+        <header class="profile-hero">
+          <div class="player-identity">
+            <div id="userAvatar" aria-hidden="true">?</div>
+            <div>
+              <div id="userName">—</div>
+              <div id="userEmail">—</div>
+            </div>
+          </div>
+          <div>
+            <button type="button" id="logoutBtn" class="btn-logout" title="Log out" onclick="if (window.profileController) window.profileController.logout()">EXIT GAME</button>
+          </div>
+        </header>
+
+        <h2>■ PLAYER STATS</h2>
+        <section class="stats-arcade" aria-label="Key statistics">
+          <div class="stat-brick">
+            <span class="stat-label">SCORE (XP)</span>
+            <b id="totalXP">0</b>
+          </div>
+          <div class="stat-brick">
+            <span class="stat-label">AUDIT RATIO</span>
+            <b id="auditRatio">0.00</b>
+          </div>
+          <div class="stat-brick">
+            <span class="stat-label">PROJECTS CLEARED</span>
+            <b id="projectsCompleted">0</b>
+          </div>
+        </section>
+
+        <div class="panel" style="padding-top: 0.75rem">
+          <h2>■ LATEST QUESTS</h2>
+          <p class="tagline" style="font-size: 0.9rem; margin: 0 0 0.5rem; letter-spacing: 0.08em">Your recent project runs (up to 10)</p>
+          <div class="projects-scroll" id="projectsList">
+            <p>Loading…</p>
+          </div>
+        </div>
+
+        <div class="panel charts-section">
+          <h2>■ PROGRESSION</h2>
+          <div class="chart-booth">
+            <h3>PROGRESSION A</h3>
+            <div id="xpProgressionChart" style="min-height: 2rem" aria-label="XP progression over time"></div>
+          </div>
+          <div class="chart-booth">
+            <h3>PROGRESSION B</h3>
+            <div id="projectXPChart" style="min-height: 2rem" aria-label="Top projects by XP"></div>
+          </div>
+          <div class="chart-booth" style="max-width: 28rem; margin: 0 auto; width: 100%">
+            <h3>AUDIT STATS</h3>
+            <div id="auditRatioChart" style="min-height: 2rem" aria-label="Audit ratio pie chart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="static/src/controllers/profile_controller.js"></script>
+  </body>
+</html>

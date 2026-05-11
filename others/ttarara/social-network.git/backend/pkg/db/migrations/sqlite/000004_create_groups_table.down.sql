@@ -1,0 +1,4 @@
+DROP TABLE IF EXISTS Group_Join_Requests;
+DROP TABLE IF EXISTS Group_Members;
+DROP TABLE IF EXISTS Group_Invitations;
+DROP TABLE IF EXISTS Groups;

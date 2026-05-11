@@ -1,0 +1,29 @@
+{{ define "notifications" }}
+
+<h2 style="margin-top:0;">Notifications</h2>
+
+{{ if .Notifications }}
+  {{ range .Notifications }}
+    <div class="post">
+      <p style="margin:0 0 8px 0;">
+        <strong>{{ .ActorUsername }}</strong> {{ .Message }}
+      </p>
+
+      {{ if .HasPostLink }}
+        <p style="margin:0 0 8px 0;">
+          <a href="/post?id={{ .PostID }}">{{ .PostTitle }}</a>
+        </p>
+      {{ end }}
+
+      <div class="meta-bar" style="margin:0;">
+        <div class="meta-left">
+          <span class="meta-item">🕒 {{ .CreatedAt }}</span>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ else }}
+  <p style="color:var(--muted);">No notifications yet.</p>
+{{ end }}
+
+{{ end }}

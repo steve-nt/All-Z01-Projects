@@ -1,0 +1,453 @@
+:root {
+    --input-focus: #4ECCA3;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color-light: #f5f4f4f4;
+    --bg-color-dark: #000000;
+    --main-color: black;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0 auto;
+    text-align: center;
+    background-color: var(--bg-color-light); /* Default to light mode */
+    color: var(--font-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+  }
+
+ /* Default visited link color */
+a:visited {
+    color: #e95b94; /* Default visited color */
+}
+
+/* Light mode visited links */
+body.light a:visited {
+    color: #e95b94; /* Pink color for visited links in light mode */
+}
+
+/* Dark mode visited links */
+body.dark a:visited {
+    color: #ef8bb3; /* Different color for visited links in dark mode */
+}
+
+
+  /* styles.css */
+body.light {
+    background-color: var(--bg-color-light);
+    color: #000000;
+}
+
+body.dark {
+    background-color: var(--bg-color-dark);
+    color: #ffffff;
+}
+
+/* Additional styling for elements */
+textarea.light, select.light, input.light {
+    background-color: #f0f0f0;
+    color: #000000;
+}
+
+textarea.dark, select.dark, input.dark {
+    background-color: #1e1e1e;
+    color: #f5f5f5;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+form {
+    font-size: large;
+    text-align: center;
+}
+
+.description {
+    font-size: large;
+    margin-block: 40px 50px;
+    text-align: center;
+}
+
+.toggle {
+    display: block;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 60px;
+    height: 30px;
+    background-color: #EEEEEE;
+    box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.4), 3px 3px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
+    position: fixed;
+    top: -35px;
+    right: 15px;
+    outline: none;
+    transition: all 0.3s ease-in-out;
+    margin: 50px auto;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.toggle:before {
+    content: "";
+    background: linear-gradient(180deg, rgb(243, 228, 95), rgb(231, 148, 53));
+    height: 30px;
+    width: 30px;
+    position: absolute;
+    border-radius: 50%;
+    top: 0%;
+    left: 0%;
+    transition: all 0.3s ease-in-out;
+    z-index: 2;
+}
+
+.toggle:after {
+    content: 'ON';
+    position: absolute;
+    font-size: 0.6rem;
+    color: #0f1324;
+    font-weight: 700;
+    top: 50%;
+    left: 55%;
+    transform: translate(25%, -50%);
+    z-index: 1;
+}
+
+.toggle:checked {
+    background: #413f3f;
+    
+}
+
+.toggle:checked:before {
+    left: 50%;
+    background: linear-gradient(180deg,#413f3f, #323232);
+    transition: all 0.3s ease-in-out;
+}
+
+.toggle:checked:after {
+    content: 'OFF';
+    left: 5%;
+    color: #FFFF;
+}
+
+.toggle:after {
+    z-index: 3;
+
+}
+
+.toggle:hover {
+    box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.4), 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.toggle:active:before {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transform: translateY(-50%) scale(0.95); /* Slight shrink for feedback */
+}
+
+.background {
+    width: 100vw;
+    min-height: 100%;
+    background: #f5f4f4f4;
+    z-index: -1;
+    position: absolute;
+    transition: 0.3s;
+}
+
+.toggle:checked + .background {
+    background: #242424;
+}
+
+form {
+    font-size: large;
+    text-align: center;
+}
+
+.description {
+    font-size: large;
+    margin-block: 40px 50px;
+    text-align: center;
+}
+
+.input {
+    --input-focus: #4ECCA3;
+    --font-color: #0f0707aa;
+    --font-color-sub: #0f0707aa;
+    --bg-color: #b5b3b348;
+    --main-color: black;
+    width: 90%;
+    max-width: 600px;
+    height: 200px;
+    border-radius: 3px;
+    border: 2px solid var(--main-color);
+    background-color: var(--bg-color);
+    box-shadow: 4px 4px var(--main-color);
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--font-color);
+    padding: 5px 10px;
+    outline: none;
+    text-align: center; /* Centers the text inside the textarea */
+    line-height: 2.5em;
+}
+
+/* Light mode styles for input */
+body.light .input {
+    --bg-color: #e4e4e4bf; /* Light background */
+    --font-color: #00000; /* Dark font color */
+    --input-focus: #4ECCA3; /* Focus color for light mode */
+    background-color: var(--bg-color);
+    color: var(--font-color);
+}
+
+/* Dark mode styles for input */
+body.dark .input {
+    --bg-color: #333333; /* Dark background */
+    --font-color: #c9c9c9; /* Light font color */
+    --input-focus: #4ECCA3; /* Focus color for dark mode */
+    background-color: var(--bg-color);
+    color: var(--font-color);
+}
+
+.input::placeholder {
+    color: var(--font-color-sub);
+    opacity: 0.8;
+  }
+  
+.input:focus {
+    border: 2px solid var(--input-focus);
+  }
+
+#bannerName {
+    margin-block-start: 30px;
+    display: inline-block;
+    margin-inline-end: 10px;
+    font-weight: 500;
+    font-size: 22px;
+    color: var(--bg-color-light);
+}
+
+/* Light mode styles */
+body.light #bannerName {
+    color: var(--text-color-light); /* Black text for light mode */
+}
+
+/* Dark mode styles */
+body.dark #bannerName {
+    color: var(--text-color-dark); /* White text for dark mode */
+}
+
+/* Custom banner buttons */
+:focus {
+    outline: 0;
+    border-color: #4ECCA3;
+    box-shadow: 0 0 0 4px rgba(78, 204, 163, 0.5);
+}
+
+.bannergroup div {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    justify-content: center;
+}
+
+.bannergroup input[type="radio"] {
+    clip: rect(0 0 0 0);
+    clip-path: inset(100%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+}
+
+.bannergroup input[type="radio"]:checked + span {
+    box-shadow: 0 0 0 0.0625em #4ECCA3;
+    background-color: #ccefe6; /* updated selection background for dark mode */
+    z-index: 1;
+    color: #4ECCA3; /* White text for dark mode */
+}
+
+label span {
+    display: block;
+    cursor: pointer;
+    background-color: #ffffff; /* Default white background */
+    padding: 0.375em 0.75em;
+    position: relative;
+    margin-left: 0.0625em;
+    box-shadow: 0 0 0 0.0625em #b5bfd9;
+    letter-spacing: 0.05em;
+    color: #3e4963; /* Default dark text */
+    text-align: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light mode styles */
+body.light .bannergroup input[type="radio"]:checked + span {
+    background-color: #ccefe6; /* Light mode background */
+    color: black; /* Light mode text */
+    box-shadow: 0 0 0 0.0625em #4ECCA3; /* Light mode box shadow */
+
+}
+
+body.light label span:hover {
+    background-color: #8fd7bf; /* Lighter hover background */
+    color: black; /* Hover text color */
+    box-shadow: 0 0 0 0.0625em #4ECCA3; /* Hover box shadow */
+}
+
+label:first-child span {
+    border-radius: 0.375em 0 0 0.375em;
+}
+
+label:last-child span {
+    border-radius: 0 0.375em 0.375em 0;
+}
+
+/* Dark mode styles */
+body.dark .bannergroup input[type="radio"]:checked + span {
+    background-color: #1d1d1d94; /* Black background for dark mode */
+    color: #4ECCA3; /* White text for dark mode */
+    box-shadow: 0 0 0 0.0625em #4ECCA3; /* Dark mode box shadow for consistency */
+
+}
+
+body.dark label span {
+    background-color: #1d1d1d94; /* Black background for dark mode */
+    color: #ffffff; /* White text for dark mode */
+}
+
+/* Hover effects */
+body.light label span:hover {
+    background-color: #f0f0f0; /* Slightly lighter background on hover for light mode */
+}
+
+body.dark label span:hover {
+    background-color: #111111; /* Slightly lighter background on hover for dark mode */
+}
+
+#btn {
+    background: #000000;
+    background: var(--input-focus);
+    font-family: inherit;
+    padding: 0.6em 1.3em;
+    font-weight: 550;
+    font-size: 18px;
+    border: 2px solid black;
+    border-radius: 3px;
+    box-shadow: 0.2em 0.2em black;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-block: 20px 40px;
+}
+  
+#btn:hover {
+    transform: translate(-0.1em, -0.1em);
+    box-shadow: 0.3em 0.3em black;
+}
+  
+#btn:active {
+    transform: translate(0.1em, 0.1em);
+    box-shadow: 0.1em 0.1em black;
+}
+
+#btn:focus {
+    outline: 2px solid var(--input-focus);
+    outline-offset: 2px;
+}
+
+#block {
+    background-color: #b5b3b348;
+    color: #000000;
+    border: 2px solid black;
+    box-shadow: 5px 5px 0px black;
+    padding: 20px;
+    border-radius: 3px;
+    margin: 20px auto 50px;
+    font-family: monospace;
+    width: 90%;
+    max-width: 800px;
+
+}
+
+/* Light mode styles for #block */
+body.light #block {
+    background-color: #e4e4e4bf; /* Light background */
+    color: #000000; /* Dark text color */
+    border: 2px solid #000000; /* Light border */
+    box-shadow: 5px 5px 0px black; /* Lighter shadow */
+}
+
+/* Dark mode styles for #block */
+body.dark #block {
+    background-color: #333333; /* Dark background */
+    color: #ffffff; /* Light text color */
+    border: 2px solid #000000; /* Darker border */
+    box-shadow: 5px 5px 0px black; /* Lighter shadow */
+}
+
+pre {
+    border: 1px solid #393E46;
+    width: 100%;
+    font-family: monospace;
+    white-space: pre; 
+    overflow-x: auto; 
+    max-width: 100%;
+}
+
+/* Error Page Styles */
+.error-container {
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+}
+
+.error-container a {
+    font-size: 1em;
+    color: var(--input-focus);
+    text-decoration: none;
+    border: 2px solid var(--input-focus);
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.error-container a:hover {
+    background-color: var(--input-focus);
+    color: var(--bg-color);
+}
+
+.error-image {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+}
+
+/* Adjustments for smaller devices */
+@media screen and (max-width: 768px) {
+    .input {
+        width: 80%; /* Reduce the width slightly for tablets and smaller screens */
+        font-size: 14px;
+        line-height: 2em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .input {
+        width: 95%; /* For very small screens, make the input almost full-width */
+    }
+}

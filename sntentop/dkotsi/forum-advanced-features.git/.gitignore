@@ -1,0 +1,7 @@
+/static/postimages/*
+
+/data/*
+/back-up/*
+*.db
+*.env
+

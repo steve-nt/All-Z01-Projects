@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap');
+
+body {
+  font-family: 'Kaisei Opti', serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;      /* stays in place while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../static/images/forumbackround.jpg") no-repeat center/cover;
+  opacity: 0.1;        /* adjust transparency */
+  z-index: -1;          /* behind all content */
+}
+.centered {
+  height: 100vh;               /* full viewport height */
+  margin: 0;
+  display: flex;
+  flex-direction:column;
+  gap:2rem;
+  justify-content: center;      /* horizontal center */
+  align-items: center;          /* vertical center */
+  font-family: 'Kaisei Opti', serif;
+}
+.error-container{
+  display:flex;
+  flex-direction:column;
+  gap:0.5rem;
+}
+.error {
+  background-color: rgba(255,255,255,0.1);
+  padding: 30px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px; /* optional width */
+  color: white;
+}
+
+.gohomebtn{
+  padding:1rem;
+  background-color:white;
+  color:black;
+  text-align:center;
+  border-radius:9px;
+}
+.centered{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+/* .centered-form input, */
+/* .centered-form button { */
+/*   padding: 10px; */
+/*   border-radius: 5px; */
+/*   border: none; */
+/*   outline: none; */
+/* } */
+/**/
+/* .centered-form button { */
+/*   background-color: gray; */
+/*   color: white; */
+/*   cursor: pointer; */
+/*   font-weight: bold; */
+/* } */
+/**/
+/* .centered-form button:hover { */
+/*   background-color:#555555; */
+/* } */

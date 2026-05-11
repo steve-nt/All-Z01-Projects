@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %} 
+{% load static %}
+{% block title %}
+  Choose Your Role
+{%endblock %}
+
+{%block content %}
+<div class="register-container">
+    <h1 class="title">Join NetFix</h1>
+    <p class="subtitle">Do you want to find or offer services?</p>
+    
+    <div class="role-selection">
+        <a href="{% url 'register_customer' %}" class="role-card">
+            <div class="role-icon">
+                <img src="{% static 'css/customer.png' %}" alt="Customer Icon">
+            </div>
+            <h2>I'm a Customer</h2>
+            <p>Find home service professional providers.</p>
+        </a>
+
+        <a href="{% url 'register_company' %}" class="role-card">
+            <div class="role-icon">
+                <img src="{% static 'css/company.png' %}" alt="Company Icon">
+            </div>
+            <h2>I'm a Provider</h2>
+            <p>Offer your services and grow your business with us.</p>
+        </a>
+    </div>
+</div>
+{% endblock %}

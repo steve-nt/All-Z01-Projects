@@ -1,0 +1,8 @@
+{{define "categories"}}
+    <div class="categories">
+        <h2>Categories</h2>
+        {{ range .Categories}}
+            {{ template "category" . }}
+        {{end}}
+    </div>
+{{end}}

@@ -1,0 +1,194 @@
+/* Global Styles */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #000000; /* Dark background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+/* Card Container */
+.band-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 450px;
+    background: linear-gradient(135deg, #08859b, #00ffcc); /* Gradient */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+/* Profile Image */
+.band-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 3px solid #08859b;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* Profile Details */
+.band-details {
+    background: #4D4D4D;
+    border-radius: 15px;
+    padding: 15px;
+    width: 100%;
+    color: white;
+    text-align: left;
+}
+
+.band-details h2 {
+    color: #00ffcc;
+    text-align: center;
+}
+
+.band-details p {
+    font-size: 1em;
+    margin: 5px 0;
+}
+
+/* Button Styling */
+.info-buttons {
+    font: Times ;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.info-buttons button {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(255, 204, 0, 0.5);
+}
+
+/* Button Colors */
+button {
+    color: white;
+}
+
+button:nth-child(1) { background: #ff007f; } /* Neon Pink */
+button:nth-child(2) { background: #ffcc00; color: black; } /* Gold */
+button:nth-child(3) { background: #00ffcc; color: black; } /* Neon Cyan */
+button:nth-child(4) { background: #8000ff; } /* Electric Purple */
+
+/* Button Hover Effects */
+button:nth-child(1):hover { background: #ffcc00; }
+button:nth-child(2):hover { background: #00ffcc; color: black; }
+button:nth-child(3):hover { background: #ff5e62; }
+button:nth-child(4):hover { background: #ff007f; }
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    max-width: 400px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.modal h3 {
+    color: #ffcc00;
+}
+
+.modal ul, .modal ol {
+    text-align: left;
+}
+
+/* Modal Button */
+.modal button {
+    margin-top: 15px;
+    padding: 10px 18px;
+    background: linear-gradient(45deg, #8000ff, #00ffcc);
+    border: 2px solid #00ffcc;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(0, 255, 204, 0.5);
+}
+
+.modal button:hover {
+    background: linear-gradient(45deg, #00ffcc, #8000ff);
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 255, 204, 0.7);
+}
+
+/* Modal Background */
+.modal-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90vh;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* Back Button */
+.ok {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #00ffcc, #8000ff);
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.ok:hover {
+    background: linear-gradient(90deg, #00ffcc, #0088ff);
+}
+
+/* Footer Styling - Optimized */
+.footer {
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 12px;
+    background: linear-gradient(90deg, #ff007f, #ff5e62);
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-weight: bold;
+    box-shadow: 0px -2px 5px rgba(0, 255, 204, 0.3);
+}
+
+/* Footer Links */
+.footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 12px;
+}
+
+.footer a:hover {
+    color: white;
+}

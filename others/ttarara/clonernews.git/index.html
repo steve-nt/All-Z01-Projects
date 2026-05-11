@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+<title>HackerNews Live</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="./style.css" rel="stylesheet" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>HN Live</h1>
+    <nav class="tabs" role="tablist" aria-label="Post Types">
+      <button class="tab is-active" data-feed="newstories" aria-selected="true">Stories</button>
+      <button class="tab" data-feed="jobstories" aria-selected="false">Jobs</button>
+      <button class="tab" data-feed="pollstories" aria-selected="false">Polls</button>
+    </nav>
+  </header>
+
+  <!-- Ενημερωτικό banner (auto-hide) -->
+  <section id="live-banner" class="live-banner" aria-live="polite" hidden>
+    <span id="live-text">Live: checking…</span>
+  </section>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="card">
+        <h2>Filters</h2>
+        <input id="search" type="search" placeholder="Search title (debounced)" />
+        <label class="toggle">
+          <input id="only-top" type="checkbox" />
+          <span>Only score ≥ 100</span>
+        </label>
+      </div>
+      <div class="card">
+        <h2>Tips</h2>
+        <ul>
+          <li>Scroll to load more</li>
+          <li>Click a post to see comments</li>
+          <li>Auto-updates every 5s</li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="content">
+      <ol id="feed" class="feed" start="1" aria-live="polite"></ol>
+     <div id="loader" class="loader" hidden>
+  <img src="./assets/spinner.svg" alt="" />
+  <span>Loading…</span>
+</div>
+
+      <button id="load-more" class="load-more" hidden>Load more</button>
+    </section>
+
+    <section id="details" class="details" aria-live="polite" hidden>
+      <button id="close-details" class="close">×</button>
+      <article id="details-article"></article>
+      <section id="comments" class="comments"></section>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <small>Data: <a href="https://github.com/HackerNews/API" target="_blank" rel="noreferrer">Hacker News Firebase API</a></small>
+  </footer>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>

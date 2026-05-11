@@ -1,0 +1,21 @@
+
+================================================================================
+STEP 3: Preprocessing Pipeline
+================================================================================
+
+Split dataset into X (features) and y (target).
+Training set shape: (140, 10)
+Testing set shape: (60, 10)
+
+Numeric features: ['age', 'avg_call_minutes', 'avg_data_gb', 'support_tickets', 'unpaid_bills', 'heavy_data_user', 'tickets_x_bills']
+Categorical features: ['plan_type', 'region', 'age_group']
+
+Preprocessing pipeline applied: numeric features scaled, categorical features one-hot encoded.
+
+Processed X_train shape: (140, 17)
+Processed X_test shape: (60, 17)
+
+================================================================================
+STEP 3 completed successfully. All logs saved in step3_preprocessing_pipeline.log
+================================================================================
+

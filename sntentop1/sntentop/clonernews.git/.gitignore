@@ -1,0 +1,32 @@
+# --- Dependencies ---
+node_modules/
+
+# --- Build Artifacts ---
+dist/
+.vite/
+
+# --- Testing and Coverage ---
+coverage/
+playwright-report/
+test-results/
+
+# --- Logs and Temporary Files ---
+*.log
+.tmp/
+temp/
+.DS_Store
+Thumbs.db
+
+# --- IDE and Editors ---
+.idea/
+.vscode/
+
+# --- Environment and Secrets ---
+.env
+*.env
+env/
+
+# --- Project-specific ---
+docs/pr-messages/
+docs/audits/
+pr_messages/

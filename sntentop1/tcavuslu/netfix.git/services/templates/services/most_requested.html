@@ -1,0 +1,50 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    Most Requested Services
+{% endblock %}
+{% block content %}
+    <p class="title">Most Requested Services</p>
+    
+    {% if services %}
+        <div class="most-requested-container">
+            <p class="subtitle">Popular services based on customer demand</p>
+            
+            <div class="services-grid">
+                {% for service in services %}
+                    <div class="service-card">
+                        <div class="service-header">
+                            <h3 class="service-name">
+                                <a href="/services/{{ service.id }}">{{ service.name }}</a>
+                            </h3>
+                            <div class="request-count-badge">
+                                {{ service.request_count }} request{{ service.request_count|pluralize }}
+                            </div>
+                        </div>
+                        
+                        <div class="service-details">
+                            <p class="service-field">{{ service.field }}</p>
+                            <p class="service-price">€{{ service.price_hour }}/hour</p>
+                            <p class="service-description">{{ service.description|truncatewords:20 }}</p>
+                            <p class="service-company">
+                                by <a href="/company/{{ service.company.user.username }}" style="color: #007bff; text-decoration: none;">{{ service.company.user.username }}</a>
+                            </p>
+                        </div>
+                        
+                        <div class="service-actions">
+                            {% if request.user.is_customer %}
+                                <a href="/services/{{ service.id }}/request_service/" class="request-btn">Request Service</a>
+                            {% endif %}
+                            <a href="/services/{{ service.id }}" class="view-btn">View Details</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="no-requests-message">
+            <h2>No services have been requested yet</h2>
+            <p>Be the first to request a service and help build our popular services list!</p>
+            <a href="/services/" class="browse-all-btn">Browse All Services</a>
+        </div>
+    {% endif %}
+{% endblock %} 

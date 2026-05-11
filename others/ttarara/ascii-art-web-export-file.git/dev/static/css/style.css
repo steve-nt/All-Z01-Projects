@@ -1,0 +1,310 @@
+@font-face {
+    font-family: 'Cybrpnuk2'; /* Define first font */
+    src: url('fonts/Cybrpnuk2.ttf') format('truetype'); /* File location and format */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Vintage_Brother'; /* Define second font */
+    src: url('fonts/Vintage_Brother.ttf') format('truetype'); /* File location and format */
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+body {
+    background-color: #dadada; /* Light grayish blue */
+    color: #3f3f3f; /* Dark gray text for better contrast */ 
+    margin: 40; /* Remove default margins */
+    padding: 40; /* Remove default padding */
+}
+
+body * {
+
+    caret-color: transparent; /* Hides the blinking cursor */
+}
+
+/* background-color: #6d1c1c; Blue background */
+header {
+    
+    background: radial-gradient(circle, rgba(116, 116, 116, 0) 0%, rgba(54, 6, 6, 0.966) 100%), 
+            #6d1c1c; /* Solid color underneath */
+    filter: brightness(1.4);
+    padding: 15px 10px; /* Spacing around the content */
+    text-align: center; /* Center-align the header text */
+    box-shadow: 0 10px 20px rgba(56, 56, 56, 0.671); /* Add a subtle shadow */
+}
+
+header h1 {
+    color: #e7eaee;
+    font-family:  'Cybrpnuk2'   ;/* Set a clean, modern font */
+    font-size: 10vw;
+    letter-spacing: 5px; /* Adds 2 pixels of space between letters */
+    margin-bottom: 10px;
+
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+}
+
+header nav a {
+    margin-top: 0px; /* Add some space above the navigation links */
+    color: #e7eaee;
+    text-decoration: none;
+    font-size: 1em;
+    padding: 0 0.6em;
+    border-radius: 5px;
+    transition: border-color 9s ease; 
+    transition: color 0.5s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header nav a:hover {
+    color: #ffbe0f; /* Optional: Add a hover effect for better user experience */
+    border-bottom: 1px solid #ffbe0f; 
+    background-color: #ffffff11; /* Highlight background */
+
+}
+
+header nav a i {
+    color: #ffbe0f; /* Set specific color for the icons */
+    margin-right: 5px; /* Add spacing between the icon and text */
+    font-size: 15px; /* Adjust icon size if needed */
+    transition: color 0.3s ease; /* Smooth hover effect */
+}
+
+/* ___________________________________________________________________________________ */
+
+footer {
+    margin: 40px 0px;
+    padding: 15px 10px;
+    color: #e7eaee;
+    background: linear-gradient(to bottom, rgba(116, 116, 116, 0) 0%, rgba(22, 22, 22, 0.9) 100%), 
+            #272727; /* Solid color underneath */
+    filter: brightness(1.6);
+    box-shadow: 0 10px 20px rgba(56, 56, 56, 0.671);
+}
+
+footer p {
+    margin: 10px 10px;
+}
+
+/* ___________________________________________________________________________________ */
+
+.home-page h2 {
+    font-size: 15px;
+    margin-top: 150px;
+    margin-bottom: 0;
+    text-align: center;
+    margin-right: 230px;
+
+}
+
+.home-page h1 {
+    font-size: 50px;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: center;
+    line-height: 35px;
+    margin-right: 40px;
+    box-shadow: 0 10px 20px rgba(56, 56, 56, 0.671); /* Add a subtle shadow */
+    padding: 10px 10px;
+}
+
+.home-page h3 {
+    font-size: 50px;
+    margin-top: 0;
+    margin-bottom: 180px;
+    text-align: center;
+    margin-left: 240px;
+    line-height: 15px;
+    font-family: 'Vintage_Brother';
+    color:#9c2f2f;
+    box-shadow: 0 10px 30px rgba(56, 56, 56, 0.671); /* Add a subtle shadow */
+    padding: 10px 10px;
+    background-color: #dadada5d;
+    text-shadow: 
+        -1px -2px 0 rgba(238, 238, 238, 0.397), 
+         1px -1px 0 rgba(110, 19, 19, 0.63), 
+        -1px  1px 0 rgb(49, 49, 49), 
+         1px  1px 0 rgba(194, 169, 169, 0.74); /* For non-WebKit browsers */
+}
+
+/* ___________________________________________________________________________________ */
+
+.project-page {
+    box-shadow: 0 10px 30px rgba(56, 56, 56, 0.671); /* Add a subtle shadow */
+    padding: 10px 10px;
+    background-color: #dadada5d;
+}
+
+.project-page section {
+    padding: 20px 40px;
+}
+
+.project-page h1 {
+    font-size: clamp(1.5rem, 2vw, 3rem);
+    font-family: 'Cybrpnuk2';
+    padding-bottom: 30px;
+}
+
+.project-page h3 {
+    font-size: 20px;
+}
+
+/* ___________________________________________________________________________________ */
+
+.converter-page {
+    box-shadow: 0 10px 30px rgba(56, 56, 56, 0.671); /* Add a subtle shadow */
+    padding: 10px 10px;
+    background-color: #dadada5d;
+}
+
+.converter-page section {
+    padding: 20px 40px;
+}
+
+.converter-page h1 {
+    font-size: clamp(1.5rem, 2vw, 3rem);
+    font-family: 'Cybrpnuk2';
+    padding-bottom: 30px;
+}
+
+.converter-page section {
+    padding-bottom: 20px;
+}
+
+.converter-page sec {
+    margin-top: 50px;
+}
+.textbox textarea {
+    background-color: #f0f0f0; /* Light blue background */
+    border: 1px solid #ccc;   /* Gray border */
+    padding: 10px;            /* Inner spacing */
+    border-radius: 5px;       /* Rounded corners */
+    font-size: 16px;          /* Font size */
+    max-width: 300px;             /* Fixed width */
+    resize: none;
+}
+
+
+
+button {
+    background: radial-gradient(circle, rgba(214, 8, 8, 0.404) 0%, rgba(105, 13, 13, 0.178) 100%), 
+            #6d1c1c; /* Solid color underneath */
+    padding: 12px;            /* Inner spacing */
+    border-radius: 50px;       /* Rounded corners */
+    font-size: 16px;          /* Font size */
+    color: white;
+    font-weight: bold;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 150px; 
+}
+
+button:hover {
+    background: radial-gradient(circle, rgba(255, 38, 31, 0.6) 0%, rgb(141, 39, 13) 80%);
+}
+
+.outerContainer {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.containerBox {
+    display: flex;
+    justify-content: flex-start; /* Align to the left */
+    align-items: center; /* Center vertically */
+    width: auto; /* Make sure it spans the entire width */
+
+}
+
+.optionsBox {
+    text-align: left; 
+}
+
+pre { 
+        background-color: #f0f0f0; /* Softer light blue */
+        overflow: auto;
+        padding: 10px;
+        margin: 20px 0; /* Center with spacing */
+        text-align: left; /* Explicitly aligns text to the left */
+        height: 150px;
+        width: 100%; /* Responsive width */
+        max-width: 800px; /* Limit width on larger screens */
+        border-radius: 50px;
+        font-family: 'Courier New', Courier, monospace; /* Mono font for ASCII art */
+        font-size: 14px; /* Adjust font size for readability */
+        color: #000000; /* Slightly darker for contrast */
+        border: 5px solid #6d1c1c; /* Accent border */
+}
+
+/* ___________________________________________________________________________________ */
+
+.team-page {
+    box-shadow: 0 10px 30px rgba(56, 56, 56, 0.671); /* Add a subtle shadow */
+    padding: 10px 10px;
+    background-color: #dadada5d;
+}
+
+.team-page section {
+    padding: 20px 40px;
+}
+
+.team-page h1 {
+    font-size: clamp(1.5rem, 2vw, 3rem); /* Minimum, preferred, maximum size */
+    font-family: 'Cybrpnuk2';
+
+}
+
+.teamate {
+    font-size: 30px;
+    font-family: "Arial";
+    margin-top: 200px;
+}
+
+
+img {
+    display: block; /* Forces the image onto a new line */
+    margin: 10px auto;
+    width: clamp(10vw, 50% , 500px);
+    height: auto;
+}
+
+figure {
+    text-align: center; /* Center the image and caption */
+    margin: 50px 0;
+}
+
+figcaption {
+    text-align: center; /* Center the image and caption */
+}
+
+/* ___________________________________________________________________________________ */
+
+.error-image {
+    width: clamp(400px, 50%, 600px); /* Minimum: 200px, Preferred: 50% of parent, Maximum: 600px */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.code-404 {
+    box-shadow: 0 10px 30px rgba(56, 56, 56, 0.671); /* Add a subtle shadow */
+    padding: 10px 10px;
+    background-color: #dadada5d;
+}
+
+.error-h1 {
+    font-size: clamp(1.5rem, 2vw, 3rem); /* Minimum, preferred, maximum size */
+    font-family: 'Cybrpnuk2';
+}
+
+.error-h2 {
+    text-align: center;
+    font-size: 1em;
+    font-style: italic;
+}
+

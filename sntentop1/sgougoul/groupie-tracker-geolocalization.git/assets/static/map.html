@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Groupie Tracker – Map View</title>
+ 
+  <link
+    href="/static/maps.css"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+    onerror="leafletLoadError()"
+  />
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    #map {
+      width: 100%;
+      height: 60vh; /* Responsive height: 60% of viewport height */
+      margin-top: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+  
+    @media (max-width: 768px) {
+      #map {
+        height: 50vh; /* Shorter on small screens */
+      }
+    }
+  </style>
+  
+   
+</head>
+<body class="container my-4">
+<div id="mapContainer" class="container my-4">
+  <h1>Concert Map</h1>
+</div>
+  <!-- Give the link an ID and leave href blank for now -->
+  <a id="backBtn" class="backBtn" >
+    ← Back to List
+  </a>
+
+  <div id="map"></div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+    onerror="leafletLoadError()"
+  ></script>
+
+  <script type="module">
+    // 0) Fix the back‐link based on ?id=…
+    const backBtn   = document.getElementById("backBtn");
+    const params    = new URLSearchParams(window.location.search);
+    const artistId  = params.get("id");
+    backBtn.href    = artistId
+      ? `/locations.html?id=${encodeURIComponent(artistId)}`
+      : "/locations.html";
+  
+    (async function () {
+      if (!artistId) {
+        alert("No artist specified");
+        return;
+      }
+  
+      // 1) Fetch all coords in one shot
+      let coordsMap;
+      try {
+        const resp = await fetch(`/api/coords?id=${encodeURIComponent(artistId)}`);
+        if (resp.status === 400) {
+            document.getElementById("mapContainer").innerHTML =
+          "<p>Bad request &mdash; no such artist.</p>";
+           return;
+        }
+        if (!resp.ok) throw new Error(resp.statusText);
+        
+        coordsMap = await resp.json();
+      } catch (err) {
+        console.error("Could not load coordinates:", err);
+        alert("Could not load map data");
+        return;
+      }
+  
+      // 2) Init Leaflet
+      const map = L.map("map").setView([0, 0], 2);
+      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "© OpenStreetMap contributors",
+      }).addTo(map);
+  
+      // 3) Drop a marker for each entry in the coordsMap
+      const markers = Object.values(coordsMap)
+        .map(loc => L.marker([loc.lat, loc.lon]).bindPopup(loc.name));
+  
+      if (markers.length) {
+        const group = L.featureGroup(markers).addTo(map);
+        map.fitBounds(group.getBounds(), { padding: [20, 20] });
+      }
+    })();
+
+
+    
+  function leafletLoadError() {
+    console.error("Leaflet failed to load—map disabled.");
+    document.body.insertAdjacentHTML("afterbegin",
+      `<div class="alert">Map unavailable</div>`);
+}
+
+
+  </script>
+  
+</body>
+</html>

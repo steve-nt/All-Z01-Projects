@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sortable Example</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   
+    <link rel="stylesheet" href="sortable.css">
+</head>
+<body>
+    <h1>Sortable Table Example</h1>
+    <div class="toolbar">
+  <input id="search" type="text" placeholder="Search by name..." autocomplete="off" />
+</div>
+
+    <table>
+    <thead>
+        <tr>
+            <th>Icon</th>
+            <th>Name</th>
+            <th>Full Name</th>
+            <th>Powerstats</th>
+            <th>Race</th>
+            <th>Gender</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Place Of Birth</th>
+            <th>Alignment</th>
+        </tr>
+    </thead>
+    <tbody id="table-body">
+    
+    </tbody>
+</table>
+
+<div style="text-align: center; margin: 20px;">
+    <label for="page-size">Items per page: </label>
+    <select id="page-size">
+        <option value="10">10</option>
+        <option value="20" selected>20</option>
+        <option value="50">50</option>
+        <option value="100">100</option>
+        <option value="all">All Results</option>
+    </select>
+
+    <button id="first-btn">|&lt;</button>
+    <button id="prev-btn">Previous</button>
+    <span id="page-info">Page 1</span>
+    <button id="next-btn">Next</button>
+    <button id="last-btn">&gt;|</button>
+</div>
+
+ <script src="sortable.js"></script>
+
+
+</body>
+</html>

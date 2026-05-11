@@ -1,0 +1,38 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>.MyForum</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/home.page.css" />
+  <link rel="stylesheet" href="/static/error.page.css" />
+  </head>
+  <body>
+      <nav class="navbar">
+        <div class="navbar-left">
+          <a href="/" class="logo">.MyForum</a>
+          <div class="line"></div>
+        </div>
+        <div class="navbar-right">
+        </div>
+      </nav>
+
+
+    <div class="centered">
+      <div class="error-container">
+    <div class="error">
+      {{.}}
+
+    </div>
+    <a href="/posts" class="gohomebtn">
+      Go To Home Page
+    </a>
+    </div>
+    </div>
+
+  <footer>
+  <p class="footer">© 2025 MyForum. All rights reserved.</p>
+</footer>
+  </body>

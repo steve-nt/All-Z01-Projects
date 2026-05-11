@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f0f0;
+}
+
+button {
+    border-radius: 50px;
+    padding: 10px;
+    z-index: 1;
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#arm-color {
+    position: fixed;
+    top: 170px;
+    right: 30px;
+    padding: 10px;
+    z-index: 2;
+}
+
+#robot {
+    position: relative;
+    width: 200px;
+    height: 300px;
+}
+
+#head {
+    width: 100px;
+    height: 100px;
+    background-color: #3498db;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    position: relative;
+}
+
+#head::before,
+#head::after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: black;
+    border-radius: 50%;
+    top: 40px;
+}
+
+#head::before {
+    left: 25px;
+}
+
+#head::after {
+    right: 25px;
+}
+
+#torso {
+    width: 120px;
+    height: 100px;
+    background-color: #2ecc71;
+    margin: 0 auto 20px;
+    border-radius: 8px;
+    position: relative;
+}
+
+#arm-left,
+#arm-right {
+    width: 20px;
+    height: 80px;
+    background-color: #e74c3c;
+    position: absolute;
+    top: 50px;
+}
+
+#arm-left {
+    left: -40px;
+}
+
+#arm-right {
+    right: -40px;
+}
+
+.words {
+    text-align: center;
+    font-family: sans-serif;
+    color: white;
+    padding: 20px;
+    font-weight: bold;
+}

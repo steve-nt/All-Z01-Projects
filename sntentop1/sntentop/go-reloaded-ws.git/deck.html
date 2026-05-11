@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go-Reloaded</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overscroll-behavior: none;
+        }
+        .slide {
+            width: 100%;
+            height: 100vh;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 4rem;
+            text-align: center;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 0.4s ease-in-out;
+            opacity: 0;
+        }
+        .slide.active {
+            display: flex;
+            opacity: 1;
+            z-index: 10;
+        }
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #22d3ee;
+        }
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #f0f0f0;
+        }
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        p, li {
+            font-size: 1.2rem;
+            line-height: 1.7;
+        }
+        code, .mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        code {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            padding: 0.15rem 0.5rem;
+            border-radius: 0.375rem;
+            font-size: 1.05rem;
+            border: 1px solid #334155;
+        }
+        .accent { color: #22d3ee; }
+        .green { color: #4ade80; }
+        .red { color: #f87171; }
+        .yellow { color: #facc15; }
+        .muted { color: #94a3b8; }
+        .dim { color: #64748b; }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+        }
+        li {
+            margin-bottom: 0.6rem;
+            padding-left: 1.6rem;
+            position: relative;
+        }
+        li::before {
+            content: '>';
+            font-family: 'JetBrains Mono', monospace;
+            position: absolute;
+            left: 0;
+            color: #22d3ee;
+            font-weight: 700;
+        }
+
+        .card {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 0.75rem;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+        }
+        .card-grid {
+            display: grid;
+            gap: 1rem;
+            width: 100%;
+            max-width: 900px;
+        }
+        .card-grid-2 { grid-template-columns: 1fr 1fr; }
+        .card-grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+
+        .transform-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem;
+        }
+        .transform-row .arrow {
+            color: #22d3ee;
+            font-weight: 700;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .diagram-box {
+            background-color: #1e293b;
+            border: 1px solid #334155;
+            padding: 1.25rem 2rem;
+            border-radius: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1.1rem;
+            color: #e2e8f0;
+            margin: 1rem 0;
+        }
+
+        .pipeline-flow {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .pipeline-stage {
+            background: #0f172a;
+            border: 2px solid #22d3ee;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1rem;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.95rem;
+            color: #22d3ee;
+        }
+        .pipeline-arrow {
+            color: #475569;
+            font-size: 1.5rem;
+            margin: 0 0.25rem;
+        }
+
+        .fsm-states {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .fsm-state {
+            border: 2px solid #a78bfa;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #a78bfa;
+            text-align: center;
+            line-height: 1.2;
+            padding: 0.5rem;
+        }
+
+        .walkthrough {
+            max-width: 850px;
+            width: 100%;
+        }
+        .walkthrough-step {
+            background: #1e293b;
+            border-left: 3px solid #22d3ee;
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+        .walkthrough-step .step-num {
+            color: #22d3ee;
+            font-weight: 700;
+            font-family: 'JetBrains Mono', monospace;
+            margin-right: 0.75rem;
+        }
+
+        .audit-case {
+            text-align: left;
+            margin-bottom: 0.75rem;
+        }
+        .audit-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.2rem;
+        }
+
+        .checklist li {
+            padding-left: 2.5rem;
+        }
+        .checklist li::before {
+            content: '[ ]';
+            color: #22d3ee;
+            font-size: 0.9rem;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .nav-button {
+            position: fixed;
+            bottom: 2rem;
+            z-index: 20;
+            background-color: rgba(34, 211, 238, 0.85);
+            color: #0f172a;
+            border: none;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            font-size: 1.75rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+        }
+        .nav-button:hover {
+            background-color: rgba(34, 211, 238, 1);
+        }
+        #prev { left: 2rem; }
+        #next { right: 2rem; }
+
+    </style>
+</head>
+<body class="overflow-hidden">
+
+    <div class="slide active">
+<h1>go-reloaded</h1>
+<div class="diagram-box mt-8" style="font-size: 1rem;">
+            go run <span class="accent">main.go</span> <span class="red">input.txt</span> <span class="green">output.txt</span>
+        </div>
+        <p class="dim mt-6 text-base">
+            <span class="red">Read a file.</span>
+            <span class="accent">Transform it.</span>
+            <span class="green">Write the result.</span>
+        </p>
+    </div>
+
+    <div class="slide">
+        <h2>The Problem</h2>
+        <p class="muted mb-6">Here's what your program sees, and what it must produce.</p>
+
+        <div class="card" style="max-width: 850px; width: 100%;">
+            <p class="audit-label red">Input (sample.txt)</p>
+            <p class="mono" style="font-size: 1.05rem; color: #f87171;">
+                harold wilson (cap, 2) : ' I am a optimist ,but a optimist who carries a raincoat . '
+            </p>
+            <div style="text-align: center; margin: 1rem 0;">
+                <span class="accent" style="font-size: 2rem;">&#8595;</span>
+            </div>
+            <p class="audit-label green">Output (result.txt)</p>
+            <p class="mono" style="font-size: 1.05rem; color: #4ade80;">
+                Harold Wilson: 'I am an optimist, but an optimist who carries a raincoat.'
+            </p>
+        </div>
+
+        <p class="mt-6 muted text-base">Audit case #4.</p>
+    </div>
+
+    <div class="slide">
+        <h2>Let's Walk Through It</h2>
+        <p class="muted mb-4" style="font-size: 1rem;">What happened between input and output?</p>
+
+        <div class="walkthrough">
+            <div class="walkthrough-step">
+                <span class="step-num">1</span>
+                <code>(cap, 2)</code> capitalised the 2 previous words:
+                <span class="red">harold wilson</span> <span class="arrow accent">&rarr;</span> <span class="green">Harold Wilson</span>
+            </div>
+            <div class="walkthrough-step">
+                <span class="step-num">2</span>
+                Punctuation <code>:</code> moved next to previous word:
+                <span class="red">Wilson :</span> <span class="arrow accent">&rarr;</span> <span class="green">Wilson:</span>
+            </div>
+            <div class="walkthrough-step">
+                <span class="step-num">3</span>
+                Quotes <code>' ... '</code> snapped to their content:
+                <span class="red">' I am ... raincoat . '</span> <span class="arrow accent">&rarr;</span> <span class="green">'I am ... raincoat.'</span>
+            </div>
+            <div class="walkthrough-step">
+                <span class="step-num">4</span>
+                <code>a</code> became <code>an</code> before vowel:
+                <span class="red">a optimist</span> <span class="arrow accent">&rarr;</span> <span class="green">an optimist</span>
+            </div>
+            <div class="walkthrough-step">
+                <span class="step-num">5</span>
+                Commas and periods moved to the right place:
+                <span class="red">,but</span> <span class="arrow accent">&rarr;</span> <span class="green">, but</span>
+                &nbsp;&nbsp;
+                <span class="red">raincoat .</span> <span class="arrow accent">&rarr;</span> <span class="green">raincoat.</span>
+            </div>
+        </div>
+
+        <p class="mt-6 muted text-base">Five different functions, all in one sentence. Order matters.</p>
+    </div>
+
+    <div class="slide">
+        <h2>All The Rules</h2>
+        <p class="muted mb-4" style="font-size: 1rem;">7 transformation functions. All defined in the subject. All testable.</p>
+
+        <div class="card-grid card-grid-3" style="max-width: 1000px;">
+            <div class="card">
+                <h3 class="accent" style="font-size: 1.1rem;">Numbers</h3>
+                <p style="font-size: 0.95rem;"><code>(hex)</code> <code>(bin)</code><br><span class="dim">convert previous word to decimal</span></p>
+            </div>
+            <div class="card">
+                <h3 class="accent" style="font-size: 1.1rem;">Casing</h3>
+                <p style="font-size: 0.95rem;"><code>(up)</code> <code>(low)</code> <code>(cap)</code><br><span class="dim">all support <code>, N</code> to apply to N previous words (e.g. <code>(up, 5)</code>)</span></p>
+            </div>
+            <div class="card">
+                <h3 class="accent" style="font-size: 1.1rem;">Punctuation</h3>
+                <p style="font-size: 0.95rem;"><code>. , ! ? : ;</code><br><span class="dim">stick to previous word, space after</span></p>
+            </div>
+            <div class="card">
+                <h3 class="accent" style="font-size: 1.1rem;">Punct. Groups</h3>
+                <p style="font-size: 0.95rem;"><code>...</code> <code>!?</code><br><span class="dim">stay grouped, no spaces inside</span></p>
+            </div>
+            <div class="card">
+                <h3 class="accent" style="font-size: 1.1rem;">Quotes</h3>
+                <p style="font-size: 0.95rem;"><code>' ... '</code><br><span class="dim">pairs wrap content, no inner spaces</span></p>
+            </div>
+            <div class="card">
+                <h3 class="accent" style="font-size: 1.1rem;">Articles</h3>
+                <p style="font-size: 0.95rem;"><code>a</code> &rarr; <code>an</code><br><span class="dim">before vowel or h</span></p>
+            </div>
+        </div>
+
+        <p class="mt-6 dim text-base">The tricky part: functions interact. We need a strategy.</p>
+    </div>
+
+    <div class="slide">
+        <h2>How Would <span class="accent">You</span> Do It?</h2>
+
+        <div class="diagram-box" style="max-width: 700px; font-size: 1.05rem; text-align: left; line-height: 2;">
+            <span class="dim">input:</span> <span class="red">harold wilson (cap, 2) : ' I am a optimist , '</span><br>
+            <span class="dim">output:</span> <span class="green">Harold Wilson: 'I am an optimist,'</span>
+        </div>
+
+        <p class="mt-8 text-2xl" style="color: #e2e8f0;">If you had to do this by hand, how would you start?</p>
+    </div>
+
+    <div class="slide">
+        <h2>Approach A: Pipeline</h2>
+        <p class="muted mb-4">Process the text in stages. Each stage does one job.</p>
+
+        <div class="pipeline-flow mb-6">
+            <div class="pipeline-stage">Read</div>
+            <span class="pipeline-arrow">&rarr;</span>
+            <div class="pipeline-stage">Tokenize</div>
+            <span class="pipeline-arrow">&rarr;</span>
+            <div class="pipeline-stage">Markers</div>
+            <span class="pipeline-arrow">&rarr;</span>
+            <div class="pipeline-stage">Punctuation</div>
+            <span class="pipeline-arrow">&rarr;</span>
+            <div class="pipeline-stage">Quotes</div>
+            <span class="pipeline-arrow">&rarr;</span>
+            <div class="pipeline-stage">a/an</div>
+            <span class="pipeline-arrow">&rarr;</span>
+            <div class="pipeline-stage">Write</div>
+        </div>
+
+        <div class="card-grid card-grid-2" style="max-width: 750px;">
+            <div class="card">
+                <h3 class="green" style="font-size: 1rem;">Pros</h3>
+                <ul style="font-size: 0.95rem;">
+                    <li>Test each function in isolation: <code>(hex)</code> doesn't touch punctuation</li>
+                    <li>Print text between stages to see exactly where output went wrong</li>
+                    <li>Easy to split work between teammates</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 class="yellow" style="font-size: 1rem;">Cons</h3>
+                <ul style="font-size: 0.95rem;">
+                    <li>Stage order is a real decision: <code>(cap)</code> before or after punctuation?</li>
+                    <li>Stages need to agree on what a "token" looks like</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Approach B: Finite State Machine</h2>
+        <p class="muted mb-4">Scan left to right. Track where you are. Decide as you go.</p>
+
+        <div class="fsm-states mb-6">
+            <div class="fsm-state">Normal<br>Text</div>
+            <div style="color: #475569; font-size: 1.5rem; display: flex; align-items: center;">&harr;</div>
+            <div class="fsm-state">Inside<br>Marker</div>
+            <div style="color: #475569; font-size: 1.5rem; display: flex; align-items: center;">&harr;</div>
+            <div class="fsm-state">Inside<br>Quotes</div>
+            <div style="color: #475569; font-size: 1.5rem; display: flex; align-items: center;">&harr;</div>
+            <div class="fsm-state">Punct.<br>Group</div>
+        </div>
+
+        <div class="card-grid card-grid-2" style="max-width: 750px;">
+            <div class="card">
+                <h3 style="color: #a78bfa; font-size: 1rem;">Pros</h3>
+                <ul style="font-size: 0.95rem;">
+                    <li>One pass, no intermediate data structures</li>
+                    <li>State tells you exactly what context you're in: is this <code>'</code> a quote opener or closer?</li>
+                </ul>
+            </div>
+            <div class="card">
+                <h3 class="yellow" style="font-size: 1rem;">Cons</h3>
+                <ul style="font-size: 0.95rem;">
+                    <li>You handle <code>(up)</code>, then discover <code>(up, 2)</code> needs a new transition — rewrite time</li>
+                    <li>Wrong output? Good luck finding which state caused it</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Which One?</h2>
+        <p class="muted mb-6">Both can pass the project. The question is which one <em>you</em> can debug.</p>
+
+        <div class="card-grid card-grid-2" style="max-width: 750px;">
+            <div class="card" style="border-color: #22d3ee;">
+                <h3 class="accent">Pipeline</h3>
+                <p style="font-size: 1rem;">Same idea as chaining commands in your terminal.<br>The pattern you'll see most in your career.</p>
+            </div>
+            <div class="card" style="border-color: #a78bfa;">
+                <h3 style="color: #a78bfa;">FSM</h3>
+                <p style="font-size: 1rem;">How parsers, protocols, and embedded systems work.<br>The pattern when every byte matters.</p>
+            </div>
+        </div>
+
+        <p class="mt-8" style="font-size: 1.3rem;">Pick the one you can <strong class="accent">explain</strong> and <strong class="accent">test</strong>.</p>
+    </div>
+
+    <div class="slide">
+        <h2>The Audit</h2>
+        <p class="muted mb-4">Another student will run these exact cases. Output must match <strong>character for character</strong>.</p>
+
+        <div class="card" style="max-width: 850px; width: 100%; font-size: 0.9rem; max-height: 55vh; overflow-y: auto;">
+            <div class="audit-case">
+                <p class="audit-label dim">#1</p>
+                <p class="mono red" style="font-size: 0.85rem;">If I make you BREAKFAST IN BED (low, 3) just say thank you instead of: how (cap) did you get in my house (up, 2) ?</p>
+                <p class="mono green" style="font-size: 0.85rem;">If I make you breakfast in bed just say thank you instead of: How did you get in MY HOUSE?</p>
+            </div>
+            <hr style="border-color: #334155; margin: 0.75rem 0;">
+            <div class="audit-case">
+                <p class="audit-label dim">#2</p>
+                <p class="mono red" style="font-size: 0.85rem;">I have to pack 101 (bin) outfits. Packed 1a (hex) just to be sure</p>
+                <p class="mono green" style="font-size: 0.85rem;">I have to pack 5 outfits. Packed 26 just to be sure</p>
+            </div>
+            <hr style="border-color: #334155; margin: 0.75rem 0;">
+            <div class="audit-case">
+                <p class="audit-label dim">#3</p>
+                <p class="mono red" style="font-size: 0.85rem;">Don not be sad ,because sad backwards is das . And das not good</p>
+                <p class="mono green" style="font-size: 0.85rem;">Don not be sad, because sad backwards is das. And das not good</p>
+            </div>
+            <hr style="border-color: #334155; margin: 0.75rem 0;">
+            <div class="audit-case">
+                <p class="audit-label dim">#4</p>
+                <p class="mono red" style="font-size: 0.85rem;">harold wilson (cap, 2) : ' I am a optimist ,but a optimist who carries a raincoat . '</p>
+                <p class="mono green" style="font-size: 0.85rem;">Harold Wilson: 'I am an optimist, but an optimist who carries a raincoat.'</p>
+            </div>
+        </div>
+
+        <p class="mt-4 yellow text-base">These are your minimum acceptance tests. Start here.</p>
+    </div>
+
+    <div class="slide">
+        <h2>Your Product Requirements Document</h2>
+        <p class="muted mb-6">A short document that makes "done" unambiguous.</p>
+
+        <div class="card" style="max-width: 750px; width: 100%;">
+            <table style="width: 100%; font-size: 1rem; border-collapse: collapse;">
+                <tr style="border-bottom: 1px solid #334155;">
+                    <td style="padding: 0.6rem 0.75rem; color: #22d3ee; font-weight: 600; white-space: nowrap; vertical-align: top;">Problem</td>
+                    <td style="padding: 0.6rem 0.75rem;">What does this tool do? One sentence.</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #334155;">
+                    <td style="padding: 0.6rem 0.75rem; color: #22d3ee; font-weight: 600; white-space: nowrap; vertical-align: top;">CLI Contract</td>
+                    <td style="padding: 0.6rem 0.75rem;"><code>go run main.go input.txt output.txt</code> What happens with bad args?</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #334155;">
+                    <td style="padding: 0.6rem 0.75rem; color: #22d3ee; font-weight: 600; white-space: nowrap; vertical-align: top;">Functions</td>
+                    <td style="padding: 0.6rem 0.75rem;">Each transformation in your own words + one example</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #334155;">
+                    <td style="padding: 0.6rem 0.75rem; color: #22d3ee; font-weight: 600; white-space: nowrap; vertical-align: top;">Non-Goals</td>
+                    <td style="padding: 0.6rem 0.75rem;">What you're NOT building</td>
+                </tr>
+                <tr style="border-bottom: 1px solid #334155;">
+                    <td style="padding: 0.6rem 0.75rem; color: #22d3ee; font-weight: 600; white-space: nowrap; vertical-align: top;">Acceptance</td>
+                    <td style="padding: 0.6rem 0.75rem;">The 4 audit cases + your extra tests</td>
+                </tr>
+                <tr>
+                    <td style="padding: 0.6rem 0.75rem; color: #22d3ee; font-weight: 600; white-space: nowrap; vertical-align: top;">Architecture</td>
+                    <td style="padding: 0.6rem 0.75rem;">Pipeline or FSM, your choice + why</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Your Toolkit</h2>
+
+        <div class="card-grid card-grid-3 mt-8" style="max-width: 950px;">
+            <div class="card">
+                <h3 class="accent" style="font-size: 1.1rem;">Golden Tests</h3>
+                <p style="font-size: 0.95rem;">
+                    Input + expected output pairs.<br>
+                    Write them <strong>before</strong> you code.<br>
+                    Start with the 4 audit cases.<br>
+                    Add 2-3 tricky ones of your own.
+                </p>
+            </div>
+            <div class="card">
+                <h3 class="accent" style="font-size: 1.1rem;">PRD</h3>
+                <p style="font-size: 0.95rem;">
+                    Rewrite the functions in your own words.<br>
+                    List what's in scope and what's not.<br>
+                    Define "done" so there's no argument.<br>
+
+                </p>
+            </div>
+            <div class="card">
+                <h3 class="accent" style="font-size: 1.1rem;">AI</h3>
+                <p style="font-size: 0.95rem;">
+                    You know how to use it. Use it well.<br>
+                    Think first, then ask AI to help.<br>
+                    Keep an AI usage log.<br>
+                    You must be able to explain your code.
+                </p>
+            </div>
+        </div>
+
+        <p class="mt-6 muted text-base">The audit cases are your ground truth. Your extra tests catch what you might miss.</p>
+    </div>
+
+    <div class="slide">
+        <h2>Week 1: Plan</h2>
+        <p class="muted mb-4">Think, plan, analyse. Implementation starts after peer audit.</p>
+
+        <div class="card" style="max-width: 700px; width: 100%;">
+            <ul class="checklist" style="font-size: 1.05rem;">
+                <li><strong>PRD</strong> &mdash; requirements, non-goals, acceptance criteria</li>
+                <li><strong>Golden tests</strong> &mdash; audit cases + 2-3 extra edge cases</li>
+                <li><strong>Architecture choice</strong> &mdash; pipeline or FSM, with your rationale</li>
+                <li><strong>Task decomposition</strong> &mdash; 5-8 small tasks, each testable</li>
+            </ul>
+        </div>
+
+        <div class="card mt-4" style="max-width: 700px; width: 100%; border-color: #22d3ee;">
+            <p style="font-size: 1rem; text-align: center;">
+                <strong class="accent">Peer Audit Gate:</strong> another student reviews your plan.<br>
+                <span class="muted">You don't start coding until your plan is accepted.</span>
+            </p>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Start Now</h2>
+
+        <div class="card" style="max-width: 700px; width: 100%; border-color: #22d3ee;">
+            <p style="font-size: 1.15rem; text-align: center;">
+                <strong class="accent">Step 1:</strong> Open the project. Read every function.<br>
+                <strong class="accent">Step 2:</strong> Run some audit cases in your head. Can you produce the output by hand?<br>
+                <strong class="accent">Step 3:</strong> Start your PRD draft today.
+            </p>
+        </div>
+
+        <div class="card mt-4" style="max-width: 700px; width: 100%;">
+            <h3 class="muted" style="font-size: 0.95rem;">Pace</h3>
+            <div style="display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 1rem; font-size: 1rem;">
+                <span class="accent mono">Day 1-2</span> <span>Read subject, draft PRD, list edge cases</span>
+                <span class="accent mono">Day 3-4</span> <span>Write golden tests, draft architecture comparison</span>
+                <span class="accent mono">Day 5-7</span> <span>Finalize PRD, task breakdown, prepare for peer audit</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="slide">
+        <h2>Questions?</h2>
+        <p class="muted mt-4">About the functions, the architectures, the deliverables, or anything.</p>
+        <div class="diagram-box mt-8" style="font-size: 1rem; color: #64748b;">
+            Templates and this deck will be shared on Discord after the session.
+        </div>
+    </div>
+
+    <button id="prev" class="nav-button">&lsaquo;</button>
+    <button id="next" class="nav-button">&rsaquo;</button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const prevButton = document.getElementById('prev');
+            const nextButton = document.getElementById('next');
+            let currentSlide = 0;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    if (i === index) {
+                        slide.classList.add('active');
+                    } else {
+                        slide.classList.remove('active');
+                    }
+                });
+                prevButton.style.display = currentSlide === 0 ? 'none' : 'flex';
+                nextButton.style.display = currentSlide === slides.length - 1 ? 'none' : 'flex';
+            }
+
+            function next() { if (currentSlide < slides.length - 1) { currentSlide++; showSlide(currentSlide); } }
+            function prev() { if (currentSlide > 0) { currentSlide--; showSlide(currentSlide); } }
+
+            nextButton.addEventListener('click', next);
+            prevButton.addEventListener('click', prev);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); next(); }
+                else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+            });
+
+            showSlide(currentSlide);
+        });
+    </script>
+</body>
+</html>

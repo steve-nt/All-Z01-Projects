@@ -1,0 +1,109 @@
+/* Background Image Styling */
+body {
+    background-image: url("/frontend/images/home.jpg");
+    background-size: cover;       /* Ensures the image covers the full screen */
+    background-position: center;  /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+    background-attachment: fixed; /* Keeps it fixed while scrolling */
+
+    /* Required for the overlay effect */
+    position: relative;
+    height: 90vh; /* Ensures full height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Faint Effect (Overlay) */
+body::before {
+    content: "";
+    position: fixed; /* Covers entire screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust transparency (0.1 = very light, 0.8 = darker) */
+    z-index: 0; /* Keeps overlay behind content */
+}
+
+/* Ensure Content Appears Above the Overlay */
+body > * {
+    position: relative;
+    z-index: 1; /* Makes sure all content is above the overlay */
+}
+
+.glow {
+    font-size: 80px;
+    color: #fff;
+    text-align: center;
+    animation: glow 0.5s ease-in-out infinite alternate;
+  }
+  
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #6a1cfbf9, 0 0 40px #4100e6, 0 0 50px #9200e6a8, 0 0 60px #0086e6, 0 0 70px #e60073;
+    }
+    
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #6a1cfbf9, 0 0 50px #4100e6, 0 0 60px #9200e6a8, 0 0 70px #0086e6, 0 0 80px #e60073;
+    }
+  }
+
+  /* Centering Button Container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+/* Button Styling */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(90deg, #ff007f, #ff5e62);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover Effect */
+.btn:hover {
+    background: linear-gradient(90deg, #ff5e62, #ff007f);
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.8);
+    transform: scale(1.05);
+}
+
+
+/* Footer Styling */
+.footer {
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 14px;
+    background: linear-gradient(90deg, #ff007f, #ff5e62);
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-weight: bold;
+    box-shadow: 0px -2px 5px rgba(0, 255, 204, 0.3);
+}
+
+/* Footer Links */
+.footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+    font-size: 12px;
+}
+
+.footer a:hover {
+    color: white;
+}

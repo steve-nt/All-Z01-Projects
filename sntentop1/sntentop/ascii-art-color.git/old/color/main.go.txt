@@ -1,0 +1,159 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
+var colorCodes = map[string]string{
+	"red":     "\033[31m",
+	"green":   "\033[32m",
+	"yellow":  "\033[33m",
+	"blue":    "\033[34m",
+	"magenta": "\033[35m",
+	"cyan":    "\033[36m",
+	"reset":   "\033[0m",
+}
+
+func main() {
+	if len(os.Args) < 2 {
+		fmt.Println("Usage: go run . [OPTION] [STRING]")
+		return
+	}
+
+	// Determine if there's a color flag
+	var color, textFromOutside, substringToColor string
+	if strings.HasPrefix(os.Args[1], "--color=") {
+		colorFlag := os.Args[1]
+		color = strings.TrimPrefix(colorFlag, "--color=")
+		if len(os.Args) < 3 {
+			fmt.Println("Usage: go run . --color=<color> <substring to be colored> [STRING]")
+			return
+		}
+
+		if len(os.Args) == 3 {
+			// No substring specified, color the whole string
+			textFromOutside = os.Args[2]
+		} else {
+			// Substring to color is specified
+			substringToColor = os.Args[2]
+			textFromOutside = os.Args[3]
+		}
+
+		if _, exists := colorCodes[color]; !exists {
+			fmt.Printf("Invalid color: %s\n", color)
+			fmt.Println("Available colors: red, green, yellow, blue, magenta, cyan")
+			return
+		}
+	} else {
+		textFromOutside = os.Args[1]
+	}
+
+	fileLines := ReadTxt()
+	asciiTemplates := return2dASCIIArray(fileLines)
+	printAllStringASCII(textFromOutside, asciiTemplates, color, substringToColor)
+}
+
+func ReadTxt() []string {
+	readFile, err := os.Open("standard.txt")
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	defer readFile.Close()
+
+	fileScanner := bufio.NewScanner(readFile)
+	fileScanner.Split(bufio.ScanLines)
+	var fileLines []string
+	for fileScanner.Scan() {
+		fileLines = append(fileLines, fileScanner.Text())
+	}
+	return fileLines
+}
+
+func return2dASCIIArray(fileLines []string) [][]string {
+	var asciiTemplates [][]string
+	counter := 0
+	var tempAsciArray []string
+	for _, line := range fileLines {
+		counter++
+		if counter != 1 {
+			tempAsciArray = append(tempAsciArray, line)
+		}
+		if counter == 9 {
+			asciiTemplates = append(asciiTemplates, tempAsciArray)
+			counter = 0
+			tempAsciArray = nil
+		}
+	}
+	return asciiTemplates
+}
+
+func printMultipleCharacter(s string, asciiTemplates [][]string, color, substringToColor string) {
+	tempIntArrLetter := returnAsciiCodeInt(s)
+	colorCode := colorCodes[color]
+	resetCode := colorCodes["reset"]
+
+	for i := 0; i < 8; i++ {
+		for j, v := range tempIntArrLetter {
+			line := asciiTemplates[v][i]
+
+			// Check if this character or substring matches the coloring criteria
+			if substringToColor == "" || strings.Contains(s, substringToColor) && strings.Index(s, substringToColor) <= j && j < strings.Index(s, substringToColor)+len(substringToColor) {
+				fmt.Print(colorCode + line + resetCode)
+			} else {
+				fmt.Print(line)
+			}
+		}
+		fmt.Println()
+	}
+}
+
+func returnAsciiCodeInt(s string) []int {
+	var tempIntArrLetter []int
+	for _, v := range s {
+		tempIntArrLetter = append(tempIntArrLetter, int(v)-32)
+	}
+	return tempIntArrLetter
+}
+
+func printAllStringASCII(text string, asciiTemplates [][]string, color, substringToColor string) {
+	substrings := returnstring2EndlineArray(text)
+	lenOfsubstrings := len(substrings)
+
+	for index, v := range substrings {
+		if v == "\\n" {
+			if index == lenOfsubstrings-1 || substrings[index-1] == "\\n" {
+				fmt.Println("")
+			}
+		} else {
+			printMultipleCharacter(v, asciiTemplates, color, substringToColor)
+		}
+	}
+}
+
+func returnstring2EndlineArray(text string) []string {
+	substrings := make([]string, 0)
+	escapedN := "\\n"
+
+	for {
+		idx := strings.Index(text, escapedN)
+		if idx == -1 {
+			substrings = append(substrings, text)
+			break
+		}
+		substrings = append(substrings, text[:idx])
+		substrings = append(substrings, escapedN)
+		text = text[idx+len(escapedN):]
+	}
+
+	var cleanedSubstrings []string
+	for _, sub := range substrings {
+		if sub != "" {
+			cleanedSubstrings = append(cleanedSubstrings, sub)
+		}
+	}
+	return cleanedSubstrings
+}

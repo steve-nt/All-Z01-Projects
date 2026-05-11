@@ -1,0 +1,225 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap');
+
+body {
+  font-family: 'Kaisei Opti', serif;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between; /* pushes left + right groups apart */
+  align-items: center;            /* vertically centers everything */
+  padding: 0px 35px;
+  padding-top:30px;
+  font-family: 'Kaisei Opti', serif;
+  background-color:black;
+}
+.navbar-left {
+  display: flex;
+  gap: 5px; /* space between left items */
+
+}
+
+/* Right group: items side-by-side */
+.navbar-right {
+  display: flex;
+  gap: 15px; /* space between right items */
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.logo{
+  font-weight: normal;
+  font-size:3rem;
+  line-height: 1;
+  color: white;
+}
+
+
+.user{
+  color:white;
+  text-decoration:none;
+  font-weight: normal;
+  font-size:1.7rem;
+line-height: 3.9rem;
+}
+
+.logout-btn{
+  outline:none;
+  border:none;
+  margin:0.9rem 0px;
+  padding: 14px 16px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size:1.6rem;
+  font-family: 'Kaisei Opti', serif;
+}
+
+.btn {
+  margin:0.9rem 0px;
+  padding: 14px 16px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size:1.6rem;
+}
+
+.line {
+  width: 1px;
+  height: 45px;
+  background-color: white;
+  margin: 5px 10px;
+}
+.navbar-left {
+  display: flex;
+  gap: 5px; /* space between left items */
+}
+
+.navbar-right {
+  display: flex;
+  gap: 15px; /* space between right items */
+}
+
+
+
+
+
+.theme {
+  display: flex;
+  gap:20px;
+  align-items: center;            /* vertically centers everything */
+  padding: 10px 35px;
+  padding-left:25vw;
+  font-family: 'Kaisei Opti', serif;
+  background-color:black;
+  background-image: url("../static/images/forumbackground.jpg");
+  width:100vw;
+  justify-content:flex-end;
+}
+.theme-photo{
+  height:500px;
+  width:45vw;
+  background: url("../static/images/forumbackround.jpg") no-repeat center/cover;
+}
+
+
+.theme-left{
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+  align-items:flex-end;
+}
+
+
+
+.description{
+  font-size:30px;
+  text-align:right;
+}
+
+.get-started{
+  padding: 8px 16px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+
+
+.categories{
+  padding-top:8rem;
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+}
+
+.category-images{
+  display:flex;
+  justify-content:space-between;
+  padding:0rem 5rem;
+}
+
+.image-checkbox {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.image-checkbox input[type="checkbox"] {
+  display: none; 
+}
+
+.image-checkbox img {
+  width: 20rem;
+  height: auto;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.image-checkbox:hover img {
+  filter: grayscale(60%) blur(1px);
+  transform: scale(0.98);
+  opacity: 0.6;
+}
+.image-checkbox input[type="checkbox"]:checked + img {
+  filter: grayscale(60%) blur(1px);
+  transform: scale(1.02);
+  opacity: 0.7;
+}
+
+.image-checkbox:hover .overlay-text,
+.image-checkbox input[type="checkbox"]:checked ~ .overlay-text {
+  opacity: 1;
+}
+
+
+
+.submit-container{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.submit-btn{
+  padding: 15px 20px;        /* space inside button */
+  font-size: 19px;            /* text size */
+  font-family: 'Kaisei Opti', serif; /* font */
+  font-weight:bold;
+  background-color: white;  /* button color */
+  color: black;               /* text color */
+  border: none;               /* remove default border */
+  border-radius: 2px;         /* rounded corners */
+  cursor: pointer;            /* pointer on hover */
+}
+
+.bottom-blank{
+  /* width:100vw; */
+  height:6vh;
+}
+.footer{
+
+  padding:10px 20px;
+  font-size:10px;
+}

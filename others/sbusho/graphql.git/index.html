@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GraphQL Profile - Zone01 Student Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- Login Page -->
+    <div id="login-page" class="login-container">
+        <div class="login-card">
+            <h1>Welcome</h1>
+            <p class="subtitle">Log in to view your profile</p>
+
+            <form id="login-form" class="login-form">
+                <div class="form-group">
+                    <label for="username">Email or Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter your email or username"
+                        autocomplete="username" required />
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password"
+                        autocomplete="current-password" required />
+                    <button type="button" class="toggle-password-button" id="togglePassword" aria-label="Show password">
+                <svg class="eye-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z" />
+                    <circle cx="12" cy="12" r="3" />
+                </svg>
+            </button>
+                </div>
+
+                <div id="login-error" class="error-message" style="display: none;" role="alert"></div>
+
+                <button type="submit" id="login-button" class="login-button">
+                    Log In
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Profile Page -->
+    <div id="profile-page" class="profile-container" style="display: none;">
+        <div class="profile-header">
+            <h1>Zone01 Student Dashboard</h1>
+            <button id="logout-button" class="logout-button">Logout</button>
+        </div>
+
+        <!-- Loading State -->
+        <div id="loading-state" class="loading">
+            <div class="loading-spinner">Loading profile data...</div>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-state" class="error-state" style="display: none;">
+            <h2>Session Expired</h2>
+            <p id="error-message"></p>
+            <button id="retry-button" class="retry-button">Go to Login</button>
+        </div>
+
+        <!-- Profile Content -->
+        <div id="profile-content" class="profile-content" style="display: none;">
+            <!-- User Information Card -->
+            <div class="profile-card">
+                <h2>Student Information</h2>
+                <div class="info-boxes">
+                    <div class="info-item">
+                        <span class="info-label">Name:</span>
+                        <span class="info-value" id="user-name">N/A</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Login:</span>
+                        <span class="info-value" id="user-login">N/A</span>
+                    </div>
+                    <div class="info-item" id="user-email-item" style="display: none;">
+                        <span class="info-label">Email:</span>
+                        <span class="info-value" id="user-email">N/A</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- XP Card - Must be second to be placed in column 2 -->
+            <div class="profile-card xp-card">
+                <h2>Total XP (div-01)</h2>
+                <div class="xp-display">
+                    <span class="xp-value" id="xp-total">0</span>
+                    <span class="xp-label">XP Points</span>
+                </div>
+                <h2>XP by Project (div-01)</h2>
+                <div id="xp-projects-svg-container" class="xp-svg-container"></div>
+                <h2>XP by Latest Activity (Top 5)</h2>
+                <div id="xp-latest-projects-svg-container" class="xp-latest-svg-container"></div>
+            </div>
+
+            <!-- Audit Ratio Card -->
+            <div class="profile-card">
+                <h2>Audit Ratio</h2>
+                <div class="audit-display">
+                    <div id="audit-ratio-svg-container" class="audit-svg-container"></div>
+                    <div class="audit-ratio-text">
+                        <span class="audit-value" id="audit-ratio">0.00</span>
+                    </div>
+                    <div class="audit-details">
+                        <div class="audit-item">
+                            <span class="audit-label">Done:</span>
+                            <span class="audit-number" id="audit-up">0</span>
+                        </div>
+                        <div class="audit-item">
+                            <span class="audit-label">Received:</span>
+                            <span class="audit-number" id="audit-down">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills Card -->
+            <div class="profile-card">
+                <h2>Top 5 Skills</h2>
+                <div id="skills-list" class="skills-list"></div>
+                <p id="skills-error" class="info-text" style="display: none;"></p>
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <script src="/js/app.js"></script>
+    <script src="/js/authentication.js"></script>
+    <script src="/js/graphql.js"></script>
+    <script src="/js/storage.js"></script>
+    <script src="/js/svg.js"></script>
+</body>
+
+</html>

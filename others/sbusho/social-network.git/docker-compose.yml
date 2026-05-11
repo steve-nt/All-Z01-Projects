@@ -1,0 +1,31 @@
+# Run with: docker compose up --build  (Compose V2, no hyphen)
+# If you see 'ContainerConfig' KeyError, run: docker compose down && docker compose up --build
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: social-network-backend
+    container_name: social-network-backend
+    ports:
+      - "8080:8080"
+    volumes:
+      - backend-data:/app/data
+      - backend-uploads:/app/frontend/uploads
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: social-network-frontend
+    container_name: social-network-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  backend-data:
+  backend-uploads:

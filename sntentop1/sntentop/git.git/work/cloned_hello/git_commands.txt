@@ -1,0 +1,170 @@
+Show Full History
+git log
+
+One-Line History
+git log --oneline
+
+Controlled Entries:
+a. git log -2
+b. git log --since="5 minutes ago"
+
+Personalized Format:
+git log --pretty=format:"* %h %ad | %s (%d) [%an]" --date=short
+
+Revert to  Snapshot
+git checkout <commit_hash>
+
+Return to Latest Version
+git checkout main/master
+
+Tag Current Version:
+ git tag v1
+
+Tag Previous Version without Commit Hash
+git tag v1-beta HEAD^
+
+Navigating Tags
+git checkout v1-beta
+git checkout main
+
+Reverting Changes before staging
+git restore hello.sh
+
+Staging and Cleaning
+git restore --staged hello.sh
+
+Committing and Reverting
+git reset --hard v1
+
+Clean Unreferenced Commits
+git gc --prune=now
+
+Show Details of the oops Commit
+git show oops
+
+command to display a history of changes made to HEAD
+git reflog
+
+
+Amend the Last Commit
+git commit --amend --no-edit
+
+Amend a previous commit 
+a Start an Interactive Rebase
+git rebase -i HEAD~3
+b Mark the Commit for Editing
+pick commit_hash Comit message
+Find the commit you want to amend, 
+and change pick to edit next to that commit
+edit commit_hash Comit message
+
+Stage and Amend the Commit
+git add hello.sh
+git commit --amend --no-edit
+git rebase --continue
+git log -p
+
+
+Verify the Commit
+git show HEAD
+
+git push --set-upstream origin main
+git remote add origin https://............git
+
+Latest Object Hash:
+ls -ltr 
+find -type f -printf '%T@ %p\n' | sort -n | tail -1
+01/64d1c602e7354b130db54def3a15690fef3bbc
+git cat-file -t 0164d1c
+git cat-file -p <hash>
+
+Dumping Directory Tree:
+
+This output lists: File modes, Object types, Object hashes, File paths
+git ls-tree -r 54861840efa84c7a
+Dump the Contents of lib/
+git ls-tree -r 54861840efa84c7a | grep "^100" | grep "lib/" | awk '{print $3, $4}' | while read hash path; do   echo "Contents of $path:";   git cat-file -p $hash;   echo "----------------------"; done
+Dump the Contents of hello.sh
+git ls-tree -r 54861840efa84c7a | grep "hello.sh" | awk '{print $3}' | xargs git cat-file -p
+
+Create and Switch to New Branch
+git branch xxxxx
+git checkout xxxxx
+
+Compare Differences Between main and greet Branches
+git diff main greet -- Makefile lib/hello.sh lib/greeter.sh
+
+Conflicts, merging and rebasing
+Merging Main into Greet Branch (Conflict)
+steps to merge the main branch into the greet branch
+git checkout greet
+git merge main
+git add <file>
+git commit
+git checkout main
+cat lib/hello.sh
+git log --oneline --graph
+
+
+Rebasing Greet Branch
+git log --oneline --graph
+git checkout greet
+git reset --hard f0299d3
+ git rebase main
+
+Fast-Forwarding
+Fast-forwarding happens when the branch being merged into (e.g., main) has not diverged from the branch 
+being merged (e.g., feature). In this case, Git simply moves the HEAD of the branch forward to the tip 
+of the branch being merged, without creating a new merge commit.
+Advantages:
+Keeps history linear and clean.
+Simple to execute if no divergent commits exist.
+Fast-Forward Is Not Possible:
+If the branches have diverged (i.e., both have unique commits since their common ancestor), 
+Git cannot fast-forward, and a regular merge or rebase is required.
+
+Merging
+Merging combines the changes from one branch into another. It creates a merge commit to 
+record the integration of changes, preserving the history of both branches.
+Advantages:
+Preserves a complete history of both branches.
+Useful for maintaining branch histories in team projects.
+Disadvantages:
+History can become cluttered with merge commits, especially in long-lived branches with frequent merges.
+
+Rebasing
+Rebasing moves the commits of a branch to a new base (commit) to create a linear history. 
+This involves replaying the commits from the branch being rebased onto the new base commit.
+Advantages:
+Linear and clean history.
+Easier to follow when reviewing changes.
+Disadvantages:
+Alters commit history, which can cause issues when working with shared branches.
+Should not be used on public or shared branches to avoid disrupting collaborators.
+
+When to Use Which?
+Fast-Forward: Use when no other commits exist on the target branch after branching off.
+Merge: Use to preserve the history of both branches, especially in collaborative projects.
+Rebase: Use to clean up commit history before merging, especially for feature branches or private branches.
+
+
+
+
+
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 8d20832 Logs Playing

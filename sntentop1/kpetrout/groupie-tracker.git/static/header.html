@@ -1,0 +1,74 @@
+{{define "header"}}
+    <header class="main-header">
+        <div class="header-left">
+            <button class="filter-btn" id="filter-btn" onclick="showFilter()">
+                <img id="filter-icon" src="style/media/icons/filters.png" alt="Filter Icon" />
+            </button>
+            <!-- <div class="volume-control"> -->
+                <button class="sound-btn" id="sound-btn" onclick="showSlider()">
+                    <img id="sound-icon" src="style/media/icons/volume-max.png" alt="Sound Icon" />
+                </button>
+                <div class="slider-container">
+                    <input id="volume-slider" class="slider" type="range" min="0" max="100" value="100" style="display: none;" />
+                    <output id="volume-value" for="volume-slider" class="volume-value" style="display: none;"></span>
+                </div>
+            <!-- </div> -->
+        </div>        
+        <div class="header-center">
+            <button class="title-link">
+                <a href="/homepage">
+                    <h1 class="title">Groupie Tracker</h1>
+                </a> 
+            </button>
+        </div>
+        <div class="header-right">
+            <!-- <button class="title-link">
+                <a href="/homepage">
+                    <img class="home" src="style/media/icons/home.png" alt="Home Icon" />
+                </a>
+            </button> -->
+            <form id="search-form" class="search-bar" method="GET" action="/homepage">
+                <input type="search" class="search-input" id="search-bar" name="query" value="{{.Query}}" pattern=".*\S.*" required>
+                <button class="search-btn" type="submit"></button>
+                <div id="suggestions" class="suggestions"></div>
+            </form>
+        </div>
+    </header>
+    <button class="close-header" onclick="toggleHeader()">
+        &#x25B2;
+    </button>
+    
+    <div class="filter" id="filter">
+        <form method="GET" action="/homepage">                       
+            
+            <label>Creation Date:</label>
+            <input class="filter-input" type="number" name="creationDateMin" id="creationDateMin" min="{{.DatesAndLocations.CreationDateMin}}" max="{{.YearNow}}" value="{{.DatesAndLocations.CreationDateMin}}">-
+            <input class="filter-input" type="number" name="creationDateMax" id="creationDateMax" min="{{.DatesAndLocations.CreationDateMin}}" max="{{.YearNow}}" value="{{.YearNow}}">
+            <br />
+            <label>First Album Year:</label>
+            <input class="filter-input" type="number" name="firstAlbumDateMin" id="firstAlbumDateMin" min="{{.DatesAndLocations.FirstAlbumDateMin}}" max="{{.YearNow}}" value="{{.DatesAndLocations.FirstAlbumDateMin}}">-
+            <input class="filter-input" type="number" name="firstAlbumDateMax" id="firstAlbumDateMax" min="{{.DatesAndLocations.FirstAlbumDateMin}}" max="{{.YearNow}}" value="{{.YearNow}}">
+            <fieldset>
+                <legend>Number of Members:</legend>
+                <label><input type="checkbox" name="Member" value="1">1</label>
+                <label><input type="checkbox" name="Member" value="2">2</label>
+                <label><input type="checkbox" name="Member" value="3">3</label>
+                <label><input type="checkbox" name="Member" value="4">4</label>
+                <label><input type="checkbox" name="Member" value="5">5</label>
+                <label><input type="checkbox" name="Member" value="6">6</label>
+                <label><input type="checkbox" name="Member" value="7">7</label>
+                <label><input type="checkbox" name="Member" value="8">8+</label>
+            </fieldset>
+            Locations of Concerts:
+            <input class="filter-loc" type="search" list="locations1" id="location" name="location" autocomplete="off">
+            <datalist id="locations1">
+                {{range .DatesAndLocations.AllLocations}}
+                    <option value="{{.}}">{{.}}</option>
+                {{end}}
+            </datalist>
+            
+            
+            <button class="button-submit-filter" type="submit">Apply</button>
+        </form>
+    </div>
+{{end}}

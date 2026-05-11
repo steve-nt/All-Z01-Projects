@@ -1,0 +1,10 @@
+{
+    "banner_base_path": "assets/banners/",
+    "valid_banners": [
+      "standard",
+      "shadow",
+      "thinkertoy"
+    ],
+    "port": "3000",
+    "api_url": "http://localhost:8080"
+  }

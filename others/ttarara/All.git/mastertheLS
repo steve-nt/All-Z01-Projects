@@ -1,0 +1,3 @@
+
+ls -t --time=atime --ignore="." --ignore=".." -m | tr -d ' '
+

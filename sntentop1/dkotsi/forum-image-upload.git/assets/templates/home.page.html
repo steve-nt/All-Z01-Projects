@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>.Myforum</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/home.page.css" />
+    <script>
+      function confirmLogout() {
+        if (confirm("Are you sure you want to logout?")) {
+          document.getElementById('logoutForm').submit();
+        }
+      }
+    </script>
+  </head>
+  <body>
+
+
+
+
+
+
+    <!-- here i need to make the navbar -->
+    <nav class="navbar">
+    <div class="navbar-left">
+      <a href="/" class="logo">.Myforum</a>
+      <div class="line"></div>
+    {{if eq .Homeresponse.Username "guest"}}
+      <div class="user">Guest</div>
+        {{else}}
+        <a class="user" href="/profile">@{{.Homeresponse.Username}}</a>
+        {{end}}
+    </div>
+
+    <div class="navbar-right">
+    {{if eq .Homeresponse.Username "guest"}}
+  <a class="btn" href="/signup">Sign Up</a>
+    <a class="btn" href="/login">Log In</a>
+    {{else}}
+    <form id="logoutForm" action="/logout" method="POST" >
+ <button type="submit" class="logout-btn">Logout</button>
+    </form>
+    </div>
+    {{end}}
+    </nav>
+
+
+
+
+
+
+
+
+    <!-- this is the category form startes here -->
+    <form class="categories" action="/posts" method="GET">
+      <div class="category-images">
+        <label class="image-checkbox">
+          <input type="checkbox"name="categories" id="Tech" value="Tech"></input>
+          <img src="../static/images/newtech.jpg" alt="Tech" />
+          <span class="overlay-text">TECH</span>
+        </label>
+        <label class="image-checkbox">
+          <input type="checkbox"name="categories" id="Politics" value="Politics"></input>
+          <img src="../static/images/newpolitics.jpg" alt="Politics" />
+          <span class="overlay-text">POLITICS</span>
+        </label>
+        <label class="image-checkbox">
+          <input type="checkbox"name="categories" id="Economy" value="Economy"></input>
+          <img src="../static/images/neweconomy.jpg" alt="Economy" />
+          <span class="overlay-text">ECONOMY</span>
+        </label>
+        <label class="image-checkbox">
+          <input type="checkbox"name="categories" id="Ecology" value="Ecology"></input>
+          <img src="../static/images/newecology.jpg" alt="Ecology" />
+          <span class="overlay-text">ECOLOGY</span>
+        </label>
+    </div>
+      <div class="submit-container">
+        <button class="submit-btn" type="submit">Submit Category Filter</button>
+    {{if ne .Homeresponse.Username "guest"}}
+        <button id="create-post-button" class="create-post-btn" type="button" >Create-Post</button>
+        {{end}}
+    </div>
+    </form>
+
+
+ <!-- Error Popup -->
+  <div class="popup error" id="error-popup">
+    <div class="popup-content">
+    <h2 class="error-message" >User Action from Guest
+        Please Log In</h2>
+    <a class="error-btn" href="/login">Go to Log In Page</a>
+      <button class="button" onclick="closePopup('error-popup')">Close</button>
+    </div>
+  </div>
+
+
+
+    <div class="main-container">
+
+
+    {{if eq .Homeresponse.Username "guest"}}
+      <div class="blank">
+      </div>
+      {{else}}
+      <div id="create-post" class="create-post">
+
+    <form class="form" action="/create-post" method="POST" enctype="multipart/form-data">
+        <div class="form-upper">
+
+            <div class="upper-left">
+        <div class="username">
+                @{{.Homeresponse.Username}}
+        </div>
+            </div>
+
+
+            <div class="upper-right">
+      <input type="text" name="title" id="title" placeholder="Title">
+              <textarea name="content" id="content" placeholder="Content"></textarea> 
+              <input type="file" accept=".jpg,.png,.cvg,.gif" name="image" id="image"/>
+        </div>
+          </div>
+
+
+
+
+
+        <div class="form-lower">
+            <div class="lower-left">
+      <label>
+          <input type="checkbox" class="create" name="create-categories" id="create-Tech" value="Tech">
+                <span>TECH</span>
+      </label>
+      <label>
+        <input type="checkbox" class="create" name="create-categories" id="create-Politics" value="Politics"></input>
+                <span>POLITICS</span>
+      </label>
+      <label>
+        <input type="checkbox" class="create" name="create-categories" id="create-Economy" value="Economy"></input>
+                <span>ECONOMY</span>
+      </label>
+      <label>
+        <input type="checkbox" class="create" name="create-categories" id="create-Ecology" value="Ecology"></input>
+                <span>ECOLOGY</span>
+      </label>
+          </div>
+            <div class="lower-right">
+        <button class="submit-btn" type="submit">Create Post</button>
+        </div>
+        </div>
+    </form>
+
+      </div>
+
+      {{end}}
+
+
+
+      <div class="posts">
+          {{ range .Homeresponse.Posts }}
+        {{$thepost:= . }}
+
+
+
+        <div class="post">
+
+          <div class="post-line"></div>
+
+
+                  {{if eq .User_UUID $.Homeresponse.Username}}
+          <form class="form" id="edit-form-{{.ID}}" name="edit-form" action="/edit-post/{{.ID}}" method="POST" enctype="multipart/form-data">
+            <div class="close-edit-button-container">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="close-edit" name="close-edit" id="close-edit-{{.ID}}">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+            </div>
+
+        <div class="form-upper">
+
+            <div class="upper-left">
+        <div class="username">
+                @{{.User_UUID}}
+        </div>
+            </div>
+            <div class="upper-right">
+                        <input type="text" name="title" id="title" value="{{.Title}}" placeholder="Title">
+                        <textarea name="content" id="content"  placeholder="Content">{{.Content}}</textarea> 
+                  {{if eq .ImagePath "null"}}
+                  {{else}}
+                  <img src="../static{{.ImagePath}}" class="image"/>
+      <label class="remove-img-label">
+          <input type="checkbox" class="remove-img-checkbox" name="remove-img" id="remove-img" value="1">
+                <span class="remove-img-span">RemoveImage</span>
+      </label>
+                  {{end}}
+<label for="image">Select a different image</label>
+              <input type="file" accept=".jpg,.png,.cvg,.gif" name="image" id="image"/>
+        </div>
+          </div>
+        <div class="form-lower">
+            <div class="lower-left">
+                <label><input type="checkbox" name="create-categories" id="Tech-{{.ID}}" value="Tech"><span>TECH</span></label>
+      <label><input type="checkbox"name="create-categories" id="Politics-{{.ID}}" value="Politics"></input><span>POLITICS</span></label>
+      <label><input type="checkbox"name="create-categories" id="Economy-{{.ID}}" value="Economy"></input><span>ECONOMY</span></label>
+      <label><input type="checkbox"name="create-categories" id="Ecology-{{.ID}}" value="Ecology"></input><span>ECOLOGY</span></label>
+          </div>
+            <div class="lower-right">
+        <button class="submit-btn" type="submit">Submit Edit</button>
+        </div>
+        </div>
+    </form>
+                  {{end}}
+            <article id="article-{{.ID}}">
+
+          <a href="postbyid/{{.ID}}">
+              <div class="post-upper">
+                <div class="post-upper-left">
+            <div class="creator" >
+	      @{{.User_UUID}}
+            </div>
+                  {{if eq .ImagePath "null"}}
+                  {{else}}
+                  <img src="../static{{.ImagePath}}" class="image"/>
+                  {{end}}
+            </div>
+
+                <div class="post-upper-right">
+                  {{if eq .User_UUID $.Homeresponse.Username}}
+                  <div class="delete-edit-container">
+                  <div name="delete-btn-container" class="delete-btn-container" id="{{.ID}}">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="delete-btn">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+</svg>
+                  </div>
+
+                  <!-- <button name="delete-post-btn" class="button" id="{{.ID}}">Delete</button> -->
+                  <div name="edit-btn-container" class="edit-btn-container" id="{{.ID}}">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" name="edit-post-btn" class="edit-button"  id="{{.ID}}">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+</svg>
+                  </div>
+                  </div>
+
+                  <!-- <button name="edit-post-btn" class="button" id="{{.ID}}">Edit</button> -->
+                  {{end}}
+            <h2 class="post-title">{{.Title}}</h2>
+
+                  <div class="post-categories">
+	      {{ range .Categories}}
+                    <div class="post-category" name="post-category"id="{{$thepost.ID}}">
+                {{.}}
+            </div>
+              {{end}}
+            </div>
+
+            <div class="post-content">
+	      {{.Content}}
+            </div>
+
+
+            </div>
+
+              </div>
+          </a>
+
+
+              <div class="post-lower">
+                <div class="likes">
+            <div>
+	      {{.NumberOfLikes}}
+            </div>
+          {{if  .Liked }}
+                <button name="like-btn" id="{{.ID}}" class="liked">like </button>
+              {{else}}
+                <button name="like-btn" id="{{.ID}}" class="unliked">like</button>
+              {{end}}
+                </div>
+
+                <div class="dislikes">
+            <div>
+	      {{.NumberOfDislikes}}
+            </div>
+              {{if  .Disliked }}
+                <button name="dislike-btn" id="{{.ID}}" class="liked">dislike</button>
+              {{else}}
+                <button name="dislike-btn" id="{{.ID}}" class="unliked">dislike</button>
+              {{end}}
+                  </div>
+
+
+
+
+                <div class="comments">
+            <div>
+	      {{.NumberOfComments}}
+            </div>
+              <div>Comments</div>
+                </div>
+
+            <time class="time" datetime="{{.CreationDate}}">{{.CreationDate}}</time>
+              </div>
+
+
+
+          </article>
+        </div>
+        {{end}}
+
+
+<div class="big-line">
+    </div>
+
+      </div>
+
+
+
+
+
+
+    </div>
+
+      <div class="bottom-blank">
+      </div>
+
+  <footer>
+  <p class="footer">© 2025 Myforum. All rights reserved.</p>
+</footer>
+ <script src="/static/home.page.js"></script>
+
+  </body>
+</html>

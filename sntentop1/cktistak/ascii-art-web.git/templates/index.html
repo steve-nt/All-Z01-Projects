@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>ASCII Art</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+    <h1>
+        <a href="/">ASCII-Art Generator</a>
+    </h1>
+
+    <form method="POST" action="/ascii-art">
+        <label for="text">Text</label>
+        <textarea 
+            id="text" 
+            name="text" 
+            pattern="[ -~]"
+            maxlength="500"
+            placeholder="Enter text for ASCII art (max 500 characters)">{{.InputText}}</textarea>
+
+        <div class="row">
+            <label for="banner">Banner</label>
+            <select id="banner" name="banner">
+                {{ $current := .InputBanner }}
+                {{ range .Banners }}
+                {{ $name := . }}
+                <option value="{{$name}}" {{if eq $name $current}}selected{{end}}>{{$name}}</option>
+                <!-- In HTML, an <option> is preselected when it has the boolean attribute selected inside its opening-->
+                {{ end }}
+            </select>
+        </div>
+        
+        <div class="center">
+            <button type="submit">Generate</button>
+        </div>
+    </form>
+
+    {{if .AsciiArt}}
+    <pre class="result">{{.AsciiArt}}</pre>
+    {{end}}
+</body>
+
+</html>

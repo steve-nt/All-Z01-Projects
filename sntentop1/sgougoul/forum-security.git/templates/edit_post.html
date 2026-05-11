@@ -1,0 +1,26 @@
+{{ define "edit_post" }}
+
+<h2 style="margin-top:0;">Edit Post</h2>
+
+<form method="POST" action="/edit-post?id={{ .Post.ID }}">
+  <input
+    name="title"
+    type="text"
+    value="{{ .Post.Title }}"
+    placeholder="Post title"
+    required
+  />
+
+  <textarea
+    name="content"
+    placeholder="Write your post..."
+    required
+  >{{ .Post.Content }}</textarea>
+
+  <div style="display:flex; gap:10px; flex-wrap:wrap;">
+    <button type="submit">Save Changes</button>
+    <a href="/post?id={{ .Post.ID }}"><button type="button">Cancel</button></a>
+  </div>
+</form>
+
+{{ end }}

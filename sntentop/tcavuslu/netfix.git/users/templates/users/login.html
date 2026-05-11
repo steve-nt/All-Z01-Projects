@@ -1,0 +1,40 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <div class="login-container">
+        <h2>Login to Netfix</h2>
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-error">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            
+            <div class="form-group">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+        
+        <div class="register-links">
+            <p>Don't have an account?</p>
+            <a href="{% url 'register_customer' %}" class="btn btn-secondary">Register as Customer</a>
+            <a href="{% url 'register_company' %}" class="btn btn-secondary">Register as Company</a>
+        </div>
+    </div>
+{% endblock %} 

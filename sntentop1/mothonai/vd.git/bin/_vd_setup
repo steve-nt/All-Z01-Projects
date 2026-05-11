@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+function _vd_setup_base16colors(){
+    echo " - Setting colors..."
+    echo 'export COLORTERM=truecolor' >> $HOME/.bashrc
+    echo 'export TERM=xterm-256color' >> $HOME/.bashrc
+    echo 'BASE16_SHELL="$HOME/.config/base16-shell/"' >> $HOME/.bashrc
+    echo '[ -n "$PS1" ] && \' >> $HOME/.bashrc
+    echo '    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \' >> $HOME/.bashrc
+    echo '        source "$BASE16_SHELL/profile_helper.sh"' >> $HOME/.bashrc
+    echo 'base16_woodland' >> $HOME/.bashrc
+}
+
+function _vd_setup_default_editor(){
+    echo " - Setting vim as default EDITOR..."
+    echo 'export EDITOR=/usr/bin/vim' >> $HOME/.bashrc
+    export EDITOR=/usr/bin/vim
+}
+
+function _vd_setup_golang(){
+    echo " - Setting up go paths..."
+    export PATH="/usr/local/go/bin:$PATH"
+    export GOPATH="$HOME/go"
+}
+
+function _vd_setup_install_tmux_dotfiles(){
+    echo " - Linking tmux.conf dotfile..."
+    ln -s $HOME/vd/dotfiles/.tmux.conf $HOME/.tmux.conf
+}
+
+function _vd_setup_install_vim_dotfile_plugins(){
+    echo " - Linking vim dotfile and install plugins..."
+    ln -s $HOME/vd/dotfiles/.vimrc $HOME/.vimrc
+    vim -c 'PlugInstall|qa' > /dev/null 2>&1
+    vim -c 'CocInstall -sync coc-go coc-json|qa' > /dev/null 2>&1
+}
+
+function _vd_setup_install_zsh_plugins(){
+    echo " - Installing zsh plugins..."
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" "--unattended" > /dev/null 2>&1
+    echo " - Linking .zshrc..."
+    rm $HOME/.zshrc
+    ln -s $HOME/vd/dotfiles/.zshrc $HOME/.zshrc
+}
+
+function _vd_setup_gpg(){
+    echo " - Setting up gpg key..."
+    if [ -f $HOME/vd/key.asc ]
+    then
+        cat $HOME/vd/key.asc | gpg2 --import
+        if [ $? -eq 0 ]
+        then
+            git config --global commit.gpgsign true
+            git config --global user.signingkey FE884880E57256C62406A9B67D2D5D89865FFCEB
+        fi
+    fi
+}
+
+function _vd_setup_logo(){
+    clear
+    echo ""
+    echo "  ██╗   ██╗██████╗ "
+    echo "  ██║   ██║██╔══██╗"
+    echo "  ██║   ██║██║  ██║"
+    echo "  ╚██╗ ██╔╝██║  ██║"
+    echo "   ╚████╔╝ ██████╔╝"
+    echo "    ╚═══╝  ╚═════╝ "
+    echo "                   "
+    echo " vD Setup is complete! Enjoy! "
+}
+
+function _vd_setup_rust(){
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    vim -c 'CocInstall -sync coc-rust-analyzer|qa' > /dev/null 2>&1
+    source ${HOME}/.cargo/env
+}

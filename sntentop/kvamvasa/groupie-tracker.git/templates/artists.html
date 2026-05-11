@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Groupie Tracker -  Artists</title>
+        
+           <link rel="stylesheet" href="/static/styles.css">
+           <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+    </head>
+    <body>
+        {{template "header.html" .}}
+
+    <!-- Main Content -->
+    <div class="content">
+        {{range .}}
+            <div>
+                <a href="/artist_details/{{.ID}}">
+                <img src="{{.Image}}" alt="{{.Name}}" loading="lazy">
+                <h3>{{.Name}}</h3>
+                </a>
+            </div>
+        {{else}}
+            <p>No artists found</p>
+        {{end}}
+    </div>
+
+    {{template "footer.html" .}}
+</body>
+</html>

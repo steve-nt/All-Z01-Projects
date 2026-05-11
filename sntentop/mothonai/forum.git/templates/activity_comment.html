@@ -1,0 +1,17 @@
+{{define "activity_comment"}}
+<div class="container">
+    <h3>{{.Post.Title}}</h3>
+    <pre>{{.Post.Body}}</pre>
+    <div class="activity-highlight">
+        <div class="comment" id="comment-{{.Comment.Id}}">
+            <a href="/post/view/{{.Post.Id}}#comment-{{.Comment.Id}}">
+            <pre>{{.Comment.Body}}</pre>
+            </a>
+            <div class="reactions">
+                <button disabled>{{.Comment.Likes}} {{if .Comment.Liked}}👍{{else}}👍🏻{{end}}</button>
+                <button disabled>{{.Comment.Dislikes}} {{if .Comment.Disliked}}👎{{else}}👎🏻{{end}}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}}

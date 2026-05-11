@@ -1,0 +1,213 @@
+{{define "styling"}}
+<style>
+* {
+    font-family: system-ui;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #2f2f2f;
+    color: lightgreen;
+    gap: 15px;
+    height: 100vh;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+a {
+    color: greenyellow;
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.categories * {
+    margin: 0px;
+    padding: 0px;
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 1%;
+    border: #00ff00 dashed 1px;
+}
+
+.category * {
+    width: max-content;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    border-color: #6a6a6a;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+    gap: 5px;
+}
+
+legend {
+    padding: 0 1vw;
+    border-color: #6a6a6a;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+}
+
+input, textarea {
+    background-color: #1c1c1c;
+    color: #fff;
+    border: gray solid 1px;
+}
+
+input[type=submit], button {
+    background-color: #1c1c1c;
+    color: greenyellow;
+    border: gray solid 1px;
+}
+
+input[type=submit]:hover, button:hover {
+    background-color: #1c1c1c;
+    color: greenyellow;
+    border-color: greenyellow;
+}
+
+.topbar {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: lightgreen solid 1px;
+}
+
+.topbar .title a {
+    text-decoration: none;
+}
+
+.topbar .title a h1 {
+    margin: 0px;
+}
+
+.menu ul {
+    display: flex;
+    flex-direction: row;
+    gap: 4vw;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+}
+
+.menu * li {
+    list-style: none;
+}
+
+.menu a:hover {
+    background: red;
+}
+
+.inline {
+    display: flex;
+    flex-direction: row;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-grow: 1;
+}
+
+.reactions {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 5px;
+}
+
+.comment {
+    border-color: #6a6a6a;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 2px;
+}
+
+.post {
+    border-top: lightgreen solid 1px;
+    padding: 20px;
+    background-color: #1f2020;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.post div {
+    padding: 1%;
+}
+
+.post .reactions {
+    border-top: lightgreen solid 1px;
+    border-bottom: lightgreen solid 1px;
+}
+
+.footer {
+    border-top: lightgreen solid 1px;
+    max-height: 55px;
+    height: 55px;
+}
+
+.box {
+    max-width: 400px;
+    align-self: center;
+    box-shadow: 0px 5px 40px 22px #004;
+    background: #004;
+}
+.oauth-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.menu details > summary {
+    list-style: none;
+}
+
+.notifications ul {
+    position: absolute;
+    background-color: #1c1c1c;
+    border: lightgreen solid 1px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    padding: 8px;
+    max-height: 25%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.activity {
+    border: lightgreen solid 1px;
+    padding: 1%;
+    background-color: #1f2020;
+}
+
+.activity-highlight {
+    border-top: lightgreen solid 1px;
+    border-bottom: lightgreen solid 1px;
+    padding: 1%;
+}
+
+.manage-comment, .manage-post {
+    display: flex;
+    flex-direction: row;
+}
+</style>
+{{end}}

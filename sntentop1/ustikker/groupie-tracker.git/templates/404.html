@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | Groupie Tracker</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <style>
+        .error-container {
+            text-align: center;
+            padding: 50px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin-top: 50px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .error-code {
+            font-size: 120px;
+            color: #7950f2;
+            margin-bottom: 20px;
+        }
+
+        .error-message {
+            font-size: 24px;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .return-link {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #7950f2;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .return-link:hover {
+            background-color: #5f3dc4;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <a class="no-text-decoration" href="/main">
+                <h1>Groupie Tracker</h1>
+            </a>
+        </header>
+        <div class="error-container">
+            <div class="error-code">404</div>
+            <div class="error-message">Oops! Page not found.</div>
+            <a href="/main" class="return-link">Return to Main Page</a>
+        </div>
+    </div>
+</body>
+
+</html>

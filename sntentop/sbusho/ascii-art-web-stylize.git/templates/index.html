@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Art</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="background">
+    <input type="checkbox" class="toggle">
+    <div class="background"></div>
+    <h1>ASCII ART GENERATOR</h1>
+    <!-- <h2>GENERATOR</h2> -->
+    <!-- <p class="description">Ascii-art is a Go program that takes a string as an argument 
+        <br> and outputs a stylized ASCII representation of that string. -->
+        <p class="description"> Steps to follow:
+            <br> Write your text in the field below.
+            <br> Select between the given style banners.
+            <br> Press the generate button.
+            <br> Enjoy your ASCII art!
+            <br>
+            <br><a href="https://en.wikipedia.org/wiki/ASCII_art" target="_blank" rel="noopener noreferrer">
+                What is ASCII Art? 
+            </a>
+            <br><a href="https://en.m.wikipedia.org/wiki/File:ASCII-Table-wide.svg">
+                Acceptable text characters.
+            </a>
+        <form method="POST" action="/">
+        <textarea class="input" placeholder="Your text here" name="text"  rows="5" cols="40" required>{{.Text}}</textarea>
+        <br>
+        <label id="bannerName">Banner Style:</label>
+        <br>
+        <div class="bannergroup">
+            <div>
+                <label>
+                    <input type="radio" name="banner" value="standard" checked="" {{if eq .Banner "standard"}}checked{{end}}>
+                    <span>Standard</span>
+                </label>
+                <label>
+                    <input type="radio" name="banner" value="shadow" {{if eq .Banner "shadow"}}checked{{end}}>
+                    <span>Shadow</span>
+                </label>
+                <label>
+                    <input type="radio" name="banner" value="thinkertoy" {{if eq .Banner "thinkertoy"}}checked{{end}}>
+                    <span>Thinkertoy</span>
+                </label>
+                <label>
+                    <input type="radio" name="banner" value="other" {{if eq .Banner "other"}}checked{{end}}>
+                    <span>Stars</span>
+                </label>
+            </div>
+        </div>
+        <br>
+        <input id="btn" type="submit" value="Generate ASCII Art">
+    </form>
+    {{ if .AsciiArt }}
+    <h2 id="outputTitle"></h2>
+    <div class="output-box">
+        <pre id="block">{{ .AsciiArt }}</pre>
+    </div>
+    {{ end }}
+    </div>
+    <script>
+        
+        const toggle = document.querySelector('.toggle');
+        const body = document.body;
+
+        // Retrieve saved theme from local storage
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.classList.add(savedTheme);
+            if (savedTheme === 'dark') {
+                toggle.checked = true;
+            }
+        }
+
+        // Event listener to toggle theme on checkbox change
+        toggle.addEventListener('change', () => {
+            if (toggle.checked) {
+                body.classList.remove('light');
+                body.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark');
+                body.classList.add('light');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+         // Prevent browser's form resubmission warning on page reload
+         if (performance.getEntriesByType("navigation")[0].type === "reload") {
+            history.replaceState(null, null, location.href);
+        }
+
+        // Reset form input values when the page reloads
+        window.addEventListener('load', function() {
+            if (performance.getEntriesByType("navigation")[0].type === "reload") {
+                // Reset textarea and select field manually after reload
+                document.querySelector("textarea[name='text']").value = "";
+                document.querySelector("select[name='banner']").selectedIndex = 0;
+
+                // Hide ASCII art box if it's showing
+                document.querySelector('#block').style.display = "none";    
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+package handlers
+
+import (
+	"encoding/json"
+	"fmt"
+	"groupie-tracker-final/app/models"
+	"groupie-tracker-final/app/services"
+	"html/template"
+	"net/http"
+	"strconv"
+	"strings"
+)
+
+// HandlePage serves the artist details page
+func HandlePage(w http.ResponseWriter, r *http.Request) {
+	// Extract and validate ID
+	id, err := extractArtistID(r)
+	if err != nil {
+		renderError(w, http.StatusNotFound, r, "Invalid artist ID")
+		return
+	}
+
+	// Fetch artist data
+	artist, err := services.FetchArtistData(id)
+	if err != nil {
+		renderError(w, http.StatusInternalServerError, r, "Failed to load artist data")
+		return
+	}
+
+	// Prepare template data
+	data, err := prepareArtistTemplateData(artist)
+	if err != nil {
+		renderError(w, http.StatusInternalServerError, r, "Failed to prepare page data")
+		return
+	}
+
+	// Render template
+	if err := renderArtistTemplate(w, data); err != nil {
+		renderError(w, http.StatusInternalServerError, r, "Failed to render page")
+	}
+}
+
+// HandleIndex serves the index page with the artists
+func HandleIndex(w http.ResponseWriter, r *http.Request) {
+	services.LogHistory(fmt.Sprintf("Accessed Index Page - %s", r.RemoteAddr))
+
+	// Get artists from the centralized storage
+	artists := GetArtistsData()
+
+	// Fetch and store globally if not already populated
+	if len(artists) == 0 {
+		renderError(w, http.StatusInternalServerError, r, "Failed to fetch artists")
+		return
+	}
+
+	// Parse the index page template
+	tmpl, err := template.ParseFiles("web/templates/partials/index.html")
+	if err != nil {
+		renderError(w, http.StatusInternalServerError, r, "Failed to load index template")
+		return
+	}
+
+	// Render the index page with the artists
+	if err := tmpl.Execute(w, artists); err != nil {
+		renderError(w, http.StatusInternalServerError, r, "Failed to render index page")
+	}
+}
+
+// serve the about page
+func HandleAbout(w http.ResponseWriter, r *http.Request) {
+	services.LogHistory(fmt.Sprintf("Accessed About Page - %s", r.RemoteAddr))
+
+	if r.Method != http.MethodGet {
+		renderError(w, http.StatusMethodNotAllowed, r, "Method not allowed")
+		return
+	}
+
+	http.ServeFile(w, r, "web/templates/partials/about.html")
+}
+
+// Serve the home page
+func HandleHome(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		renderError(w, http.StatusNotFound, r, "Page not found")
+		return
+	}
+	if r.Method != http.MethodGet {
+		renderError(w, http.StatusMethodNotAllowed, r, "Method not allowed")
+		return
+	}
+	http.ServeFile(w, r, "web/templates/partials/home.html")
+}
+
+// Handle 404 error
+func ErrorHandler(w http.ResponseWriter, r *http.Request) {
+	renderError(w, http.StatusNotFound, r, "page not found")
+}
+
+// Extract and validate ID from URL path
+func extractArtistID(r *http.Request) (int, error) {
+	idStr := strings.TrimPrefix(r.URL.Path, "/Artist/")
+	id, err := strconv.Atoi(idStr)
+	if err != nil || id <= 0 || id >= 53 {
+		return 0, fmt.Errorf("invalid artist ID")
+	}
+	return id, nil
+}
+
+// Prepare data for the artist template
+func prepareArtistTemplateData(artist *models.Artist) (interface{}, error) {
+	// Prepare locations Json
+	locationsJSON, err := json.Marshal(artist.Location.Locations)
+	if err != nil {
+		return nil, fmt.Errorf("failed to marshal locations: %w", err)
+	}
+
+	// Prepare formatted dates locations map
+	formattedDatesLocations := make(map[string][]string)
+	for loc, dates := range artist.Relation.DatesLocations {
+		formattedLoc := services.FormatLocation(loc)
+		formattedDatesLocations[formattedLoc] = dates
+	}
+
+	return struct {
+		*models.Artist
+		Locations      []string
+		LocationsJSON  template.JS
+		DatesLocations map[string][]string
+		MapScriptURL   string
+	}{
+		Artist:         artist,
+		Locations:      artist.Location.Locations,
+		LocationsJSON:  template.JS(locationsJSON),
+		DatesLocations: formattedDatesLocations,
+		MapScriptURL:   buildMapScriptURL(),
+	}, nil
+
+}
+
+// Construct the Google Maps API URL
+func buildMapScriptURL() string {
+	return fmt.Sprintf(
+		"https://maps.googleapis.com/maps/api/js?key=%s&libraries=places,marker&loading=async&map_ids=500755a5e04d8f95",
+		"AIzaSyC0ZG2NAoK8uT_lwyddrFSlZNEP_v2QkrA",
+	)
+}
+
+// Render the artist template
+func renderArtistTemplate(w http.ResponseWriter, data interface{}) error {
+	// Parse and execute the band details template
+	tmpl, err := template.ParseFiles("web/templates/partials/band.html")
+	if err != nil {
+		return fmt.Errorf("failed to parse template: %w", err)
+	}
+
+	// Render the template with the artist data
+	return tmpl.Execute(w, data)
+}

@@ -1,0 +1,122 @@
+{% extends 'main/base.html' %}
+
+{% block title %}Company Dashboard - Service Requests{% endblock %}
+
+{% block content %}
+    <div class="dashboard-header">
+        <h1>Company Dashboard</h1>
+        <p>Welcome, {{ company.user.username }}! Manage your service requests below.</p>
+    </div>
+
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="message {{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <div class="stats-container">
+        <div class="stat-card pending">
+            <h3>{{ pending_count }}</h3>
+            <p>Pending Requests</p>
+        </div>
+        <div class="stat-card accepted">
+            <h3>{{ accepted_count }}</h3>
+            <p>Accepted Requests</p>
+        </div>
+        <div class="stat-card rejected">
+            <h3>{{ rejected_count }}</h3>
+            <p>Rejected Requests</p>
+        </div>
+    </div>
+
+    <div class="filter-tabs">
+        <button class="filter-tab active" onclick="showTab('all')">All Requests</button>
+        <button class="filter-tab" onclick="showTab('pending')">Pending</button>
+        <button class="filter-tab" onclick="showTab('accepted')">Accepted</button>
+        <button class="filter-tab" onclick="showTab('rejected')">Rejected</button>
+    </div>
+
+    <div class="requests-container">
+        <div id="all-tab" class="tab-content">
+            {% if service_requests %}
+                {% for request in service_requests %}
+                    <div class="request-card" data-status="{{ request.status }}">
+                        <div class="request-header">
+                            <div class="request-info">
+                                <h3>{{ request.service.name }}</h3>
+                                <p><strong>Customer:</strong> {{ request.customer.user.username }}</p>
+                            </div>
+                            <span class="request-status status-{{ request.status }}">{{ request.get_status_display }}</span>
+                        </div>
+                        
+                        <div class="request-details">
+                            <div class="detail-item">
+                                <div class="detail-label">Service Date</div>
+                                <div class="detail-value">{{ request.service_date }}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Time</div>
+                                <div class="detail-value">{{ request.start_time }} - {{ request.get_end_time }}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Duration</div>
+                                <div class="detail-value">{{ request.duration_hours }} hour(s)</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Total Price</div>
+                                <div class="detail-value">€{{ request.price }}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Address</div>
+                                <div class="detail-value">{{ request.address }}</div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">Request Date</div>
+                                <div class="detail-value">{{ request.request_date|date:"M d, Y H:i" }}</div>
+                            </div>
+                        </div>
+                        
+                        {% if request.status == 'pending' %}
+                            <div class="action-buttons">
+                                <form method="post" action="{% url 'manage_request' request.id 'accept' %}" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-accept" onclick="return confirm('Are you sure you want to accept this request?')">Accept Request</button>
+                                </form>
+                                <form method="post" action="{% url 'manage_request' request.id 'reject' %}" style="display: inline;">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-reject" onclick="return confirm('Are you sure you want to reject this request?')">Reject Request</button>
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <div class="no-requests">
+                    <h3>No service requests yet</h3>
+                    <p>When customers request your services, they will appear here.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function showTab(status) {
+            // Update tab buttons
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Show/hide request cards
+            document.querySelectorAll('.request-card').forEach(card => {
+                if (status === 'all' || card.dataset.status === status) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+{% endblock %} 

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/css/home.css">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/frontend/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/frontend/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/frontend/images/avicon-16x16.png">
+    <link rel="manifest" href="/frontend/images/site.webmanifest">
+</head>
+<body>
+    <h1 class="glow">Groupie Tracker</h1>
+
+    <div class="details-card">
+        <h2>Track Bands 🎸 Follow the Noise.</h2>
+        <p>
+            From gritty bars to world tours — discover where your favorite bands play, who's in them, and when they’re hitting the stage. 
+            Dive into locations, members, and tour dates. It’s all mapped out for you.
+        </p>
+    </div>
+     <!-- Navigation Buttons -->
+    <div class="button-container">
+        <a href="/index" class="btn">Start Tracking</a>
+        <a href="/about" class="btn">What We Do</a>
+    </div>
+    
+    <!-- Footer --> 
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Created by <b>Sntentop && <b>Dpappas</b></v></b></p>
+    </footer>
+
+    <script>
+        document.getElementById("year").innerText = new Date().getFullYear();
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    Services List
+{% endblock %}
+{% block content %}
+   
+
+    {% if request.user.is_company %}
+        <div class="create-service-container">
+            <a href="/services/create/" class="btn">Create Service</a>
+        </div>
+    {% endif %}
+    
+    <h1 class="title">Services List</h1>
+    
+    {% if services %}
+        <div class="ag-format-container">
+            <div class="ag-courses_box">
+                {% for service in services %}
+                <div class="ag-courses_item">
+                    <a href="/services/{{ service.id }}" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+                        <div class="ag-courses-item_title">
+                            {{ service.name }}
+                        </div>
+                        <div class="ag-courses-item_content">
+                            <div class="detail-row">
+                                <strong>FIELD:</strong> {{ service.field }}
+                            </div>
+                            <div class="detail-row">
+                                <strong>PRICE:</strong> €{{ service.price_hour }}/hour
+                            </div>
+                            <div class="service-description">
+                                {{ service.description }}
+                            </div>
+                            <div class="detail-row">
+                                <strong>CREATED:</strong> {{ service.date|date:"M d, Y" }}
+                            </div>
+                            <div class="detail-row">
+                                <strong>BY:</strong> {{ service.company.user.username }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="no-services">
+            <h3>No services available yet</h3>
+            <p>Check back later for new services!</p>
+        </div>
+    {% endif %}
+
+{% endblock %}

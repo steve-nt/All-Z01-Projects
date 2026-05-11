@@ -1,0 +1,4 @@
+transaction_id,customer_id,product_id,product_name,quantity,price_per_unit,total_price,transaction_date
+0063e42f-14aa-451c-a69c-fb85d432f8db,CUST023,PROD-2337,laptop,1,307.89,307.89,07/02/2025
+07120911-b3b6-4b57-9a54-f267dd138266,CUST040,PROD-3176,laptop,3,21.32,63.96,06/05/1979
+4ca49aaf-6b94-4e09-a1cc-14b312bdf75f,CUST067,PROD-2964,laptop,2,23.01,46.02,21/01/1971

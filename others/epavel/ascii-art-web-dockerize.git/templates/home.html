@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ASCII-ART-WEB</title>
+    <link rel="stylesheet" href="/static/styles.css" type="text/css">
+</head>
+<body>
+    <!-- <img src="/static/bg-image.svg" alt="background image" class="bg-image"> -->
+    <div class="content">
+        <h1>Welcome to, ASCII-ART-WEB!</h1>
+        <h2>Input:</h2>
+        <form method="post" action="/">
+            <script>
+                const asciiInput = "{{.UserInput}}"; // Pass the UserInput value from the context
+            </script>
+            <input id="user-input" type="text" name="user-input" maxlength="100" placeholder="Please enter a sample text" value="{{.UserInput}}" required/>
+            <br>
+            <br>
+            <div class="banner-select">
+                {{range .Banners}}
+                <input type="radio" name="banner-select" value="{{.}}" {{if eq $.SelectedBanner .}}checked id="selected-banner" {{end}}> {{.}} </input>
+                <br>
+                {{end}}
+            </div>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <h2>Output:</h2>
+    <div id="output-container" class="output">
+        <textarea id="ascii-art-output" name="ascii-art-output" placeholder="Your ascii art will be displayed here.">{{.AsciiOutput}}</textarea>
+    </div>
+</body>
+<script src="/static/script.js"></script>
+</html>

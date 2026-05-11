@@ -1,0 +1,11 @@
+*.txt
+
+# Ignore all .md files
+*.md
+
+# But don't ignore README.md (case-sensitive)
+!README.md
+!Readme.md
+!readme.md
+
+Changes

@@ -1,0 +1,22 @@
+# Minimal single-host config: serves /var/www on port 8080.
+
+[[server]]
+listen = ["127.0.0.1:8080"]
+client_max_body_size = 1048576
+
+[server.error_pages]
+404 = "www/errors/404.html"
+500 = "www/errors/500.html"
+
+[[server.route]]
+path = "/"
+methods = ["GET"]
+root = "www"
+index = "index.html"
+autoindex = false
+
+# Session counter demo (Phase 8): visit /session to see a per-browser hit counter.
+[[server.route]]
+path = "/session"
+methods = ["GET"]
+session_counter = true

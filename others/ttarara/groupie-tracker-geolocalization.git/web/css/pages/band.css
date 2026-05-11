@@ -1,0 +1,466 @@
+/* Global Styles */
+body {
+    font-family: 'Courier New', Courier, monospace;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(150deg, #00ffcc, #08859b);
+    /* Gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+/* Back Button */
+.ok {
+    font-family: 'MolaJelly', Courier, monospace;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #00ffcc, #8000ff);
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ffcc00;
+}
+
+.ok:hover {
+    background: linear-gradient(90deg, #00ffcc, #0088ff);
+    transform: scale(1.1);
+}
+
+/* Card Container */
+.band-card {
+    font-family: 'Courier New', Courier, monospace;
+    font-style: oblique;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 70vw;
+    max-width: 700px;
+    /*Limit max size */
+    min-height: 350px;
+    /* Ensure some height */
+    background: linear-gradient(150deg, #08859b, #00ffcc);
+    /* Gradient */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    box-shadow: 0 4px 12px #ff007f;
+
+}
+
+/* Profile Image */
+.band-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #ffcc00;
+    box-shadow: 0 0 10px #ffcc00;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* Profile Details */
+.band-details {
+    background: linear-gradient(135deg, #212121, #4e4e4e);
+    /* Dark gradient */
+    border-radius: 15px;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 10px #ffcc00;
+
+}
+
+.band-details h2 {
+    font-family: 'MolaJelly', Courier, monospace;
+    font-size: 30px;
+    color: #00ffcc;
+    text-align: center;
+    text-shadow: 0px 0px 30px #00ffcc;
+    animation: waveEffect 3s infinite ease-in-out;
+}
+
+.band-details p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Button Styling */
+.info-buttons {
+    font-family: 'Courier New', Courier, monospace;
+    font-style: oblique;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.info-buttons button {
+    font-family: 'MolaJelly', Courier, monospace;
+    font-size: 14px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px #8000ff;
+}
+
+button:nth-child(1) {
+    background: #ff007f;
+    color: #ffcc00;
+}
+
+button:nth-child(2) {
+    background: #ffcc00;
+    color: #ff007f;
+}
+
+button:nth-child(3) {
+    background: #00ffcc;
+    color: #8000ff;
+}
+
+button:nth-child(4) {
+    background: #8000ff;
+    color: #00ffcc;
+}
+
+
+/* Button Hover Effects */
+button:nth-child(1):hover {
+    background: linear-gradient(90deg, #ff007f, #ffcc00)
+}
+
+button:nth-child(2):hover {
+    background: linear-gradient(90deg, #ff007f, #00ffcc)
+}
+
+button:nth-child(3):hover {
+    background: linear-gradient(90deg, #ffcc00, #8000ff)
+}
+
+button:nth-child(4):hover {
+    background: linear-gradient(90deg, #00ffcc, #8000ff)
+}
+
+
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #212121, #4e4e4e);
+    /* Dark gradient */
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    width: 90vw;
+    box-shadow: 0px 0px 50px #ff007f;
+    text-align: center;
+    max-width: 800px;
+    height: auto;
+    max-height: 90vh;
+}
+
+.modal h3 {
+    font-family: 'MolaJelly', Courier, monospace;
+    font-size: 24px;
+    color: #ffcc00;
+    text-shadow: 0px 0px 30px #ffcc00;
+    animation: waveEffect 3s infinite ease-in-out;
+}
+
+/* Flex container for concert details and map */
+.modal-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Concert list on the left */
+.concert-list {
+    flex: 1;
+    text-align: left;
+    background: linear-gradient(135deg, #313131, #5e5e5e);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ffcc00;
+    column-count: 2;
+    column-gap: 30px;
+}
+
+/* Group to avoid breaking */
+.concert-entry {
+    break-inside: avoid;
+    margin-bottom: 15px;
+}
+
+
+/* Map on the right */
+.map-container {
+    flex: 2;
+    width: 100%;
+    height: 400px;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ff007f;
+}
+
+/* Smooth Wavy Animation */
+@keyframes waveEffect {
+    0% {
+        transform: translateY(0px);
+    }
+
+    25% {
+        transform: translateY(-5px);
+    }
+
+    50% {
+        transform: translateY(0px);
+    }
+
+    75% {
+        transform: translateY(5px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+
+/* Remove numbering from all modals by default */
+.modal ul,
+.modal ol {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.modal ol li {
+    margin-bottom: 10px;
+}
+
+/*EXCEPT in the #membersModal, we want numbering */
+#membersModal ul {
+    list-style: decimal;
+    /* forces numbering on an <ul> */
+    list-style-position: inside;
+    text-align: center;
+}
+
+#membersModal ul li {
+    margin-bottom: 10px;
+}
+
+/* Modal Button*/
+.modal button {
+    font-family: 'MolaJelly', Courier, monospace;
+    margin-top: 15px;
+    padding: 10px 18px;
+    background: linear-gradient(45deg, #8000ff, #00ffcc);
+    border: none;
+    color: #ff007f;
+    cursor: pointer;
+    font-size: 14px;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 6px 15px rgba(0, 255, 204, 0.7);
+}
+
+.modal button:hover {
+    background: linear-gradient(45deg, #00ffcc, #8000ff);
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 255, 204, 0.7);
+}
+
+/* Modal Background */
+.modal-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90vh;
+    backdrop-filter: blur(5px); /* Adds blur effect */
+}
+
+#datesModal ol {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    padding: 20px;
+    list-style: none;
+}
+
+#datesModal ol li {
+    font-size: 14px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 6px;
+    box-shadow: 0 0 5px #00ffcc;
+}
+
+/* Footer Styling - Optimized */
+.footer {
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 12px;
+    background: linear-gradient(90deg, #ff007f, #ff5e62);
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-weight: bold;
+    box-shadow: 0px -2px 5px rgba(0, 255, 204, 0.3);
+}
+
+
+@font-face {
+    font-family: 'MolaJelly';
+    src: url('/web/css/fonts/MolaJelly.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+#relationsModal {
+    display: none;
+    position: fixed;
+    top: 5%;
+    /* Start near the top */
+    left: 50%;
+    transform: translateX(-50%);
+    /* Only center horizontally */
+    background: linear-gradient(135deg, #212121, #4e4e4e);
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    width: 90vw;
+    max-width: 900px;
+    height: auto;
+    box-shadow: 0px 0px 50px #ff007f;
+    text-align: center;
+    box-sizing: border-box;
+    z-index: 9999;
+}
+
+#relationsModal .modal-content {
+    display: flex;
+    flex-wrap: wrap;
+    /* Make it responsive */
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+}
+
+#relationsModal .concert-list,
+#relationsModal .map-container {
+    flex: 1 1 300px;
+    /* Grow and shrink with screen */
+    min-width: 250px;
+    width: 100px;
+}
+
+#relationsModal .map-container {
+    flex: 1 1 300px;
+    min-width: 250px;
+    height: 100%;
+    /* Let it grow naturally */
+    display: flex;
+    align-items: stretch;
+    /* Forces map to fill */
+}
+
+#relationsModal #map {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ff007f;
+    display: block;
+    /* Prevent ghost spacing from inline-block */
+}
+
+/* Responsive Styles */
+
+@media (max-width: 768px) {
+  .band-card {
+    width: 95vw;
+    padding: 15px;
+  }
+
+  .band-details h2 {
+    font-size: 22px;
+  }
+
+  .info-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .modal {
+    width: 95vw;
+    max-height: 95vh;
+    padding: 15px;
+    overflow-y: auto;
+  }
+
+  .modal-content {
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .concert-list {
+    width: 100%;
+    column-count: 1;
+    font-size: 14px;
+  }
+
+  .map-container {
+    width: 100%;
+    height: 250px;
+  }
+
+  .footer {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .band-details p {
+    font-size: 13px;
+  }
+
+  .modal h3 {
+    font-size: 20px;
+  }
+
+  .info-buttons button {
+    font-size: 13px;
+    padding: 10px 16px;
+  }
+}

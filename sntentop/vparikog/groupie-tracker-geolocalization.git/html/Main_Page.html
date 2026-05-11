@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artists</title>
+    <link rel="stylesheet" href="/css/Main_page.css">
+    <link rel="stylesheet" href="/css/Filter.css">
+    <link rel="stylesheet" href="/css/Checkboxes.css">
+    <script src="/JavaScript/script.js" defer></script>
+    <script src="/JavaScript/filter_Creation.js" defer></script>
+
+
+</head>
+<body>
+
+<h1 align="center">Artists</h1>
+<!-- Search Bar -->
+<div class="search-container" align="center">
+    <input id="search-bar" type="text" placeholder="Search for artists, members, locations, etc..."
+           oninput="searchArtists()">
+    <!-- Create a clear button -->
+    <button id="clearButton" onclick="clearSearchBar()">X</button>
+    <div id="search-suggestions" class="dropdown-menu"></div>
+</div>
+
+<!-- Button to open the popup filter -->
+<button id="openFilterBtn">Filter</button>
+
+<!-- Popup filter section -->
+<div id="filterPopup" class="filter-popup">
+    <div class="filter-popup-content">
+        <div class="close-btn" id="closeFilterBtn">&times;</div>
+
+        <!-- Filter by Creation Date -->
+
+        <h3 align=" center">Filter By Year</h3>
+
+        <div class="range_container">
+            <div class="sliders_control">
+                <input id="fromSlider" type="range" value="{{.MinYear}}" min="{{.MinYear}}" max="{{.MaxYear}}"/>
+                <input id="toSlider" type="range" value="{{.MaxYear}}" min="{{.MinYear}}" max="{{.MaxYear}}"/>
+            </div>
+            <div class="form_control">
+                <div class="form_control_container">
+                    <div align="center" class="form_control_container__time">Min</div>
+                    <input class="form_control_container__time__input" type="number" id="fromInput" value="{{.MinYear}}"
+                           min="{{.MinYear}}" max="{{.MaxYear}}"/>
+                </div>
+                <div class="form_control_container">
+                    <div align="center" class="form_control_container__time">Max</div>
+                    <input class="form_control_container__time__input" type="number" id="toInput" value="{{.MaxYear}}"
+                           min="{{.MinYear}}" max="{{.MaxYear}}"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter by First Album Year -->
+
+        <h3 align=" center">Filter By First Album Year</h3>
+
+        <div class="range_container">
+            <div class="sliders_control">
+                <input id="fromAlbumSlider" type="range" value="{{.MinAlbYear}}" min="{{.MinAlbYear}}"
+                       max="{{.MaxAlbYear}}"/>
+                <input id="toAlbumSlider" type="range" value="{{.MaxAlbYear}}" min="{{.MinAlbYear}}"
+                       max="{{.MaxAlbYear}}"/>
+            </div>
+            <div class="form_control">
+                <div class="form_control_container">
+                    <div align="center" class="form_control_container__time">Min</div>
+                    <input class="form_control_container__time__input" type="number" id="fromAlbumInput"
+                           value="{{.MinAlbYear}}" min="{{.MinAlbYear}}" max="{{.MaxAlbYear}}"/>
+                </div>
+                <div class="form_control_container">
+                    <div align="center" class="form_control_container__time">Max</div>
+                    <input class="form_control_container__time__input" type="number" id="toAlbumInput"
+                           value="{{.MaxAlbYear}}" min="{{.MinAlbYear}}" max="{{.MaxAlbYear}}"/>
+                </div>
+            </div>
+        </div>
+
+
+        <h3 align=" center">Members</h3>
+
+        <form class="my-form">
+            <div>
+                <input id="check-1" type="checkbox"/>
+                <label for="check-1">1</label>
+            </div>
+            <div>
+                <input id="check-2" type="checkbox"/>
+                <label for="check-2">2</label>
+            </div>
+            <div>
+                <input id="check-3" type="checkbox"/>
+                <label for="check-3">3</label>
+            </div>
+            <div>
+                <input id="check-4" type="checkbox"/>
+                <label for="check-4">4</label>
+            </div>
+            <div>
+                <input id="check-5" type="checkbox"/>
+                <label for="check-5">5</label>
+            </div>
+            <div>
+                <input id="check-6" type="checkbox"/>
+                <label for="check-6">6</label>
+            </div>
+            <div>
+                <input id="check-7" type="checkbox"/>
+                <label for="check-7">7</label>
+            </div>
+            <div>
+                <input id="check-8" type="checkbox"/>
+                <label for="check-8">8</label>
+            </div>
+        </form>
+        <br> </br>
+        <div class="loc-container">
+            <h3>Filter By Location</h3>
+
+            <div class="country-select">
+                <label for="countrySelect">Select a Country:</label>
+                <br>
+                <select id="countrySelect">
+                    <option value="">Select a country</option>
+                </select>
+            </div>
+            </br>
+            <div class="city-select">
+                <label for="citySelect">Select a City:</label>
+                <br>
+                <select id="citySelect">
+                    <option value="">Select a city</option>
+                </select>
+            </div>
+        </div>
+        <br> </br>
+
+
+        <!-- Add more filters here as needed -->
+        <div align="center">
+            <button id="applyFilterBtn">Apply Filter</button>
+
+            <br></br>
+            <button id="clearFilterBtn">Clear Filters</button>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Container for all artists -->
+<div class="artist-container">
+    {{range .Artists}}
+    <div class="artist-card" data-year="{{.CreationDate}}" data-album-year="{{.FirstAlbum}}"
+         data-members="{{.NumMembers}}" data-locations="{{.Locations.Locations}}" name-members="{{ .NameMembers}}">
+        <a href="/artist?id={{.ID}}">
+            <img src="{{.Image}}" alt="{{.Name}}">
+            <h2>{{.Name}}</h2>
+        </a>
+    </div>
+    {{end}}
+</div>
+
+
+</body>
+</html>

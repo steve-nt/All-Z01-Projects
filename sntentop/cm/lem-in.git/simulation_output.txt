@@ -1,0 +1,245 @@
+100
+##start
+richard 0 6
+gilfoyle 6 3
+erlich 9 6
+dinish 6 9
+jimYoung 11 7
+##end
+peter 14 6
+richard-dinish
+dinish-jimYoung
+richard-gilfoyle
+gilfoyle-peter
+gilfoyle-erlich
+richard-erlich
+erlich-jimYoung
+jimYoung-peter
+
+----------- Summary -----------
+Number of ants: 100
+Number of rooms: 6
+Number of tunnels: 8
+Start room: richard
+End room: peter
+
+---------- All Found Paths ----------
+Number of possible paths: 2
+1) richard -> gilfoyle -> peter
+2) richard -> dinish -> jimYoung -> peter
+
+---------- Selected Paths ----------
+1) richard -> gilfoyle -> peter
+2) richard -> dinish -> jimYoung -> peter
+
+
+
+TURN 1
+[ richard ] ---> [ gilfoyle (L51) ] ---> [ peter ]
+[ richard ] ---> [ dinish (L100) ] ---> [ jimYoung ] ---> [ peter ]
+
+TURN 2
+[ richard ] ---> [ gilfoyle (L50) ] ---> [ peter (L51) ]
+[ richard ] ---> [ dinish (L99) ] ---> [ jimYoung (L100) ] ---> [ peter ]
+
+TURN 3
+[ richard ] ---> [ gilfoyle (L49) ] ---> [ peter (L50, L51) ]
+[ richard ] ---> [ dinish (L98) ] ---> [ jimYoung (L99) ] ---> [ peter (L100) ]
+
+TURN 4
+[ richard ] ---> [ gilfoyle (L48) ] ---> [ peter (L49, L50, L51) ]
+[ richard ] ---> [ dinish (L97) ] ---> [ jimYoung (L98) ] ---> [ peter (L99, L100) ]
+
+TURN 5
+[ richard ] ---> [ gilfoyle (L47) ] ---> [ peter (L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L96) ] ---> [ jimYoung (L97) ] ---> [ peter (L98, L99, L100) ]
+
+TURN 6
+[ richard ] ---> [ gilfoyle (L46) ] ---> [ peter (L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L95) ] ---> [ jimYoung (L96) ] ---> [ peter (L97, L98, L99, L100) ]
+
+TURN 7
+[ richard ] ---> [ gilfoyle (L45) ] ---> [ peter (L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L94) ] ---> [ jimYoung (L95) ] ---> [ peter (L96, L97, L98, L99, L100) ]
+
+TURN 8
+[ richard ] ---> [ gilfoyle (L44) ] ---> [ peter (L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L93) ] ---> [ jimYoung (L94) ] ---> [ peter (L95, L96, L97, L98, L99, L100) ]
+
+TURN 9
+[ richard ] ---> [ gilfoyle (L43) ] ---> [ peter (L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L92) ] ---> [ jimYoung (L93) ] ---> [ peter (L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 10
+[ richard ] ---> [ gilfoyle (L42) ] ---> [ peter (L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L91) ] ---> [ jimYoung (L92) ] ---> [ peter (L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 11
+[ richard ] ---> [ gilfoyle (L41) ] ---> [ peter (L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L90) ] ---> [ jimYoung (L91) ] ---> [ peter (L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 12
+[ richard ] ---> [ gilfoyle (L40) ] ---> [ peter (L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L89) ] ---> [ jimYoung (L90) ] ---> [ peter (L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 13
+[ richard ] ---> [ gilfoyle (L39) ] ---> [ peter (L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L88) ] ---> [ jimYoung (L89) ] ---> [ peter (L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 14
+[ richard ] ---> [ gilfoyle (L38) ] ---> [ peter (L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L87) ] ---> [ jimYoung (L88) ] ---> [ peter (L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 15
+[ richard ] ---> [ gilfoyle (L37) ] ---> [ peter (L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L86) ] ---> [ jimYoung (L87) ] ---> [ peter (L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 16
+[ richard ] ---> [ gilfoyle (L36) ] ---> [ peter (L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L85) ] ---> [ jimYoung (L86) ] ---> [ peter (L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 17
+[ richard ] ---> [ gilfoyle (L35) ] ---> [ peter (L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L84) ] ---> [ jimYoung (L85) ] ---> [ peter (L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 18
+[ richard ] ---> [ gilfoyle (L34) ] ---> [ peter (L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L83) ] ---> [ jimYoung (L84) ] ---> [ peter (L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 19
+[ richard ] ---> [ gilfoyle (L33) ] ---> [ peter (L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L82) ] ---> [ jimYoung (L83) ] ---> [ peter (L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 20
+[ richard ] ---> [ gilfoyle (L32) ] ---> [ peter (L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L81) ] ---> [ jimYoung (L82) ] ---> [ peter (L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 21
+[ richard ] ---> [ gilfoyle (L31) ] ---> [ peter (L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L80) ] ---> [ jimYoung (L81) ] ---> [ peter (L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 22
+[ richard ] ---> [ gilfoyle (L30) ] ---> [ peter (L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L79) ] ---> [ jimYoung (L80) ] ---> [ peter (L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 23
+[ richard ] ---> [ gilfoyle (L29) ] ---> [ peter (L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L78) ] ---> [ jimYoung (L79) ] ---> [ peter (L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 24
+[ richard ] ---> [ gilfoyle (L28) ] ---> [ peter (L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L77) ] ---> [ jimYoung (L78) ] ---> [ peter (L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 25
+[ richard ] ---> [ gilfoyle (L27) ] ---> [ peter (L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L76) ] ---> [ jimYoung (L77) ] ---> [ peter (L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 26
+[ richard ] ---> [ gilfoyle (L26) ] ---> [ peter (L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L75) ] ---> [ jimYoung (L76) ] ---> [ peter (L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 27
+[ richard ] ---> [ gilfoyle (L25) ] ---> [ peter (L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L74) ] ---> [ jimYoung (L75) ] ---> [ peter (L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 28
+[ richard ] ---> [ gilfoyle (L24) ] ---> [ peter (L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L73) ] ---> [ jimYoung (L74) ] ---> [ peter (L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 29
+[ richard ] ---> [ gilfoyle (L23) ] ---> [ peter (L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L72) ] ---> [ jimYoung (L73) ] ---> [ peter (L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 30
+[ richard ] ---> [ gilfoyle (L22) ] ---> [ peter (L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L71) ] ---> [ jimYoung (L72) ] ---> [ peter (L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 31
+[ richard ] ---> [ gilfoyle (L21) ] ---> [ peter (L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L70) ] ---> [ jimYoung (L71) ] ---> [ peter (L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 32
+[ richard ] ---> [ gilfoyle (L20) ] ---> [ peter (L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L69) ] ---> [ jimYoung (L70) ] ---> [ peter (L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 33
+[ richard ] ---> [ gilfoyle (L19) ] ---> [ peter (L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L68) ] ---> [ jimYoung (L69) ] ---> [ peter (L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 34
+[ richard ] ---> [ gilfoyle (L18) ] ---> [ peter (L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L67) ] ---> [ jimYoung (L68) ] ---> [ peter (L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 35
+[ richard ] ---> [ gilfoyle (L17) ] ---> [ peter (L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L66) ] ---> [ jimYoung (L67) ] ---> [ peter (L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 36
+[ richard ] ---> [ gilfoyle (L16) ] ---> [ peter (L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L65) ] ---> [ jimYoung (L66) ] ---> [ peter (L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 37
+[ richard ] ---> [ gilfoyle (L15) ] ---> [ peter (L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L64) ] ---> [ jimYoung (L65) ] ---> [ peter (L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 38
+[ richard ] ---> [ gilfoyle (L14) ] ---> [ peter (L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L63) ] ---> [ jimYoung (L64) ] ---> [ peter (L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 39
+[ richard ] ---> [ gilfoyle (L13) ] ---> [ peter (L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L62) ] ---> [ jimYoung (L63) ] ---> [ peter (L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 40
+[ richard ] ---> [ gilfoyle (L12) ] ---> [ peter (L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L61) ] ---> [ jimYoung (L62) ] ---> [ peter (L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 41
+[ richard ] ---> [ gilfoyle (L11) ] ---> [ peter (L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L60) ] ---> [ jimYoung (L61) ] ---> [ peter (L62, L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 42
+[ richard ] ---> [ gilfoyle (L10) ] ---> [ peter (L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L59) ] ---> [ jimYoung (L60) ] ---> [ peter (L61, L62, L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 43
+[ richard ] ---> [ gilfoyle (L9) ] ---> [ peter (L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L58) ] ---> [ jimYoung (L59) ] ---> [ peter (L60, L61, L62, L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 44
+[ richard ] ---> [ gilfoyle (L8) ] ---> [ peter (L9, L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L57) ] ---> [ jimYoung (L58) ] ---> [ peter (L59, L60, L61, L62, L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 45
+[ richard ] ---> [ gilfoyle (L7) ] ---> [ peter (L8, L9, L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L56) ] ---> [ jimYoung (L57) ] ---> [ peter (L58, L59, L60, L61, L62, L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 46
+[ richard ] ---> [ gilfoyle (L6) ] ---> [ peter (L7, L8, L9, L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L55) ] ---> [ jimYoung (L56) ] ---> [ peter (L57, L58, L59, L60, L61, L62, L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 47
+[ richard ] ---> [ gilfoyle (L5) ] ---> [ peter (L6, L7, L8, L9, L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L54) ] ---> [ jimYoung (L55) ] ---> [ peter (L56, L57, L58, L59, L60, L61, L62, L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 48
+[ richard ] ---> [ gilfoyle (L4) ] ---> [ peter (L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L53) ] ---> [ jimYoung (L54) ] ---> [ peter (L55, L56, L57, L58, L59, L60, L61, L62, L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 49
+[ richard ] ---> [ gilfoyle (L3) ] ---> [ peter (L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish (L52) ] ---> [ jimYoung (L53) ] ---> [ peter (L54, L55, L56, L57, L58, L59, L60, L61, L62, L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 50
+[ richard ] ---> [ gilfoyle (L2) ] ---> [ peter (L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish ] ---> [ jimYoung (L52) ] ---> [ peter (L53, L54, L55, L56, L57, L58, L59, L60, L61, L62, L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 51
+[ richard ] ---> [ gilfoyle (L1) ] ---> [ peter (L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish ] ---> [ jimYoung ] ---> [ peter (L52, L53, L54, L55, L56, L57, L58, L59, L60, L61, L62, L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+TURN 52
+[ richard ] ---> [ gilfoyle ] ---> [ peter (L1, L2, L3, L4, L5, L6, L7, L8, L9, L10, L11, L12, L13, L14, L15, L16, L17, L18, L19, L20, L21, L22, L23, L24, L25, L26, L27, L28, L29, L30, L31, L32, L33, L34, L35, L36, L37, L38, L39, L40, L41, L42, L43, L44, L45, L46, L47, L48, L49, L50, L51) ]
+[ richard ] ---> [ dinish ] ---> [ jimYoung ] ---> [ peter (L52, L53, L54, L55, L56, L57, L58, L59, L60, L61, L62, L63, L64, L65, L66, L67, L68, L69, L70, L71, L72, L73, L74, L75, L76, L77, L78, L79, L80, L81, L82, L83, L84, L85, L86, L87, L88, L89, L90, L91, L92, L93, L94, L95, L96, L97, L98, L99, L100) ]
+
+Total turns: 52

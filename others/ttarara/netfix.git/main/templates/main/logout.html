@@ -1,0 +1,20 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+    Logged Out - NetFix
+{% endblock %}
+
+{% block content %}
+<div class="logout-container">
+    <div class="logout-card">
+        <h1 class="logout-title">You are now Logged Out</h1>
+        <p class="logout-message">See you next time!</p>
+        
+        <div class="logout-actions">
+            <a href="{% url 'main:home' %}" class="btn">Home</a>
+            <a href="{% url 'login_user' %}" class="btn">Log In</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

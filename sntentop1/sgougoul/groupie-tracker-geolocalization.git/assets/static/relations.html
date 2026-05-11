@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker - Relations</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/relations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+
+
+    </head>
+<body>
+    <div class="container">
+        <h1 class="title">Artist Relations</h1>
+        <div id="relations"></div>
+        <a href="/" class="backBtn">Back to Gallery</a>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script>
+        // Extract artist ID from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const artistId = urlParams.get('id');
+    
+        // Fetch relations data and display it
+        fetch(`api/relations/${artistId}`)
+        .then(response => {
+            if (!response.ok) {
+                console.log("Status Code:", response.status);
+                const errorHTML = "<h1>Error Occurred</h1><p>Bad request</p>";
+              // If response not OK, try to parse error message from JSON and throw error
+                return response.text().then(html => {
+                document.getElementById('relations').innerHTML = errorHTML;
+                throw new Error( 'Error fetching locations data.');
+              });
+            }
+            // If OK, parse JSON
+            return response.json();
+          })
+            .then(data => {
+                const locationsDiv = document.getElementById('relations');
+                locationsDiv.innerHTML = `<h2>Relations for Artist: ${data.artistName}</h2>`;
+                data.relationDetails.forEach(detail => {
+                    locationsDiv.innerHTML += `
+                        <div class="list-group">
+                            <div class="card-body">
+                                <h5 class="card-title">${detail}</h5>
+                            </div>
+                        </div>
+                    `;
+                });
+            })
+            .catch(error => console.error('Error fetching relations data:', error));
+    </script>
+    
+</body>
+</html>

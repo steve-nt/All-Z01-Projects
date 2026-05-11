@@ -1,0 +1,105 @@
+{{ define "posts" }}
+
+<h2>Posts</h2>
+
+{{ if .LoggedIn }}
+  <div class="posts-filters">
+    <span class="posts-filters-label">Filters:</span>
+
+    <a
+      class="filter-btn {{ if eq .Filter "mine" }}active{{ end }}"
+      href="/posts?filter=mine"
+    >
+      My Posts
+    </a>
+
+    <a
+      class="filter-btn {{ if eq .Filter "liked" }}active{{ end }}"
+      href="/posts?filter=liked"
+    >
+      Liked Posts
+    </a>
+
+    {{ if not .Filter }}
+      <span class="filter-note">Showing all posts</span>
+    {{ end }}
+
+    {{ if eq .Filter "mine" }}
+      <span class="filter-note">Showing your posts</span>
+    {{ end }}
+
+    {{ if eq .Filter "liked" }}
+      <span class="filter-note">Showing posts you liked</span>
+    {{ end }}
+
+    {{ if .Category }}
+      <span class="filter-note">Category: {{ .Category }}</span>
+    {{ end }}
+  </div>
+{{ else }}
+  <div class="posts-filters">
+    {{ if .Category }}
+      <span class="filter-note">Category: {{ .Category }}</span>
+    {{ else }}
+      <span class="filter-note">Browse all posts</span>
+    {{ end }}
+  </div>
+{{ end }}
+
+<div class="meta-bar" style="margin-top:0; margin-bottom:16px;">
+  <div class="meta-left" style="gap:8px;">
+    <span class="meta-item">🏷️ Categories:</span>
+
+    {{ if not .Category }}
+      <span class="chip" style="font-weight:800;">All</span>
+    {{ else }}
+      <a class="chip" href="/posts">All</a>
+    {{ end }}
+
+    {{ range .Categories }}
+      {{ if eq $.Category .Name }}
+        <span class="chip" style="font-weight:800;">{{ .Name }}</span>
+      {{ else }}
+        <a class="chip" href="/posts?category={{ urlquery .Name }}">{{ .Name }}</a>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>
+
+{{ if not .Posts }}
+  <p>No posts found.</p>
+{{ else }}
+  {{ range .Posts }}
+    <div class="post">
+      <h3><a href="/post?id={{ .ID }}">{{ .Title }}</a></h3>
+
+      <p>{{ .Content }}</p>
+
+      {{ if .Categories }}
+        <div class="categories">
+          {{ range .Categories }}
+            <span>
+              <a href="/posts?category={{ urlquery . }}" style="text-decoration:none;color:inherit;">🏷️ {{ . }}</a>
+            </span>
+          {{ end }}
+        </div>
+      {{ end }}
+
+      <div class="meta-bar" style="margin:10px 0 0 0;">
+        <div class="meta-left">
+          <span class="meta-item">👤 {{ .Username }}</span>
+          <span class="meta-item">🕒 {{ .CreatedAt }}</span>
+          {{ if and (eq $.Filter "mine") .Status }}
+            <span class="meta-item">📌 {{ .Status }}</span>
+          {{ end }}
+        </div>
+
+        <div class="meta-right">
+          <span class="chip">👍 {{ .Likes }} &nbsp; | &nbsp; 👎 {{ .Dislikes }}</span>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ end }}
+
+{{ end }}

@@ -1,0 +1,44 @@
+{{define "category_view"}}
+{{ template "header" .}}
+{{template "topbar" .}}
+{{if .Error.Has}}
+{{template "error" .}}
+{{end}}
+<div class="container">
+    {{template "category" index .Categories 0}}
+    {{ range .Posts}}
+    <div class="post" id="{{.Id}}">
+        <a href="/post/view/{{.Id}}"><h3>{{.Title}}</h3></a>
+        <p>Posted on <em>{{.TimestampString}}</em>.</p>
+        <pre>{{.Body}}</pre>
+        {{if .ImagePath}}
+            <img src="/{{.ImagePath}}" alt="Post image" style="max-width: max-content;"/>
+        {{end}}
+        <div class="reactions">
+            <form method="POST" action="/post/react">
+                <input type="hidden" name="post-id" value="{{.Id}}"/>
+                <button type="submit"
+                        name="action"
+                        value="like"
+                        {{if not $.User.LoggedIn }}disabled{{end}}
+                        >{{.Likes}} {{if .Liked}}👍{{else}}👍🏻{{end}}</button>
+            </form>
+            <form method="POST" action="/post/react">
+                <input type="hidden" name="post-id" value="{{.Id}}"/>
+                <button type="submit"
+                        name="action"
+                        value="dislike"
+                        {{if not $.User.LoggedIn }}disabled{{end}}
+                        >{{.Dislikes}} {{if .Disliked}}👎{{else}}👎🏻{{end}}</button>
+            </form>
+        </div>
+        <div class="comments">
+        {{if $.User.LoggedIn}}
+        {{ template "comment_create" .}}
+        {{end}}
+        </div>
+    </div>
+    {{ end }}
+</div>
+{{template "ending" .}}
+{{end}}

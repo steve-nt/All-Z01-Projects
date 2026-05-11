@@ -1,0 +1,46 @@
+{{define "notifications"}}
+<div class="notifications">
+    <form method="post" action="/user/notifications">
+        <button type="submit">Mark all as read</button>
+    </form>
+    <ul>
+        {{range .Notifications}}
+            {{if eq .Type "comment"}}
+            <li>
+                {{if not .Read}}<strong>{{end}}
+                <a href = "/post/view/{{.PostId}}#comment-{{.CommentId}}">{{.Actor.Username}} commented on your post </a>
+                {{if not .Read}}</strong>{{end}}
+            </li>
+            {{end}}
+            {{if eq .Type "like"}}
+            <li>
+                {{if not .Read}}<strong>{{end}}
+                <a href = "/post/view/{{.PostId}}">{{.Actor.Username}} liked your post </a>
+                {{if not .Read}}</strong>{{end}}
+            </li>
+            {{end}}
+            {{if eq .Type "dislike"}}
+            <li>
+                {{if not .Read}}<strong>{{end}}
+                <a href = "/post/view/{{.PostId}}">{{.Actor.Username}} disliked your post </a>
+                {{if not .Read}}</strong>{{end}}
+            </li>
+            {{end}}
+            {{if eq .Type "commentLike"}}
+            <li>
+                {{if not .Read}}<strong>{{end}}
+                <a href = "/post/view/{{.PostId}}#comment-{{.CommentId}}">{{.Actor.Username}} liked your comment </a>
+                {{if not .Read}}</strong>{{end}}
+            </li>
+            {{end}}
+            {{if eq .Type "commentDislike"}}
+            <li>
+                {{if not .Read}}<strong>{{end}}
+                <a href = "/post/view/{{.PostId}}#comment-{{.CommentId}}">{{.Actor.Username}} disliked your comment </a>
+                {{if not .Read}}</strong>{{end}}
+            </li>
+            {{end}}
+        {{end}}
+    </ul>
+</div>
+{{end}}

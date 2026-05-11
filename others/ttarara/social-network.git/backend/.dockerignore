@@ -1,0 +1,10 @@
+data/
+*.db
+*.db-shm
+*.db-wal
+frontend/uploads/
+.git
+.gitignore
+*.md
+.env
+.env.*

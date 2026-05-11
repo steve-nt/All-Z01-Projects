@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="/frontend/css/index.css">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/frontend/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/frontend/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/frontend/images/avicon-16x16.png">
+    <link rel="manifest" href="/frontend/images/site.webmanifest">
+</head>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+    <!-- Back Button -->
+    <button class="ok" onclick="history.back()">HOME</button>
+
+    <!-- Main Header -->
+    <!-- <h1>Groupie Tracker</h1> -->
+
+    <!-- Filter Button -->
+    <button class="filter-btn" onclick="openFilter()">Filter</button>
+
+    <!-- Search Container -->
+    <div class="searchContainer">
+        <input type="search" id="search" name="search" placeholder="Search...">
+        <!-- The Reset button is added here by JavaScript-->
+        <div id="suggestions"></div>
+    </div>
+</div>    
+
+    <!-- Blurry Backdrop -->
+    <div id="modalBackdrop"></div>
+
+    <!-- Filter Pop-Up Modal -->
+    <div id="filterModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeFilter()">&times;</span>
+            <h2>Filter Options</h2>
+            <form action="/filters" method="get">
+                <label for="locationsfilter">Locations:</label>
+                <input type="search" list="search1" id="locationsfilter" name="filter" autocomplete="off">
+                <datalist id="search1"></datalist>
+                <div id="customDropdown" class="dropdown"></div>
+
+                <label>Creation Date:</label>
+                <input type="number" name="creationDateStart" min="1958" max="2025" value="1958">
+                <input type="number" name="creationDateEnd" min="1958" max="2025" value="2025">
+
+                <label>First Album Year:</label>
+                <input type="number" name="firstAlbumDateStart" min="1963" max="2025" value="1963">
+                <input type="number" name="firstAlbumDateEnd" min="1963" max="2025" value="2025">
+
+                <fieldset>
+                    <legend>Number of Members:</legend>
+                    <label><input type="checkbox" name="Member" value="1">1</label>
+                    <label><input type="checkbox" name="Member" value="2">2</label>
+                    <label><input type="checkbox" name="Member" value="3">3</label>
+                    <label><input type="checkbox" name="Member" value="4">4</label>
+                    <label><input type="checkbox" name="Member" value="5">5</label>
+                    <label><input type="checkbox" name="Member" value="6">6</label>
+                    <label><input type="checkbox" name="Member" value="7">7</label>
+                    <label><input type="checkbox" name="Member" value="8">8</label>
+                </fieldset>
+
+                <input type="submit" value="Apply Filters">
+                <input type="button" id="resetFilters" value="Reset Filters">
+            </form>
+        </div>
+    </div>
+
+    <!-- Bands Section -->
+    <div class="bands">
+        {{range .}}
+        <div class="card" data-id="{{.ID}}" data-locations="{{.Locations}}" onclick="goToPage(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="{{.Image}}" alt="{{.Name}} Image">
+                </div>
+                <div class="card-back">
+                    <h2>{{.Name}}</h2>
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Groupie Tracker - Stay Inspired 🎶</p>
+    </footer>
+
+    <!-- JavaScript for Filter Modal, Autocomplete, and Search Suggestions -->
+    <script>
+
+        
+        document.addEventListener("DOMContentLoaded", function () {
+           
+            const searchInput = document.getElementById("search");
+            const suggestionsBox = document.getElementById("suggestions");
+
+            let currentFocus = -1; // Track the currently focused suggestion
+            let currentSuggestions = []; // Store current suggestions
+
+
+            // Fetch and display search suggestions and handle input changes (including deletions)
+            searchInput.addEventListener("input", function () {
+
+                const query = searchInput.value.trim().toLowerCase(); // Normalize the query
+
+                if (query.length === 0) {
+                     // If the input is empty, reset the view
+                    showAllCards(); // Show all cards
+                    suggestionsBox.innerHTML = ""; // Clear suggestions if search bar is empty
+
+                } else {
+
+                    // Fetch search suggestions from the backend
+                    fetch(`/search?q=${query}`)
+                        .then(response => response.json())
+                        .then(results => {
+                            suggestionsBox.innerHTML = ""; // Clear previous suggestions
+                            currentSuggestions = results; // Store current suggestions
+
+                            // Sort results: Artists first, then Members, then Locations
+                            results.sort((a, b) => {
+                            // Define priority levels for each type
+                            const typePriority = {
+                                "artist": 1,    // Highest priority
+                                "member": 2,    // Second priority
+                                "location": 3   // Last priority
+                            };
+
+                            // Compare priority levels
+                            const aPriority = typePriority[a.type] || 99; // Default to 99 if type not found
+                            const bPriority = typePriority[b.type] || 99;
+
+                            if (aPriority < bPriority) return -1;
+                            if (aPriority > bPriority) return 1;
+
+                            // If same priority, sort by query match (matches at the start of the string come first)
+                            const aStartsWithQuery = a.display.toLowerCase().startsWith(query);
+                            const bStartsWithQuery = b.display.toLowerCase().startsWith(query);
+
+                            if (aStartsWithQuery && !bStartsWithQuery) return -1;
+                            if (!aStartsWithQuery && bStartsWithQuery) return 1;
+
+                            return 0; // Keep order if both have the same priority and match status
+                        });
+
+
+                    
+                    // Add sorted suggestions to the suggestions box
+                    results.forEach(item => {
+                        const div = document.createElement("div");
+                        div.textContent = item.display; // Display the suggestion text
+                        div.classList.add("suggestion-item");
+
+                        // When a suggestion is clicked, filter the cards
+                        div.addEventListener("click", function () {
+                            searchInput.value = item.display; // Fill the search bar with the selected suggestion
+                            suggestionsBox.innerHTML = "";
+
+                            handleSearchSelection(item); // Filter cards based on the selected suggestion
+
+                        });
+                        suggestionsBox.appendChild(div); // Add the suggestion to the suggestions box
+                    });
+                    currentFocus = -1; // Reset focus when new suggestions are loaded
+                })
+                .catch(error => console.error("Error:", error));
+            }
+        });
+
+
+            // Handle Enter key press
+            searchInput.addEventListener("keydown", function (e) {
+                if (e.key === "Enter") {
+                    e.preventDefault(); // Prevent form submission
+
+                    if (currentFocus > -1) {
+                        // If a suggestion is selected, simulate a click on it
+                        const selectedSuggestion = document.querySelector(".suggestion-item.suggestion-active");
+                        if (selectedSuggestion) {
+                            selectedSuggestion.click(); // Trigger the click event on the selected suggestion
+                        }
+                    } else {
+                        // If no suggestion is selected, show cards for the current query
+                        const query = searchInput.value.trim();
+                        if (query.length > 0) {
+                            showCardsForSuggestions(currentSuggestions); // Show cards for the current suggestions
+                            suggestionsBox.innerHTML = ""; // Clear the suggestions box
+                        }
+                    }
+                }
+            });
+
+
+            // Keyboard Navigation for Suggestions
+            searchInput.addEventListener("keydown", function (e) {
+                const suggestions = document.querySelectorAll(".suggestion-item");
+
+                if (e.key === "ArrowDown") {
+                    e.preventDefault(); // Prevent default behavior (moving cursor to the end of the input)
+                    currentFocus++;
+                    if (currentFocus >= suggestions.length) currentFocus = 0; // Loop to the first suggestion
+                    setActiveSuggestion(suggestions);
+                    scrollSuggestionIntoView(suggestions[currentFocus]); // Scroll to the selected suggestion
+                } else if (e.key === "ArrowUp") {
+                    e.preventDefault(); // Prevent default behavior (moving cursor to the start of the input)
+                    currentFocus--;
+                    if (currentFocus < 0) currentFocus = suggestions.length - 1; // Loop to the last suggestion
+                    setActiveSuggestion(suggestions);
+                    scrollSuggestionIntoView(suggestions[currentFocus]); // Scroll to the selected suggestion
+                } else if (e.key === "Enter") {
+                    e.preventDefault(); // Prevent form submission
+                    if (currentFocus > -1 && suggestions[currentFocus]) {
+                        suggestions[currentFocus].click(); // Simulate click on the focused suggestion
+                    }
+                }
+            });
+            
+
+            // Function to highlight the active suggestion
+            function setActiveSuggestion(suggestions) {
+                suggestions.forEach((suggestion, index) => {
+                    if (index === currentFocus) {
+                        suggestion.classList.add("suggestion-active"); // Highlight the active suggestion
+                    } else {
+                        suggestion.classList.remove("suggestion-active"); // Remove highlight from others
+                    }
+                });
+            }
+
+            // Function to scroll the selected suggestion into view
+            function scrollSuggestionIntoView(suggestion) {
+                if (suggestion) {
+                    suggestion.scrollIntoView({
+                        behavior: "smooth", // Smooth scrolling
+                        block: "nearest",  // Align the suggestion to the top or bottom of the container
+                    });
+                }
+            }
+
+            // Function to filter cards based on the selected suggestion
+            function handleSearchSelection(selected) {
+                const artistId = selected.artistId; // Get the artist ID from the selected suggestion
+                const cards = document.querySelectorAll('.card'); // Select all artist cards
+
+                cards.forEach(card => {
+                    const cardArtistId = card.getAttribute('data-id'); // Get the artist ID from the card
+                    if (cardArtistId == artistId) {
+                        card.style.display = 'block'; // Show the card if it matches the selected artist ID
+                    } else {
+                        card.style.display = 'none'; // Hide other cards
+                    }
+                });
+            }
+
+            // Function to show cards for the current suggestions
+            function showCardsForSuggestions(suggestions) {
+                const cards = document.querySelectorAll('.card'); // Select all artist cards
+                cards.forEach(card => card.style.display = 'none'); // Hide all cards initially
+
+                suggestions.forEach(suggestion => {
+                    const artistId = suggestion.artistId; // Get the artist ID from the suggestion
+                    const card = document.querySelector(`.card[data-id="${artistId}"]`);
+                    if (card) {
+                        card.style.display = 'block'; // Show the card if it matches the suggestion
+                    }
+                });
+            }
+
+            // Function to show all cards (reset the view)
+            function showAllCards() {
+                const cards = document.querySelectorAll('.card');
+                cards.forEach(card => {
+                    card.style.display = 'block'; // Show all cards
+                });
+
+                // Clear the search bar
+                const searchInput = document.getElementById("search");
+                searchInput.value = ""; // Clear the input field
+
+                // Clear the suggestions box
+                const suggestionsBox = document.getElementById("suggestions");
+                suggestionsBox.innerHTML = ""; // Clear any visible suggestions
+            }
+
+            // Add Show All Button
+            const showAllButton = document.createElement("button");
+            showAllButton.textContent = "Reset";
+            showAllButton.id = "show-all-button";
+            showAllButton.addEventListener("click", showAllCards);
+           
+        
+            // Append the button to the search container
+            const searchContainer = document.querySelector(".searchContainer");
+            searchContainer.appendChild(showAllButton); // Add the button next to the search bar
+        });
+
+        
+
+        // Open Filter Modal
+        function openFilter() {
+            document.getElementById("filterModal").style.display = "block";
+            document.getElementById("modalBackdrop").style.display = "block"; // Show backdrop
+
+        }
+
+        // Close Filter Modal
+        function closeFilter() {
+            document.getElementById("filterModal").style.display = "none";
+            document.getElementById("modalBackdrop").style.display = "none"; // Hide backdrop
+
+        }
+
+        // Fetch all locations for the filter datalist
+        document.addEventListener("DOMContentLoaded", function () {
+            fetch("/all_locations")
+                .then(res => res.json())
+                .then(locations => {
+                    const dataList = document.getElementById("search1");
+                    dataList.innerHTML = "";
+                    locations.forEach(loc => {
+                        const option = document.createElement("option");
+                        option.value = loc;
+                        dataList.appendChild(option);
+                    });
+                })
+                .catch(err => console.error("Error fetching all_locations:", err));
+        });
+
+        // Set current year in the footer
+        document.getElementById("year").innerText = new Date().getFullYear();
+
+        // Navigate to artist page
+        function goToPage(element) {
+            const id = element.getAttribute('data-id');
+            if (id) {
+                window.location.href = "/Artist/" + id;
+            } else {
+                console.error("ID not found for the clicked card.");
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function () {
+    const resetButton = document.getElementById("resetFilters");
+    
+    resetButton.addEventListener("click", function () {
+        // Reset location input
+        document.getElementById("locationsfilter").value = "";
+
+        // Reset creation date fields
+        document.querySelector("input[name='creationDateStart']").value = "1958";
+        document.querySelector("input[name='creationDateEnd']").value = "2025";
+
+        // Reset first album year fields
+        document.querySelector("input[name='firstAlbumDateStart']").value = "1963";
+        document.querySelector("input[name='firstAlbumDateEnd']").value = "2025";
+
+        // Uncheck all member checkboxes
+        document.querySelectorAll("input[name='Member']").forEach(checkbox => {
+            checkbox.checked = false;
+        });
+    });
+});
+    </script>
+</body>
+</html>

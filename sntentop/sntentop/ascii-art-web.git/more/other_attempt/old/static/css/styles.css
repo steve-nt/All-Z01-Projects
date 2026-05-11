@@ -1,0 +1,93 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #c3ecf3;
+    text-align: center;
+}
+
+header {
+    background-color: #383435; /* Dark background for the banner */
+    color: #F7F4EF; /* White text for contrast */
+    padding: 20px 0; /* Add vertical padding */
+    position: fixed; /* Sticks the banner to the top */
+    top: 0;
+    width: 100%; /* Ensure it spans the full width of the screen */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
+    z-index: 1000; /* Ensure it stays on top of other content */
+}
+
+main {
+    margin-top: 80px; /* Add margin to avoid content being hidden under the banner */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 80px); /* Account for the banner height */
+}
+
+form {
+    background-color: #2b2728; /* Dark background */
+    width: 900px; /* Width of the form */
+    height: 400px; /* Height of the form */
+    padding: 20px; /* Inner padding */
+    border: 2px solid #ccc; /* Border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for 3D effect */
+    margin: 0 auto; /* Centers the form horizontally on the page */
+    display: flex; /* Makes the form a Flexbox container */
+    flex-direction: column; /* Stacks child elements vertically */
+    justify-content: center; /* Centers child elements vertically */
+    align-items: center; /* Centers child elements horizontally */
+    text-align: center; /* Aligns text inside child elements */
+}
+
+.large-label {
+    font-size: 60px; /* Larger font for specific labels */
+    color: #c3ecf3 ;
+}
+
+.small-label {
+    font-size: 30px; /* Smaller font for specific labels */
+    color: #c3ecf3 ;
+}
+
+input[type="text"] {
+    width: 500px; /* Width of the form */
+    height: 150px; /* Height of the form */
+    font-size: 40px; /* Increases the text size inside the input */
+    padding: 10px; /* Optional: Add padding for a better look */
+    border: 1px solid #ccc; /* Optional: Add a border style */
+    border-radius: 5px; /* Optional: Rounded corners */
+   
+}
+
+select {
+    font-size: 15px; /* Change the font size of the dropdown text */
+    padding: 10px; /* Adjust padding for better spacing */
+    width: 250px; /* Set the width of the dropdown */
+    height: 40px; /* Set the height of the dropdown */
+    border-radius: 5px; /* Optional: Rounded corners */
+    border: 1px solid #ccc; /* Optional: Border style */
+    color: #2b2728;
+}
+
+.ascii-banner {
+    background-color: #0c4278; /* Light gray background */
+    border: 2px solid #333;   /* Darker border */
+    border-radius: 8px;       /* Rounded corners */
+    padding: 20px;            /* Spacing inside the banner */
+    margin: 20px auto;        /* Center the banner */
+    width: fit-content;       /* Adjust width based on content */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: center;       /* Center align the ASCII art */
+}
+
+pre {
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    background-color: #333;
+    color: rgb(0, 97, 162);
+    padding: 20px;
+    border-radius: 10px;
+}

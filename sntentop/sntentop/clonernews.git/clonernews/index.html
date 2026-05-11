@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- SPA shell entry for the app route, separated from the root status landing page. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="clonernews is a polished Hacker News client built with vanilla JavaScript, Vite, and accessible UI patterns."
+    />
+    <meta name="theme-color" content="#0b1020" />
+    <title>clonernews</title>
+    <!-- Global stylesheet with design system tokens, reset, and animations. -->
+    <link rel="stylesheet" href="/src/app.css" />
+  </head>
+  <body>
+    <!-- The app shell wraps header, nav, and routed feature content. -->
+    <div id="app">
+      <!-- The sticky header provides site branding and navigation across routes. -->
+      <header class="app-header" role="banner">
+        <a href="/" class="app-header__brand" data-testid="app-header-brand">
+          🗞️ clonernews
+        </a>
+        <nav
+          class="app-header__nav app-header__feed-tabs"
+          aria-label="Feed navigation"
+          data-testid="feed-tabs"
+        >
+          <button
+            type="button"
+            class="feed__tab-button app-header__feed-tab"
+            data-testid="feed-tab-top"
+            data-feed-type="top"
+          >
+            Top
+          </button>
+          <button
+            type="button"
+            class="feed__tab-button app-header__feed-tab"
+            data-testid="feed-tab-new"
+            data-feed-type="new"
+          >
+            New
+          </button>
+          <button
+            type="button"
+            class="feed__tab-button app-header__feed-tab"
+            data-testid="feed-tab-jobs"
+            data-feed-type="job"
+          >
+            Jobs
+          </button>
+          <button
+            type="button"
+            class="feed__tab-button app-header__feed-tab"
+            data-testid="feed-tab-polls"
+            data-feed-type="poll"
+          >
+            Polls
+          </button>
+          <button
+            type="button"
+            class="feed__tab-button app-header__feed-tab"
+            data-testid="feed-tab-ask"
+            data-feed-type="ask"
+          >
+            Ask HN
+          </button>
+          <button
+            type="button"
+            class="feed__tab-button app-header__feed-tab"
+            data-testid="feed-tab-show"
+            data-feed-type="show"
+          >
+            Show HN
+          </button>
+        </nav>
+        <div class="app-header__status" data-testid="app-header-status">
+          <span
+            class="app-header__loaded-count"
+            data-testid="feed-loaded-count"
+            data-count="0"
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            Loaded: 0
+          </span>
+        </div>
+      </header>
+      <!-- The main content area hosts routed feature views. -->
+      <main class="app-main" role="main">
+        <!-- The feature container is replaced by router; boot screen is the initial state. -->
+        <div class="app-feature">
+          <div class="boot-screen" aria-labelledby="boot-title">
+            <p class="eyebrow">App Runtime</p>
+            <h1 id="boot-title" class="display-title">clonernews</h1>
+            <p class="lede">
+              A clean, fast Hacker News client built with vanilla JavaScript, thoughtful
+              architecture, and a typography-first visual system.
+            </p>
+          </div>
+        </div>
+      </main>
+      <footer class="app-footer" role="contentinfo">
+        <span>© 2026 · Alex Smyroglou · Ertval Karameta · Stefanos Ntentopoulos</span>
+      </footer>
+    </div>
+    <!-- The SPA entry remains a module so feature code can be loaded with native ESM semantics. -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

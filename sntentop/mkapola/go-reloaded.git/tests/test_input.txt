@@ -1,0 +1,1 @@
+I have 1E (hex) apples and 10 (bin) oranges. it (cap) is a amazing day! ' hello world '

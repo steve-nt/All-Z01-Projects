@@ -1,0 +1,20 @@
+Date: <Month Day, Year>
+Auditor: <First Last>
+
+Scoring (0-2 each, total /10)
+Problem & functions clarity               -> <0|1|2>
+Architecture rationale (Pipeline vs FSM)  -> <0|1|2>
+Test coverage & originality               -> <0|1|2>
+Reproducibility & organization            -> <0|1|2>
+Task decomposition clarity & testability  -> <0|1|2>
+
+Outcome: <Accept|Reject>
+Final score -> /10
+
+Top 2 strengths
+-
+-
+
+Top 2 improvements
+-
+-

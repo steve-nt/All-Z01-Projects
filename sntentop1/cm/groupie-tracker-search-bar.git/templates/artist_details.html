@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Name }} - Details</title>
+    <link rel="stylesheet" href="/css/artist_details.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <style>
+        #map {
+            width: 100%;
+            height: 400px;
+            display: none;
+        }
+        .button {
+            background-color: #2a7ae2;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #1c5a99;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ .Name }}</h1>
+    </header>
+    <main>
+        <section class="section">
+            <img src="{{ .Image }}" alt="{{ .Name }}">
+        </section>
+        
+        <section class="section">
+            <h3>Members</h3>
+            <ul>
+                {{ range .Members }}
+                <li>{{ . }}</li>
+                {{ end }}
+            </ul>
+        </section>
+
+        <section class="section">
+            <h3>Details</h3>
+            <p><strong>Creation Date:</strong> {{ .CreationDate }}</p>
+            <p><strong>First Album:</strong> {{ .FirstAlbum }}</p>
+        </section>
+
+        <section class="section">
+            <h3>Concert Dates & Locations</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Location</th>
+                        <th>Dates</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range $location, $dates := .Relations }}
+                    <tr>
+                        <td>{{ $location }}</td>
+                        <td>
+                            <ul>
+                                {{ range $dates }}
+                                <li>{{ . }}</li>
+                                {{ end }}
+                            </ul>
+                        </td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Button to show map -->
+        <section class="section">
+            <button class="button" id="showMapBtn">Show Locations on Map</button>
+        </section>
+
+        <!-- Map container -->
+        <div id="map"></div>
+    </main>
+
+    <div class="button-container">
+        <a href="/" class="button">
+            <span class="shadow"></span>
+            <span class="edge"></span>
+            <div class="front">
+                <span>Back to home</span>
+            </div>
+        </a>
+    </div>
+    <footer>
+        <p>&copy; 2024 Groupie Tracker</p>
+    </footer>
+
+    <script>
+        document.getElementById('showMapBtn').addEventListener('click', function() {
+            const mapContainer = document.getElementById('map');
+            mapContainer.style.display = 'block'; // Show the map
+    
+            const artistID = "{{.ID}}"; // Dynamic artist ID from Go template
+            fetch(`/artist/locations?id=${artistID}`)
+                .then(response => response.json())
+                .then(locations => {
+                    if (locations.length === 0) {
+                        alert("No locations found for this artist.");
+                        return;
+                    }
+    
+                    initializeMap(locations);
+                })
+                .catch(err => console.error('Error fetching locations:', err));
+        });
+    
+        let map; // Declare map globally
+    
+        function initializeMap(locations) {
+            // Destroy any existing map instance before creating a new one
+            if (map) {
+                map.remove();
+            }
+    
+            map = L.map('map').setView([20, 0], 2); // Set a default view
+    
+            // Add OpenStreetMap tile layer
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+    
+            // Add markers for each location
+            locations.forEach(location => {
+                getLatLngFromLocation(location).then(([lat, lng]) => {
+                    L.marker([lat, lng]).addTo(map)
+                        .bindPopup(`<strong>${location}</strong>`)
+                        .openPopup();
+                }).catch(err => console.error('Error getting coordinates:', err));
+            });
+        }
+    
+        function getLatLngFromLocation(location) {
+            return new Promise((resolve, reject) => {
+                // Using OpenStreetMap's Nominatim API to convert location names to lat/lng
+                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.length > 0) {
+                            resolve([data[0].lat, data[0].lon]);
+                        } else {
+                            reject("Location not found");
+                        }
+                    })
+                    .catch(err => reject(err));
+            });
+        }
+    </script>
+    
+</body>
+</html>

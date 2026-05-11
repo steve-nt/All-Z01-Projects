@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    {{ service.name }}
+{% endblock %}
+{% block content %}
+<div class="service-info" style="max-width: 800px; margin: 40px auto; padding: 30px; background: #121212; border-radius: 12px; box-shadow: 0 8px 25px rgba(0,0,0,0.2);">
+    <h1 class="hero-title" style="color: #952aff; margin-bottom: 20px;">{{ service.name }}</h1>
+    <h5 style="color: #ccc; margin-bottom: 25px;">by <a href="{% url 'public_company' service.company.user.username %}" style="color: #3B97E3; text-decoration: none;">{{ service.company.user.username }}</a> | <span class="service-created-date" style="color: #777;">Created: {{ service.date|date:"M d, Y" }}</span></h5>
+    
+    <span class="service-field" style="display: inline-block; margin-bottom: 20px; background: #952aff; color: white; padding: 8px 20px; border-radius: 50px; font-weight: bold;">{{ service.field }}</span>
+    
+    <p class="service-price" style="font-size: 1.8rem; color: #6AB861; font-weight: bold; margin: 20px 0;">€{{ service.price_hour }}/hour</p>
+    
+    <div class="service-description" style="color: #ddd; line-height: 1.6; font-size: 1.1rem; margin-bottom: 30px;">
+        {{ service.description }}
+    </div>
+    
+    {% if request.user.is_customer %}
+        <div class="action-container">
+            <a href="/services/{{ service.id }}/request_service/" class="btn" style="display: inline-block; margin-top: 20px;">Request Service</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

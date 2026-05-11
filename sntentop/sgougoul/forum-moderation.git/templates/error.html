@@ -1,0 +1,19 @@
+{{ define "error" }}
+
+<h2 style="margin-top:0;">{{ .Title }}</h2>
+
+<p style="color:var(--muted); margin-bottom:16px;">
+  {{ .Message }}
+</p>
+
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+  <a href="/"><button type="button">🏠 Home</button></a>
+  <a href="/posts"><button type="button">🧭 Posts</button></a>
+
+  {{ if not .LoggedIn }}
+    <a href="/login"><button type="button">🔐 Login</button></a>
+    <a href="/register"><button type="button">📝 Register</button></a>
+  {{ end }}
+</div>
+
+{{ end }}

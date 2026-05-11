@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Name}}</title>
+    <link rel="stylesheet" href="/frontend/css/band.css">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/frontend/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/frontend/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/frontend/images/avicon-16x16.png">
+    <link rel="manifest" href="/frontend/images/site.webmanifest">
+</head>
+<body>
+    <body>
+
+    <!-- Back Button -->
+    <a class="ok" onclick="history.back()">GO BACK</a>
+
+    <!-- Card Container -->
+    <div class="band-card">
+        
+        <!-- Profile Image -->
+        <img src="{{.Image}}" alt="{{.Name}} Image">
+
+        <!-- Profile Details -->
+        <div class="band-details">
+            <h2>{{.Name}}</h2>
+            <p><strong>Creation Date:</strong> {{.CreationDate}}</p>
+            <p><strong>First Album:</strong> {{.FirstAlbum}}</p>
+        </div>
+
+        <!-- Info Buttons -->
+        <div class="info-buttons">
+            <button onclick="openModal('membersModal')">Members</button>
+            <button onclick="openModal('relationsModal')">Concerts</button>
+            <button onclick="openModal('locationsModal')">Locations</button>
+            <button onclick="openModal('datesModal')">Dates</button>
+        </div>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-bg" id="modalBg" onclick="closeModal()"></div>
+
+    <div class="modal" id="membersModal">
+        <h3>Members</h3>
+        <ul>
+            {{range .Members}}
+            <li>{{.}}</li>
+            {{end}}
+        </ul>
+        <button onclick="closeModal()">Close</button>
+    </div>
+
+    <div class="modal" id="relationsModal">
+        <h3>Concerts</h3>
+        {{range $key, $value := .Relation.DatesLocations}}
+        <ul>
+            <li><strong>{{$key}}:</strong></li>
+            {{range $value}}
+            <li>{{.}}</li>
+            {{end}}
+        </ul>
+        {{end}}
+        <button onclick="closeModal()">Close</button>
+    </div>
+
+    <div class="modal" id="locationsModal">
+        <h3>Locations</h3>
+        <ol>
+            {{range .Location.Locations}}
+            <li>{{.}}</li>
+            {{end}}
+        </ol>
+        <button onclick="closeModal()">Close</button>
+    </div>
+
+    <div class="modal" id="datesModal">
+        <h3>Dates</h3>
+        <ol>
+            {{range .Date.Dates}}
+            <li>{{.}}</li>
+            {{end}}
+        </ol>
+        <button onclick="closeModal()">Close</button>
+    </div>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <p>&copy; <span id="year"></span> Groupie Tracker - Stay Inspired 🎶</p>
+    </footer>
+    
+    <script>
+        document.getElementById("year").innerText = new Date().getFullYear();
+    </script>
+    
+
+    <!-- JavaScript -->
+    <script>
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.getElementById('modalBg').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
+            document.getElementById('modalBg').style.display = 'none';
+        }
+    </script>
+    
+
+
+</body>
+</html>

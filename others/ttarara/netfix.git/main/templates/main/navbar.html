@@ -1,0 +1,56 @@
+{% load static %}
+<div class="sidebar-nav">
+    <ul class="sidebar-menu">
+        <li class="sidebar-item">
+            <a href="/" class="menu-title">HOME</a>
+        </li>
+        <li class="sidebar-item has-submenu">
+            <span class="menu-title">SERVICES</span>
+            <ul class="submenu">
+                <li><a href="/services/">All Services</a></li>
+                <li class="divider"></li>
+                <li><a href="/services/air-conditioner">Air Conditioner</a></li>
+                <li><a href="/services/carpentry">Carpentry</a></li>
+                <li><a href="/services/electricity">Electricity</a></li>
+                <li><a href="/services/gardening">Gardening</a></li>
+                <li><a href="/services/home-machines">Home Machines</a></li>
+                <li><a href="/services/house-keeping">House Keeping</a></li>
+                <li><a href="/services/interior-design">Interior Design</a></li>
+                <li><a href="/services/locks">Locks</a></li>
+                <li><a href="/services/painting">Painting</a></li>
+                <li><a href="/services/plumbing">Plumbing</a></li>
+                <li><a href="/services/water-heaters">Water Heaters</a></li>
+            </ul>
+        </li>
+        <li class="sidebar-item">
+            <a href="/services/most-requested/" class="menu-title">MOST REQUESTED</a>
+        </li>
+        {% if user.is_authenticated %}
+            {% if user.is_company %}
+                <li class="sidebar-item"><a href="/services/create/">Create Service</a></li>
+            {% endif %}
+            <li class="sidebar-item"><a href="/{{ user.id }}">Profile</a></li>
+            <li class="sidebar-item"><a href="/logout/">Logout</a></li>
+        {% else %}
+            <li class="sidebar-item"><a href="{% url 'login_user' %}">Login</a></li>
+            <li class="sidebar-item"><a href="{% url 'register' %}">Register</a></li>
+        {% endif %}
+    </ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

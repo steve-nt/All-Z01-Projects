@@ -1,0 +1,755 @@
+THOUGHT PROCESS
+Okay, let's try to figure out how to approach this project. The user wants to create a program called lem-in that simulates ants moving through an ant farm, finding the quickest path from start to end. The program needs to read a file, parse it, validate it, compute the shortest path, and then display each step the ants take. All of this has to be done in Go, using only standard libraries. Let's break this down step by step.
+First, I need to understand the problem thoroughly. The main goal is to move all ants from the start room to the end room as quickly as possible. Each room can hold only one ant at a time except for start and end. Tunnels (links between rooms) can be used once per turn. So, each turn, multiple ants can move through different tunnels as long as they don't end up in the same room.
+The input file has a specific format: number of ants, rooms (with start and end marked), links between rooms. The program needs to read this file, validate it for errors, then compute the paths. If there's an error in the input, like invalid format, duplicate rooms, no path from start to end, etc., the program should output an error message.
+So the first steps would be:
+
+1. **Parsing and Validating the Input File:**
+- Read the file line by line.
+- The first line is the number of ants. It should be a positive integer. Need to check that.
+- Then, parse the rooms. Lines starting with '##start' and '##end' indicate the start and end rooms. The rooms are defined as "name coord_x coord_y". Check that room names don't start with 'L' or '#', and there are no duplicate names. Also, coordinates should be integers.
+- Then parse the links, which are in the format "name1-name2". Need to check that both rooms exist and that there are no duplicate links or invalid ones (like linking a room to itself).
+- Also, need to handle comments (lines starting with '#') and ignore them unless they are the special ##start or ##end commands.
+- Need to make sure that there's exactly one start and one end room.
+- Any invalid data should result in an error message.
+
+2. **Building the Graph Structure:**
+- Once the input is validated, represent the rooms and links as a graph. Each room is a node, and each link is an edge between two nodes. Since the graph is undirected (tunnels can be traversed in both directions), but perhaps for pathfinding, we can represent it as a directed graph with edges in both directions.
+- The graph needs to allow efficient pathfinding. So adjacency lists would be a good way to represent it.
+
+3. **Finding the Shortest Path(s):**
+- The main challenge here is to find the quickest way to move all ants. Since ants can't overlap in rooms (except start/end), we need to find paths that allow ants to move without blocking each other, and the total number of steps should be minimized.
+- The simplest approach might be to find the shortest path from start to end and see if we can send all ants through it. However, if the shortest path can't handle all ants due to room constraints (since each room can hold one ant at a time), we might need to find multiple paths.
+- Alternatively, maybe using BFS (Breadth-First Search) to find the shortest path first, then check for augmenting paths or other paths that don't interfere. But how to handle multiple paths and distribute ants among them to minimize steps.
+- Another consideration is that moving ants in parallel: each turn, each ant can move once. So the paths need to be such that ants can follow each other without overlapping. For example, if the shortest path has a length of 4 steps (including start), then the first ant will take 4 steps, the next can start moving in the next step, etc. The total time would be (number of ants - 1) + path length. But if there are multiple paths, we can distribute the ants across them to reduce the total time.
+- So perhaps the solution involves finding all possible shortest paths (or combinations of paths of the same length) and determining the optimal way to split the ants among them.
+
+4. **Simulating the Ant Movement:**
+- Once the paths are determined, simulate each turn. For each turn, determine which ants can move to the next room in their path without conflicts. Each ant moves one step per turn, but you can't have two ants in the same room (except start/end). So the movement has to be coordinated.
+- For example, if two ants are moving into adjacent rooms, they can't both move into the same room at the same time. So the order in which they move might matter. However, the problem says that each tunnel can be used once per turn. Wait, the instructions say: "Each tunnel can only be used once per turn." So each link (tunnel) can be traversed once per turn. That complicates things. So in one turn, a tunnel can only have one ant moving through it. So even if two ants are trying to go through the same tunnel in the same turn, only one can do so.
+Wait, let me recheck the problem statement:
+
+"Each tunnel can only be used once per turn."
+
+So a tunnel is a link between two rooms. So each turn, each tunnel can be used by one ant. That's a key constraint. So even if a path has a tunnel that's part of multiple paths, if two ants need to go through the same tunnel in the same turn, only one can do so. That adds complexity. So the pathfinding must account for this.
+This means that the solution isn't just about finding the shortest path but also ensuring that the paths chosen don't have overlapping tunnels in the same step. Or, if they do, the movement is scheduled such that the tunnel is used once per turn.
+This seems complicated. How do you model this?
+Hmm. So the problem requires that each tunnel is used at most once per turn. So during each step (turn), each tunnel can have at most one ant moving through it. So if two ants are moving through the same tunnel in the same turn, that's invalid.
+But the ants are moving from room to room through tunnels. So each ant's movement from a room A to room B uses the tunnel A-B. So in a single turn, that tunnel can't be used by another ant.
+Therefore, when planning the movement of the ants, we need to ensure that in each step, all the movements are such that no tunnel is used more than once.
+This complicates the simulation. So even if two ants are on different paths, if their next step uses the same tunnel (in the same direction or opposite?), it's not allowed.
+Wait, the tunnel is bidirectional. So if a tunnel connects A and B, moving from A to B or B to A would both use the same tunnel. So if one ant moves A->B, another can't move B->A in the same turn, because they're using the same tunnel. So each tunnel can be used once per turn, regardless of direction.
+So the movement in each step must not have two ants moving through the same tunnel in either direction.
+Therefore, the pathfinding algorithm must take this into account, or the simulation must manage this constraint.
+
+This seems challenging. How do we approach this?
+
+Perhaps the first step is to model the problem as a flow network, where each edge (tunnel) has a capacity of 1 per time step. But since time steps are dynamic, this might not be straightforward.
+Alternatively, perhaps the problem can be modeled as a BFS where each state represents the positions of all ants and the time step. However, with a large number of ants, this approach would be computationally infeasible.
+Another approach is to precompute the possible paths for the ants and then schedule their movement in such a way that the tunnel constraints are respected each turn. This seems more manageable.
+But how to find the optimal set of paths and schedule the ants' movements to minimize the total time.
+Alternatively, perhaps the problem allows for ants to take the shortest path, and the constraints are handled by allowing ants to move in waves, using BFS to find the shortest path for each ant but considering the tunnel usage per step.
+Wait, the problem says that "the shortest path is not necessarily the simplest." So perhaps the optimal solution requires using multiple paths in parallel, allowing ants to move through different paths to avoid congestion.
+
+But how to model that.
+
+Alternatively, the problem might be similar to the problem of scheduling unit-capacity flows with multiple paths, where each edge can be used once per time unit.
+This is getting into more complex algorithmic territory. Maybe the problem is intended to use BFS to find the shortest path, then augment with other paths that don't share edges, but I'm not sure.
+Alternatively, perhaps the solution is to model the problem as a layered graph where each layer represents a time step, and edges connect nodes in consecutive layers to model the movement through tunnels with the capacity constraint. However, building such a graph might be complicated.
+Alternatively, perhaps the solution is to find edge-disjoint paths. Since each tunnel can be used once per turn, if multiple ants are moving through different tunnels each turn, they can proceed in parallel.
+But how to distribute the ants among the paths to minimize the total steps.
+Let me think of an example. Suppose there are two paths from start to end, each of length 3 (so 3 steps). If I have 4 ants, sending two through each path would take (2-1) +3 = 4 steps. Because the first ant in each path takes 3 steps, the next takes 3+1=4. So total steps would be max of the two paths. But if the paths are of different lengths, the total steps would depend on the distribution.
+Alternatively, for each path, the number of steps required is (number of ants assigned to the path -1) + path length.
+So the total steps would be the maximum of these values across all paths.
+So the problem reduces to splitting the ants into different paths such that the maximum of (k_i -1 + len_i) is minimized, where k_i is the number of ants assigned to path i, and len_i is the length of path i.
+
+So the steps would be:
+
+1. Find all possible paths from start to end, sorted by length.
+2. Assign the ants to these paths in a way that balances the (k_i -1 + len_i) across paths.
+But how to select the optimal set of paths.
+This seems like a problem of finding the maximum number of edge-disjoint shortest paths, then distributing the ants among them.
+Alternatively, using BFS to find the shortest path, then find the next shortest path that doesn't use the same edges as the first, etc., until no more paths can be found. Then assign ants to these paths to minimize the total steps.
+But the tunnel usage per turn complicates things. Because even if two paths share an edge, using them in the same step would be invalid. So maybe the paths need to be edge-disjoint.
+
+But how?
+
+Alternatively, perhaps the problem allows for paths that share edges but in such a way that the usage of the edge is staggered in time. For example, if two paths share an edge, the ants on each path can use the edge in different steps. But scheduling that might be complex.
+This is getting a bit stuck. Let's look for similar problems or algorithms.
+This seems similar to the problem of concurrent flows with edge capacity constraints. Or perhaps like the problem of packet routing in networks where each edge can transmit one packet per time unit.
+In such cases, the solution often involves finding paths and then scheduling the movement, considering the capacity.
+
+Another approach is to model each ant's movement through the graph, ensuring that at each step, their moves don't use the same tunnel.
+But with a large number of ants, this could be computationally expensive.
+
+Alternatively, for the simulation part, once the paths are determined, schedule the ants' movement in a way that in each step, no two ants use the same tunnel. So even if two ants are on different paths, if their next step uses the same tunnel, they can't move in the same step.
+This suggests that the paths need to be edge-disjoint, so that in each step, the ants can move through their respective tunnels without conflict.
+
+So perhaps the problem requires finding a set of edge-disjoint paths, and then assigning ants to those paths. The maximum number of such paths is limited by the graph's structure.
+
+But how to find edge-disjoint shortest paths.
+
+Another idea: Using BFS to find the shortest path, then remove its edges from the graph, and find the next shortest path in the residual graph, and so on. Then distribute ants among these paths.
+But this might not find all possible edge-disjoint paths. For example, there might be two different paths of the same length that share some edges. Removing edges from the first path would block the second.
+
+Alternatively, using an algorithm like the Edmonds-Karp algorithm for maximum flow, which finds augmenting paths in BFS order. Since each edge has a capacity of 1 (since each tunnel can be used once per step), the maximum flow would correspond to the number of edge-disjoint paths. Then, the ants can be distributed among these paths.
+
+Wait, but the problem is about moving ants over time steps, not per edge capacity. But perhaps modeling it as a flow problem where each edge can carry one ant per time step. Then, the problem becomes finding the minimum time to route all ants from start to end, considering edge capacities per time step.
+
+This is getting into more complex flow over time problems.
+
+Alternatively, perhaps the problem can be modeled as a dynamic network flow. Each time step represents a layer in the graph, and ants move through the layers. Each tunnel in each time step has a capacity of 1. Then, the problem is to find a flow of ants from start to end across the time-expanded graph.
+
+But this approach would be computationally intensive for large graphs and many ants.
+
+Given that the problem is part of a coding project, perhaps the intended solution is to find the shortest path, then simulate the ants moving along that path, handling the tunnel constraints. But this may not be optimal if there are multiple paths available.
+
+Alternatively, perhaps the intended approach is to find all possible shortest paths (using BFS) and then select a set of paths that are edge-disjoint. Then distribute ants among these paths to minimize the total steps.
+
+So, the steps could be:
+
+1. Parse and validate the input.
+
+2. Find all possible shortest paths from start to end. Since BFS gives the shortest path, perhaps find all possible shortest paths (with the same minimal length).
+
+3. Among these, select a set of edge-disjoint paths. The maximum number of edge-disjoint paths can be found, for example, by using a flow algorithm where each edge has capacity 1, and finding the maximum flow.
+
+4. Once we have the maximum number of edge-disjoint paths of the shortest length, distribute the ants among them. For example, if there are 3 such paths and 10 ants, assign 4,3,3 ants. Then the total time would be (4-1) + len, (3-1)+len, (3-1)+len → max of 4+ len-1, etc.
+
+Wait, the time for each path would be (number of ants assigned to the path -1) + path length. The total time is the maximum of these values across all paths. So distributing ants evenly across the paths minimizes the maximum.
+
+So if there are k edge-disjoint paths of length L, then each path can take ceil(total_ants / k) ants, leading to time (ceil(total_ants/k) -1) + L.
+
+Thus, the problem reduces to finding the maximum number of edge-disjoint shortest paths, then distributing the ants among them.
+
+This seems like a feasible approach.
+
+So, the steps for the algorithm could be:
+
+- Use BFS to find the shortest path length L.
+
+- Then, model the problem as a flow network where each edge has a capacity of 1 (since each edge can be part of one path). Then, find the maximum number of edge-disjoint paths of length L. This can be done by constructing a flow network where edges are directed (for the paths) and using a standard max flow algorithm. Alternatively, use a modified BFS to find edge-disjoint paths.
+
+But perhaps using BFS for each path, and after finding a path, remove its edges from the graph. Repeat until no more paths of length L can be found.
+
+However, this greedy approach might not yield the maximum number of edge-disjoint paths. For example, there could be two paths that share an edge, but by choosing a different path first, more paths can be found.
+
+Thus, a more reliable method is needed. Here's where max flow algorithms come into play. The idea is to model the graph as a flow network where each edge has a capacity of 1 (since each edge can be part of only one path). Then, the maximum number of edge-disjoint paths from start to end is the value of the max flow.
+
+But how to enforce that the paths are of the shortest length. Because the max flow may include paths longer than L.
+
+Ah, right. So we need to ensure that the paths found are all of the minimal length. So first, find the shortest path length L using BFS. Then, in the residual graph (the original graph), find edge-disjoint paths that are exactly of length L.
+
+But how?
+
+Alternatively, find all possible paths of length L, then model the problem as finding the maximum number of edge-disjoint such paths.
+
+This seems challenging.
+
+Alternatively, the problem might be simplified by assuming that the optimal solution uses the shortest possible paths (i.e., paths of minimal length). So the first step is to find the shortest path length. Then, find as many edge-disjoint paths as possible of that length.
+
+But how to find edge-disjoint paths of exactly length L.
+
+This might require a modified BFS that tracks the number of edges used and ensures that the path length is exactly L.
+
+But I'm not sure.
+
+Alternatively, perhaps the problem allows using any paths, but the goal is to minimize the time. So longer paths would require more steps, so it's better to use as many shortest paths as possible.
+
+But this is getting complicated.
+
+Perhaps the intended solution is to use the shortest path possible, and then for each ant, assign them to that path, but account for the fact that ants can't move into the same room at the same time, leading to a queue-like movement. However, the tunnel constraint complicates this.
+
+Alternatively, maybe the problem expects that once the shortest path is found, the ants are moved along this path one after the other, with each ant waiting until the next room is available. For example, the first ant moves through the path in L steps. The next ant starts moving one step later, and so on. The total time would be (number_of_ants -1) + L.
+
+But this would not account for the possibility of using multiple paths to reduce the time.
+
+But according to the examples given, in example 1, the ants are taking different paths. For instance, in the first step, two ants move (L1-3 and L2-2). So they are on different paths. Thus, the solution involves using multiple paths.
+
+Therefore, the approach must involve finding multiple paths and distributing the ants among them.
+
+So the steps are:
+
+1. Parse and validate the input.
+
+2. Find the shortest path(s) from start to end.
+
+3. Determine the maximum number of edge-disjoint shortest paths.
+
+4. Split the ants among these paths to minimize the total steps.
+
+5. Simulate the movement of ants along these paths, ensuring that in each step, no two ants use the same tunnel.
+
+Now, breaking down each of these steps.
+
+**Step 1: Parsing and Validation**
+
+- Read the input file line by line.
+
+- Ignore comments (lines starting with #) unless they are ##start or ##end.
+
+- The first non-comment line is the number of ants. Must be a positive integer.
+
+- Then, parse the rooms. Each room has a name (no spaces, doesn't start with L or #), followed by x and y coordinates (integers). The ##start and ##end lines indicate the next room is the start or end. There must be exactly one start and end.
+
+- Then parse the links. Each link is "a-b", where a and b are existing rooms. Check that rooms exist, and that links are not duplicated (a-b is same as b-a), and no self links.
+
+- Handle all possible errors and output appropriate messages.
+
+**Step 2: Finding the Shortest Path**
+
+- Use BFS to find the shortest path from start to end. Record its length.
+
+- If no path exists, output an error.
+
+**Step 3: Finding Edge-Disjoint Shortest Paths**
+
+- The goal is to find as many edge-disjoint paths as possible, all of which have the minimal length.
+
+- One approach is to model this as a flow problem where each edge has a capacity of 1. Then, the maximum flow would represent the number of edge-disjoint paths.
+
+- However, since we need paths of exactly the minimal length, this complicates the approach.
+
+- Alternatively, after finding the shortest path via BFS, remove its edges and find the next shortest path. Repeat until no more paths of the same length are found. But this might not find all possible edge-disjoint paths.
+
+Alternatively, for each edge in the shortest path, when finding the next path, exclude those edges. However, this approach may not find all possible edge-disjoint paths if there are alternative routes of the same length.
+
+**Step 4: Assign Ants to Paths**
+
+- Once we have k edge-disjoint paths of length L, distribute the ants among them.
+
+- The time for each path is (number_of_ants_in_path -1) + L.
+
+- To minimize the total time, distribute the ants as evenly as possible among the paths.
+
+- For example, if there are 5 ants and 2 paths, assign 3 and 2 ants. The time would be (3-1)+L=2+L and (2-1)+L=1+L. The total time is max(2+L, 1+L) = 2+L.
+
+**Step 5: Simulating Movement**
+
+- For each step (turn), move ants along their paths.
+
+- Each ant can move to the next room in its path only if:
+
+a. The next room is empty (except for start and end).
+
+b. The tunnel (current room to next room) is not used by another ant in the same step.
+
+- So, in each step, iterate through the ants and try to move them, checking the constraints.
+
+But how to order the ants to prevent conflicts. For example, if two ants want to use the same tunnel, which one goes first?
+
+This could affect the simulation. However, the problem states that the movement should be the quickest possible, which suggests that the order should be optimized to allow as many ants as possible to move each step.
+
+This could be done by, for each step:
+
+- Collect all possible moves (each ant's next step) that are valid (room is empty, tunnel not used).
+
+- For each move, mark the tunnel as used and the next room as occupied.
+
+- Proceed in an order that allows the maximum number of ants to move. However, the order may affect this. For example, processing ants in a certain order may allow more moves.
+
+But how to determine the optimal order.
+
+This is tricky. One approach is to model the simulation step by step, in each step determining which ants can move without conflict. However, this could be computationally intensive for large numbers of ants.
+
+Alternatively, if the paths are edge-disjoint, then ants on different paths will not use the same tunnels, so their movement can be parallelized. In this case, each step can move all possible ants along their paths, as long as the next room is empty.
+
+But if two ants are moving into the same room (not start or end), then they can't. So the paths must be not only edge-disjoint but also node-disjoint (except for start and end). But the problem allows rooms to be part of multiple paths, as long as only one ant occupies them at a time.
+
+Wait, the problem states: "Each room can only contain one ant at a time (except at ##start and ##end which can contain as many ants as necessary)."
+
+So, even if paths are edge-disjoint, if two paths share a room (other than start/end), then ants from different paths can't be in that room at the same time. This adds another layer of complexity.
+
+This means that even if paths are edge-disjoint, if they share a room (node), then ants from different paths cannot be in that room at the same time. So the node capacity is 1.
+
+This complicates the simulation. So the paths not only need to be edge-disjoint but also node-disjoint except for start and end.
+
+This makes the problem significantly harder. So, the optimal solution would involve finding node-disjoint paths. But in many cases, node-disjoint paths are harder to find, especially in graphs with limited connectivity.
+
+Given this, perhaps the intended solution is to find a set of node-disjoint paths of the shortest length and distribute the ants among them.
+
+But how to find node-disjoint paths.
+
+This is similar to the problem of finding k node-disjoint paths between two nodes. Algorithms like the Suurballe's algorithm can find two node-disjoint paths, but for more than two, it's more complex.
+
+Alternatively, the problem can be modeled as a flow network where each node (except start and end) has a capacity of 1. Then, the maximum flow would correspond to the number of node-disjoint paths.
+
+But how to model node capacities. In flow networks, node capacities can be handled by splitting each node into two nodes: one for incoming edges and one for outgoing edges, connected by an edge with capacity equal to the node's capacity.
+
+In this case, since each room (node) can hold at most one ant (except start and end), we can split each node into two, connected by an edge of capacity 1. All incoming edges go into the first part, and all outgoing edges leave the second part. Start and end nodes would not be split, as they can have unlimited ants.
+
+Once the graph is transformed, the maximum flow would correspond to the number of node-disjoint paths. Each path would go through a sequence of nodes without overlapping with others.
+
+This approach would allow finding the maximum number of node-disjoint paths from start to end. The ants can be distributed among these paths to minimize the total steps.
+
+So the steps are:
+
+1. Parse and validate input.
+
+2. Find the shortest path length using BFS.
+
+3. Create a transformed graph where each node (except start and end) is split into two with a capacity of 1.
+
+4. Compute the maximum flow from start to end in this transformed graph. The max flow value is the number of node-disjoint paths.
+
+5. Extract these paths and ensure they have the minimal length.
+
+Wait, but the max flow may include paths longer than the shortest path. So this approach may not work as it could include longer paths. So we need to ensure that the paths found are all of the minimal length.
+
+Hmm. This is a problem. So, the flow approach would find the maximum number of node-disjoint paths, but they may not all be of the minimal length.
+
+To enforce that the paths are of minimal length, perhaps we need to modify the flow algorithm to find paths of exactly the shortest length.
+
+This complicates things.
+
+Alternatively, after finding the shortest path length, we can augment the flow network to only allow paths of that length. But this seems difficult.
+
+Alternatively, the shortest path can be found, and then use a modified BFS to find node-disjoint paths of the same length.
+
+But this may not be feasible.
+
+Given the time constraints and the scope of the project, perhaps the intended solution is to find the shortest path, then simulate the ants moving along it, ensuring that each step follows the constraints. However, this would not handle cases where multiple paths are available to reduce the total time.
+
+But given the examples, it's clear that the ants can take different paths.
+
+So, perhaps the solution involves:
+
+- Finding the shortest path.
+
+- Then, find all possible augmenting paths (node-disjoint) of the same length.
+
+- Assign ants to these paths.
+
+Then, simulate their movement.
+
+But how to find those paths.
+
+Alternatively, given the complexity, perhaps the problem expects a solution that uses BFS to find the shortest path, then simulate the ants moving along that path, taking into account that ants cannot overlap in rooms and tunnels.
+
+But this would not be optimal in cases where multiple paths are available. However, given the time constraints, this might be the initial approach.
+
+But the problem says that the quickest way is required. So the simulation must find the optimal solution.
+
+This suggests that the solution requires a more sophisticated approach, possibly involving flow networks.
+
+Given that, perhaps the correct approach is:
+
+1. Parse the input.
+
+2. Validate it.
+
+3. Find the shortest path using BFS.
+
+4. Use a flow network approach to find the maximum number of node-disjoint shortest paths.
+
+5. Distribute the ants among these paths.
+
+6. Simulate the movement step by step, ensuring that in each step, the ants move without conflicts.
+
+Now, breaking this down:
+
+**Step 3: Find Shortest Path**
+
+- Perform BFS from start to end to find the shortest path length L.
+
+**Step 4: Find Node-Disjoint Shortest Paths**
+
+- To find the maximum number of node-disjoint paths of length L.
+
+- One way to do this is to perform BFS for each path, and after finding a path, remove its nodes (except start and end) from the graph. Repeat until no more paths of length L are found.
+
+But this is a greedy approach and may not yield the maximum number of paths.
+
+Alternatively, use the flow network approach with node capacities.
+
+**Flow Network Approach:**
+
+- Split each room (node) into two nodes: an 'in' node and an 'out' node.
+
+- For each room (except start and end):
+
+- Create an edge from 'in' to 'out' with capacity 1. This represents the node's capacity of holding at most one ant.
+
+- For each original link a-b:
+
+- Create an edge from the 'out' node of a to the 'in' node of b, capacity 1.
+
+- Create an edge from the 'out' node of b to the 'in' node of a, capacity 1.
+
+- For the start node:
+
+- All outgoing edges go from the start's 'out' node to the 'in' nodes of connected rooms. The start's 'in' and 'out' nodes are connected with infinite capacity (or a very high number, as ants can be in start any number).
+
+- Similarly for the end node.
+
+Then, compute the maximum flow from start's 'out' node to end's 'in' node. The number of paths found will be the max flow, which corresponds to the number of node-disjoint paths.
+
+However, this approach finds node-disjoint paths, but their lengths might vary. To ensure that all paths are of length L (the shortest), we need to restrict the BFS to paths of exactly length L.
+
+This is where the complexity arises. So perhaps the solution is to:
+
+1. Find the shortest path length L.
+
+2. Use BFS to explore paths of exactly L steps, and find as many node-disjoint paths as possible.
+
+But how to find all such paths.
+
+Alternatively, for each edge in the flow network, assign a weight of 1, and use a modified BFS that tracks the number of steps. Only allow paths that use exactly L steps.
+
+But this is not standard in flow algorithms.
+
+Alternatively, after finding the shortest path, remove all edges and nodes that are not part of any shortest path. Then, find the maximum number of node-disjoint paths in this subgraph.
+
+This way, all paths in the subgraph are of length L, and the maximum number of node-disjoint paths can be found.
+
+But how to find this subgraph.
+
+This approach would involve:
+
+- For each node, compute the distance from start and the distance to end. A node is part of a shortest path if distance(start, node) + distance(node, end) = L.
+
+- Similarly for edges: an edge a-b is part of a shortest path if distance(start, a) + 1 + distance(b, end) = L.
+
+Then, construct a subgraph consisting of only such nodes and edges.
+
+In this subgraph, all paths from start to end are of length L.
+
+Then, find the maximum number of node-disjoint paths in this subgraph.
+
+This can be done using the flow network approach described earlier.
+
+Once the maximum number of node-disjoint paths is found, distribute the ants among them.
+
+**Simulating Movement:**
+
+Once the paths are determined, the simulation can proceed step by step. Each ant is assigned to a path and moves along it. The simulation must ensure that:
+
+- No two ants are in the same room (except start/end).
+
+- No two ants use the same tunnel in the same step.
+
+Since the paths are node-disjoint (except start/end), the rooms in the paths (other than start/end) are unique to each path. So, ants from different paths won't collide in rooms. Also, since the paths are edge-disjoint (as part of being node-disjoint), ants from different paths won't use the same tunnel. Thus, the simulation can proceed by moving each ant along its path one step per turn, and all ants can move simultaneously without conflicts.
+
+Wait, but node-disjoint paths imply that the only common nodes are start and end. So, ants from different paths will only meet at start and end. Thus, during the simulation, as long as ants are on different paths, they can move freely.
+
+Thus, the simulation can proceed by moving each ant along its path one step each turn, as long as the next room is available. Since the paths are node-disjoint, the next room (other than start/end) will be unique to each ant's path. So, no two ants will try to enter the same room except at start and end.
+
+But start and end can have multiple ants. So, ants can leave the start and arrive at the end in the same step.
+
+Thus, the simulation steps would be:
+
+For each turn:
+
+1. For each ant that is not at the end:
+
+a. Check if the next room in its path is available (empty if it's not the start or end).
+
+b. Check if the tunnel (current room to next room) is not used in this turn.
+
+c. If both conditions are met, mark the ant to move.
+
+2. Once all ants have been checked, move all marked ants:
+
+a. For each moving ant, update their current room to the next room.
+
+b. Mark the tunnel as used for this turn.
+
+c. If the next room is not start or end, mark it as occupied.
+
+3. Record the moves for this turn.
+
+This process repeats until all ants have reached the end.
+
+But if the paths are node-disjoint, then except for start and end, each room is part of only one path. So, no two ants will ever need to enter the same room (except start/end), and tunnels are unique to each path. Thus, the simulation can proceed by moving each ant one step each turn, and all ants can move simultaneously without conflict.
+
+This would significantly simplify the simulation. Thus, the key is to find as many node-disjoint shortest paths as possible, assign ants to them, and then simulate their movement along these paths, one step per turn.
+
+In this case, the total time would be (max number of ants per path -1) + path length.
+
+Thus, the steps are:
+
+1. Parse and validate input.
+
+2. Check if a path exists from start to end. If not, error.
+
+3. Find the shortest path length L.
+
+4. Construct the subgraph of all nodes and edges that are part of any shortest path.
+
+5. Find the maximum number of node-disjoint paths in this subgraph using flow algorithms.
+
+6. Assign ants to these paths as evenly as possible.
+
+7. Simulate the movement of ants along these paths, with each ant moving one step per turn. Since the paths are node-disjoint, there are no room or tunnel conflicts.
+
+This would ensure the quickest movement.
+
+**Implementation Steps:**
+
+Now, breaking down into implementation steps for Go:
+
+1. **Input Parsing and Validation:**
+
+- Read the input file.
+
+- Extract number of ants. Must be a positive integer.
+
+- Parse rooms. Check for duplicates, invalid names, coordinates. Ensure exactly one start and one end.
+
+- Parse links. Check that rooms exist, no self links, no duplicate links.
+
+- Handle comments and invalid lines.
+
+2. **Building the Graph:**
+
+- Represent rooms as nodes.
+
+- Represent links as edges in an adjacency list.
+
+3. **Shortest Path Check:**
+
+- Perform BFS from start to end to find shortest path length L. If no path, error.
+
+4. **Construct Subgraph of Shortest Paths:**
+
+- For each node, compute distance from start (d_start) and distance to end (d_end).
+
+- A node is in the subgraph if d_start + d_end == L.
+
+- An edge a-b is in the subgraph if d_start[a] + 1 + d_end[b] == L or d_start[b] +1 + d_end[a] == L.
+
+- This gives all nodes and edges that are part of any shortest path.
+
+5. **Find Node-Disjoint Paths:**
+
+- Use the flow network approach with split nodes to model node capacities.
+
+- Create a new graph where each node (except start and end) is split into in and out nodes, connected by an edge of capacity 1.
+
+- For edges in the subgraph, add directed edges with capacity 1.
+
+- Compute maximum flow from start to end in this new graph. The max flow value is the number of node-disjoint paths.
+
+6. **Extract Paths from Flow:**
+
+- Decompose the flow into individual paths.
+
+- Ensure each path has length L.
+
+7. **Distribute Ants Among Paths:**
+
+- Calculate how many ants to assign to each path to minimize the maximum (k_i -1 + L), where k_i is the number of ants in path i.
+
+- This is done by dividing the ants as equally as possible among the paths.
+
+8. **Simulate Movement:**
+
+- For each ant, track its current position and path.
+
+- For each turn, move each ant along its path if possible.
+
+- Record the moves and print them in the required format.
+
+**Potential Challenges:**
+
+- Efficiently implementing the flow algorithm with split nodes.
+
+- Extracting the paths from the flow.
+
+- Handling cases where the subgraph has multiple shortest paths but not enough node-disjoint paths.
+
+- Efficiently simulating the movement, especially with a large number of ants.
+
+**Testing:**
+
+- Create test cases with various scenarios: single path, multiple node-disjoint paths, no path, invalid input.
+
+- Ensure that the program handles all edge cases and errors correctly.
+
+**Possible Optimizations:**
+
+- Precompute the BFS distances for all nodes to quickly construct the subgraph.
+
+- Use a more efficient max flow algorithm like Dinic's algorithm for the flow part.
+
+**Documentation and Code Structure:**
+
+- Structure the code into packages or modules for parsing, graph construction, BFS, flow computation, and simulation.
+
+- Use Go's standard libraries for data structures like queues, maps, etc.
+
+- Include unit tests for each component.
+
+**Sources for Algorithms:**
+
+- BFS for shortest path: Standard algorithm, can be found in any algorithms textbook or online resource.
+
+- Max flow with node capacities: Resources like CLRS or online tutorials on network flow. Splitting nodes into in and out is a common technique.
+
+- Dinic's algorithm for max flow: More efficient for graphs with multiple edges and larger flows.
+
+**Error Handling:**
+
+- Check all possible invalid input scenarios and output appropriate errors.
+
+- Use detailed error messages where possible.
+
+**Output Format:**
+
+- Print the input file content first.
+
+- Then print each turn's moves in the format "Lx-y ...".
+
+- Ensure ants are numbered from 1 to N and rooms are named correctly.
+
+**Final Steps:**
+
+- Implement each component step by step, testing each part thoroughly.
+
+- Integrate the components and test the whole pipeline.
+
+- Optimize for performance if necessary.
+
+- Write documentation and ensure code follows Go best practices.
+
+Here's a step-by-step guide to approach the project without providing code or solutions:
+
+1. Understand the Input Format & Requirements
+Key Elements:
+
+Ant count (first line, must be ≥1).
+
+Rooms: name coord_x coord_y (with ##start/##end markers).
+
+Links: room1-room2.
+
+Validation Rules:
+
+Rooms must have unique names not starting with L/#.
+
+Links must connect valid rooms, no duplicates (e.g., A-B and B-A are considered the same).
+
+Ensure exactly one ##start and ##end room.
+
+Error Handling:
+
+Check for invalid formats (e.g., non-integer coordinates, missing start/end).
+
+Exit with ERROR: invalid data format for violations.
+
+2. Build the Farm Structure
+Graph Representation:
+
+Create a graph where nodes are rooms and edges are links.
+
+Use adjacency lists or maps to store connections.
+
+Special Rooms:
+
+Track the start and end rooms explicitly.
+
+3. Validate Path Existence
+Shortest Path Check:
+
+Use Breadth-First Search (BFS) to confirm a path exists between start and end.
+
+If no path exists, exit with an error.
+
+4. Optimize Ant Movement
+Key Constraints:
+
+One ant per room (except start/end).
+
+Each tunnel used once per turn.
+
+Pathfinding Strategy:
+
+Find the shortest path(s) using BFS.
+
+Identify node-disjoint paths (paths that don’t share rooms except start/end) to allow parallel ant movement.
+
+Use flow-network techniques to maximize concurrent paths:
+
+Split each room into "in" and "out" nodes to model node capacities.
+
+Compute max flow to determine the number of node-disjoint paths.
+
+5. Assign Ants to Paths
+Distribution Logic:
+
+Split ants evenly across available paths to minimize total steps.
+
+Formula: For each path, total steps = (ants_in_path - 1) + path_length.
+
+Final steps = maximum of all path steps.
+
+6. Simulate Ant Movement
+Simulation Steps:
+
+For each turn, move ants along their assigned paths.
+
+Ensure no two ants occupy the same room (except start/end).
+
+Track tunnel usage to prevent conflicts.
+
+Output Format:
+
+Print the original input first.
+
+For each turn, output moves like Lx-y (ant x moves to room y).
+
+7. Handle Edge Cases
+No Valid Path: Output error immediately.
+
+Single Room: Start and end are the same (invalid per rules).
+
+Large Inputs: Optimize BFS and flow algorithms for speed.
+
+8. Testing & Debugging
+Unit Tests:
+
+Test parsing, graph creation, BFS, and path validation.
+
+Example: Ensure ##start/##end are correctly identified.
+
+Integration Tests:
+
+Validate full simulations match expected outputs (use provided examples).
+
+Error Cases:
+
+Test invalid ants (0, negative), duplicate rooms, and broken links.
+
+9. Documentation & Code Quality
+Code Structure:
+
+Separate parsing, graph logic, pathfinding, and simulation into packages.
+
+Error Messages:
+
+Make them specific (e.g., ERROR: no start room).
+
+10. Bonus (Visualizer)
+Optional Step:
+
+Use room coordinates to plot ant movement.
+
+Read output from lem-in and animate ants moving through rooms.
+
+Resources for Learning:
+BFS/DFS: GeeksforGeeks
+
+Flow Networks: Network Flow Basics
+
+Graph Representation: Go by Example
+
+Example Workflow:
+Parse test0.txt and validate data.
+
+Find shortest path (e.g., start → 3 → 1 → end).
+
+Identify node-disjoint paths (e.g., start → 4 → 3 → 1 → end and start → 6 → 5 → 2 → end).
+
+Assign ants to paths (e.g., 2 ants on path1, 1 on path2).
+
+Simulate movement: Each ant moves one room per turn, avoiding conflicts.

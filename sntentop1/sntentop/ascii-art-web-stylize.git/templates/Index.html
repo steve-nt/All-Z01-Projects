@@ -1,0 +1,30 @@
+{{define "Index"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+        <h1>{{.Title}}</h1>
+        <nav>
+            <a href="/home"><i class="fas fa-home"></i> HOME</a>
+            <a href="/project"><i class="fas fa-tasks"></i> PROJECT</a>
+            <a href="/converter"><i class="fas fa-exchange-alt"></i> CONVERTER</a>
+            <a href="/team"><i class="fas fa-users"></i> TEAM</a>
+        </nav>
+    </header>
+    <main class="{{.PageClass}}">
+        {{template "content" .}}
+    </main>
+    <footer>
+        <p>ZONE01 2024 &copy; ASCII-ART-WEB <br> ttarara | xkissas | sntentop</p>
+    </footer>
+</body>
+</html>
+{{end}}

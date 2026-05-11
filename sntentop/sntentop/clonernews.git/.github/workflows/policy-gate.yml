@@ -1,0 +1,21 @@
+# This workflow blocks pull requests that do not satisfy the shared delivery gate.
+# Track A owns CI policy checks through repository-managed scripts.
+# Public API: on pull_request, run script-based policy validation and boundary checks.
+# Constraints: fail closed when policy script validation fails.
+
+name: Policy Gate
+
+on:
+  pull_request:
+    branches:
+      - "**"
+
+jobs:
+  policy-gate:
+    name: Policy Gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run policy gate checks
+        run: npm run ci:policy

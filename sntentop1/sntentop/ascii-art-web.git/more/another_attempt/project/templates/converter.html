@@ -1,0 +1,30 @@
+{{define "content"}}
+<h2>CONVERTER</h2>
+<h1>ASCII-ART-WEB</h1>
+
+<section>
+    <h3>Convert Your Text to ASCII Art</h3>
+    <form action="/input" method="POST">
+        <label for="input-text">Enter your text:</label><br>
+        <input type="text" id="input-text" name="text" placeholder="Type here..." required><br><br>
+
+        <p>Select a banner:</p>
+        <input type="radio" id="standard" name="banner" value="standard" checked>
+        <label for="standard">Standard</label><br>
+        
+        <input type="radio" id="shadow" name="banner" value="shadow">
+        <label for="shadow">Shadow</label><br>
+
+        <input type="radio" id="thinkertoy" name="banner" value="thinkertoy">
+        <label for="thinkertoy">Thinkertoy</label><br><br>
+
+        <button type="submit">Generate ASCII Art</button>
+    </form>
+</section>
+<section class="output-section">
+    <h3>Conversion Output</h3>
+    <div id="output-box">
+        
+    </div>
+</section>
+{{end}}

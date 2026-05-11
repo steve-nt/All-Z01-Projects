@@ -1,0 +1,463 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap');
+
+body {
+  font-family: 'Kaisei Opti', serif;
+  position:relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;      /* stays in place while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../static/images/forumbackround.jpg") no-repeat center/cover;
+  opacity: 0.1;        /* adjust transparency */
+  z-index: -1;          /* behind all content */
+}
+.navbar {
+  display: flex;
+  justify-content: space-between; /* pushes left + right groups apart */
+  align-items: center;            /* vertically centers everything */
+  padding: 0px 35px;
+  padding-top:30px;
+  font-family: 'Kaisei Opti', serif;
+  background-color:black;
+}
+.navbar-left {
+  display: flex;
+  gap: 5px; /* space between left items */
+
+}
+
+/* Right group: items side-by-side */
+.navbar-right {
+  display: flex;
+  align-items:center;
+  gap: 15px; /* space between right items */
+}
+
+
+.logo{
+  font-weight: normal;
+  font-size:3rem;
+line-height: 1;
+}
+
+
+.user{
+  color:white;
+  text-decoration:none;
+  font-weight: normal;
+  font-size:1.7rem;
+line-height: 3.9rem;
+}
+
+
+.bell{
+  width:2rem;
+  height:2rem;
+  color:white;
+}
+
+.notification-container{
+  cursor:pointer;
+  position:relative;
+  z-index:2000;
+}
+.badge {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      background: gray;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 0 1px gray; /* small white outline */
+}
+
+.logout-btn{
+  outline:none;
+  border:none;
+  margin:0.9rem 0px;
+  padding: 14px 16px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size:1.6rem;
+  font-family: 'Kaisei Opti', serif;
+}
+.btn {
+  margin:0.9rem 0px;
+  padding: 14px 16px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size:1.6rem;
+}
+
+.line {
+  width: 1px;
+  height: 45px;
+  background-color: white;
+  margin: 5px 10px;
+}
+.navbar-left {
+  display: flex;
+  gap: 5px; /* space between left items */
+}
+
+.navbar-right {
+  display: flex;
+  gap: 15px; /* space between right items */
+}
+
+
+
+
+
+.main-container{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+  font-family: 'Kaisei Opti', serif;
+}
+
+.created-posts{
+  display:none;
+  flex-direction:column;
+  width:87vw;
+}
+.liked-posts{
+  display:none;
+  flex-direction:column;
+  width:87vw;
+}
+
+.blank{
+  width:87%;
+  height:5vh;
+}
+.big-line{
+  width:87vw;
+  height: 1px;
+  background-color: white;
+  margin-top:10px ;
+  opacity:0.7;
+}
+.bottom-blank{
+  flex:1;
+}
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+
+article{
+  display:flex;
+  flex-direction:column;
+}
+
+.post-line{
+  width:87vw;
+  height: 1px;
+  background-color: white;
+  margin-bottom:40px ;
+  margin-top:10px ;
+  opacity:0.7;
+}
+
+.post-upper{
+  display:flex;
+  justify-content:flex-end;
+  padding-bottom:5rem;
+  margin: 0px 10px;
+}
+
+.post-upper-left{
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+  flex:1;
+  font-size:1.5rem;
+}
+.post-categories{
+  display:flex;
+  gap:20px;
+}
+.post-category{
+  padding:0px 9px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  font-size:0.9rem;
+}
+.post-content {
+  white-space: pre-line;
+  font-size:1.2rem;
+}
+.image{
+  width: 20rem;
+  height: auto;
+  border-radius: 5px;
+}
+.post-upper-right{
+  width:60%;
+}
+.post-title{
+  font-size:2rem;
+}
+.post-lower{
+  display:flex;
+  justify-content:space-between;
+  font-size: 1.5rem;
+  margin: 0px 10px;
+}
+
+
+.likes{
+  display:flex;
+  gap:0.6rem;
+}
+
+
+.dislikes{
+  display:flex;
+  gap:0.6rem;
+}
+
+
+.comments{
+  display:flex;
+  gap:0.6rem;
+}
+
+
+
+.liked{
+background-color: transparent;      /* green background */
+  color: gray;                   /* text color */
+  border: none;                   /* remove default border */
+  cursor: pointer;                /* pointer on hover */
+  font-family: 'Kaisei Opti', serif;
+  font-size: 1.5rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.liked:hover {
+  background-color:transparent;      
+  transform: scale(1.07);         /* subtle zoom effect */
+}
+
+.liked:active {
+  transform: scale(0.95);         /* press-down effect */
+}
+
+
+
+
+.unliked{
+background-color: transparent;      /* green background */
+  color: white;                   /* text color */
+  border: none;                   /* remove default border */
+  cursor: pointer;                /* pointer on hover */
+  font-family: 'Kaisei Opti', serif;
+  font-size: 1.5rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.unliked:hover {
+  background-color:transparent;      
+  transform: scale(1.07);         /* subtle zoom effect */
+}
+
+.unliked:active {
+  transform: scale(0.95);         /* press-down effect */
+}
+
+
+.footer{
+  padding:10px 20px;
+  font-size:10px;
+}
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* σκοτεινό φόντο */
+  display: none; /* κρυφό αρχικά */
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* === Εσωτερικό κουτί του popup === */
+.popup-content {
+  background-color: rgb(64, 64, 64);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: popupFadeIn 0.3s ease-out;
+}
+.error-message{
+  margin-bottom:2rem;
+}
+
+.error-btn{
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  margin:1rem;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  font-size:0.8rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+/* === Κουμπί κλεισίματος === */
+.popup-content button {
+  background-color: white;
+  margin: 1rem;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.error-btn:hover{
+  background-color:#555555;
+}
+.popup-content button:hover {
+  background-color:#555555;
+}
+
+/* === Χρώματα επιτυχίας και σφάλματος === */
+/* .popup.success .popup-content { */
+/*   border-top: 5px solid #4CAF50; */
+/* } */
+.popup.error .popup-content {
+  border-top: 5px solid black;
+}
+
+/* === Εμφάνιση === */
+.popup.show {
+  display: flex;
+}
+
+/* === Εφέ εμφάνισης === */
+@keyframes popupFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+
+
+
+
+.notifications{
+  background:#26282a;
+  height:88vh;
+  position:fixed;
+z-index:1000;
+  top:5rem;
+  right:12rem;
+  border-radius:5px;
+  padding:2rem;
+  display:none;
+  align-items:center;
+  flex-direction:column;
+  overflow-y:auto;
+}
+
+.notification{
+  color:inherit;
+  cursor:pointer;
+  text-decoration:none;
+  width:90%;
+  display:flex;
+  justify-content:space-between;
+}
+
+.notification-seen{
+  color:inherit;
+  text-decoration:none;
+  opacity:0.6;
+  width:90%;
+  display:flex;
+  justify-content:space-between;
+}
+.notification-image{
+  height:10vh;
+  width:auto;
+}
+
+.not-line{
+  width:93%;
+  height: 1px;
+  opacity:0.4;
+  margin-top:10px;
+  margin-bottom:10px;
+  flex-shrink:0;
+  background-color: white;
+}
+
+
+.profile-sections{
+  width:87%;
+  font-size:1.3rem;
+  padding:1rem 9rem;
+  padding-top:4rem;
+  display:flex;
+  justify-content:space-between;
+}
+
+.liked-section{
+  cursor:pointer;
+}
+.created-section{
+  cursor:pointer;
+}
+
+.activity-section{
+  cursor:pointer;
+}
+.activity-elements{
+  flex-direction:column;
+}
+
+.activity{
+  width:87vw;
+  display:flex;
+  gap:3rem;
+}
+
+.activity-left{
+  width:30%;
+}
+.activity-right{
+  flex:1;
+}
+

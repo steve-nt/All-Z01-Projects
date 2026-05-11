@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ASCII Art Web</title>
+        <!-- Link to the CSS file -->
+        <link rel="stylesheet" href="/static/css/style.css">
+    </head>
+
+
+<body>
+ <h1>ASCII Art Generator</h1>
+ <form method="POST" action="/ascii-art">
+  <label for="text">Enter text:</label><br>
+  <input type="text" id="text" name="text"><br><br>
+
+  <label for="banner">Choose a banner:</label><br>
+  <select id="banner" name="banner">
+   <option value="shadow">shadow</option>
+   <option value="standard">standard</option>
+   <option value="thinkertoy">thinkertoy</option>
+  </select><br><br>
+
+  <button type="submit">Generate</button>
+ </form>
+</body>
+</html>

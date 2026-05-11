@@ -1,0 +1,18 @@
+{{ define "edit_comment" }}
+
+<h2 style="margin-top:0;">Edit Comment</h2>
+
+<form method="POST" action="/edit-comment?id={{ .Comment.ID }}">
+  <textarea
+    name="content"
+    placeholder="Write your comment..."
+    required
+  >{{ .Comment.Content }}</textarea>
+
+  <div style="display:flex; gap:10px; flex-wrap:wrap;">
+    <button type="submit">Save Changes</button>
+    <a href="/post?id={{ .Comment.PostID }}"><button type="button">Cancel</button></a>
+  </div>
+</form>
+
+{{ end }}

@@ -1,0 +1,412 @@
+/* The global stylesheet sets the visual direction for the entire scaffold before feature CSS arrives.
+   Composed from reset, tokens, and animations layers. */
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;700;800&display=swap");
+@import "./styles/reset.css";
+@import "./styles/tokens.css";
+@import "./styles/animations.css";
+
+/* Color-scheme and font defaults live on the root so every nested component inherits the same baseline.
+   Explicit color-scheme declaration ensures light/dark mode CSS variables are activated. */
+:root {
+  color-scheme: dark light;
+  font-family: var(--font-body);
+  --app-footer-height: 2.3rem;
+}
+
+/* Layered gradients give the empty shell some depth without introducing extra DOM elements.
+   Dark mode uses warm-cool radial gradients; light mode uses subtle neutral gradients. */
+html {
+  min-height: 100%;
+  background:
+    radial-gradient(circle at top left, rgba(255, 180, 92, 0.16), transparent 34%),
+    radial-gradient(circle at top right, rgba(98, 156, 255, 0.16), transparent 28%),
+    linear-gradient(180deg, #060816 0%, #0b1020 48%, #090d18 100%);
+}
+
+@media (prefers-color-scheme: light) {
+  html {
+    background:
+      radial-gradient(circle at top left, rgba(217, 119, 6, 0.08), transparent 34%),
+      radial-gradient(circle at top right, rgba(59, 130, 246, 0.08), transparent 28%),
+      linear-gradient(180deg, #f8f9fa 0%, #ffffff 48%, #fafbfc 100%);
+  }
+}
+
+/* Text smoothing and line-height are centralized here so the boot screen reads cleanly across devices. */
+body {
+  min-height: 100vh;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* The app root fills the viewport so routed content can replace the boot screen without layout jumps. */
+#app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* The app header contains branding and navigation, fixed to top on desktop and sticky on mobile. */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* The site brand anchors the left edge with the logo/title and routes home on click. */
+.app-header__brand {
+  display: flex;
+  justify-self: start;
+  align-items: center;
+  gap: var(--space-sm);
+  text-decoration: none;
+  color: var(--color-text-strong);
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  transition: color 0.2s ease;
+}
+
+.app-header__brand:hover {
+  color: var(--color-accent);
+}
+
+/* Navigation links stay compact and are hidden on very small screens to preserve space. */
+.app-header__nav {
+  display: flex;
+  gap: var(--space-lg);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Feed tab rail lives in the sticky header so category changes remain visible while scrolling stories. */
+.app-header__feed-tabs {
+  grid-column: 2;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: none;
+}
+
+/* Header status area anchors right-column utility metadata without competing with feed tabs. */
+.app-header__status {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+}
+
+/* Loaded-count badge surfaces current in-view card count for the active feed. */
+.app-header__loaded-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.15rem;
+  padding: 0.45rem 0.72rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-surface), transparent 12%);
+  color: var(--color-text-muted);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Header tabs reuse feed tab semantics while tightening spacing for the sticky toolbar context. */
+.app-header__feed-tab {
+  min-height: 2.15rem;
+  padding: 0.5rem 0.78rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+/* Active feed tabs are clearly marked in the header to keep the current stream obvious. */
+.app-header__feed-tab.is-active {
+  border-color: rgba(255, 180, 92, 0.42);
+  background: rgba(255, 180, 92, 0.22);
+  color: var(--color-text-strong);
+}
+
+/* Pending state keeps tap/click feedback visible while the feed is still loading. */
+.app-header__feed-tab.is-pending {
+  transform: translateY(1px) scale(0.985);
+  border-color: rgba(255, 180, 92, 0.36);
+  background: rgba(255, 180, 92, 0.28);
+  color: var(--color-text-strong);
+}
+
+.app-header__nav-link {
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.app-header__nav-link:hover {
+  color: var(--color-text-strong);
+}
+
+.app-header__nav-link.active {
+  color: var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 2px;
+}
+
+/* The main content area grows to fill available space, pushing footer down on short content. */
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: var(--app-footer-height);
+}
+
+/* Feature containers are replaced by router, staying predictable across feed/detail swaps. */
+.app-feature {
+  flex: 1;
+  width: 100%;
+}
+
+/* Feed routes get a little breathing room so the content does not sit hard against the sticky header. */
+.app-route--feed {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(0.95rem, 1.4vw, 1.2rem);
+  padding-top: clamp(0.95rem, 1.4vw, 1.2rem);
+}
+
+/* Thin footer keeps authorship visible without competing with feature content. */
+.app-footer {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 110;
+  border-top: 1px solid var(--color-border);
+  background: color-mix(in oklab, var(--color-surface), transparent 20%);
+  padding: 0.42rem 0.9rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.76rem;
+  letter-spacing: 0.04em;
+  backdrop-filter: blur(10px);
+}
+
+.app-footer span {
+  white-space: nowrap;
+}
+
+/* The boot screen uses grid layout to keep the startup copy centered and responsive. */
+.boot-screen {
+  min-height: 100vh;
+  display: grid;
+  align-content: center;
+  gap: 1.25rem;
+  width: min(72rem, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 5rem 0;
+}
+
+/* The eyebrow acts as a compact status chip that sets the tone for the rest of the scaffold. */
+.eyebrow {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  color: var(--color-accent-soft);
+  background: rgba(255, 255, 255, 0.04);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+@media (prefers-color-scheme: light) {
+  .eyebrow {
+    background: rgba(15, 23, 42, 0.04);
+  }
+}
+
+/* Large display typography gives the scaffold a deliberate editorial feel instead of a generic landing page. */
+.display-title {
+  margin: 0;
+  color: var(--color-text-strong);
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 12vw, 8rem);
+  line-height: 0.92;
+  letter-spacing: -0.06em;
+  text-wrap: balance;
+}
+
+/* Copy blocks stay narrow so the empty-state messaging remains readable on wide screens. */
+.lede,
+.supporting-copy {
+  max-width: 38rem;
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: clamp(1rem, 1.1vw, 1.125rem);
+}
+
+/* Pills provide a quick visual summary of the project stack without requiring interactive UI. */
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Pills are styled as soft glass chips so the scaffold looks intentional even before data loads. */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.7rem 0.95rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: var(--color-surface);
+  color: var(--color-text-strong);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(10px);
+}
+
+/* Desktop breakpoint: 1440px and larger - Maximize spacing and visual hierarchy. */
+@media (min-width: 1440px) {
+  .app-header {
+    gap: var(--space-lg);
+    padding: var(--space-lg);
+  }
+
+  .app-header__brand {
+    font-size: 1.4rem;
+  }
+
+  .app-header__nav {
+    gap: var(--space-lg);
+  }
+
+  .app-header__nav-link {
+    font-size: 0.95rem;
+  }
+
+  .boot-screen {
+    width: min(80rem, 100%);
+  }
+}
+
+/* Tablet breakpoint: 768px to 1439px - Adjust header and nav spacing. */
+@media (max-width: 1439px) and (min-width: 768px) {
+  .app-header {
+    gap: var(--space-md);
+    padding: var(--space-md);
+  }
+
+  .app-header__brand {
+    font-size: 1.1rem;
+  }
+
+  .app-header__nav {
+    gap: var(--space-md);
+  }
+
+  .app-header__feed-tabs {
+    justify-content: center;
+  }
+
+  .app-header__feed-tab {
+    min-height: 2.05rem;
+    padding: 0.48rem 0.7rem;
+    font-size: 0.68rem;
+  }
+
+  .app-header__nav-link {
+    font-size: 0.85rem;
+  }
+}
+
+/* Mobile breakpoint: 375px to 767px - Stack vertically and compact layout. */
+@media (max-width: 767px) {
+  :root {
+    --app-footer-height: 2.5rem;
+  }
+
+  .app-header {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+    align-items: flex-start;
+  }
+
+  .app-header__brand {
+    font-size: 1rem;
+  }
+
+  .app-header__nav {
+    width: 100%;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+
+  .app-header__feed-tabs {
+    grid-column: auto;
+    justify-self: auto;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .app-header__status {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .app-header__feed-tab {
+    min-height: 1.95rem;
+    padding: 0.42rem 0.64rem;
+    font-size: 0.65rem;
+  }
+
+  .app-header__nav-link {
+    font-size: 0.8rem;
+    padding: var(--space-xs);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--color-border);
+  }
+
+  .boot-screen {
+    width: min(90vw, calc(100% - 1rem));
+    padding: 2rem 0;
+  }
+
+  .app-footer {
+    font-size: 0.66rem;
+    padding: 0.38rem 0.62rem;
+  }
+
+  .app-footer span {
+    white-space: normal;
+  }
+}

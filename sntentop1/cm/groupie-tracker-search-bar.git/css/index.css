@@ -1,0 +1,147 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #000000;
+}
+
+.artist-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.artist-card {
+    background: #9fcbe9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 200px;
+    padding: 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.artist-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.artist-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.artist-card a {
+    text-decoration: none;
+    color: #33332d;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+.artist-card a:hover {
+    color: #1e5bb5;
+}
+
+.filter-form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.filter-form input {
+    padding: 8px;
+    margin: 5px;
+    font-size: 1rem;
+}
+
+.filter-form button {
+    padding: 8px 15px;
+    font-size: 1rem;
+    background-color: #2a7ae2;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.filter-form button:hover {
+    background-color: #1e5bb5;
+}
+
+.filter-form select {
+    padding: 8px;
+    margin: 5px;
+    font-size: 1rem;
+}
+
+.filter-form .filter-row {
+    margin-bottom: 15px;
+}
+
+/* Search Bar */
+/* Container for search input */
+.search-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* Search icon inside the search input */
+.search-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    fill: #777;
+}
+
+/* Input field */
+input[type="search"] {
+    width: 100%;
+    max-width: 400px; /* Adjust the width of the search bar */
+    padding: 10px 40px 10px 40px; /* Padding to give space for the icon */
+    font-size: 16px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+/* Focused state for input field */
+input[type="search"]:focus {
+    border-color: #4CAF50;
+    background-color: #ffffff;
+    outline: none;
+}
+
+/* Datalist styling */
+datalist {
+    font-size: 16px;
+}
+
+/* Options inside datalist */
+datalist option {
+    padding: 5px;
+    background-color: #ffffff;
+}
+
+/* Adjust padding and background of datalist options on hover */
+datalist option:hover {
+    background-color: #f0f0f0;
+}
+
+
+

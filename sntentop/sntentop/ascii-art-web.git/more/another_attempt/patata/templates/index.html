@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patata Project</title>
+</head>
+<body>
+    <h1>The Path to the Golden Fries!</h1>
+
+    <p>1. Wash your patata</p>
+    <p>2. Peel the skin off</p>
+    <p>3. Cut it in pieces</p>
+    <p>4. Write why you love French Fries</p>
+    <input type="text" id="inputText" placeholder="Enter text">
+    <br>
+    <button id="sendButton">To the FRYER!!</button>
+
+    <p>Server Response:</p>
+    <div id="responseText"></div>
+    <div id="responseImage"></div>
+
+    <script>
+        document.getElementById('sendButton').addEventListener('click', async () => {
+            const inputText = document.getElementById('inputText').value;
+
+            try {
+                // Send the input text to the Go server
+                const response = await fetch('/process', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ text: inputText }),
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+
+                    // Display the response text
+                    document.getElementById('responseText').innerText = data.response;
+
+                    // Decode and display the Base64-encoded image
+                    const img = document.createElement('img');
+                    img.src = `data:image/png;base64,${data.image}`;
+                    document.getElementById('responseImage').innerHTML = ''; // Clear existing images
+                    document.getElementById('responseImage').appendChild(img);
+                } else {
+                    document.getElementById('responseText').innerText = `Error: ${response.statusText}`;
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                document.getElementById('responseText').innerText = 'Error connecting to the server.';
+            }
+        });
+    </script>
+</body>
+</html>

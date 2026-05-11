@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{.Name}}</title>
+    <link rel="stylesheet" href="/frontend/css/band.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/frontend/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/frontend/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/frontend/images/favicon-16x16.png">
+    <link rel="manifest" href="/frontend/images/site.webmanifest">
+</head>
+<body>
+    <a class="ok" onclick="history.back()">GO BACK</a>
+
+    <div class="band-card"> <!-- Container for band information -->
+        <img src="{{.Image}}" alt="{{.Name}} Image">
+
+        <div class="band-details"> <!-- Container for band details -->
+            <h2>{{.Name}}</h2>
+            <p><strong>Creation Date:</strong> {{.CreationDate}}</p>
+            <p><strong>First Album:</strong> {{.FirstAlbum}}</p>
+        </div>
+
+        <div class="info-buttons">  <!-- Container for modal buttons -->
+            <button onclick="openModal('membersModal')">Members</button>
+            <button onclick="openModal('relationsModal')">Concerts</button>
+            <button onclick="openModal('locationsModal')">Locations</button>
+            <button onclick="openModal('datesModal')">Dates</button>
+        </div>
+    </div>
+
+    <!-- Modals (hidden by default, shown when buttons are clicked) -->
+    <div class="modal-bg" id="modalBg" onclick="closeModal()"></div>
+    <!-- Members Modal -->
+    <div class="modal" id="membersModal">
+        <h3>Members</h3>
+        <ul>
+            {{range .Members}}
+            <li>{{.}}</li>
+            {{end}}
+        </ul>
+        <button onclick="closeModal()">Close</button>
+    </div>
+    <!-- Concerts/Relations Modal -->
+    <div class="modal" id="relationsModal">
+        <h3>Concerts</h3>
+        <div class="modal-content">
+            <div class="concert-list">
+                {{range $key, $value := .Relation.DatesLocations}}
+                <div class="concert-entry">
+                    <ul>
+                        <li><strong>{{$key}}:</strong></li>
+                        {{range $value}}
+                        <li>{{.}}</li>
+                        {{end}}
+                    </ul>
+                </div>
+                {{end}}
+            </div>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+        <button onclick="closeModal()">Close</button>
+    </div>
+    <!-- Locations Modal -->
+    <div class="modal" id="locationsModal">
+        <h3>Locations</h3>
+        <ol>
+            {{range .Location.Locations}}
+            <li>{{.}}</li>
+            {{end}}
+        </ol>
+        <button onclick="closeModal()">Close</button>
+    </div>
+    <!-- Dates Modal -->
+    <div class="modal" id="datesModal">
+        <h3>Dates</h3>
+        <ol>
+            {{range .Date.Dates}}
+            <li>{{.}}</li>
+            {{end}}
+        </ol>
+        <button onclick="closeModal()">Close</button>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Created by <b>Sntentop</b> &amp;&amp; <b>Dpappas</b></p>
+    </footer>
+    <!-- JavaScript -->
+    <script>
+        document.getElementById("year").innerText = new Date().getFullYear();
+        // Function to open modal by ID
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.getElementById('modalBg').style.display = 'block';
+
+            // Special handling for relations modal (Google Maps)
+             if (modalId === 'relationsModal' && typeof google !== 'undefined') {
+                 setTimeout(() => {
+                    google.maps.event.trigger(map, "resize");
+            }, 300);
+          }
+        }
+        // Function to close all modals
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
+            document.getElementById('modalBg').style.display = 'none';
+        }
+    </script>
+<!-- Google Maps API script (loaded asynchronously) -->
+<script src="{{.MapScriptURL}}&callback=initMap" async defer></script>
+
+<!-- Map-related JavaScript -->
+<script>
+    let map;
+
+    // Initializes Google Map    
+    function initMap() {
+        const defaultCenter = { lat: 51.505, lng: -0.09 };
+        map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 1,
+            center: defaultCenter,
+            minZoom: 2,
+            maxZoom: 10,
+            gestureHandling: 'greedy',
+            mapTypeId: 'roadmap',
+        });
+        addMarkers(JSON.parse('{{.LocationsJSON}}'));
+    }
+    // Adds markers to the map for each location
+   function addMarkers(locations) {
+    const coordinates = [];
+    const positionMap = new Array(locations.length).fill(null); 
+
+    locations.forEach((location, index) => {
+    // Fetch geolocation data for each location
+    fetch(`/geolocations?address=${encodeURIComponent(location)}`)
+        .then(response => response.json())
+        .then(data => {
+            const { latitude, longitude } = data;
+            const position = { lat: latitude, lng: longitude };
+            positionMap[index] = position;
+
+            // Create numbered marker
+            const marker = new google.maps.Marker({
+                position,
+                map,
+                label: `${index + 1}`,
+                title: location,
+            });
+
+           // Create info window (tooltip)
+            const infoWindow = new google.maps.InfoWindow({
+                content: `<strong>#${index + 1}</strong><br>${location}`,
+            });
+
+            marker.addListener("mouseover", () => infoWindow.open(map, marker));
+            marker.addListener("mouseout", () => infoWindow.close());
+
+            // When all markers are loaded
+            if (positionMap.every(pos => pos !== null)) {
+                const adjustedCoordinates = [];
+                // Process coordinates for line drawing
+                for (let i = 0; i < positionMap.length - 1; i++) {
+                    const pointA = positionMap[i];
+                    const pointB = positionMap[i + 1];
+                    adjustedCoordinates.push(pointA);
+                    // Handle international date line crossing
+                    const delta = Math.abs(pointA.lng - pointB.lng);
+                    if (delta > 180) {
+                        adjustedCoordinates.push(null); // split the line
+                    }
+                }
+
+                adjustedCoordinates.push(positionMap[positionMap.length - 1]);
+                // Create dotted line connecting markers
+                const path = new google.maps.Polyline({
+                    path: adjustedCoordinates,
+                    geodesic: false,
+                    strokeOpacity: 0,
+                    strokeWeight: 2,
+                    icons: [{
+                        icon: {
+                            path: "M 0,-1 0,1",
+                            strokeOpacity: 1,
+                            strokeColor: "#ff0000",
+                            scale: 4
+                        },
+                        offset: "0",
+                        repeat: "15px"
+                    }]
+                });
+                // Add line to map
+                path.setMap(map);
+            }
+        });
+});
+}
+
+</script>
+</body>
+</html>

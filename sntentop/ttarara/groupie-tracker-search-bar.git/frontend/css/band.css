@@ -1,0 +1,240 @@
+/* Global Styles */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(150deg,#00ffcc, #08859b); /* Gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+}
+
+/* Card Container */
+.band-card {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: oblique;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 70vw; 
+    max-width: 700px; /*Limit max size */
+    min-height: 350px; /* Ensure some height */
+    background: linear-gradient(150deg, #08859b, #00ffcc); /* Gradient */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    box-shadow: 0 4px 12px #ff007f;
+
+}
+
+/* Profile Image */
+.band-card img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 4px solid #ffcc00;
+    box-shadow: 0 0 10px #ffcc00;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+/* Profile Details */
+.band-details {
+    background: linear-gradient(135deg, #212121, #4e4e4e); /* Dark gradient */
+    border-radius: 15px;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    text-align: center;
+    box-shadow: 0 0 10px #ffcc00;
+
+}
+
+.band-details h2 {
+    font-family: 'Super Shake', Times, serif;
+    color: #00ffcc;
+    text-align: center;
+    text-shadow: 0px 0px 30px #00ffcc;
+    animation: waveEffect 3s infinite ease-in-out;
+}
+
+.band-details p {
+    font-size: 1em;
+    margin: 10px 0;
+}
+
+/* Button Styling */
+.info-buttons {
+    font-family: 'Times New Roman', Times, serif;
+    font-style: oblique;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.info-buttons button {
+    font-family: 'Super Shake', Times, serif;
+    font-size: 12px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 4px 10px #8000ff;
+}
+
+/* Button Colors */
+button {
+    color: white;
+}
+
+/* Button */
+button:nth-child(1) { background: #ff007f; color: #ffcc00;} /* Neon Pink */
+button:nth-child(2) { background: #ffcc00; color: #ff007f; } /* Gold */
+button:nth-child(3) { background: #00ffcc; color: #8000ff; } /* Neon Cyan */
+button:nth-child(4) { background: #8000ff; color: #00ffcc;} /* Electric Purple */
+
+/* Button Hover Effects */
+button:nth-child(1):hover { background: linear-gradient(90deg, #ff007f, #ffcc00) } /* Slightly lighter pink */
+button:nth-child(2):hover { background: linear-gradient(90deg, #ff007f, #00ffcc)} /* Slightly lighter gold */
+button:nth-child(3):hover { background: linear-gradient(90deg, #ffcc00, #8000ff) } /* Slightly lighter cyan */
+button:nth-child(4):hover { background: linear-gradient(90deg, #00ffcc, #8000ff) } /* Slightly lighter purple */
+
+
+
+/* Modal Styling */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #212121, #4e4e4e); /* Dark gradient */
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    width: 400px;
+    box-shadow: 0px 0px 50px #ff007f;
+    text-align: center;
+}
+
+.modal h3 {
+    font-family: 'Super Shake', Times, serif;
+    font-size: 1,5rem;
+    color: #ffcc00;
+    text-shadow: 0px 0px 30px #ffcc00;
+    animation: waveEffect 3s infinite ease-in-out;
+}
+
+/* Smooth Wavy Animation */
+@keyframes waveEffect {
+    0% { transform: translateY(0px); }
+    25% { transform: translateY(-5px); }
+    50% { transform: translateY(0px); }
+    75% { transform: translateY(5px); }
+    100% { transform: translateY(0px); }
+}
+
+
+/* Remove numbering from all modals by default */
+.modal ul, .modal ol {
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.modal ol li {
+    margin-bottom: 10px; /* Adjust this value to increase or decrease space */
+}
+
+/*EXCEPT in the #membersModal, we want numbering */
+#membersModal ul {
+    list-style: decimal; /* forces numbering on an <ul> */
+    list-style-position: inside;
+    text-align: center;
+}
+
+#membersModal ul li {
+    margin-bottom: 10px; /* Adjust this value to increase or decrease space */
+}
+
+/* Modal Button*/
+.modal button {
+    font-family:'Super Shake', Times, serif;
+    margin-top: 15px;
+    padding: 10px 18px;
+    background: linear-gradient(45deg, #8000ff, #00ffcc);
+    border: none;
+    color: #ff007f;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 8px;
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 6px 15px rgba(0, 255, 204, 0.7);
+}
+
+.modal button:hover {
+    background: linear-gradient(45deg, #00ffcc, #8000ff);
+    transform: scale(1.1);
+    box-shadow: 0px 6px 15px rgba(0, 255, 204, 0.7);
+}
+
+/* Modal Background */
+.modal-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90vh;
+    backdrop-filter: blur(5px); /* Adds blur effect */
+}
+
+/* Back Button */
+.ok {
+    font-family:'Super Shake', Times, serif;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #00ffcc, #8000ff);
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    transition: 0.3s;
+    cursor: pointer;
+    box-shadow: 0 0 10px #ffcc00;
+}
+
+.ok:hover {
+    background: linear-gradient(90deg, #00ffcc, #0088ff);
+    transform: scale(1.1);
+}
+
+/* Footer Styling - Optimized */
+.footer {
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 12px;
+    background: linear-gradient(90deg, #ff007f, #ff5e62);
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-weight: bold;
+    box-shadow: 0px -2px 5px rgba(0, 255, 204, 0.3);
+}
+
+
+@font-face {
+    font-family: 'Super Shake';
+    src: url('/frontend/fonts/supershake.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

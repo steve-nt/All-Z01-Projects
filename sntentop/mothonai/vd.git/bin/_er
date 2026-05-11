@@ -1,0 +1,75 @@
+#!/usr/bin/env bash
+
+function er(){
+    REPOS_DIR="${HOME}/vd_repositories_dir/"
+    url_base="https://platform.zone01.gr/git/"
+    if [ ! -f "$HOME/.gitconfig" ]
+    then
+        printf "We won't be able to figure your username with ~/.gitconfig file" >&2
+        printf "Try adding your name with: git config --global user.name <name>" >&2
+        return 1
+    fi
+    username="$(git config --global user.name)"
+    default_user_found="true"
+    if [ ! -n "${username}" ]
+    then
+        default_user_found="false"
+    fi
+    repo=""
+    if [ $# -lt 1 ] || [ $# -gt 2 ]
+    then
+        printf "Usage:\n\t%s <username> <repo>\n\t%s <repo>\n" \
+            "$(basename ${0})" \
+            "$(basename ${0})" >&2
+        return 1
+    fi
+    if [ -z $2 ] || [ ! -n "$2" ]
+    then
+        repo="$1"
+        if [ "${default_user_found}" == "false" ]
+        then
+            printf "user.name was not found in your ~/.gitconfig file" >&2
+            printf "Try adding your name with: git config --global user.name <name>" >&2
+            return 1
+        fi
+    else
+        username="$1"
+        repo="$2"
+    fi
+    if [ ! -n "${username}" ]
+    then
+        printf "user.name was looks empty" >&2
+        printf "Try adding your name with: git config --global user.name <name>" >&2
+        return 1
+    fi
+    if [ ! -d ${REPOS_DIR}${username}/${repo} ]
+    then
+        git clone ${url_base}${username}/${repo} ${REPOS_DIR}${username}/${repo}
+    fi
+    cd ${REPOS_DIR}${username}/${repo}
+    git fetch --all
+}
+
+function eru(){
+    s_pwd="$(pwd)"
+    REPOS_DIR="${HOME}/vd_repositories_dir/"
+    printf 'Fetching repo updates:\n'
+    cd ${REPOS_DIR}
+    find . -mindepth 2 -maxdepth 2 -type d | while read directory
+    do
+        cd $directory
+        if [ -d .git ]
+        then
+            printf ' ... %s' "$(echo -n $directory | cut -d '/' -f 2-)"
+            git fetch --all > /dev/null 2>&1
+            if [ $? -eq 0 ]
+            then
+                printf '\r\x1b[32mDone\x1b[0m\n'
+            else
+                printf '\r\x1b[31mFail\x1b[0m\n'
+            fi
+        fi
+        cd ${REPOS_DIR}
+    done
+    cd ${s_pwd}
+}

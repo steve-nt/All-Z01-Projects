@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="../public/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../public/favicon-16x16.png">
+    <link rel="manifest" href="../public/site.webmanifest">
+    <title>Error</title>
+    <link href="../public/output.css" rel="stylesheet">
+</head>
+
+<body>
+    <section class="bg-white">
+        <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+            <div class="mx-auto max-w-screen-sm text-center">
+                <h1
+                    class="mb-4 text-7xl tracking-tight font-extrabold text-primary-600">
+                    {{.Message}}</h1>
+                <p class="mb-4 text-3xl tracking-tight font-bold text-gray-900">Something's missing.</p>
+                <p class="mb-4 text-lg font-light text-gray-500">Pick our suggestions </p>
+                <ul role="list" class="mx-auto mt-12 grid max-w-2xl grid-cols-3 gap-x-8 gap-y-16 text-center">
+                    {{range .Suggestions}}
+                    <a href="/artist/{{replaceSpaces .Name}}">
+                        <li>
+                            <img class="image-hover-effect mx-auto size-24 rounded-full hover:scale-125 transition-all duration-500"
+                                src="{{.Image}}" alt="">
+
+                            <h3 class="mt-6 text-base/7 font-semibold tracking-tight text-gray-900">{{.Name}}</h3>
+                        </li>
+                    </a>
+                    {{end}}
+                </ul>
+                <div class="pt-8">
+                    <a href="/" class="text-black text-3xl">Back
+                        to Homepage</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

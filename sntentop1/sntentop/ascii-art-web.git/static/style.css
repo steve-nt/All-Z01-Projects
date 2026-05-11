@@ -1,0 +1,116 @@
+body {
+    background-image: linear-gradient(to right, #eef2f3, #257180); /* Softer gradient */
+    font-family: Arial, sans-serif; /* Professional font */
+    margin: 0;
+    padding: 0;
+    color: #333; /* Standard readable text color */
+}
+
+.box {
+    background-color: #ffffff; /* Clean white background */
+    border: 2px solid #257180; /* Accent border */
+    display: block;
+    margin: 20px auto; /* Center with spacing */
+    color: #333; /* Standard readable text color */
+    padding: 1em;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    width: 400px; /* Adjusted width for better layout */
+    height: auto; /* Adjusted to fit content dynamically */
+
+}
+
+textarea {
+    background-color: #f7f9fa; /* Softer background */
+    border: 2px solid #257180; /* Accent border */
+    position: relative;
+    bottom: 0; /* Aligned to the natural flow */
+    margin: 10px auto; /* Center with spacing */
+    display: block;
+    width: 90%; /* Responsive width */
+    max-width: 500px; /* Limit width on larger screens */
+    height: 120px; /* Increased height for better usability */
+    border-radius: 8px;
+    font-family: Arial, sans-serif; /* Match body font */
+    padding: 10px;
+    resize: none;
+    color: #333; /* Standard readable text color */
+    box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.1); /* Subtle inset shadow */
+}
+
+pre { 
+    background-color: #f0f4f8; /* Softer light blue */
+    overflow: auto;
+    padding: 10px;
+    margin: 20px 0; /* Center with spacing */
+    text-align: left; /* Explicitly aligns text to the left */
+    height: 250px;
+    width: 100%; /* Responsive width */
+    max-width: 800px; /* Limit width on larger screens */
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace; /* Mono font for ASCII art */
+    font-size: 14px; /* Adjust font size for readability */
+    color: #000000; /* Slightly darker for contrast */
+    border: 2px solid #257180; /* Accent border */
+}
+
+button {
+    background-color: #257180; /* Professional blue */
+    border: none;
+    color: white;
+    width: 100px;
+    height: 40px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+button:active {
+    background-color: #003f7f; /* Even darker blue when clicked */
+    transform: scale(1); /* Reset zoom */
+}
+
+marquee {
+    color: #922d0e; /* Match text color */
+    font-weight: bold;
+    font-size: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #257180; /* Accent color for headers */
+    margin: 10px 0;
+}
+
+
+h1 {
+    font-family: Arial, sans-serif;
+    color: #d9534f; /* Red color for error heading */
+}
+
+p {
+    font-size: 20px; /* Increase font size */
+    color: #333333; /* Darker text color */
+    margin: 20px 0; /* Add spacing */
+    font-family: Arial, sans-serif;
+}
+
+a {
+    font-size: 22px; /* Increase font size */
+    color: #007bff; /* Blue color for the link */
+    text-decoration: none; /* Remove underline */
+    font-weight: bold; /* Make it bold */
+}
+
+a:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline; /* Add underline on hover */
+}
+

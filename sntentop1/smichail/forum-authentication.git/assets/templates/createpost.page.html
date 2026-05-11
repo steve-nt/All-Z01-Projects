@@ -1,0 +1,32 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Create Post</title>
+  </head>
+  <body>
+    <form action="/create-post" method="POST">
+      <label><input type="text" name="title" id="title">title</input></label>
+        <label><input type="text" name="content" id="content">content</input></label>
+      <label>
+        <input type="checkbox"name="categories" id="Tech" value="Tech"></input>
+        Tech
+      </label>
+      <label>
+        <input type="checkbox"name="categories" id="Politics" value="Politics"></input>
+        Politics
+      </label>
+      <label>
+        <input type="checkbox"name="categories" id="Economy" value="Economy"></input>
+        Economy
+      </label>
+      <label>
+        <input type="checkbox"name="categories" id="Ecology" value="Ecology"></input>
+        Ecology
+      </label>
+        <button type="submit">Submit Post</button>
+    </form>
+  </body>
+</html>

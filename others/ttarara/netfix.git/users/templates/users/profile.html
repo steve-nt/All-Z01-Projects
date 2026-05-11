@@ -1,0 +1,174 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+    User Profile
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <!-- Profile Header -->
+    <div class="profile-header">
+            <div class="profile-info">
+            <h1>{{ user.username }}{% if user.is_customer and user_age %} ({{ user_age }} y/o){% endif %}</h1>
+                <p class="profile-email">{{ user.email }}</p>
+        </div>
+        <div class="profile-badge-container">
+            {% if user.is_customer %}
+                <span class="profile-badge customer-badge">Customer</span>
+        {% else %}
+                <span class="profile-badge company-badge">{{ user.company.field }}</span>
+            {% endif %}
+            </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="profile-content">
+        {% if user.is_customer %}
+            <h2 class="section-title">My Service Requests</h2>
+            {% if sh %}
+                <div class="ag-format-container">
+                    <div class="ag-courses_box">
+                        {% for request in sh %}
+                        <div class="ag-courses_item">
+                            <a href="{% url 'index' request.service.id %}" class="ag-courses-item_link">
+                                <div class="ag-courses-item_bg"></div>
+                                <div class="ag-courses-item_title">
+                                    {{ request.service.name }}
+                                </div>
+                                <div class="ag-courses-item_date-box">
+                                    <span class="ag-courses-item_date">Status: {{ request.get_status_display }}</span><br>
+                                    Provider: <span class="ag-courses-item_date">{{ request.service.company.user.username }}</span><br>
+                                    Date: <span class="ag-courses-item_date">{{ request.service_date }} at {{ request.start_time }}</span><br>
+                                    Duration: <span class="ag-courses-item_date">{{ request.duration_hours }} hour(s)</span><br>
+                                    Address: <span class="ag-courses-item_date">{{ request.address }}</span><br>
+                                    Total: <span class="ag-courses-item_date">€{{ request.price }}</span><br>
+                                    Requested on <span class="ag-courses-item_date">{{ request.request_date|date:"M d, Y" }}</span>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="no-requests-message">
+                    <h2>You haven't requested any services yet.</h2>
+                    <p>Ready to find the help you need? Browse our available services and make your first request today.</p>
+                    <a href="{% url 'services_list' %}" class="btn">Browse Services</a>
+                </div>
+            {% endif %}
+        {% else %}
+            <!-- Company Profile Content -->
+            <h2 class="section-title">My Services</h2>
+            {% if services %}
+                <div class="actions-container">
+                    <a href="{% url 'services_create' %}" class="btn">Create New Service</a>
+                </div>
+                <div class="ag-format-container">
+                    <div class="ag-courses_box">
+                        {% for service in services %}
+                        <div class="ag-courses_item">
+                            <a href="{% url 'index' service.id %}" class="ag-courses-item_link">
+                                <div class="ag-courses-item_bg"></div>
+                                <div class="ag-courses-item_title">
+                                    {{ service.name }}
+                                </div>
+                                <div class="ag-courses-item_date-box">
+                                    Field: <span class="ag-courses-item_date">{{ service.field }}</span><br>
+                                    Price: <span class="ag-courses-item_date">€{{ service.price_hour }}/hour</span><br>
+                                    <span class="ag-courses-item_date">{{ service.description|truncatewords:20 }}</span>
+                                </div>
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="no-requests-message">
+                    <h2>You haven't created any services yet.</h2>
+                    <p>Mention your services to attract customers</p>
+                    <a href="{% url 'services_create' %}" class="btn">Create Your First Service</a>
+                </div>
+            {% endif %}
+
+            <!-- Service Requests Management Section -->
+            <hr class="section-divider">
+            <h2 class="section-title">Service Requests</h2>
+            
+            <div class="stats-container">
+                <div class="stat-card pending">
+                    <h3>{{ pending_count|default:0 }}</h3>
+                    <p>Pending Requests</p>
+                </div>
+                <div class="stat-card accepted">
+                    <h3>{{ accepted_count|default:0 }}</h3>
+                    <p>Accepted Requests</p>
+                </div>
+                <div class="stat-card rejected">
+                    <h3>{{ rejected_count|default:0 }}</h3>
+                    <p>Rejected Requests</p>
+                </div>
+            </div>
+
+            {% if service_requests %}
+                    {% for request in service_requests %}
+                        <div class="request-card" data-status="{{ request.status }}">
+                            <div class="request-header">
+                                <div class="request-info">
+                                    <h3>{{ request.service.name }}</h3>
+                                    <p><strong>Customer:</strong> {{ request.customer.user.username }}</p>
+                                </div>
+                                <span class="request-status status-{{ request.status }}">{{ request.get_status_display }}</span>
+                            </div>
+                            
+                            <div class="request-details">
+                                <div class="detail-item">
+                                    <div class="detail-label">Service Date</div>
+                                    <div class="detail-value">{{ request.service_date }}</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Time</div>
+                                    <div class="detail-value">{{ request.start_time }} - {{ request.get_end_time }}</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Duration</div>
+                                    <div class="detail-value">{{ request.duration_hours }} hour(s)</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Total Price</div>
+                                    <div class="detail-value">€{{ request.price }}</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Address</div>
+                                    <div class="detail-value">{{ request.address }}</div>
+                                </div>
+                                <div class="detail-item">
+                                    <div class="detail-label">Request Date</div>
+                                    <div class="detail-value">{{ request.request_date|date:"M d, Y H:i" }}</div>
+                                </div>
+                            </div>
+                            
+                            {% if request.status == 'pending' %}
+                                <div class="action-buttons">
+                                    <form method="post" action="{% url 'manage_request' request.id 'accept' %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn" onclick="return confirm('Are you sure you want to accept this request?')">Accept Request</button>
+                                    </form>
+                                    <form method="post" action="{% url 'manage_request' request.id 'reject' %}">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn" onclick="return confirm('Are you sure you want to reject this request?')">Reject Request</button>
+                                    </form>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+            {% else %}
+                <div class="no-requests-message">
+                    <h2>No service requests yet</h2>
+                    <p>When customers request your services, they will appear here.</p>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

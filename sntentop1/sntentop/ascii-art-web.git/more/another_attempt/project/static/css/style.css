@@ -1,0 +1,136 @@
+/* style.css */
+
+/* General Header Styling */
+header {
+    background-color: #2b2d2e; /* Blue background */
+    color: #752f2f; /* White text */
+    padding: 20px 10px; /* Spacing around the content */
+    text-align: center; /* Center-align the header text */
+    box-shadow: 0 10px 20px rgba(56, 56, 56, 0.671); /* Add a subtle shadow */
+}
+
+/* Header Title Styling */
+header h1 {
+    font-size: 3rem; /* Increase font size */
+    text-align: right;
+    margin: 0; /* Remove default margins */
+    padding-right: 30px;
+    font-family: 'Arial', sans-serif; /* Change font family */
+    color: rgb(192, 192, 192)
+}
+
+/* Navigation Menu Styling */
+header nav {
+    margin-top: 5px; /* Add some space above the navigation links */
+    text-align: left;
+}
+
+header nav a {
+    color: rgb(170, 170, 170); /* White text for links */
+    text-decoration: none; /* Remove underline from links */
+    margin: 0 15px; /* Spacing between links */
+    font-size: 1rem; /* Font size for navigation links */
+    font-weight: bold; /* Make the links bold */
+    transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+/* Hover Effect for Links */
+header nav a:hover {
+    color: #eeeeee; /* Change link color to yellow on hover */
+}
+
+/* Background Style*/
+body {
+    background-color: #a1a1a1; /* Light grayish blue */
+    color: #2e2e2e; /* Dark gray text for better contrast */
+    font-family: 'Arial'; /* Set a clean, modern font */
+    margin: 40; /* Remove default margins */
+    padding: 40; /* Remove default padding */
+}
+
+footer {
+    text-align: center;
+}
+
+main.home-page {
+    margin: 20px 20px;
+    padding: 20px 50px; 
+    background-color: rgba(116, 113, 113, 0.671);
+    color: #333;
+    box-shadow: 0 10px 20px rgba(56, 56, 56, 0.671);
+}
+
+.home-page h2 {
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 3px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.home-page h1 {
+    text-align: center;
+    font-size: 40px;
+    margin: 0;
+}
+
+.home-page h3 {
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
+
+.team {
+    display: flex; /* Use flexbox for inline alignment */
+    justify-content: space-between; /* Distribute items evenly with space in between */
+    text-align: center; /* Ensure alignment spans full width */
+    width: 25%;
+    margin: 0 auto;
+
+} 
+
+.team span {
+    font-size: 1rem;
+    text-decoration: underline;
+    font-weight: bold;
+    color: #55253d;
+}
+
+main.converter-page {
+    margin: 20px 20px;
+    padding: 20px 50px; 
+    background-color: rgba(116, 113, 113, 0.671);
+    color: #333;
+    box-shadow: 0 10px 20px rgba(56, 56, 56, 0.671);
+}
+
+.converter-page h2 {
+    text-align: center;
+    font-size: 15px;
+    letter-spacing: 10px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
+
+.converter-page h1 {
+    text-align: center;
+    font-size: 40px;
+    margin: 0;
+}
+
+.output-section {
+    margin: 20px auto;
+    text-align: center;
+    width: 80%; /* Adjust as needed */
+}
+
+/* Styles for the output box */
+#output-box {
+    border: 2px solid #ccc; /* Add a border to the box */
+    padding: 20px; /* Add padding inside the box */
+    background-color: #cfcfcf; /* Light gray background */
+    border-radius: 8px; /* Rounded corners */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font for ASCII art */
+    white-space: pre-wrap; /* Preserve spaces and line breaks */
+    min-height: 100px; /* Minimum height of the box */
+    overflow: auto; /* Enable scrolling if content overflows */
+}

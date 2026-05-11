@@ -1,0 +1,15 @@
+{
+  "name": "realtime-forum",
+  "version": "1.0.0",
+  "description": "Real-time forum with private messaging",
+  "scripts": {
+    "build-css": "tailwindcss -i ./frontend/src/input.css -o ./frontend/dist/output.css --watch",
+    "build-css-prod": "tailwindcss -i ./frontend/src/input.css -o ./frontend/dist/output.css --minify"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.1",
+    "postcss": "^8.4.35",
+    "autoprefixer": "^10.4.17"
+  }
+}
+

@@ -1,0 +1,21 @@
+# Two virtual hosts on the SAME ip:port, distinguished by Host header.
+
+[[server]]
+listen = ["127.0.0.1:8080"]
+server_names = ["a.localhost"]
+client_max_body_size = 1048576
+[[server.route]]
+path = "/"
+methods = ["GET"]
+root = "www/site-a"
+index = "index.html"
+
+[[server]]
+listen = ["127.0.0.1:8080"]
+server_names = ["b.localhost"]
+client_max_body_size = 1048576
+[[server.route]]
+path = "/"
+methods = ["GET"]
+root = "www/site-b"
+index = "index.html"

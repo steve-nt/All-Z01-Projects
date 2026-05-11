@@ -1,0 +1,234 @@
+/* The live banner is styled as a compact editorial alert strip so fresh updates feel important without overwhelming the feed.
+   The surface borrows the app's warm-accent glass treatment while staying readable in both dark and light color schemes.
+   Motion stays focused on one drop-down entrance so the banner feels intentional when it appears above the feed. */
+
+/* The feature boundary spans the available width while keeping a controlled reading measure inside larger feed layouts. */
+.live-banner {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.85rem 1rem;
+  width: min(72rem, 100%);
+  margin: 0.62rem auto 1rem;
+  padding: 1rem 1rem 1rem 1.25rem;
+  border: 1px solid rgba(255, 180, 92, 0.24);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(130deg, rgba(255, 180, 92, 0.18), transparent 36%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.07), transparent 28%), var(--color-surface-strong);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24);
+  backdrop-filter: blur(16px);
+  overflow: clip;
+  isolation: isolate;
+}
+
+/* Hidden state must explicitly restore display:none so the shell does not reserve a blank row. */
+.live-banner[hidden] {
+  display: none;
+}
+
+/* The top accent rule makes the banner read like a live wire instead of another neutral content card. */
+.live-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 0.22rem;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 180, 92, 1),
+    rgba(255, 180, 92, 0.28) 52%,
+    transparent
+  );
+}
+
+/* A blurred signal glow gives the component atmosphere without adding extra markup. */
+.live-banner::after {
+  content: "";
+  position: absolute;
+  inset: auto auto -3.5rem -2.5rem;
+  width: 11rem;
+  height: 11rem;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 180, 92, 0.2), transparent 68%);
+  filter: blur(20px);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+/* The visible state gets the requested drop-down reveal so updates arrive with one clear motion beat. */
+.live-banner:not([hidden]) {
+  animation: slide-down 280ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Message copy stays bold and compact so it reads quickly at the top of a busy feed. */
+.live-banner__message {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--color-text-strong);
+  font-size: 0.96rem;
+  font-weight: 800;
+  line-height: 1.45;
+  letter-spacing: 0.01em;
+  text-wrap: balance;
+}
+
+/* Action row groups refresh and clear controls as one explicit decision cluster. */
+.live-banner__actions {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+/* The refresh button uses a tactile pill treatment so the manual action reads as intentional and safe. */
+.live-banner__refresh {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  width: fit-content;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.72rem 1rem;
+  border: 1px solid rgba(255, 180, 92, 0.3);
+  border-radius: 999px;
+  background: rgba(255, 180, 92, 0.12);
+  color: var(--color-text-strong);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+/* Hover lifts are restrained so the banner feels sharp rather than playful. */
+.live-banner__refresh:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 180, 92, 0.52);
+  background: rgba(255, 180, 92, 0.2);
+  box-shadow: 0 10px 24px rgba(255, 180, 92, 0.14);
+}
+
+/* Focus treatment keeps keyboard users on a high-contrast, theme-consistent path. */
+.live-banner__refresh:focus-visible {
+  outline: 2px solid rgba(255, 180, 92, 0.82);
+  outline-offset: 3px;
+}
+
+/* Pressed feedback confirms interaction without breaking the compact banner rhythm. */
+.live-banner__refresh:active {
+  transform: translateY(0);
+}
+
+/* Disabled controls indicate in-flight actions and prevent duplicate refresh/clear triggers. */
+.live-banner__refresh:disabled {
+  cursor: wait;
+  opacity: 0.58;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Clear action keeps the same shape while using a slightly quieter fill. */
+.live-banner__refresh--clear {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.live-banner__refresh--clear:hover {
+  border-color: rgba(255, 180, 92, 0.42);
+  background: rgba(255, 180, 92, 0.14);
+}
+
+/* Light mode lowers the glass intensity so the banner stays crisp instead of washed out. */
+@media (prefers-color-scheme: light) {
+  .live-banner {
+    border-color: rgba(217, 119, 6, 0.18);
+    background:
+      linear-gradient(130deg, rgba(217, 119, 6, 0.14), transparent 36%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), transparent 30%),
+      var(--color-surface-strong);
+    box-shadow: 0 18px 34px rgba(15, 23, 42, 0.08);
+  }
+
+  .live-banner::before {
+    background: linear-gradient(
+      90deg,
+      rgba(217, 119, 6, 1),
+      rgba(217, 119, 6, 0.24) 52%,
+      transparent
+    );
+  }
+
+  .live-banner::after {
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.12), transparent 68%);
+  }
+
+  .live-banner__refresh {
+    border-color: rgba(217, 119, 6, 0.24);
+    background: rgba(217, 119, 6, 0.1);
+  }
+
+  .live-banner__refresh--clear {
+    border-color: rgba(15, 23, 42, 0.16);
+    background: rgba(15, 23, 42, 0.04);
+  }
+
+  .live-banner__refresh:hover {
+    border-color: rgba(217, 119, 6, 0.38);
+    background: rgba(217, 119, 6, 0.16);
+    box-shadow: 0 10px 20px rgba(217, 119, 6, 0.1);
+  }
+
+  .live-banner__refresh:focus-visible {
+    outline-color: rgba(217, 119, 6, 0.72);
+  }
+}
+
+/* Tablet and phone layouts stack the action below the message so the banner stays readable in narrow feeds. */
+@media (max-width: 48rem) {
+  .live-banner {
+    grid-template-columns: 1fr;
+    padding: 0.95rem;
+  }
+
+  .live-banner__actions {
+    width: 100%;
+  }
+
+  .live-banner__refresh {
+    width: 100%;
+  }
+}
+
+/* Small phones get slightly tighter typography so the live region still fits comfortably above content. */
+@media (max-width: 30rem) {
+  .live-banner__message {
+    font-size: 0.92rem;
+  }
+
+  .live-banner__refresh {
+    min-height: 2.55rem;
+    font-size: 0.77rem;
+  }
+}
+
+/* Reduced-motion users still get the banner without a spatial drop effect. */
+@media (prefers-reduced-motion: reduce) {
+  .live-banner:not([hidden]) {
+    animation: none;
+  }
+
+  .live-banner__refresh {
+    transition: none;
+  }
+}

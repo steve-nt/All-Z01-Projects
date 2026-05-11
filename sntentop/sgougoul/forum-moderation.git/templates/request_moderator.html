@@ -1,0 +1,22 @@
+{{ define "request_moderator" }}
+
+<h2 style="margin-top:0;">Request Moderator Access</h2>
+
+<p style="color:var(--muted); margin-bottom:16px;">
+  If you want to help monitor the forum, you can request moderator access.
+  An administrator will review your request and respond from the admin dashboard.
+</p>
+
+{{ if .HasPending }}
+  <div class="meta-bar" style="margin-top:0;">
+    <div class="meta-left">
+      <span class="meta-item">⏳ You already have a pending moderator request.</span>
+    </div>
+  </div>
+{{ else }}
+  <form method="POST" action="/request-moderator">
+    <button type="submit">Submit Moderator Request</button>
+  </form>
+{{ end }}
+
+{{ end }}

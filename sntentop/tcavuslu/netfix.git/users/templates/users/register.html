@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %} 
+{% block title %}
+  User Type
+{%endblock %}
+
+{%block content %}
+    <p class="choice_text">Choose whether you want to be a customer or a company</p>
+    
+    <div class="choice-container">
+        <div class="choice">
+            <div class="company img" id="company">
+                <a href="{% url 'register_company' %}">
+                    <img src="/static/css/company.png" alt="company" >
+                </a>
+            </div>
+            <p class="label_images">Company</p>
+        </div>
+
+        <div class="choice">
+            <div class="img" id="customer">
+                <a href="{% url 'register_customer' %}">
+                    <img src="/static/css/customer.png" alt="customer">
+                </a>
+            </div>
+            <p class="label_images">Customer</p>
+        </div>
+    </div>
+{% endblock %}

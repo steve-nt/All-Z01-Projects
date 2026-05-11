@@ -1,0 +1,54 @@
+{{ define "moderation" }}
+
+<h2 style="margin-top:0;">Moderation Queue</h2>
+
+<p style="color:var(--muted); margin-bottom:16px;">
+  Review pending posts before they become publicly visible to guests and normal users.
+</p>
+
+{{ if .Posts }}
+  {{ range .Posts }}
+    <div class="post">
+      <h3><a href="/post?id={{ .ID }}">{{ .Title }}</a></h3>
+
+      <p>{{ .Content }}</p>
+
+      {{ if .Categories }}
+        <div class="categories">
+          {{ range .Categories }}
+            <span>🏷️ {{ . }}</span>
+          {{ end }}
+        </div>
+      {{ end }}
+
+      <div class="meta-bar" style="margin:10px 0 0 0;">
+        <div class="meta-left">
+          <span class="meta-item">👤 {{ .Username }}</span>
+          <span class="meta-item">🕒 {{ .CreatedAt }}</span>
+          <span class="meta-item">📌 {{ .Status }}</span>
+        </div>
+
+        <div class="meta-right">
+          <form method="POST" action="/moderation/approve" style="display:inline;">
+            <input type="hidden" name="post_id" value="{{ .ID }}">
+            <button type="submit">✅ Approve</button>
+          </form>
+
+          <form method="POST" action="/moderation/reject" style="display:inline;">
+            <input type="hidden" name="post_id" value="{{ .ID }}">
+            <button type="submit">❌ Reject</button>
+          </form>
+
+          <form method="POST" action="/delete-post" style="display:inline;" onsubmit="return confirm('Delete this post?');">
+            <input type="hidden" name="post_id" value="{{ .ID }}">
+            <button type="submit">🗑️ Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ else }}
+  <p style="color:var(--muted);">No pending posts in the moderation queue.</p>
+{{ end }}
+
+{{ end }}

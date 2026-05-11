@@ -1,0 +1,46 @@
+{{define "content"}}
+<section>
+    <h1>ASCII-ART-GENERATOR</h1>
+    <form action="/converter" method="post">
+        <div class="box">
+            <input type="radio" id="standard" name="banner" value="standard" checked>
+                <label for="standard">Standard</label><br>
+
+                <input type="radio" id="shadow" name="banner" value="shadow">
+                <label for="shadow">Shadow</label><br>
+
+                <input type="radio" id="thinkertoy" name="banner" value="thinkertoy">
+                <label for="thinkertoy">Thinkertoy</label><br>
+
+                <input type="radio" id="stylize" name="banner" value="stylize">
+                <label for="stylize">Stylize</label><br>
+            <center><section class="textbox">
+                <textarea id="freeform" name="ascii-data" placeholder="Enter text here..."></textarea>
+            </section></center>
+            <sec>
+            <center> <button type="submit">Submit!</button></center> 
+            </sec>
+            </div>
+    </form>
+       <!-- Display ASCII Art Output -->
+   <center> <pre id="asciiArt">{{.First}}</pre> </center>
+   <center> <button onclick="copyToClipboard()">Copy</button> </center> 
+
+<script>
+    function copyToClipboard() {
+        // Get the content of the <pre> element
+        const asciiArt = document.getElementById("asciiArt").innerText;
+
+        // Copy the content to the clipboard
+        navigator.clipboard.writeText(asciiArt).then(
+            function () {
+                alert("Copied to clipboard!");
+            },
+            function (err) {
+                alert("Failed to copy: " + err);
+            }
+        );
+    }
+</script>
+</section>
+{{end}}

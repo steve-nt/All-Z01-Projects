@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ASCII Art Generator</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/homePage.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Welcome to ASCII Art Generator</h1>
+        </header>
+        <section class="form-section">
+            <form action="/ascii-art" method="POST" class="ascii-form">
+                <div class="form-group">
+                    <label for="text" class="form-label">Enter Text:</label>
+                    <textarea id="text" name="text" class="form-input" rows="4"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label">Select Banner:</label>
+                    <div class="banner-buttons">
+                        <button type="button" class="banner-btn" data-value="standard">Standard</button>
+                        <button type="button" class="banner-btn" data-value="shadow">Shadow</button>
+                        <button type="button" class="banner-btn" data-value="thinkertoy">Thinkertoy</button>
+                    </div>
+                    <input type="hidden" name="banner" id="banner" value="">
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="submit-btn">Generate</button>
+                </div>
+            </form>
+        </section>
+        <div class="output-container" id="output-container">
+            <pre class="ascii-output">{{.AsciiArt}}</pre>
+        </div>
+    </div>
+    <script>
+        const bannerButtons = document.querySelectorAll('.banner-btn');
+        const bannerInput = document.getElementById('banner');
+    
+        bannerButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                bannerButtons.forEach(btn => btn.classList.remove('selected'));
+                button.classList.add('selected');
+                bannerInput.value = button.getAttribute('data-value');
+            });
+        });
+    </script>
+</body>
+</html>

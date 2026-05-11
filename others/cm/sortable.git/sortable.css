@@ -1,0 +1,109 @@
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f6f8fa;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 32px;
+    color: #22223b;
+    letter-spacing: 1px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 95%;
+    margin: 32px auto;
+    background: #fff;
+    box-shadow: 0 2px 16px rgba(34, 34, 59, 0.08);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 14px 12px;
+    text-align: left;
+}
+
+th {
+    background: #22223b;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid #4a4e69;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+tr:nth-child(even) {
+    background: #f2f2f7;
+}
+
+tr:hover {
+    background: #e9ecef;
+    transition: background 0.2s;
+}
+
+td {
+    color: #22223b;
+    vertical-align: middle;
+}
+
+img.xs {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid #4a4e69;
+    background: #fff;
+    object-fit: cover;
+    box-shadow: 0 1px 4px rgba(34, 34, 59, 0.10);
+}
+
+@media (max-width: 900px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+    th, td {
+        padding: 10px 6px;
+    }
+    th {
+        position: static;
+    }
+    tr {
+        margin-bottom: 16px;
+        border-radius: 8px;
+        box-shadow: 0 1px 6px rgba(34, 34, 59, 0.07);
+    }
+}
+
+/* ===== Compact arrows ===== */
+th.sortable { position: relative; padding-right: 26px; user-select: none; }
+th.sorted-asc::after, th.sorted-desc::after {
+  content: ""; position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+}
+th.sorted-asc::after { content: "▲"; }
+th.sorted-desc::after { content: "▼"; }
+
+/* ==== Search toolbar ==== */
+.toolbar {
+  width: 95%;
+  margin: 16px auto 0;
+  display: flex;
+  justify-content: flex-end;
+}
+#search {
+  width: 260px;
+  max-width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #c7c9d1;
+  border-radius: 8px;
+  outline: none;
+}
+#search:focus {
+  box-shadow: 0 0 0 3px rgba(74,78,105,0.15);
+  border-color: #4a4e69;
+}

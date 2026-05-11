@@ -1,0 +1,23 @@
+// Place all the styles related to the Products controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.product-show {
+    .feature-image img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
+    }
+    .add-to-cart {
+      width: 100%;
+    }
+
+    .bg-white {
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.06);
+    }
+
+    .content {
+      border-radius: 16px;
+    }
+  }

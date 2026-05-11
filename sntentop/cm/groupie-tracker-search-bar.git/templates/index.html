@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artists</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+    <h1>GROUPIE TRACKER</h1>
+    <style>
+        .group {
+            display: flex;
+            line-height: 28px;
+            align-items: center;
+            position: absolute; /* Changed to absolute positioning */
+            top: 70px; /* Adjusted for spacing from top */
+            right: 30px; /* Position search bar on the right */
+            max-width: 300px; /* Increased the maximum width */
+        }
+        .input {
+            font-family: "Montserrat", sans-serif;
+            width: 100%; /* Ensures full use of .group width */
+            height: 45px;
+            padding-left: 2.5rem;
+            box-shadow: 0 0 0 1.5px #2b2c37, 0 0 25px -17px #000;
+            border: 0;
+            border-radius: 12px;
+            background-color: #16171d;
+            outline: none;
+            color: #bdbecb;
+            transition: all 0.25s cubic-bezier(0.19, 1, 0.22, 1);
+            cursor: text;
+            z-index: 0;
+        }
+        .input::placeholder {
+            color: #bdbecb;
+        }
+        .input:hover {
+            box-shadow: 0 0 0 2.5px #2f303d, 0px 0px 25px -15px #000;
+        }
+        .input:active {
+            transform: scale(0.95);
+        }
+        .input:focus {
+            box-shadow: 0 0 0 2.5px #2f303d;
+        }
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            fill: #bdbecb;
+            width: 1rem;
+            height: 1rem;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .search-suggestions {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.suggestion-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:hover {
+    background-color: #f0f0f0;
+}
+    </style>
+    <form action="/search" method="GET">
+        <div class="group">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="search-icon">
+                <g>
+                    <path d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"></path>
+                </g>
+            </svg>
+            <input id="query" class="input" type="search" placeholder="Search..." name="query" autocomplete="off" />
+    
+            <!-- Custom Dropdown for Search Suggestions -->
+            <div class="search-suggestions" style="display: none;">
+                <div class="suggestions-list"></div>
+            </div>
+        </div>
+    </form>
+    
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.querySelector('.input'); // Updated to match your input class
+    const suggestionsList = document.querySelector('.suggestions-list');
+    const searchContainer = document.querySelector('.search-suggestions');
+
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toLowerCase(); // Convert to lowercase for case-insensitive matching
+        
+        if (query === '') {
+            suggestionsList.innerHTML = ''; // Clear list if input is empty
+            searchContainer.style.display = 'none';
+            return;
+        }
+
+        fetch(`/searchSuggestions?query=${encodeURIComponent(query)}`, {
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
+        })
+        .then(response => response.json())
+        .then(results => {
+            suggestionsList.innerHTML = ''; // Clear old suggestions
+            if (results.length === 0) {
+                searchContainer.style.display = 'none';
+                return;
+            }
+            
+            searchContainer.style.display = 'block';
+
+            // Filter the results to only show those starting with the query
+            const filteredResults = results.filter(suggestion => 
+                suggestion.text.toLowerCase().includes(query) // Check if suggestion starts with the query
+            
+            );
+
+            filteredResults.forEach(suggestion => {
+                const item = document.createElement('div');
+                item.classList.add('suggestion-item');
+                item.innerHTML = `
+                    <span class="suggestion-text">${suggestion.text}</span>
+                    <span class="suggestion-type">${suggestion.type}</span>
+                `;
+                
+                // Clicking a suggestion fills the input
+                item.addEventListener('click', () => {
+                    searchInput.value = suggestion.text;
+                    suggestionsList.innerHTML = ''; // Hide suggestions
+                    searchContainer.style.display = 'none';
+                });
+
+                suggestionsList.appendChild(item);
+            });
+        })
+        .catch(error => {
+            console.error('Failed to fetch suggestions:', error);
+            searchContainer.style.display = 'none';
+        });
+    });
+
+    // Close suggestions when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!searchContainer.contains(e.target) && !searchInput.contains(e.target)) {
+            searchContainer.style.display = 'none';
+        }
+    });
+});
+
+
+
+
+    </script>
+    
+<!-- FILTERS -->
+<div class="filter-form">
+    <form method="get" action="/">
+        <!-- Filter by creation date and first album date -->
+        <div class="filter-row">
+            <label for="creation-min">Creation Date:</label>
+            <input type="number" id="creation-min" name="creation-min" placeholder="From (year)" value="{{.CreationMin}}">
+            <input type="number" id="creation-max" name="creation-max" placeholder="To (year)" value="{{.CreationMax}}">
+            
+            <label for="album-min">First Album Date:</label>
+            <input type="number" id="album-min" name="album-min" placeholder="From (year)" value="{{.AlbumMin}}">
+            <input type="number" id="album-max" name="album-max" placeholder="To (year)" value="{{.AlbumMax}}">
+        </div>
+
+        <!-- Filter by number of members -->
+        <div class="filter-row">
+            <label for="members-1">Number of Members:</label>
+            <label for="members-1">
+                <input type="checkbox" id="members-1" name="members" value="1"> 1
+            </label>
+            <label for="members-2">
+                <input type="checkbox" id="members-2" name="members" value="2"> 2
+            </label>
+            <label for="members-3">
+                <input type="checkbox" id="members-3" name="members" value="3"> 3
+            </label>
+            <label for="members-4">
+                <input type="checkbox" id="members-4" name="members" value="4"> 4
+            </label>
+            <label for="members-5">
+                <input type="checkbox" id="members-5" name="members" value="5"> 5
+            </label>
+            <label for="members-6">
+                <input type="checkbox" id="members-6" name="members" value="6"> 6
+            </label>
+            <label for="members-7">
+                <input type="checkbox" id="members-7" name="members" value="7"> 7
+            </label>
+            <label for="members-8">
+                <input type="checkbox" id="members-8" name="members" value="8"> 8+
+            </label>
+        </div>
+
+        <!-- Filter by location -->
+        <div class="filter-row">
+            <label for="location">Concert Location:</label>
+            <select id="location" name="location">
+                <option value="">--Select a Location--</option>
+                {{range .Locations}}
+                    <option value="{{.}}" {{if eq . $.SelectedLocation}}selected{{end}}>{{.}}</option>
+                {{end}}
+            </select>
+        </div>
+
+        <button type="submit">Filter</button>
+        <a href="/" class="clear-button">
+            <button type="button">Clear</button>
+        </a>
+    </form>
+</div>
+
+    <!-- ARTIST CARDS -->
+    <div class="artist-container">
+        {{range .Artists}}
+        <div class="artist-card">
+            <a href="/artist?id={{.ID}}">
+                <img src="{{.Image}}" alt="{{.Name}}">
+                <span>{{.Name}}</span>
+            </a>
+        </div>
+        {{end}}
+    </div>
+</body>
+</html>

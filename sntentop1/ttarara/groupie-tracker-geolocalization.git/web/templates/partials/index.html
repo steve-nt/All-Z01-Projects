@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="/web/css/pages/index.css">
+   
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/web/css/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/web/css/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/web/css/images/favicon/avicon-16x16.png">
+    <link rel="manifest" href="/web/css/images/favicon/site.webmanifest">
+</head>
+</head>
+<body>
+
+<div class="top-bar"></div>
+
+    <!-- Back Button -->
+    <button class="ok" onclick="history.back()">Home</button>
+
+    <!-- Filter Button -->
+    <button class="filter-btn" onclick="openFilter()">Filter</button>
+
+    <!-- Search Container -->
+    <div class="searchContainer">
+        <input type="search" id="search" name="search" placeholder="Search...">
+        <!-- The Reset button is added here by JavaScript-->
+        <div id="suggestions"></div>
+    </div>
+</div>    
+
+    <!-- Blurry Backdrop -->
+    <div id="modalBackdrop"></div>
+
+    <!-- Filter Pop-Up Modal -->
+    <div id="filterModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeFilter()">&times;</span>
+            <h2>Filter Options</h2>
+            <form action="/filters" method="get">
+                <label for="locationsfilter">Locations:</label>
+                <input type="search" list="search1" id="locationsfilter" name="filter" autocomplete="off">
+                <datalist id="search1"></datalist>
+                <div id="customDropdown" class="dropdown"></div>
+
+                <label>Creation Date:</label>
+                <input type="number" name="creationDateStart" id="creationStart" placeholder="From" autocomplete="off"/>
+                <span class="error-message" id="creationStartError"></span>
+
+                <input type="number" name="creationDateEnd" id="creationEnd" placeholder="To" autocomplete="off" />
+                <span class="error-message" id="creationEndError"></span>
+
+      
+                <label>First Album Year:</label>
+                <input type="number" name="firstAlbumDateStart" id="albumStart" placeholder="From" autocomplete="off" />
+                <span class="error-message" id="albumStartError"></span>
+
+                <input type="number" name="firstAlbumDateEnd" id="albumEnd" placeholder="To" autocomplete="off" />
+                <span class="error-message" id="albumEndError"></span>
+
+      
+                <fieldset id="membersFieldset">
+                    <legend>Number of Members:</legend>
+                </fieldset>
+
+                <input type="submit" value="Apply Filters">
+                <input type="button" id="resetFilters" value="Reset Filters">
+            </form>
+        </div>
+    </div>
+
+    <!-- Bands Section -->
+    <div class="bands">
+        {{range .}}
+        <div class="card" data-id="{{.ID}}" data-locations="{{.Locations}}" onclick="goToPage(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="{{.Image}}" alt="{{.Name}} Image">
+                </div>
+                <div class="card-back">
+                    <h2>{{.Name}}</h2>
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Groupie Tracker - Stay Inspired 🎶</p>
+    </footer>
+    <script src="/web/js/index.js"></script>
+    <script src="/web/js/shared.js"></script>
+</body>
+</html>

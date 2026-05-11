@@ -1,0 +1,51 @@
+{{ define "register" }}
+
+<h2>Register</h2>
+
+<form method="POST" action="/register">
+  <input
+    name="email"
+    type="email"
+    placeholder="Email"
+    required
+    oninvalid="this.setCustomValidity(this.validity.typeMismatch ? 'Please enter a valid email address (example: name@example.com).' : 'Email is required.')"
+    oninput="this.setCustomValidity('')"
+  />
+
+  <input
+    name="username"
+    type="text"
+    placeholder="Username"
+    required
+    minlength="3"
+    oninvalid="this.setCustomValidity(this.value.length ? 'Username is too short (min 3 characters).' : 'Username is required.')"
+    oninput="this.setCustomValidity('')"
+  />
+
+  <input
+    name="password"
+    type="password"
+    placeholder="Password"
+    required
+    minlength="4"
+    oninvalid="this.setCustomValidity(this.value.length ? 'Password is too short.' : 'Password is required.')"
+    oninput="this.setCustomValidity('')"
+  />
+
+  <button type="submit">Create Account</button>
+</form>
+
+<div class="divider"></div>
+
+<h3 style="margin-top:0;">Or continue with</h3>
+
+<div style="display:flex; gap:10px; flex-wrap:wrap;">
+  <a href="/auth/google"><button type="button">Continue with Google</button></a>
+  <a href="/auth/github"><button type="button">Continue with GitHub</button></a>
+</div>
+
+<p style="margin-top:12px; color:var(--muted);">
+  Already have an account? <a href="/login">Login</a>
+</p>
+
+{{ end }}

@@ -1,0 +1,424 @@
+/* Purpose: Style the standalone poll feature so poll questions and vote distributions feel native to the detail page. */
+/* Public API: Class names owned by poll.view.js only. */
+/* Constraints: Styles stay scoped to the polls feature and rely on controller-provided inline bar widths for proportional rendering. */
+
+/* The poll section reads like a sibling editorial module to the detail header and comments block. */
+.poll {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  padding: clamp(1.2rem, 3vw, 1.9rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 24%),
+    linear-gradient(140deg, rgba(255, 180, 92, 0.08), transparent 40%), var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(12px);
+  overflow: clip;
+  animation: fade-in-up 420ms ease both;
+}
+
+/* Hidden poll placeholders must stay out of layout until the detail view explicitly renders a poll. */
+.poll[hidden] {
+  display: none;
+}
+
+/* A soft amber bloom stops the poll from reading like a default analytics widget. */
+.poll::before {
+  content: "";
+  position: absolute;
+  inset: -3.5rem auto auto -4rem;
+  width: min(18rem, 52vw);
+  height: min(9rem, 24vh);
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 180, 92, 0.18), transparent 70%);
+  filter: blur(20px);
+  opacity: 0.82;
+}
+
+/* A top accent line ties the module back to the broader editorial detail treatment. */
+.poll::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 0.18rem;
+  background: linear-gradient(90deg, var(--color-accent), rgba(255, 180, 92, 0));
+  opacity: 0.9;
+}
+
+/* The header keeps question identity and summary metadata in one deliberate stack. */
+.poll__header {
+  position: relative;
+  display: grid;
+  gap: 0.55rem;
+}
+
+/* The poll title uses the display serif so it feels like a question prompt, not a chart caption. */
+.poll__title {
+  margin: 0;
+  color: var(--color-text-strong);
+  font-family: var(--font-display);
+  font-size: clamp(1.65rem, 3vw, 2.35rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+/* Metadata stays compact and slightly warm so the byline supports the title without competing with it. */
+.poll__metadata {
+  margin: 0;
+  color: var(--color-accent-soft);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  word-break: break-word;
+}
+
+/* Total votes get their own badge-like line so the aggregate is readable at a glance. */
+.poll__total-votes {
+  width: fit-content;
+  margin: 0;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid rgba(255, 180, 92, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 180, 92, 0.08);
+  color: var(--color-text-strong);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* The optional text block becomes an inset reading card so longer poll descriptions stay legible. */
+.poll__text {
+  padding: clamp(1rem, 2.4vw, 1.4rem);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: calc(var(--radius-md) - 0.15rem);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+/* Rich-text poll copy follows the same article rhythm established by other detail modules. */
+.poll__text-body {
+  color: var(--color-text);
+  font-size: 0.98rem;
+  line-height: 1.72;
+  word-break: break-word;
+}
+
+/* Top spacing is trimmed so sanitized content aligns cleanly with the card padding. */
+.poll__text-body > :first-child {
+  margin-top: 0;
+}
+
+/* Bottom spacing is trimmed so the inset card edge looks intentional. */
+.poll__text-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* Lists retain hierarchy without falling back to the browser's unstyled defaults. */
+.poll__text-body ul,
+.poll__text-body ol {
+  margin: 0.95rem 0;
+  padding-left: 1.3rem;
+}
+
+/* Inline code stays readable without introducing a separate visual language. */
+.poll__text-body code {
+  padding: 0.12rem 0.32rem;
+  border-radius: 0.4rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-strong);
+  font-size: 0.92em;
+}
+
+/* Code blocks get a darker slab so pasted poll descriptions remain readable and scroll safely. */
+.poll__text-body pre {
+  margin: 1rem 0;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: calc(var(--radius-sm) - 0.05rem);
+  background: rgba(5, 8, 20, 0.56);
+  overflow-x: auto;
+}
+
+/* Nested code inside pre inherits the block treatment instead of double-styling. */
+.poll__text-body pre code {
+  padding: 0;
+  background: transparent;
+}
+
+/* Blockquotes keep the warm spine used throughout the detail page. */
+.poll__text-body blockquote {
+  margin: 1rem 0;
+  padding: 0.18rem 0 0.18rem 0.95rem;
+  border-left: 3px solid rgba(255, 180, 92, 0.5);
+  color: var(--color-text-muted);
+}
+
+/* Images inside sanitized poll text should never overflow the module width. */
+.poll__text-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius-sm) - 0.15rem);
+}
+
+/* Links stay clearly interactive while matching the accent treatment used elsewhere. */
+.poll__text-body a,
+.poll__option-label a {
+  color: var(--color-accent-soft);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+/* Hover feedback reinforces clickability without adding extra motion noise. */
+.poll__text-body a:hover,
+.poll__option-label a:hover {
+  color: var(--color-accent);
+}
+
+/* Keyboard focus remains visible for sanitized links rendered inside the poll feature. */
+.poll__text-body a:focus-visible,
+.poll__option-label a:focus-visible {
+  outline: 2px solid rgba(255, 180, 92, 0.72);
+  outline-offset: 3px;
+}
+
+/* The options list becomes a deliberate sequence of cards instead of a generic bar chart stack. */
+.poll__options {
+  display: grid;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Each option gets a numbered editorial card so the poll reads like ranked choices, not raw rows. */
+.poll__option {
+  position: relative;
+  display: grid;
+  gap: 0.7rem;
+  padding: 1rem 1rem 1rem 3.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(135deg, rgba(255, 180, 92, 0.06), transparent 46%), rgba(255, 255, 255, 0.03);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.04),
+    0 10px 24px rgba(0, 0, 0, 0.16);
+  animation: fade-in-left 320ms ease both;
+}
+
+/* The sequence badge gives the feature one memorable detail while staying data-driven from markup only. */
+.poll__option::before {
+  content: attr(data-option-position);
+  position: absolute;
+  inset: 0.95rem auto auto 1rem;
+  display: grid;
+  place-items: center;
+  width: 1.9rem;
+  height: 1.9rem;
+  border: 1px solid rgba(255, 180, 92, 0.22);
+  border-radius: 50%;
+  background: rgba(255, 180, 92, 0.08);
+  color: var(--color-accent-soft);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+
+/* The header aligns long labels and vote totals without collapsing on narrow screens. */
+.poll__option-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.55rem 0.9rem;
+  align-items: start;
+}
+
+/* Labels get slightly stronger typography because they are the semantic content of each choice. */
+.poll__option-label {
+  min-width: 0;
+  color: var(--color-text-strong);
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+/* Sanitized first children align tightly with the option card for a cleaner rhythm. */
+.poll__option-label > :first-child {
+  margin-top: 0;
+}
+
+/* Ending spacing is trimmed so option labels do not feel over-padded. */
+.poll__option-label > :last-child {
+  margin-bottom: 0;
+}
+
+/* Vote totals become compact capsules so the eye can compare counts without losing the row label. */
+.poll__option-votes {
+  align-self: center;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(5, 8, 20, 0.28);
+  color: var(--color-text-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* The track keeps a stable scale reference so even small bars remain visually comparable. */
+.poll__option-track {
+  position: relative;
+  height: 0.95rem;
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    rgba(5, 8, 20, 0.38);
+  box-shadow:
+    inset 0 1px 2px rgba(0, 0, 0, 0.28),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+  overflow: hidden;
+}
+
+/* The fill uses a warm metallic gradient so the poll reads like editorial data, not enterprise charts. */
+.poll__option-bar {
+  position: relative;
+  height: 100%;
+  min-width: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 180, 92, 0.88),
+    rgba(255, 220, 171, 0.98) 62%,
+    #fff1d7
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 0 22px rgba(255, 180, 92, 0.24);
+  transition: width 220ms ease;
+}
+
+/* A subtle highlight gives the bar more depth without needing extra markup or JS. */
+.poll__option-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.4), transparent 72%);
+  opacity: 0.7;
+}
+
+/* Light mode reduces fill contrast and shadow weight so the module stays crisp on bright surfaces. */
+@media (prefers-color-scheme: light) {
+  .poll {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), transparent 28%),
+      linear-gradient(140deg, rgba(217, 119, 6, 0.08), transparent 40%), var(--color-surface);
+  }
+
+  .poll::before {
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.1), transparent 70%);
+  }
+
+  .poll__total-votes {
+    border-color: rgba(217, 119, 6, 0.16);
+    background: rgba(217, 119, 6, 0.08);
+  }
+
+  .poll__text {
+    border-color: rgba(15, 23, 42, 0.08);
+    background: rgba(15, 23, 42, 0.02);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  }
+
+  .poll__text-body code {
+    background: rgba(15, 23, 42, 0.06);
+  }
+
+  .poll__text-body pre {
+    border-color: rgba(15, 23, 42, 0.08);
+    background: rgba(15, 23, 42, 0.04);
+  }
+
+  .poll__option {
+    border-color: rgba(15, 23, 42, 0.08);
+    background:
+      linear-gradient(135deg, rgba(217, 119, 6, 0.06), transparent 46%), rgba(15, 23, 42, 0.02);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.72),
+      0 10px 22px rgba(15, 23, 42, 0.06);
+  }
+
+  .poll__option::before {
+    border-color: rgba(217, 119, 6, 0.16);
+    background: rgba(217, 119, 6, 0.08);
+  }
+
+  .poll__option-votes {
+    border-color: rgba(15, 23, 42, 0.08);
+    background: rgba(15, 23, 42, 0.04);
+  }
+
+  .poll__option-track {
+    background:
+      linear-gradient(90deg, rgba(15, 23, 42, 0.06), rgba(15, 23, 42, 0.02)), rgba(15, 23, 42, 0.06);
+    box-shadow:
+      inset 0 1px 2px rgba(15, 23, 42, 0.08),
+      inset 0 0 0 1px rgba(15, 23, 42, 0.03);
+  }
+
+  .poll__option-bar {
+    background: linear-gradient(
+      90deg,
+      rgba(217, 119, 6, 0.88),
+      rgba(245, 158, 11, 0.92) 62%,
+      #fef3c7
+    );
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.35),
+      0 0 18px rgba(217, 119, 6, 0.16);
+  }
+}
+
+/* Tablet-down spacing tightens while keeping the title and chart blocks readable. */
+@media (max-width: 48rem) {
+  .poll {
+    padding: 1rem;
+    gap: 0.9rem;
+  }
+
+  .poll__option {
+    padding: 0.95rem 0.95rem 0.95rem 3.2rem;
+  }
+
+  .poll__option::before {
+    inset: 0.9rem auto auto 0.9rem;
+  }
+}
+
+/* Phone layouts stack vote totals below labels so narrow screens do not crush the option text. */
+@media (max-width: 36rem) {
+  .poll__title {
+    font-size: clamp(1.45rem, 8vw, 2rem);
+  }
+
+  .poll__option-header {
+    grid-template-columns: 1fr;
+  }
+
+  .poll__option-votes {
+    width: fit-content;
+  }
+
+  .poll__option-track {
+    height: 0.9rem;
+  }
+}

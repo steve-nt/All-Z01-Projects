@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="../public/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../public/favicon-16x16.png">
+    <link rel="manifest" href="../public/site.webmanifest">
+    <title>Groupie Tracker</title>
+    <link href="../public/output.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-full lg:mx-0">
+                <div class="flex flex-row justify-between">
+                    <h2 class="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{{.Message}}
+                    </h2>
+                    {{if eq .Shuffle "false"}}
+                    <a id="shuffle-button" href="#">
+                        <button type="button"
+                            class="inline-flex items-center gap-x-2 rounded-md bg-green-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-shuffle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.6 9.6 0 0 0 7.556 8a9.6 9.6 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.6 10.6 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.6 9.6 0 0 0 6.444 8a9.6 9.6 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5" />
+                                <path
+                                    d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192" />
+                            </svg>
+                            Shuffle : OFF
+                        </button>
+                    </a>
+                    {{else}}
+                    <a id="shuffle-button" href="#">
+                        <button type="button"
+                            class="inline-flex items-center gap-x-2 rounded-md bg-green-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-shuffle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.6 9.6 0 0 0 7.556 8a9.6 9.6 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.6 10.6 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.6 9.6 0 0 0 6.444 8a9.6 9.6 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5" />
+                                <path
+                                    d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192" />
+                            </svg>
+                            Shuffle : ON
+                        </button>
+                    </a>
+                    {{end}}
+                </div>
+                <p class="mt-6 text-lg/8 text-gray-600 text-2xl">Choose your artists 🤘
+                <div class="lg:flex lg:justify-end lg:items-end">
+                    <div class="relative mt-2 lg:w-1/4">
+                        <input id="combobox" type="text"
+                            class="block w-full rounded-md bg-white py-1.5 pl-3 pr-12 text-base text-gray-900 outline outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                            role="combobox" aria-controls="options" aria-expanded="false" autocomplete="off"
+                            placeholder="Search">
+                        <button id="searchButton" type="button"
+                            class="absolute inset-y-0 right-0 flex items-center font-semibold rounded-r-md px-2 focus:outline-none bg-indigo-600 text-white text-sm">
+                            Search
+                        </button>
+                        <ul class="absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black/5 focus:outline-none sm:text-sm hidden"
+                            id="options" role="listbox"></ul>
+                    </div>
+                </div>
+                <div class="container mx-auto mt-10">
+                    <div class="flex flex-row justify-between">
+                        <h1 class="text-2xl font-bold mb-4">Filter Artists/Bands</h1>
+                        <button id="button-filter" type="button"
+                            class="rounded-md bg-indigo-600 px-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            Show Filters
+                        </button>
+                    </div>
+                    <div class="hidden pt-4" id="show-filters">
+                        <form id="filtersForm"
+                            class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 bg-white p-6 rounded shadow-md">
+                            <div class="flex flex-col gap-y-4">
+
+                                <div>
+                                    <label for="range-slider"
+                                        class="block text-sm font-medium text-gray-700 mb-2">Creation Date
+                                        Min-Max</label>
+                                    <div class="relative w-64">
+                                        <input id="min-slider" type="range" min="1958" max="2015" value="1958"
+                                            class="absolute z-20 w-full h-2 bg-transparent appearance-none pointer-events-auto accent-blue-500">
+                                        <input id="max-slider" type="range" min="1958" max="2015" value="2015"
+                                            class="absolute z-10 w-full h-2 bg-transparent appearance-none pointer-events-auto accent-blue-500">
+                                        <div class="relative w-full h-2 bg-gray-200 rounded-lg">
+                                            <div id="range-fill" class="absolute top-0 h-full bg-blue-500 rounded-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-4 text-gray-500 text-sm">Range: <span id="min-value">1958</span> -
+                                        <span id="max-value">2015</span>
+                                    </p>
+                                </div>
+                                <div>
+                                    <label for="range-slider-2"
+                                        class="block text-sm font-medium text-gray-700 mb-2">First
+                                        Album Date
+                                        Min-Max</label>
+                                    <div class="relative w-64">
+                                        <input id="min-slider-2" type="range" min="1963" max="2018" value="1963"
+                                            class="absolute z-20 w-full h-2 bg-transparent appearance-none pointer-events-auto accent-blue-500">
+                                        <input id="max-slider-2" type="range" min="1963" max="2018" value="2018"
+                                            class="absolute z-10 w-full h-2 bg-transparent appearance-none pointer-events-auto accent-blue-500">
+                                        <div class="relative w-full h-2 bg-gray-200 rounded-lg">
+                                            <div id="range-fill-2" class="absolute top-0 h-full bg-blue-500 rounded-lg">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p class="mt-4 text-gray-500 text-sm">Range: <span id="min-value-2">1963</span> -
+                                        <span id="max-value-2">2018</span>
+                                    </p>
+                                </div>
+                                <div>
+                                    <legend class="block text-sm font-medium text-gray-700">Number of Members
+                                    </legend>
+                                    <div class="mt-2 flex flex-row gap-x-2">
+                                        <label class="flex items-center">
+                                            <input id="member-1" type="checkbox" name="members" value="1"
+                                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <span class="ml-2 text-sm text-gray-700">1</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input id="member-2" type="checkbox" name="members" value="2"
+                                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <span class="ml-2 text-sm text-gray-700">2</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input id="member-3" type="checkbox" name="members" value="3"
+                                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <span class="ml-2 text-sm text-gray-700">3</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input id="member-4" type="checkbox" name="members" value="4"
+                                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <span class="ml-2 text-sm text-gray-700">4</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input id="member-5" type="checkbox" name="members" value="5"
+                                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <span class="ml-2 text-sm text-gray-700">5</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input id="member-6" type="checkbox" name="members" value="6"
+                                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <span class="ml-2 text-sm text-gray-700">6</span>
+                                        </label>
+                                        <label class="flex items-center">
+                                            <input id="member-7" type="checkbox" name="members" value="7"
+                                                class="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                            <span class="ml-2 text-sm text-gray-700">7</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="py-2">
+                                <label for="locations" class="block text-sm font-medium text-gray-700">Locations</label>
+                                <select id="locations" name="locations" multiple
+                                    class="mb-2 mt-1 block w-full h-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                </select>
+                            </div>
+                            <div class="py-2">
+                                <label for="cities" class="block text-sm font-medium text-gray-700">Cities</label>
+                                <select id="cities" name="locations" multiple
+                                    class="mb-2 mt-1 block w-full h-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+                                </select>
+                            </div>
+                        </form>
+                        <div class="mt-4">
+                            <button id="applyFilters" type="button"
+                                class="inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                Apply Filters
+                            </button>
+                            <button id="clear-filter" type="button"
+                                class="hidden inline-flex justify-center rounded-md border border-transparent bg-red-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-red-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                                Clear Filters
+                            </button>
+                        </div>
+                        <div id="filterResults" class="mt-6"></div>
+                    </div>
+                </div>
+
+            </div>
+            <ul role="list"
+                class="mx-auto mt-20 grid max-w-2xl grid-cols-2 gap-x-8 gap-y-16 text-center sm:grid-cols-3 md:grid-cols-4 lg:mx-0 lg:max-w-none lg:grid-cols-5 xl:grid-cols-6">
+                {{range .Artists}}
+                <a href="/artist/{{replaceSpaces .Name}}">
+                    <li>
+                        <img class="image-hover-effect mx-auto size-24 rounded-full hover:scale-125 transition-all duration-500"
+                            src="{{.Image}}" alt="">
+
+                        <h3 class="mt-6 text-base/7 font-semibold tracking-tight text-gray-900">{{.Name}}</h3>
+                        <p class="text-sm/6 text-gray-600">Founded {{.StartYear}}</p>
+                    </li>
+                </a>
+                {{end}}
+            </ul>
+            {{if lt .NextPagination .Total}}
+            <div class="flex items-center justify-center mt-12">
+                <a id="load-more-button" href="#">
+                    <button type="button"
+                        class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                        Load More
+                    </button>
+                </a>
+            </div>
+            {{else if lt .Current .Total}}
+            <div class="flex items-center justify-center mt-12">
+                <a id="load-more-button" href="#">
+                    <button type="button"
+                        class="rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                        Load More
+                    </button>
+                </a>
+            </div>
+            {{end}}
+        </div>
+    </div>
+    <script>
+        var currentPagination = "{{.Current}}"
+        var shuffle = "{{.Shuffle}}"
+        var totalArtists = "{{.Total}}"
+    </script>
+    <script src="/public/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,21 @@
+{
+	"tls": {
+		"CERTIFICATION": "../../certification/server.crt",
+		"KEY": "../../certification/server.key"
+	},
+	"API": {
+		"API_BASE_URL": "http://localhost:8080",
+		"API_KEY": "this_is_our_forum-image-upload_and_it_very_awesome",
+		"HEADER_FORMAT": "forum-image-upload_BACKEND"
+	},
+	"Durations": {
+		"ClientTimeOut": 10,
+		"IdleSessionExpiration": 30,
+		"AbsoluteSessionExpiration": 1,
+		"DBCleanUpRate": 24,
+		"RateLimit": 100.0,
+		"RateLimiterRefreshRate": 10
+	},
+	"CookieName": "example",
+	"HandlersTimeout": 4
+}

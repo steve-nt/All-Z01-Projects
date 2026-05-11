@@ -1,0 +1,51 @@
+{{define "user_register_view"}}
+{{template "header"}}
+{{template "topbar" .}}
+{{if .Error.Has}}
+{{template "error" .}}
+{{end}}
+<div class="container">
+    <div class="box">
+        <form method="POST" action="/user/register">
+            <fieldset>
+                <legend>User Registration</legend>
+                <input
+                        type="hidden"
+                        name="action"
+                        value="register"/>
+                <input
+                        placeholder="Email"
+                        type="email"
+                        name="email"
+                        required/>
+                <input
+                        placeholder="Username"
+                        type="text"
+                        name="username"
+                        required/>
+                <input
+                        placeholder="Password"
+                        type="password"
+                        name="password1"
+                        required/>
+                <input
+                        placeholder="Confirm password"
+                        type="password"
+                        name="password2"
+                        required/>
+                <input
+                        type="submit"
+                        value="Register"
+                        name="submit"/>
+            </fieldset>
+        </form>
+        <div class="oauth-buttons">
+            <a href="/auth/google">Continue with Google</a>
+            <a href="/auth/github">Continue with GitHub</a>
+        </div>
+        <p>Already have an account? <a href="/user/login">Login!</a></p>
+    </div>
+</div>
+{{template "ending"}}
+{{end}}
+

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Groupie Tracka</title>
+    <link rel="stylesheet" href="templates/styles.css">
+
+</head>
+
+<body class="body">
+
+
+    <div class="left-side">
+        <p class="main_title">GROUPIE TRACKER</p>
+
+        <form id="artist_filters" method="GET" action="/?artistID={{.SelectedArtistID}}">
+            <input type="hidden" id="artistID" name="artistID" value="{{.SelectedArtistID}}">
+            <div class="filters_box">
+                <div class="creation-box">
+                    <input type="range" min="1958" max="2025" value="{{.Filter.CreationYearStart}}"
+                        name="creation_year_start" id="creation_year_start">
+                    <span class="slider_description">Creation Year Start: </span>
+                    <span class="slider_display" style="display: inline-block; "
+                        id="creation_year_start_d">{{.Filter.CreationYearStart}}</span>
+                    <div style="display:block;"></div>
+                    <input type="range" min="1958" max="2025" value="{{.Filter.CreationYearEnd}}"
+                        name="creation_year_end" id="creation_year_end">
+                    <span class="slider_description">Creation Year End: </span>
+                    <span class="slider_display" style="display: inline-block;"
+                        id="creation_year_end_d">{{.Filter.CreationYearEnd}}</span>
+                </div>
+
+                <div class="first-album-box">
+                    <input type="range" min="1958" max="2025" value="{{.Filter.FirstAlbumYearStart}}"
+                        name="first_album_year_start" id="first_album_year_start">
+                    <span class="slider_description">First Album Year Start: </span>
+                    <span class="slider_display" id="first_album_year_start_d">{{.Filter.FirstAlbumYearStart}}</span>
+                    <div style="display:block;"></div>
+                    <input type="range" min="1958" max="2025" value="{{.Filter.FirstAlbumYearEnd}}"
+                        name="first_album_year_end" id="first_album_year_end">
+                    <span class="slider_description">First Album Year End: </span>
+                    <span class="slider_display" id="first_album_year_end_d">{{.Filter.FirstAlbumYearEnd}}</span>
+                </div>
+
+
+
+                <div class="member-count-box">
+                    <span class="slider_display" style="display: block;">Member Count: </span>
+                    <label class="slider_display"><input type="checkbox" name="band_size" value="1" {{if eq (index
+                            .Filter.BandSizeFilterCheckboxes 0) 1}}checked{{end}}> 1,</label>
+                    <label class="slider_display"><input type="checkbox" name="band_size" value="2" {{if eq (index
+                            .Filter.BandSizeFilterCheckboxes 1) 1}}checked{{end}}> 2,</label>
+                    <label class="slider_display"><input type="checkbox" name="band_size" value="3" {{if eq (index
+                            .Filter.BandSizeFilterCheckboxes 2) 1}}checked{{end}}> 3,</label>
+                    <label class="slider_display"><input type="checkbox" name="band_size" value="4" {{if eq (index
+                            .Filter.BandSizeFilterCheckboxes 3) 1}}checked{{end}}> 4,</label>
+                    <label class="slider_display"><input type="checkbox" name="band_size" value="5" {{if eq (index
+                            .Filter.BandSizeFilterCheckboxes 4) 1}}checked{{end}}> 5,</label>
+                    <label class="slider_display"><input type="checkbox" name="band_size" value="6" {{if eq (index
+                            .Filter.BandSizeFilterCheckboxes 5) 1}}checked{{end}}> 6,</label>
+                    <label class="slider_display"><input type="checkbox" name="band_size" value="7" {{if eq (index
+                            .Filter.BandSizeFilterCheckboxes 6) 1}}checked{{end}}> 7,</label>
+                    <label class="slider_display"><input type="checkbox" name="band_size" value="8" {{if eq (index
+                            .Filter.BandSizeFilterCheckboxes 7) 1}}checked{{end}}> 8,</label>
+                    <label class="slider_display"><input type="checkbox" name="band_size" value="9" {{if eq (index
+                            .Filter.BandSizeFilterCheckboxes 8) 1}}checked{{end}}> 9,</label>
+                    <label class="slider_display"><input type="checkbox" name="band_size" value="10" {{if eq (index
+                            .Filter.BandSizeFilterCheckboxes 9) 1}}checked{{end}}> 10</label>
+                    <span></span>
+
+                </div>
+
+            </div>
+            <div class="concert-line">
+                <span style="display: inline-block; color:white;">Filter by concert locations:</span>
+
+                <select name="concert-filter" id="concert-dropdown">
+                    <option value="{{.Filter.ConcertFilter}}" selected>{{.Filter.ConcertFilter}}</option>
+                    {{range .AllLocations}}
+                    <option value="{{.}}">{{.}}</option>
+                    {{end}}
+                </select>
+                <button type="button" id="reset_button">Reset Filters</button>
+            </div>
+
+
+            <div class="searchbar-line">
+                <input class="searchbar" type="text" value="{{.Filter.SearchBar}}" autocomplete="off" name="searchbar"
+                    placeholder="Try searching here for what you're looking for" oninput="fetchSuggestions()">
+                <button type="submit">Submit</button>
+            </div>
+
+            <ul id="suggestions" class="suggestion-area"></ul>
+            <div class="cat-box">
+                {{range .Artists}}
+                <div class="cat-block">
+                    <p class="cat-name">{{.Name}}</p>
+                    <img class="cat-image" src="{{.Image}}" onclick="setArtistID('{{.ID}}')">
+                </div>
+                {{end}}
+                {{if not .Artists}} 
+                    <h2>No results found </h2>
+                {{end}}
+                
+            </div>
+
+
+
+        </form>
+    </div>
+    <div class="right-side">
+        <p class="band-title">{{.Artist.Name}}</p>
+        <div class="info-box">
+            <p>First Album Release: {{.Artist.FirstAlbum}}</p>
+            <p>Creation Date: {{.Artist.CreationDate}}</p>
+            <p style="font-size: 22px;">Members:</p>
+            <div class="member-list">
+                {{range .Artist.Members}}
+                <p>{{.}}</p>
+                {{end}}
+
+            </div>
+        </div>
+
+        <img class="main-image" src={{.Artist.Image}}>
+
+        <div class="concert-box">
+            <span class="concert-title">Concerts</span>
+
+
+            <div class="concert-list">
+                {{range $location := .SortedLocations}}
+                <div class="concert-entry">
+                    <p>{{$location}}</p>
+                    <p>
+                        {{range index $.Relation.DatesLocations $location}}
+                        <li>{{.}}</li>
+                        {{end}}
+                    </p>
+                </div>
+                {{end}}
+            </div>
+        </div>
+
+        <div>
+            <a style="text-decoration: none;" href="/map?artistID={{.SelectedArtistID}}" target="_blank">
+                <button class="map-button">See concerts in a map</button>
+            </a>
+        </div>
+
+    </div>
+
+    <script type="text/javascript" src="templates/index.js"></script>
+</body>
+
+</html>

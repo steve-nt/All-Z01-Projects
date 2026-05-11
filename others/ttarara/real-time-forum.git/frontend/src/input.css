@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 min-h-screen;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-gradient-to-r from-genz-purple to-genz-pink text-white font-bold py-2 px-6 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-white text-genz-purple font-bold py-2 px-6 rounded-full border-2 border-genz-purple hover:bg-genz-purple hover:text-white transition-all duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-2xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .input-field {
+    @apply w-full px-4 py-3 rounded-xl border-2 border-gray-200 focus:border-genz-purple focus:outline-none transition-colors duration-200;
+  }
+  
+  .gradient-text {
+    @apply bg-gradient-to-r from-genz-purple via-genz-pink to-genz-blue bg-clip-text text-transparent;
+  }
+}
+

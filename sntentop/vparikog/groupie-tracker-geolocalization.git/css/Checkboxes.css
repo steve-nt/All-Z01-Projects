@@ -1,0 +1,73 @@
+/* From Uiverse.io by cbolson */ 
+.my-form {
+    --_clr-primary: #666;
+    --_clr-hover: #b823cc;
+    --_clr-checked: #30942d;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* 4 equal-width columns */
+    grid-template-rows: auto auto;          /* Two rows: first for first 4, second for last 4 */
+    max-width: 350px;                       /* Adjust width if needed */
+    margin: 0 auto;                         /* Center align if desired */
+}
+  .my-form > div {
+    --_clr-current: var(--_clr-primary);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .my-form > div + div {
+      margin-block-start: 0.5rem;
+  }
+  .my-form label {
+    cursor: pointer;
+    color: var(--_clr-current);
+    transition: color 150ms ease-in-out;
+  }
+  
+  /* styled checkbox */
+  .my-form input[type="checkbox"] {
+    appearance: none;
+    outline: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    aspect-ratio: 1;
+    padding: 0.25rem;
+    background: transparent;
+    border: 1px solid var(--_clr-current);
+    border-radius: 2px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+  }
+  .my-form input[type="checkbox"]::after {
+    content: "\2714";
+    opacity: 0;
+    transition: opacity 150ms ease-in-out;
+    color: var(--_clr-checked);
+    font-size: inherit;
+    font-family: inherit;
+  }
+  
+  .my-form label:hover,
+  .my-form input[type="checkbox"]:focus-visible,
+  .my-form input[type="checkbox"]:focus-visible + label,
+  .my-form input[type="checkbox"]:hover,
+  .my-form input[type="checkbox"]:hover + label {
+    --_clr-current: var(--_clr-hover);
+  }
+  .my-form input[type="checkbox"]:focus-visible::after,
+  .my-form input[type="checkbox"]:hover::after {
+    opacity: 0.5;
+    color: var(--_clr-hover);
+  }
+  
+  .my-form input[type="checkbox"]:checked + label:not(:hover),
+  .my-form input[type="checkbox"]:checked:not(:hover) {
+    --_clr-current: var(--_clr-checked);
+  }
+  .my-form input[type="checkbox"]:checked::after {
+    opacity: 1;
+  }
+  

@@ -1,0 +1,760 @@
+/*
+ * Feed styles keep the homepage on the same centered editorial track as the detail page and live banner.
+ * Public API: Class names in this file are owned by feed.view.js only.
+ * Constraints: The feed has no extra wrapper element, so tabs and list widths are constrained directly here.
+ */
+
+/* The tab rail becomes a centered glass surface so section switching matches the rest of the app shell. */
+.feed__tabs {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  width: min(72rem, calc(100% - 2rem));
+  margin: clamp(0.9rem, 2vw, 1.35rem) auto 1rem;
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 180, 92, 0.18);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, rgba(255, 180, 92, 0.14), transparent 38%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 28%), var(--color-surface-strong);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(14px);
+  overflow: clip;
+}
+
+/* A thin accent line keeps the tabs visually connected to the live banner and detail header. */
+.feed__tabs::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 0.18rem;
+  background: linear-gradient(90deg, var(--color-accent), rgba(255, 180, 92, 0));
+  opacity: 0.82;
+}
+
+/* Tab buttons use warm pill styling so they no longer read like unstyled browser controls. */
+.feed__tab-button {
+  position: relative;
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.72rem 1rem;
+  border: 1px solid rgba(255, 180, 92, 0.18);
+  border-radius: 999px;
+  background: rgba(255, 180, 92, 0.08);
+  color: var(--color-accent-soft);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease,
+    color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+/* Pending tabs provide immediate feedback between click and settled active state. */
+.feed__tab-button.is-pending {
+  transform: translateY(1px) scale(0.985);
+  border-color: rgba(255, 180, 92, 0.36);
+  background: linear-gradient(
+    110deg,
+    rgba(255, 180, 92, 0.16),
+    rgba(255, 180, 92, 0.36),
+    rgba(255, 180, 92, 0.16)
+  );
+  background-size: 220% 100%;
+  background-position: 0% 50%;
+  color: var(--color-text-strong);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 180, 92, 0.25),
+    0 8px 16px rgba(255, 180, 92, 0.12);
+  animation: feed-tab-pending-sweep 900ms linear infinite;
+}
+
+/* Active tabs stay clearly selected while preserving the pressed affordance if still pending. */
+.feed__tab-button.is-active {
+  border-color: rgba(255, 180, 92, 0.44);
+  background: rgba(255, 180, 92, 0.22);
+  color: var(--color-text-strong);
+}
+
+/* Hover feedback gives the tabs a clearer interactive state without overwhelming the page. */
+.feed__tab-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 180, 92, 0.34);
+  background: rgba(255, 180, 92, 0.16);
+  color: var(--color-text-strong);
+  box-shadow: 0 10px 24px rgba(255, 180, 92, 0.12);
+}
+
+/* Keyboard focus stays visible and consistent with the rest of the feature surfaces. */
+.feed__tab-button:focus-visible,
+.feed-card__title a:focus-visible {
+  outline: 2px solid rgba(255, 180, 92, 0.78);
+  outline-offset: 3px;
+}
+
+/* The story list inherits the same centered measure as the tabs so the page stops hugging one side. */
+.feed__list {
+  display: grid;
+  gap: clamp(0.95rem, 1.8vw, 1.25rem);
+  width: min(72rem, calc(100% - 2rem));
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+  padding: 0;
+}
+
+/* The loading panel creates a clear in-between screen while tab data is fetched. */
+.feed__loading-screen {
+  position: relative;
+  display: grid;
+  gap: 0.45rem;
+  width: 100%;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(255, 180, 92, 0.22);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(120deg, rgba(255, 180, 92, 0.16), rgba(255, 255, 255, 0.02) 44%),
+    rgba(255, 255, 255, 0.03);
+  box-shadow: var(--shadow-soft);
+  overflow: clip;
+  animation: fade-in-up 260ms ease both;
+}
+
+/* The headline keeps loading copy aligned with the app's editorial typography. */
+.feed__loading-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.06rem, 1.6vw, 1.3rem);
+  color: var(--color-text-strong);
+  letter-spacing: -0.02em;
+}
+
+/* Eyebrow keeps state feedback compact and scannable in the loading panel. */
+.feed__loading-eyebrow {
+  margin: 0;
+  color: var(--color-accent-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+/* Supporting line explains why cards are temporarily replaced by placeholders. */
+.feed__loading-copy {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.88rem;
+}
+
+/* Orbit wrapper gives the loading moment a single intentional motion anchor. */
+.feed__loading-orbit {
+  position: absolute;
+  top: 0.8rem;
+  right: 0.9rem;
+  width: 2.2rem;
+  height: 2.2rem;
+}
+
+/* Ring rotation delivers smooth continuous motion without overpowering content. */
+.feed__loading-orbit-ring {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(255, 180, 92, 0.28);
+  border-top-color: rgba(255, 180, 92, 0.92);
+  border-radius: 999px;
+  animation: feed-loading-spin 900ms linear infinite;
+}
+
+/* Dot pulse complements the ring and reinforces in-progress feedback. */
+.feed__loading-orbit-dot {
+  position: absolute;
+  inset: 0.78rem;
+  border-radius: 999px;
+  background: rgba(255, 180, 92, 0.9);
+  box-shadow: 0 0 0 0 rgba(255, 180, 92, 0.45);
+  animation: feed-loading-pulse 1100ms ease infinite;
+}
+
+/* Story cards use the shared glass-card treatment to align the feed with the rest of the palette. */
+.feed-card {
+  position: relative;
+  display: grid;
+  gap: 0.78rem;
+  padding: clamp(1rem, 2vw, 1.3rem);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(135deg, rgba(255, 180, 92, 0.08), transparent 44%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 24%), var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(12px);
+  overflow: clip;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+  cursor: pointer;
+}
+
+/* Refresh markers stay tucked to the right so card content layout remains unchanged. */
+.feed-card__refresh-marker {
+  position: absolute;
+  top: 0.82rem;
+  right: 0.82rem;
+  display: inline-flex;
+  width: 1.35rem;
+  height: 1.35rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 180, 92, 0.32);
+  border-radius: 999px;
+  background: rgba(255, 180, 92, 0.12);
+  color: var(--color-accent-soft);
+  font-size: 0.78rem;
+  line-height: 1;
+  font-weight: 700;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
+}
+
+/* New posts receive a brighter glyph to distinguish insertions from edits. */
+.feed-card__refresh-marker--new {
+  border-color: rgba(59, 194, 130, 0.46);
+  background: rgba(59, 194, 130, 0.14);
+  color: #84f2bb;
+}
+
+/* Existing posts with updates use the warm accent ring shared with other feed signals. */
+.feed-card__refresh-marker--updated {
+  border-color: rgba(255, 180, 92, 0.42);
+  background: rgba(255, 180, 92, 0.14);
+  color: var(--color-accent-soft);
+}
+
+/* Unchanged posts still receive markers so the refresh state is explicit for every visible row. */
+.feed-card__refresh-marker--unchanged {
+  border-color: rgba(173, 181, 189, 0.34);
+  background: rgba(173, 181, 189, 0.12);
+  color: rgba(226, 232, 240, 0.95);
+}
+
+/* Content stack preserves spacing between title/source/meta even when source links are absent. */
+.feed-card__content {
+  display: grid;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+/* The top rule gives each card a subtle editorial edge without competing with the title. */
+.feed-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 0.16rem;
+  background: linear-gradient(90deg, rgba(255, 180, 92, 0.84), rgba(255, 180, 92, 0));
+  opacity: 0.82;
+}
+
+/* Hover lift increases hierarchy between cards now that the feed has more vertical rhythm. */
+.feed-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(255, 180, 92, 0.2);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, 0.24);
+}
+
+/* Refreshed cards briefly glow to direct attention before settling back to normal. */
+.feed-card--refresh-highlight {
+  animation: feed-refresh-highlight-fade 8s ease forwards;
+}
+
+/* Titles use the display font so they lead the eye before the quieter metadata row. */
+.feed-card__title {
+  margin: 0;
+  color: var(--color-text-strong);
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  word-break: break-word;
+}
+
+/* Title links inherit the card typography so external stories stop rendering in browser-default blue. */
+.feed-card__title a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Link hover keeps the accent restrained while still reinforcing clickability. */
+.feed-card__title a:hover {
+  color: var(--color-accent-soft);
+}
+
+/* Metadata is intentionally fainter so the title remains the first thing the eye reads. */
+.feed-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 0.8rem;
+  margin-top: 0.18rem;
+  color: color-mix(in srgb, var(--color-text-muted) 84%, transparent);
+  font-size: 0.84rem;
+}
+
+/* Each metadata token becomes a compact capsule so the row feels organized without looking loud. */
+.feed-card__score,
+.feed-card__author,
+.feed-card__time,
+.feed-card__comments {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.34rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+/* Score gets a little extra warmth because it is the most useful scan target after the title. */
+.feed-card__score {
+  border-color: rgba(255, 180, 92, 0.18);
+  background: rgba(255, 180, 92, 0.08);
+  color: var(--color-accent-soft);
+}
+
+/* The score marker replaces emoji with a cleaner accent dot that fits the established system. */
+.feed-card__score::before {
+  content: "";
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: currentColor;
+  box-shadow: 0 0 0 0.18rem rgba(255, 180, 92, 0.14);
+}
+
+/* Secondary metadata pills use a smaller neutral dot so the row stays readable but quieter than the title. */
+.feed-card__author::before,
+.feed-card__time::before,
+.feed-card__comments::before {
+  content: "";
+  width: 0.34rem;
+  height: 0.34rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--color-text-muted) 82%, transparent);
+}
+
+/* Skeleton cards keep their size while reducing visual noise during the loading state. */
+.feed-card--skeleton {
+  min-height: 8rem;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Bottom loading card keeps pagination feedback visible while preserving existing cards on screen. */
+.feed-card--loading-more {
+  min-height: 4.2rem;
+  padding: 0.95rem 1.1rem;
+  border-style: dashed;
+  border-color: rgba(255, 180, 92, 0.28);
+  background:
+    linear-gradient(120deg, rgba(255, 180, 92, 0.12), rgba(255, 255, 255, 0.02) 54%),
+    rgba(255, 255, 255, 0.02);
+  animation: pulse 1.15s ease-in-out infinite;
+}
+
+/* Inline loading copy keeps the pagination state obvious without introducing another heavy panel. */
+.feed-card__loading-more-copy {
+  margin: 0;
+  color: var(--color-accent-soft);
+  font-size: 0.86rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* End-of-feed card mirrors loading-more styling but communicates completion instead of activity. */
+.feed-card--end-of-feed {
+  min-height: 4rem;
+  padding: 0.9rem 1.1rem;
+  border-style: dashed;
+  border-color: rgba(255, 180, 92, 0.24);
+  background:
+    linear-gradient(120deg, rgba(255, 180, 92, 0.08), rgba(255, 255, 255, 0.02) 54%),
+    rgba(255, 255, 255, 0.02);
+}
+
+/* End message stays compact and calm to signal completion without reading like an error. */
+.feed-card__end-of-feed-copy {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.84rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+/* The loading pulse stays subtle so the feed does not flash aggressively. */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.56;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Pending tabs sweep from left to right to imply active work-in-progress. */
+@keyframes feed-tab-pending-sweep {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 220% 50%;
+  }
+}
+
+/* Ring spin drives the primary loading motion in a lightweight loop. */
+@keyframes feed-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Dot pulse adds depth to the loading panel without introducing hard flashes. */
+@keyframes feed-loading-pulse {
+  0%,
+  100% {
+    transform: scale(0.85);
+    box-shadow: 0 0 0 0 rgba(255, 180, 92, 0.42);
+  }
+
+  50% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0.35rem rgba(255, 180, 92, 0);
+  }
+}
+
+/* Highlight animation decays gradually so changed posts remain marked without permanent glow noise. */
+@keyframes feed-refresh-highlight-fade {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(255, 180, 92, 0.42),
+      0 22px 44px rgba(0, 0, 0, 0.24);
+  }
+
+  55% {
+    box-shadow:
+      0 0 0 0.7rem rgba(255, 180, 92, 0),
+      0 20px 40px rgba(0, 0, 0, 0.22);
+  }
+
+  100% {
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+/* Skeleton titles mimic the real title width so loading cards preserve layout rhythm. */
+.feed-card--skeleton .feed-card__title {
+  width: min(36rem, 80%);
+  min-height: 1.65rem;
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: transparent;
+}
+
+/* Skeleton metadata spacing stays aligned with the real pill row. */
+.feed-card--skeleton .feed-card__meta {
+  gap: 0.55rem 0.8rem;
+}
+
+/* Skeleton pills stay compact so the placeholder reads like the finished card structure. */
+.feed-card--skeleton .feed-card__score,
+.feed-card--skeleton .feed-card__author,
+.feed-card--skeleton .feed-card__time,
+.feed-card--skeleton .feed-card__comments {
+  min-height: 1.8rem;
+  width: 7.25rem;
+  border-color: transparent;
+  background: rgba(255, 255, 255, 0.08);
+  color: transparent;
+}
+
+/* Pseudo markers are hidden in the skeleton so the loading state stays clean. */
+.feed-card--skeleton .feed-card__score::before,
+.feed-card--skeleton .feed-card__author::before,
+.feed-card--skeleton .feed-card__time::before,
+.feed-card--skeleton .feed-card__comments::before {
+  background: transparent;
+  box-shadow: none;
+}
+
+/* Errors use the same centered width so failure states do not break the page rhythm. */
+.feed__error {
+  width: min(72rem, calc(100% - 2rem));
+  margin: 0 auto clamp(2rem, 4vw, 3rem);
+  padding: var(--space-lg);
+  border: 1px solid rgba(220, 53, 69, 0.28);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(220, 53, 69, 0.08), transparent 28%), rgba(220, 53, 69, 0.05);
+  color: #fda4af;
+  text-align: center;
+}
+
+/* Error copy spacing keeps the two lines visually grouped. */
+.feed__error p {
+  margin: var(--space-sm) 0;
+}
+
+/* Hint text stays slightly quieter than the primary error sentence. */
+.feed__error-hint {
+  opacity: 0.82;
+  font-size: 0.9rem;
+}
+
+/* The sentinel shares the feed width so infinite-scroll observation happens inside the same centered column. */
+.feed__sentinel {
+  width: min(72rem, calc(100% - 2rem));
+  height: 1px;
+  margin: 0 auto;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Floating action keeps long-scroll navigation ergonomic on infinite feeds. */
+.feed__scroll-top-button {
+  position: fixed;
+  right: clamp(0.85rem, 1.8vw, 1.35rem);
+  bottom: calc(3.15rem + env(safe-area-inset-bottom, 0px));
+  z-index: 120;
+  display: inline-flex;
+  min-height: 2.45rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.88rem;
+  border: 1px solid rgba(255, 180, 92, 0.36);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-surface-strong), rgba(255, 180, 92, 0.18));
+  color: var(--color-text-strong);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(10px);
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    background-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+/* Hover state reinforces interactivity while avoiding oversized motion near content edges. */
+.feed__scroll-top-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 180, 92, 0.5);
+  background: color-mix(in oklab, var(--color-surface-strong), rgba(255, 180, 92, 0.26));
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.32);
+}
+
+/* Keyboard users need a strong ring because this control sits outside normal content flow. */
+.feed__scroll-top-button:focus-visible {
+  outline: 2px solid rgba(255, 180, 92, 0.78);
+  outline-offset: 3px;
+}
+
+/* Light mode lowers the glass intensity so cards stay crisp against the brighter shell. */
+@media (prefers-color-scheme: light) {
+  .feed__tabs {
+    border-color: rgba(217, 119, 6, 0.18);
+    background:
+      linear-gradient(135deg, rgba(217, 119, 6, 0.12), transparent 38%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.96), transparent 32%),
+      var(--color-surface-strong);
+    box-shadow: 0 18px 34px rgba(15, 23, 42, 0.08);
+  }
+
+  .feed__tab-button {
+    border-color: rgba(217, 119, 6, 0.18);
+    background: rgba(217, 119, 6, 0.08);
+  }
+
+  .feed__tab-button:hover {
+    border-color: rgba(217, 119, 6, 0.3);
+    background: rgba(217, 119, 6, 0.14);
+    box-shadow: 0 10px 22px rgba(217, 119, 6, 0.1);
+  }
+
+  .feed__tab-button.is-pending {
+    border-color: rgba(217, 119, 6, 0.36);
+    background: linear-gradient(
+      110deg,
+      rgba(217, 119, 6, 0.14),
+      rgba(217, 119, 6, 0.34),
+      rgba(217, 119, 6, 0.14)
+    );
+    background-size: 220% 100%;
+    box-shadow:
+      inset 0 0 0 1px rgba(217, 119, 6, 0.25),
+      0 8px 16px rgba(217, 119, 6, 0.12);
+  }
+
+  .feed__tab-button.is-active {
+    border-color: rgba(217, 119, 6, 0.42);
+    background: rgba(217, 119, 6, 0.2);
+  }
+
+  .feed__loading-screen {
+    border-color: rgba(217, 119, 6, 0.25);
+    background:
+      linear-gradient(120deg, rgba(217, 119, 6, 0.14), rgba(255, 255, 255, 0.04) 44%),
+      rgba(15, 23, 42, 0.02);
+  }
+
+  .feed__loading-orbit-ring {
+    border-color: rgba(217, 119, 6, 0.22);
+    border-top-color: rgba(217, 119, 6, 0.88);
+  }
+
+  .feed__loading-orbit-dot {
+    background: rgba(217, 119, 6, 0.86);
+  }
+
+  .feed-card {
+    border-color: rgba(15, 23, 42, 0.08);
+    background:
+      linear-gradient(135deg, rgba(217, 119, 6, 0.06), transparent 44%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.94), transparent 30%), var(--color-surface);
+    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.06);
+  }
+
+  .feed__scroll-top-button {
+    border-color: rgba(217, 119, 6, 0.34);
+    background: color-mix(in oklab, var(--color-surface-strong), rgba(217, 119, 6, 0.2));
+    color: rgba(146, 64, 14, 0.95);
+    box-shadow: 0 10px 22px rgba(15, 23, 42, 0.12);
+  }
+
+  .feed-card__refresh-marker {
+    border-color: rgba(217, 119, 6, 0.36);
+    background: rgba(217, 119, 6, 0.12);
+    color: rgba(180, 83, 9, 0.92);
+    box-shadow: 0 6px 14px rgba(15, 23, 42, 0.12);
+  }
+
+  .feed-card__refresh-marker--new {
+    border-color: rgba(22, 163, 74, 0.45);
+    background: rgba(22, 163, 74, 0.12);
+    color: rgba(21, 128, 61, 0.95);
+  }
+
+  .feed-card__refresh-marker--unchanged {
+    border-color: rgba(148, 163, 184, 0.32);
+    background: rgba(148, 163, 184, 0.12);
+    color: rgba(51, 65, 85, 0.9);
+  }
+
+  .feed-card:hover {
+    box-shadow: 0 18px 36px rgba(15, 23, 42, 0.08);
+  }
+
+  .feed-card__score,
+  .feed-card__author,
+  .feed-card__time,
+  .feed-card__comments {
+    border-color: rgba(15, 23, 42, 0.08);
+    background: rgba(15, 23, 42, 0.03);
+  }
+
+  .feed-card__score {
+    border-color: rgba(217, 119, 6, 0.18);
+    background: rgba(217, 119, 6, 0.08);
+  }
+
+  .feed-card--skeleton .feed-card__title,
+  .feed-card--skeleton .feed-card__score,
+  .feed-card--skeleton .feed-card__author,
+  .feed-card--skeleton .feed-card__time,
+  .feed-card--skeleton .feed-card__comments {
+    background: rgba(15, 23, 42, 0.08);
+  }
+
+  .feed-card--loading-more {
+    border-color: rgba(217, 119, 6, 0.32);
+    background:
+      linear-gradient(120deg, rgba(217, 119, 6, 0.12), rgba(255, 255, 255, 0.04) 54%),
+      rgba(15, 23, 42, 0.02);
+  }
+
+  .feed-card--end-of-feed {
+    border-color: rgba(217, 119, 6, 0.24);
+    background:
+      linear-gradient(120deg, rgba(217, 119, 6, 0.08), rgba(255, 255, 255, 0.03) 54%),
+      rgba(15, 23, 42, 0.02);
+  }
+}
+
+/* Tablet and phone widths get tighter outer gutters while keeping the centered stack. */
+@media (max-width: 48rem) {
+  .feed__tabs,
+  .feed__list,
+  .feed__error,
+  .feed__sentinel {
+    width: min(72rem, calc(100% - 1rem));
+  }
+
+  .feed__tabs {
+    gap: 0.6rem;
+    padding: 0.7rem;
+  }
+}
+
+/* Small screens keep the pills readable by tightening spacing and allowing metadata to stack more easily. */
+@media (max-width: 40rem) {
+  .feed__tab-button {
+    min-height: 2.55rem;
+    padding-inline: 0.82rem;
+    font-size: 0.76rem;
+  }
+
+  .feed__loading-screen {
+    padding-right: 3.5rem;
+  }
+
+  .feed-card {
+    gap: 0.7rem;
+    padding: 0.95rem;
+  }
+
+  .feed-card__title {
+    font-size: 1.15rem;
+  }
+
+  .feed-card__meta {
+    gap: 0.45rem 0.55rem;
+    font-size: 0.8rem;
+  }
+
+  .feed__scroll-top-button {
+    right: 0.7rem;
+    bottom: calc(2.9rem + env(safe-area-inset-bottom, 0px));
+    min-height: 2.28rem;
+    padding: 0.52rem 0.78rem;
+    font-size: 0.72rem;
+  }
+}

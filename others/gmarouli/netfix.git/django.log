@@ -1,0 +1,2275 @@
+WARNING 2025-06-20 15:03:36,009 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-20 15:03:36,009 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3075
+WARNING 2025-06-20 15:03:42,018 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-20 15:03:42,018 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3075
+WARNING 2025-06-20 15:03:52,416 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-20 15:03:52,416 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3075
+WARNING 2025-06-20 15:04:04,628 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-20 15:04:04,628 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3075
+WARNING 2025-06-20 15:04:09,436 log Not Found: /.well-known/appspecific/com.chrome.devtools.json
+WARNING 2025-06-20 15:04:09,437 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json HTTP/1.1" 404 3075
+WARNING 2025-06-20 15:12:11,055 log Not Found: /users/login/
+WARNING 2025-06-20 15:12:11,055 basehttp "GET /users/login/?next=/customer/taha HTTP/1.1" 404 2987
+WARNING 2025-06-20 15:12:33,429 log Not Found: /users/login/
+WARNING 2025-06-20 15:12:33,430 basehttp "GET /users/login/?next=/2/ HTTP/1.1" 404 2976
+WARNING 2025-06-20 15:19:36,835 log Not Found: /customer
+WARNING 2025-06-20 15:19:36,836 basehttp "GET /customer HTTP/1.1" 404 2955
+WARNING 2025-06-20 15:19:42,548 log Not Found: /customer/
+WARNING 2025-06-20 15:19:42,548 basehttp "GET /customer/ HTTP/1.1" 404 2958
+WARNING 2025-06-20 15:20:32,421 log Not Found: /users/login/
+WARNING 2025-06-20 15:20:32,421 basehttp "GET /users/login/?next=/services/company/dashboard/ HTTP/1.1" 404 3001
+WARNING 2025-06-20 15:20:50,918 log Not Found: /users/login/
+WARNING 2025-06-20 15:20:50,918 basehttp "GET /users/login/?next=/services/create/ HTTP/1.1" 404 2990
+WARNING 2025-06-20 15:21:39,531 log Not Found: /users/login/
+WARNING 2025-06-20 15:21:39,531 basehttp "GET /users/login/?next=/services/create/ HTTP/1.1" 404 2990
+WARNING 2025-06-20 15:21:54,442 log Not Found: /users/login/
+WARNING 2025-06-20 15:21:54,443 basehttp "GET /users/login/?next=/services/create/ HTTP/1.1" 404 2990
+WARNING 2025-06-20 15:29:25,414 log Not Found: /services/air-conditionfer/
+WARNING 2025-06-20 15:29:25,414 basehttp "GET /services/air-conditionfer/ HTTP/1.1" 404 1763
+WARNING 2025-06-20 15:40:06,598 log Not Found: /services/as/
+WARNING 2025-06-20 15:40:06,598 basehttp "GET /services/as/ HTTP/1.1" 404 1735
+WARNING 2025-06-20 15:40:13,085 log Not Found: /services/as/
+WARNING 2025-06-20 15:40:13,085 basehttp "GET /services/as/ HTTP/1.1" 404 1735
+WARNING 2025-06-20 15:42:45,927 log Not Found: /services/asf/
+WARNING 2025-06-20 15:42:45,928 basehttp "GET /services/asf/ HTTP/1.1" 404 1737
+WARNING 2025-06-20 15:43:34,906 log Not Found: /seafa
+WARNING 2025-06-20 15:43:34,907 basehttp "GET /seafa HTTP/1.1" 404 3324
+WARNING 2025-06-20 15:47:14,299 log Not Found: /seafa
+WARNING 2025-06-20 15:47:14,300 basehttp "GET /seafa HTTP/1.1" 404 3324
+WARNING 2025-06-20 15:47:15,718 log Not Found: /seafa
+WARNING 2025-06-20 15:47:15,718 basehttp "GET /seafa HTTP/1.1" 404 3324
+WARNING 2025-06-20 15:47:16,733 log Not Found: /seafa
+WARNING 2025-06-20 15:47:16,734 basehttp "GET /seafa HTTP/1.1" 404 3324
+WARNING 2025-06-20 15:47:17,099 log Not Found: /seafa
+WARNING 2025-06-20 15:47:17,100 basehttp "GET /seafa HTTP/1.1" 404 3324
+WARNING 2025-06-20 15:47:17,416 log Not Found: /seafa
+WARNING 2025-06-20 15:47:17,416 basehttp "GET /seafa HTTP/1.1" 404 3324
+WARNING 2025-06-20 15:50:07,008 log Not Found: /registasfer/
+WARNING 2025-06-20 15:50:07,009 basehttp "GET /registasfer/ HTTP/1.1" 404 3345
+WARNING 2025-06-20 15:52:39,707 log Not Found: /services/asf/
+WARNING 2025-06-20 15:52:39,707 basehttp "GET /services/asf/ HTTP/1.1" 404 10240
+WARNING 2025-06-20 15:53:13,547 log Not Found: /registasfer/
+WARNING 2025-06-20 15:53:13,547 basehttp "GET /registasfer/ HTTP/1.1" 404 3345
+WARNING 2025-06-20 15:53:23,579 log Not Found: /services/asd/
+WARNING 2025-06-20 15:53:23,579 basehttp "GET /services/asd/ HTTP/1.1" 404 10240
+WARNING 2025-06-20 15:57:25,639 log Not Found: /services/asd/
+WARNING 2025-06-20 15:57:25,640 basehttp "GET /services/asd/ HTTP/1.1" 404 10231
+WARNING 2025-06-20 15:57:28,331 log Not Found: /servcvx/
+WARNING 2025-06-20 15:57:28,331 basehttp "GET /servcvx/ HTTP/1.1" 404 10231
+WARNING 2025-06-20 16:47:51,020 log Not Found: /apple-touch-icon-precomposed.png/
+WARNING 2025-06-20 16:47:51,021 log Not Found: /favicon.ico/
+WARNING 2025-06-20 16:47:51,023 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10231
+WARNING 2025-06-20 16:47:51,023 basehttp "GET /apple-touch-icon-precomposed.png/ HTTP/1.1" 404 10231
+WARNING 2025-06-20 16:47:51,025 log Not Found: /apple-touch-icon.png/
+WARNING 2025-06-20 16:47:51,026 basehttp "GET /apple-touch-icon.png/ HTTP/1.1" 404 10231
+WARNING 2025-06-20 17:01:15,589 log Method Not Allowed (GET): /services/request/3/reject/
+WARNING 2025-06-20 17:01:15,594 basehttp "GET /services/request/3/reject/ HTTP/1.1" 405 0
+WARNING 2025-06-20 17:01:28,775 log Method Not Allowed (GET): /services/request/3/reject/
+WARNING 2025-06-20 17:01:28,781 basehttp "GET /services/request/3/reject/ HTTP/1.1" 405 0
+WARNING 2025-06-20 17:01:42,268 log Method Not Allowed (GET): /services/request/3/accept/
+WARNING 2025-06-20 17:01:42,274 basehttp "GET /services/request/3/accept/ HTTP/1.1" 405 0
+WARNING 2025-06-20 17:01:52,615 log Method Not Allowed (GET): /services/request/3/accept/
+WARNING 2025-06-20 17:01:52,620 basehttp "GET /services/request/3/accept/ HTTP/1.1" 405 0
+WARNING 2025-06-20 17:04:41,182 log Method Not Allowed (GET): /services/request/3/reject/
+WARNING 2025-06-20 17:04:41,188 basehttp "GET /services/request/3/reject/ HTTP/1.1" 405 0
+WARNING 2025-06-20 17:04:49,006 log Method Not Allowed (GET): /services/request/3/reject/
+WARNING 2025-06-20 17:04:49,011 basehttp "GET /services/request/3/reject/ HTTP/1.1" 405 0
+WARNING 2025-06-20 17:04:49,464 log Method Not Allowed (GET): /services/request/3/reject/
+WARNING 2025-06-20 17:04:49,471 basehttp "GET /services/request/3/reject/ HTTP/1.1" 405 0
+WARNING 2025-06-20 17:04:50,129 log Method Not Allowed (GET): /services/request/3/reject/
+WARNING 2025-06-20 17:04:50,135 basehttp "GET /services/request/3/reject/ HTTP/1.1" 405 0
+WARNING 2025-06-20 17:05:20,098 log Method Not Allowed (GET): /services/request/3/reject/
+WARNING 2025-06-20 17:05:20,101 basehttp "GET /services/request/3/reject/ HTTP/1.1" 405 0
+WARNING 2025-06-20 17:05:57,691 log Forbidden (CSRF cookie not set.): /services/request/3/accept/
+WARNING 2025-06-20 17:05:57,691 basehttp "POST /services/request/3/accept/ HTTP/1.1" 403 2864
+WARNING 2025-06-20 17:06:05,659 log Forbidden (CSRF cookie not set.): /services/request/3/accept/
+WARNING 2025-06-20 17:06:05,659 basehttp "POST /services/request/3/accept/ HTTP/1.1" 403 2864
+WARNING 2025-06-22 13:01:22,308 log Not Found: /favicon.ico/
+WARNING 2025-06-22 13:01:22,308 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10160
+WARNING 2025-06-22 13:55:03,332 log Not Found: /favicon.ico/
+WARNING 2025-06-22 13:55:03,333 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10160
+WARNING 2025-06-22 13:57:37,120 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-22 13:57:37,120 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 10406
+WARNING 2025-06-22 14:03:32,437 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-22 14:03:32,438 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 10406
+WARNING 2025-06-22 14:04:51,810 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-22 14:04:51,810 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 10406
+WARNING 2025-06-22 14:04:52,585 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-22 14:04:52,585 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 10406
+WARNING 2025-06-22 14:06:45,421 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-22 14:06:45,422 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 10406
+WARNING 2025-06-22 15:43:54,857 views User Whatever attempted to access company profile of taha
+WARNING 2025-06-22 15:44:03,560 log Not Found: /costomer/taha/
+WARNING 2025-06-22 15:44:03,561 basehttp "GET /costomer/taha/ HTTP/1.1" 404 10406
+WARNING 2025-06-22 15:44:12,927 log Not Found: /customer/taha/
+WARNING 2025-06-22 15:44:12,928 basehttp "GET /customer/taha/ HTTP/1.1" 404 10406
+WARNING 2025-06-22 15:48:18,354 views User Whatever attempted to access customer profile of taha
+WARNING 2025-06-22 15:48:32,564 views User Whatever attempted to access customer profile of taha
+WARNING 2025-06-23 16:55:08,600 basehttp "GET /static/css/logo.svg HTTP/1.1" 404 1850
+WARNING 2025-06-23 17:08:41,919 log Not Found: /apple-touch-icon.png/
+WARNING 2025-06-23 17:08:41,919 log Not Found: /apple-touch-icon-precomposed.png/
+WARNING 2025-06-23 17:08:41,919 log Not Found: /favicon.ico/
+WARNING 2025-06-23 17:08:41,920 basehttp "GET /apple-touch-icon-precomposed.png/ HTTP/1.1" 404 10160
+WARNING 2025-06-23 17:08:41,920 basehttp "GET /apple-touch-icon.png/ HTTP/1.1" 404 10160
+WARNING 2025-06-23 17:08:41,920 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10160
+WARNING 2025-06-23 17:27:00,564 log Not Found: /apple-touch-icon-precomposed.png/
+WARNING 2025-06-23 17:27:00,565 log Not Found: /apple-touch-icon.png/
+WARNING 2025-06-23 17:27:00,566 log Not Found: /favicon.ico/
+WARNING 2025-06-23 17:27:00,566 basehttp "GET /apple-touch-icon-precomposed.png/ HTTP/1.1" 404 10223
+WARNING 2025-06-23 17:27:00,567 basehttp "GET /apple-touch-icon.png/ HTTP/1.1" 404 10223
+WARNING 2025-06-23 17:27:00,567 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10223
+WARNING 2025-06-23 17:36:08,838 log Not Found: /apple-touch-icon-precomposed.png/
+WARNING 2025-06-23 17:36:08,838 log Not Found: /apple-touch-icon.png/
+WARNING 2025-06-23 17:36:08,839 log Not Found: /favicon.ico/
+WARNING 2025-06-23 17:36:08,840 basehttp "GET /apple-touch-icon-precomposed.png/ HTTP/1.1" 404 10160
+WARNING 2025-06-23 17:36:08,840 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10160
+WARNING 2025-06-23 17:36:08,840 basehttp "GET /apple-touch-icon.png/ HTTP/1.1" 404 10160
+ERROR 2025-06-23 17:43:34,758 log Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/main/views.py", line 7, in home
+    return render(request, "main/home.html", {})
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 199, in render
+    template = context.template.engine.select_template(template_name)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/engine.py", line 208, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 577, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 28: 'static'. Did you forget to register or load this tag?
+ERROR 2025-06-23 17:43:34,762 basehttp "GET / HTTP/1.1" 500 184948
+ERROR 2025-06-23 17:43:42,461 log Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'static'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/main/views.py", line 7, in home
+    return render(request, "main/home.html", {})
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 199, in render
+    template = context.template.engine.select_template(template_name)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/engine.py", line 208, in select_template
+    return self.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 577, in invalid_block_tag
+    raise self.error(
+    ...<3 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 28: 'static'. Did you forget to register or load this tag?
+ERROR 2025-06-23 17:43:42,463 basehttp "GET / HTTP/1.1" 500 184948
+ERROR 2025-06-23 18:02:24,431 log Internal Server Error: /
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/main/views.py", line 7, in home
+    return render(request, "main/home.html", {})
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'services' not found. 'services' is not a valid view function or pattern name.
+ERROR 2025-06-23 18:02:24,434 basehttp "GET / HTTP/1.1" 500 143303
+WARNING 2025-06-23 18:11:14,630 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:11:14,631 log Not Found: /apple-touch-icon.png/
+WARNING 2025-06-23 18:11:14,631 log Not Found: /apple-touch-icon-precomposed.png/
+WARNING 2025-06-23 18:11:14,632 basehttp "GET /apple-touch-icon.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:11:14,632 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:11:14,632 basehttp "GET /apple-touch-icon-precomposed.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:11:48,527 log Not Found: /apple-touch-icon.png/
+WARNING 2025-06-23 18:11:48,528 log Not Found: /apple-touch-icon-precomposed.png/
+WARNING 2025-06-23 18:11:48,529 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:11:48,530 basehttp "GET /apple-touch-icon-precomposed.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:11:48,530 basehttp "GET /apple-touch-icon.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:11:48,530 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:11:51,233 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:11:51,234 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:12:10,483 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:12:10,483 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:12:16,898 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:12:16,898 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:12:17,502 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:12:17,502 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:12:17,689 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:12:17,689 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:12:17,843 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:12:17,843 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:13:59,192 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:13:59,193 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:19:38,845 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-23 18:19:38,845 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:20:22,245 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-23 18:20:22,246 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:21:23,696 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-23 18:21:23,697 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:29:58,858 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:29:58,859 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:30:07,300 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-23 18:30:07,300 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:30:37,571 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-23 18:30:37,572 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:33:56,725 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-23 18:33:56,725 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:36:35,301 log Not Found: /apple-touch-icon-precomposed.png/
+WARNING 2025-06-23 18:36:35,302 log Not Found: /apple-touch-icon.png/
+WARNING 2025-06-23 18:36:35,303 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:36:35,303 basehttp "GET /apple-touch-icon.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:36:35,303 basehttp "GET /apple-touch-icon-precomposed.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:36:35,304 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:37:36,157 log Not Found: /apple-touch-icon-precomposed.png/
+WARNING 2025-06-23 18:37:36,158 log Not Found: /apple-touch-icon.png/
+WARNING 2025-06-23 18:37:36,158 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:37:36,159 basehttp "GET /apple-touch-icon.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:37:36,159 basehttp "GET /apple-touch-icon-precomposed.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:37:36,159 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:52:34,387 log Not Found: /apple-touch-icon.png/
+WARNING 2025-06-23 18:52:34,388 log Not Found: /apple-touch-icon-precomposed.png/
+WARNING 2025-06-23 18:52:34,390 log Not Found: /favicon.ico/
+WARNING 2025-06-23 18:52:34,390 basehttp "GET /apple-touch-icon.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:52:34,390 basehttp "GET /apple-touch-icon-precomposed.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 18:52:34,391 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 19:07:22,912 log Not Found: /apple-touch-icon-precomposed.png/
+WARNING 2025-06-23 19:07:22,913 log Not Found: /apple-touch-icon.png/
+WARNING 2025-06-23 19:07:22,914 log Not Found: /favicon.ico/
+WARNING 2025-06-23 19:07:22,914 basehttp "GET /apple-touch-icon-precomposed.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 19:07:22,914 basehttp "GET /apple-touch-icon.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 19:07:22,915 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 19:48:48,040 log Not Found: /favicon.ico/
+WARNING 2025-06-23 19:48:48,040 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10570
+WARNING 2025-06-23 19:48:48,041 log Not Found: /apple-touch-icon-precomposed.png/
+WARNING 2025-06-23 19:48:48,041 basehttp "GET /apple-touch-icon-precomposed.png/ HTTP/1.1" 404 10570
+WARNING 2025-06-23 19:48:48,043 log Not Found: /apple-touch-icon.png/
+WARNING 2025-06-23 19:48:48,044 basehttp "GET /apple-touch-icon.png/ HTTP/1.1" 404 10570
+ERROR 2025-06-23 19:50:36,746 log Internal Server Error: /customer/kostas
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/netfix/views.py", line 86, in customer_profile
+    return render(request, 'users/profile.html', context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 243, in render
+    nodelist.append(node.render_annotated(context))
+                    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'single_service' not found. 'single_service' is not a valid view function or pattern name.
+ERROR 2025-06-23 19:50:36,749 basehttp "GET /customer/kostas HTTP/1.1" 500 189339
+ERROR 2025-06-23 20:25:52,342 log Internal Server Error: /logout/
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/main/views.py", line 12, in logout
+    return render(request, "main/logout.html")
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'home' not found. 'home' is not a valid view function or pattern name.
+ERROR 2025-06-23 20:25:52,346 basehttp "GET /logout/ HTTP/1.1" 500 145713
+ERROR 2025-06-23 20:26:27,570 log Internal Server Error: /logout/
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'users'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/main/views.py", line 12, in logout
+    return render(request, "main/logout.html")
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'users' is not a registered namespace
+ERROR 2025-06-23 20:26:27,573 basehttp "GET /logout/ HTTP/1.1" 500 147320
+ERROR 2025-06-23 20:26:28,761 log Internal Server Error: /logout/
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'users'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/main/views.py", line 12, in logout
+    return render(request, "main/logout.html")
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'users' is not a registered namespace
+ERROR 2025-06-23 20:26:28,763 basehttp "GET /logout/ HTTP/1.1" 500 147320
+ERROR 2025-06-23 20:31:32,737 log Internal Server Error: /logout/
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 81, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'users'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/main/views.py", line 12, in logout
+    return render(request, "main/logout.html")
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 92, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'users' is not a registered namespace
+ERROR 2025-06-23 20:31:32,740 basehttp "GET /logout/ HTTP/1.1" 500 147114
+WARNING 2025-06-23 20:34:45,953 log Not Found: /apple-touch-icon-precomposed.png/
+WARNING 2025-06-23 20:34:45,955 log Not Found: /apple-touch-icon.png/
+WARNING 2025-06-23 20:34:45,955 log Not Found: /favicon.ico/
+WARNING 2025-06-23 20:34:45,956 basehttp "GET /apple-touch-icon-precomposed.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 20:34:45,956 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 20:34:45,956 basehttp "GET /apple-touch-icon.png/ HTTP/1.1" 404 10498
+WARNING 2025-06-23 20:34:48,515 log Not Found: /favicon.ico/
+WARNING 2025-06-23 20:34:48,515 basehttp "GET /favicon.ico/ HTTP/1.1" 404 10498
+ERROR 2025-06-23 20:42:12,722 log Internal Server Error: /users/company/
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '[field].label' from 'form.fields[field].label'
+ERROR 2025-06-23 20:42:12,726 basehttp "GET /users/company/ HTTP/1.1" 500 310704
+ERROR 2025-06-23 20:43:17,578 log Internal Server Error: /company/elect
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/netfix/views.py", line 122, in company_profile
+    return render(request, 'users/profile.html', context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'create_service' not found. 'create_service' is not a valid view function or pattern name.
+ERROR 2025-06-23 20:43:17,580 basehttp "GET /company/elect HTTP/1.1" 500 163160
+ERROR 2025-06-23 20:43:53,624 log Internal Server Error: /company/elect
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/netfix/views.py", line 122, in company_profile
+    return render(request, 'users/profile.html', context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'create_service' not found. 'create_service' is not a valid view function or pattern name.
+ERROR 2025-06-23 20:43:53,627 basehttp "GET /company/elect HTTP/1.1" 500 174565
+ERROR 2025-06-23 21:10:44,923 log Internal Server Error: /services/request/12/accept/
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/services/views.py", line 264, in manage_request
+    return redirect('profile', name=request.user.username)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'profile' not found. 'profile' is not a valid view function or pattern name.
+ERROR 2025-06-23 21:10:44,925 basehttp "POST /services/request/12/accept/ HTTP/1.1" 500 89679
+ERROR 2025-06-23 21:10:50,324 log Internal Server Error: /services/request/12/reject/
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/services/views.py", line 245, in manage_request
+    return redirect('profile', name=request.user.username)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'profile' not found. 'profile' is not a valid view function or pattern name.
+ERROR 2025-06-23 21:10:50,326 basehttp "POST /services/request/12/reject/ HTTP/1.1" 500 89766
+ERROR 2025-06-23 21:16:56,269 log Internal Server Error: /services/request/13/reject/
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/services/views.py", line 264, in manage_request
+    return redirect('profile', name=request.user.username)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'profile' not found. 'profile' is not a valid view function or pattern name.
+ERROR 2025-06-23 21:16:56,271 basehttp "POST /services/request/13/reject/ HTTP/1.1" 500 89753
+ERROR 2025-06-23 21:17:57,874 log Internal Server Error: /services/request/14/accept/
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/views/decorators/http.py", line 64, in inner
+    return func(request, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/services/views.py", line 264, in manage_request
+    return redirect('profile', name=request.user.username)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 51, in redirect
+    resolve_url(to, *args, **kwargs),
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 184, in resolve_url
+    return reverse(to, args=args, kwargs=kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'profile' not found. 'profile' is not a valid view function or pattern name.
+ERROR 2025-06-23 21:17:57,876 basehttp "POST /services/request/14/accept/ HTTP/1.1" 500 89766
+WARNING 2025-06-23 21:24:32,577 views User kostas attempted to access company profile of elect
+WARNING 2025-06-23 21:26:56,864 views User kostas attempted to access company profile of Titan
+WARNING 2025-06-23 21:28:42,373 views User kostas attempted to access company profile of elect
+ERROR 2025-06-23 21:32:03,023 log Internal Server Error: /users/customer/
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '[field].label' from 'form.fields[field].label'
+ERROR 2025-06-23 21:32:03,027 basehttp "GET /users/customer/ HTTP/1.1" 500 318880
+ERROR 2025-06-23 21:32:12,923 log Internal Server Error: /users/customer/
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 220, in _get_response
+    response = response.render()
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/response.py", line 114, in render
+    self.content = self.rendered_content
+                   ^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/response.py", line 90, in rendered_content
+    template = self.resolve_template(self.template_name)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/response.py", line 72, in resolve_template
+    return select_template(template, using=self.using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 42, in select_template
+    return engine.get_template(template_name)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loaders/cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loaders/base.py", line 28, in get_template
+    return Template(
+        contents,
+    ...<2 lines>...
+        self.engine,
+    )
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 299, in do_extends
+    nodelist = parser.parse()
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 862, in do_for
+    nodelist_loop = parser.parse(
+        (
+    ...<2 lines>...
+        )
+    )
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 518, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 962, in do_if
+    nodelist = parser.parse(("elif", "else", "endif"))
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 489, in parse
+    raise self.error(token, e)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 609, in compile_filter
+    return FilterExpression(token, self)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 710, in __init__
+    raise TemplateSyntaxError(
+    ...<2 lines>...
+    )
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '[field].label' from 'form.fields[field].label'
+ERROR 2025-06-23 21:32:12,925 basehttp "GET /users/customer/ HTTP/1.1" 500 318880
+WARNING 2025-06-23 21:33:45,764 log Not Found: /usersdsfgh/
+WARNING 2025-06-23 21:33:45,765 basehttp "GET /usersdsfgh/ HTTP/1.1" 404 10542
+WARNING 2025-06-23 21:41:18,679 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:41:18,679 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6530
+WARNING 2025-06-23 21:41:44,777 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:41:44,778 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6389
+WARNING 2025-06-23 21:42:03,087 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:42:03,087 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6432
+WARNING 2025-06-23 21:42:18,789 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:42:18,789 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6530
+WARNING 2025-06-23 21:42:47,415 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:42:47,415 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6417
+WARNING 2025-06-23 21:43:01,428 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:43:01,429 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6323
+WARNING 2025-06-23 21:43:04,648 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:43:04,649 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6323
+WARNING 2025-06-23 21:43:09,576 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:43:09,576 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6300
+WARNING 2025-06-23 21:43:13,806 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:43:13,807 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6300
+WARNING 2025-06-23 21:43:14,517 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:43:14,518 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6300
+WARNING 2025-06-23 21:43:18,732 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:43:18,732 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6300
+WARNING 2025-06-23 21:43:21,501 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:43:21,501 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6347
+WARNING 2025-06-23 21:43:25,208 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:43:25,209 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6347
+WARNING 2025-06-23 21:43:29,448 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:43:29,449 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6347
+WARNING 2025-06-23 21:43:39,528 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:43:39,528 basehttp "GET /userssdfgh/ HTTP/1.1" 404 6346
+WARNING 2025-06-23 21:44:35,782 log Not Found: /userssdfgh/
+WARNING 2025-06-23 21:44:35,783 basehttp "GET /userssdfgh/ HTTP/1.1" 404 3100
+WARNING 2025-06-23 21:46:35,576 log Not Found: /asdfg/
+WARNING 2025-06-23 21:46:35,577 basehttp "GET /asdfg/ HTTP/1.1" 404 2464
+ERROR 2025-06-23 22:04:28,577 log Internal Server Error: /customer/customer1
+Traceback (most recent call last):
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/netfix/views.py", line 86, in customer_profile
+    return render(request, 'users/profile.html', context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 327, in render
+    return nodelist.render(context)
+           ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+           ~~~~~~~~~~~^^^^^^^^^
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/Users/iremnur/Desktop/Projects/Zone01 Curriculum/netfix/venv/lib/python3.13/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'services' not found. 'services' is not a valid view function or pattern name.
+ERROR 2025-06-23 22:04:28,580 basehttp "GET /customer/customer1 HTTP/1.1" 500 175537
+WARNING 2025-06-25 18:54:51,449 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:54:51,472 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 18:54:54,790 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:58:00,073 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:58:46,749 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:58:46,768 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 18:58:47,590 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:58:47,617 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 18:58:48,139 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:58:48,170 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 18:58:48,459 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:58:48,480 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 18:58:48,711 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:58:48,740 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 18:58:48,981 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:58:49,008 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 18:58:51,640 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:58:55,502 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:58:58,379 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:59:03,637 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:59:05,730 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:59:14,021 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 18:59:14,035 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:10:43,670 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:10:43,694 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:13:03,098 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:13:03,113 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:15:20,565 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:15:35,431 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:15:35,451 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:16:22,131 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:16:35,113 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:16:35,113 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:16:36,766 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:16:37,660 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:16:46,451 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:16:46,452 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:17:50,671 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:17:50,671 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:27:56,177 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:27:56,178 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:27:56,218 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-25 19:27:56,667 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:27:56,696 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:27:56,820 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:27:56,856 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:27:56,972 basehttp "GET /static/css/logo_redblack.svg HTTP/1.1" 404 1877
+WARNING 2025-06-25 19:27:57,000 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:29:04,731 basehttp "GET /static/css/netfix.png HTTP/1.1" 404 1856
+WARNING 2025-06-25 19:29:04,774 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:29:05,773 basehttp "GET /static/css/netfix.png HTTP/1.1" 404 1856
+WARNING 2025-06-25 19:29:05,818 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:29:05,928 basehttp "GET /static/css/netfix.png HTTP/1.1" 404 1856
+WARNING 2025-06-25 19:29:05,957 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:29:06,070 basehttp "GET /static/css/netfix.png HTTP/1.1" 404 1856
+WARNING 2025-06-25 19:29:06,104 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:29:06,237 basehttp "GET /static/css/netfix.png HTTP/1.1" 404 1856
+WARNING 2025-06-25 19:29:06,242 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:29:30,147 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:30:28,201 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:32:10,466 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:33:29,703 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:48:41,270 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:49:37,321 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:49:50,226 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:49:50,934 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:50:03,452 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:50:03,676 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:50:03,813 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:50:31,298 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:50:34,991 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:50:42,563 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:50:43,062 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:52:51,841 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:54:10,195 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:54:26,280 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 19:55:29,439 basehttp "GET /static/css/heroimg_redblack.svg HTTP/1.1" 404 1886
+WARNING 2025-06-25 21:18:42,530 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-25 21:18:42,532 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 2397
+WARNING 2025-06-26 11:52:21,060 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 11:54:33,829 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 11:54:53,636 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 11:55:32,856 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 11:56:05,600 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-26 11:56:05,601 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 2397
+WARNING 2025-06-26 11:58:26,250 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 11:58:29,099 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 11:58:48,214 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 11:59:40,780 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 12:00:08,440 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 12:00:29,677 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 12:00:33,686 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 12:02:51,974 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-26 12:02:51,976 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 2397
+WARNING 2025-06-26 12:04:07,217 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 12:04:12,407 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 12:04:34,468 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-26 12:04:34,470 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 2397
+WARNING 2025-06-26 12:06:02,064 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 12:06:31,688 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 12:06:54,695 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 12:07:07,567 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-26 12:07:07,568 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 2397
+WARNING 2025-06-26 12:08:52,125 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 12:19:27,803 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 12:20:12,367 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 13:34:59,837 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 13:36:11,630 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 13:44:06,861 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 13:46:10,616 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 13:46:47,305 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 13:48:26,221 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 13:48:48,299 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 13:52:30,179 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 13:52:34,890 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 13:55:56,633 log Not Found: /favicon.ico/
+WARNING 2025-06-26 13:55:56,634 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2506
+WARNING 2025-06-26 14:04:24,470 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 14:05:51,750 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 14:44:16,322 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 14:44:38,135 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 14:46:21,872 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 14:47:27,589 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 14:47:40,795 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 14:48:37,246 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 14:49:00,930 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 14:49:05,488 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 14:49:35,544 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 14:50:05,867 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 15:17:44,549 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 15:17:59,958 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 15:18:24,729 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 15:28:26,938 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 15:32:52,094 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1804
+WARNING 2025-06-26 15:40:34,221 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-26 15:40:34,222 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 2397
+ERROR 2025-06-26 15:40:52,467 log Internal Server Error: /services/7
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('Thanasis Chalkias',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-26 15:40:52,469 basehttp "GET /services/7 HTTP/1.1" 500 167820
+WARNING 2025-06-26 15:40:52,666 log Not Found: /favicon.ico/
+WARNING 2025-06-26 15:40:52,666 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2397
+ERROR 2025-06-26 15:40:56,964 log Internal Server Error: /services/7
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('Thanasis Chalkias',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-26 15:40:56,965 basehttp "GET /services/7 HTTP/1.1" 500 167957
+WARNING 2025-06-26 15:41:00,782 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+ERROR 2025-06-26 15:41:01,478 log Internal Server Error: /services/1
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('Thanasis Chalkias',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-26 15:41:01,479 basehttp "GET /services/1 HTTP/1.1" 500 167811
+WARNING 2025-06-26 15:41:01,594 log Not Found: /favicon.ico/
+WARNING 2025-06-26 15:41:01,595 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2397
+ERROR 2025-06-26 15:41:05,607 log Internal Server Error: /services/1
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('Thanasis Chalkias',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-26 15:41:05,607 basehttp "GET /services/1 HTTP/1.1" 500 167811
+ERROR 2025-06-26 15:41:30,622 log Internal Server Error: /services/7
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('Thanasis Chalkias',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-26 15:41:30,624 basehttp "GET /services/7 HTTP/1.1" 500 167820
+ERROR 2025-06-26 15:41:38,576 log Internal Server Error: /services/7
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('Thanasis Chalkias',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-26 15:41:38,577 basehttp "GET /services/7 HTTP/1.1" 500 167820
+ERROR 2025-06-26 15:41:41,625 log Internal Server Error: /services/7
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('Thanasis Chalkias',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-26 15:41:41,625 basehttp "GET /services/7 HTTP/1.1" 500 168085
+WARNING 2025-06-26 15:41:41,886 log Not Found: /favicon.ico/
+WARNING 2025-06-26 15:41:41,886 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2397
+WARNING 2025-06-26 15:42:09,183 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+ERROR 2025-06-26 15:42:11,172 log Internal Server Error: /services/6
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('Johnny B.',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-26 15:42:11,172 basehttp "GET /services/6 HTTP/1.1" 500 167599
+ERROR 2025-06-26 15:43:20,180 log Internal Server Error: /services/7
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('Thanasis Chalkias',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-26 15:43:20,181 basehttp "GET /services/7 HTTP/1.1" 500 167820
+WARNING 2025-06-26 15:57:56,902 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 15:59:38,021 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:18:33,076 basehttp "GET /static/css/customer.svg HTTP/1.1" 404 1862
+WARNING 2025-06-26 16:18:33,080 basehttp "GET /static/css/company.svg HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:18:42,108 basehttp "GET /static/css/customer.svg HTTP/1.1" 404 1862
+WARNING 2025-06-26 16:18:42,109 basehttp "GET /static/css/company.svg HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:20:44,662 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:20:49,371 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:20:57,072 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:21:41,608 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:22:42,046 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:23:25,901 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:23:57,747 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:24:19,565 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:24:41,193 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:24:49,724 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:25:05,058 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-26 16:25:08,829 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-26 16:25:08,829 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 2397
+WARNING 2025-06-27 10:57:44,455 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+ERROR 2025-06-27 10:57:48,030 log Internal Server Error: /services/7
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('All Ldt',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-27 10:57:48,034 basehttp "GET /services/7 HTTP/1.1" 500 167663
+WARNING 2025-06-27 10:57:48,201 log Not Found: /favicon.ico/
+WARNING 2025-06-27 10:57:48,201 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2397
+ERROR 2025-06-27 10:57:56,592 log Internal Server Error: /services/7
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('All Ldt',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-27 10:57:56,593 basehttp "GET /services/7 HTTP/1.1" 500 167663
+ERROR 2025-06-27 11:03:42,917 log Internal Server Error: /services/7
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('All Ldt',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-27 11:03:42,918 basehttp "GET /services/7 HTTP/1.1" 500 167663
+ERROR 2025-06-27 11:08:09,460 log Internal Server Error: /services/7
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('All Ldt',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-27 11:08:09,462 basehttp "GET /services/7 HTTP/1.1" 500 167663
+ERROR 2025-06-27 11:10:29,325 log Internal Server Error: /services/6
+Traceback (most recent call last):
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/someuan/projects/netfix/services/views.py", line 28, in index
+    return render(request, 'services/single_service.html', {'service': service})
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 1016, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/base.py", line 977, in render_annotated
+    return self.render(context)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/template/defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/base.py", line 98, in reverse
+    resolved_url = resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+  File "/home/someuan/projects/myenv/lib/python3.10/site-packages/django/urls/resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'public_company' with arguments '('Jane Doe',)' not found. 1 pattern(s) tried: ['company\\-public/(?P<name>[-a-zA-Z0-9_]+)\\Z']
+ERROR 2025-06-27 11:10:29,326 basehttp "GET /services/6 HTTP/1.1" 500 167582
+WARNING 2025-06-27 11:17:58,353 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:19:02,060 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:21:17,276 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:21:28,642 basehttp "GET /static/css/company.svg HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:21:28,642 basehttp "GET /static/css/customer.svg HTTP/1.1" 404 1862
+WARNING 2025-06-27 11:26:14,847 basehttp "GET /static/css/customer.png HTTP/1.1" 404 1862
+WARNING 2025-06-27 11:26:15,177 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:27:01,211 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:29:09,043 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:38:19,898 log Not Found: /users/404/
+WARNING 2025-06-27 11:38:19,900 basehttp "GET /users/404/ HTTP/1.1" 404 2397
+WARNING 2025-06-27 11:38:52,567 log Not Found: /users/404/
+WARNING 2025-06-27 11:38:52,568 basehttp "GET /users/404/ HTTP/1.1" 404 2397
+WARNING 2025-06-27 11:38:52,722 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:39:15,201 log Not Found: /users/404/
+WARNING 2025-06-27 11:39:15,202 basehttp "GET /users/404/ HTTP/1.1" 404 2409
+WARNING 2025-06-27 11:39:15,503 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:39:30,868 log Not Found: /users/404/
+WARNING 2025-06-27 11:39:30,869 basehttp "GET /users/404/ HTTP/1.1" 404 2389
+WARNING 2025-06-27 11:39:31,061 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:44:44,898 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:46:58,472 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:50:47,604 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 11:56:00,710 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 13:42:05,342 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 13:42:19,378 basehttp "GET /static/css/favicon.ico HTTP/1.1" 404 1859
+WARNING 2025-06-27 13:45:24,964 log Not Found: /favicon.ico/
+WARNING 2025-06-27 13:45:24,965 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2316
+WARNING 2025-06-27 13:50:37,407 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-27 13:50:37,408 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 2316
+WARNING 2025-06-27 13:51:02,351 log Not Found: /.well-known/appspecific/com.chrome.devtools.json/
+WARNING 2025-06-27 13:51:02,351 basehttp "GET /.well-known/appspecific/com.chrome.devtools.json/ HTTP/1.1" 404 2316
+WARNING 2025-06-27 13:54:33,054 log Not Found: /favicon.ico/
+WARNING 2025-06-27 13:54:33,055 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2316
+WARNING 2025-06-27 13:54:35,746 log Not Found: /favicon.ico/
+WARNING 2025-06-27 13:54:35,746 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2316
+WARNING 2025-06-27 14:30:56,744 log Not Found: /favicon.ico/
+WARNING 2025-06-27 14:30:56,745 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2316
+WARNING 2025-06-27 14:32:47,830 log Not Found: /favicon.ico/
+WARNING 2025-06-27 14:32:47,830 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2316
+WARNING 2025-06-27 14:36:45,398 log Not Found: /favicon.ico/
+WARNING 2025-06-27 14:36:45,399 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2316
+WARNING 2025-06-27 14:46:29,391 log Forbidden (CSRF token from POST incorrect.): /users/login/
+WARNING 2025-06-27 14:46:29,405 basehttp "POST /users/login/ HTTP/1.1" 403 2503
+WARNING 2025-06-27 14:46:29,661 log Not Found: /favicon.ico/
+WARNING 2025-06-27 14:46:29,661 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2319
+WARNING 2025-06-27 14:55:20,099 log Not Found: /favicon.ico/
+WARNING 2025-06-27 14:55:20,100 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2320
+WARNING 2025-06-27 14:57:02,398 log Not Found: /favicon.ico/
+WARNING 2025-06-27 14:57:02,399 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2316
+WARNING 2025-06-27 22:05:15,473 log Not Found: /favicon.ico/
+WARNING 2025-06-27 22:05:15,474 basehttp "GET /favicon.ico/ HTTP/1.1" 404 2316

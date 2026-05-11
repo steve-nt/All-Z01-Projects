@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}NetFix - Home Services Made Easy{% endblock %}
+
+{% block content %}
+<div class="hero-section vertical-hero">
+    <div class="hero-image" style="position:relative; min-height: 12rem; min-width: 12rem;">
+        <div class='n'>
+          <div class='text'>NetFix</div>
+        </div>
+    </div>
+    <div class="hero-text">
+        <p class="hero-subtitle">
+            Find all the services you need in one place!</p>
+        <div class="hero-buttons">
+            <a href="{% url 'services_list' %}" class="btn">Browse Services</a>
+            <a href="{% url 'register_company' %}" class="btn">Become a Provider</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

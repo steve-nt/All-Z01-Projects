@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+function mkc(){
+    if [ ! -z "$1" ] && [ -n "$1" ]
+    then
+        if [ ! -d "$1" ]
+        then
+            mkdir -p "$1"
+        else
+            echo "WARNING: Directory exists" >&2
+        fi
+        cd "$1"
+        if [ $? -ne 0 ]
+        then
+            echo "ERROR: Couldn't change into directory ${1}" >&2
+            return 1
+        fi
+    else
+        echo "ERROR: No directory to create" >&2
+        printf "Usage:\n\t%s <directory>\n" "$(basename ${0})" >&2
+        return 1
+    fi
+}

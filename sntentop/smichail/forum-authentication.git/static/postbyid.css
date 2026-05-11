@@ -1,0 +1,825 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap');
+
+body {
+  font-family: 'Kaisei Opti', serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;      /* stays in place while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../static/images/forumbackround.jpg") no-repeat center/cover;
+  opacity: 0.1;        /* adjust transparency */
+  z-index: -1;          /* behind all content */
+}
+.navbar {
+  display: flex;
+  justify-content: space-between; /* pushes left + right groups apart */
+  align-items: center;            /* vertically centers everything */
+  padding: 0px 35px;
+  padding-top:30px;
+  font-family: 'Kaisei Opti', serif;
+  background-color:black;
+}
+.navbar-left {
+  display: flex;
+  gap: 5px; /* space between left items */
+
+}
+
+/* Right group: items side-by-side */
+.navbar-right {
+  display: flex;
+  gap: 15px; /* space between right items */
+}
+
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+.logo{
+  font-weight: normal;
+  font-size:3rem;
+line-height: 1;
+}
+
+
+.user{
+  font-weight: normal;
+  font-size:1.7rem;
+line-height: 3.9rem;
+}
+
+.logout-btn{
+  outline:none;
+  border:none;
+  margin:0.9rem 0px;
+  padding: 14px 16px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size:1.6rem;
+  font-family: 'Kaisei Opti', serif;
+}
+.btn {
+  margin:0.9rem 0px;
+  padding: 14px 16px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size:1.6rem;
+}
+
+.line {
+  width: 1px;
+  height: 45px;
+  background-color: white;
+  margin: 5px 10px;
+}
+.navbar-left {
+  display: flex;
+  gap: 5px; /* space between left items */
+}
+
+.navbar-right {
+  display: flex;
+  gap: 15px; /* space between right items */
+}
+
+
+.post-section{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.big-line-top{
+  width:87vw;
+  height: 1px;
+  background-color: white;
+  margin-bottom:10px ;
+  margin-top:50px ;
+  opacity:0.7;
+}
+
+
+.big-line{
+  width:87vw;
+  height: 1px;
+  background-color: white;
+  margin-top:10px ;
+  opacity:0.7;
+}
+
+
+.post{
+  width:87%;
+  display:flex;
+  flex-direction:column;
+}
+
+.post-upper{
+  margin:0px 10px;
+  margin-bottom:20px;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.post-upper-right{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+}
+
+.post-upper-left{
+  flex:1;
+}
+
+.creator{
+  font-size:1.7rem;
+}
+.categories{
+  margin-left:10px;
+  display:flex;
+  gap:20px;
+}
+
+.category{
+  padding:0px 9px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.post-middle{
+  display:flex;
+}
+
+.content{
+  margin:0px 10px;
+  width:51%;
+  white-space: pre-line;
+  font-size:1.3rem;
+  align-content:flex-end;
+}
+
+.image-blank{
+  flex:1;
+}
+.image{
+  margin:0px 10px;
+  width: 40%;
+  height: auto;
+  border-radius: 5px;
+}
+.post-lower{
+  margin:0px 10px;
+  margin-top:60px;
+  display:flex;
+  font-size:1.2rem;
+  justify-content:space-between;
+}
+
+.likes{
+  display:flex;
+  gap:10px;
+}
+
+
+.dislikes{
+  display:flex;
+  gap:10px;
+}
+
+.liked{
+background-color: transparent;      /* green background */
+  color: gray;                   /* text color */
+  border: none;                   /* remove default border */
+  cursor: pointer;                /* pointer on hover */
+  font-family: 'Kaisei Opti', serif;
+  font-size: 1.2rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.liked:hover {
+  background-color:transparent;      
+  transform: scale(1.07);         /* subtle zoom effect */
+}
+
+.liked:active {
+  transform: scale(0.95);         /* press-down effect */
+}
+
+
+
+
+.unliked{
+background-color: transparent;      /* green background */
+  color: white;                   /* text color */
+  border: none;                   /* remove default border */
+  cursor: pointer;                /* pointer on hover */
+  font-family: 'Kaisei Opti', serif;
+  font-size: 1.2rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.unliked:hover {
+  background-color:transparent;      
+  transform: scale(1.07);         /* subtle zoom effect */
+}
+
+.unliked:active {
+  transform: scale(0.95);         /* press-down effect */
+}
+
+.comments-line-container{
+  width:87%;
+  margin-top:10px ;
+}
+.comments-line{
+  font-size:1.2rem;
+  margin:0px 10px;
+  display:flex;
+  justify-content:space-between;
+}
+
+
+
+
+.comments{
+  width:87%;
+  display:flex;
+  flex-direction:column;
+}
+
+.comment{
+  display:flex;
+  gap:3rem;
+  justify-content:space-between;
+  padding-left:1rem ;
+  padding-top:2rem;
+  padding-bottom:2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  margin-left:8rem;
+}
+.comment-left{
+  display:flex;
+  gap:3rem;
+  justify-content:top;
+}
+.comment-reactions{
+  display:flex;
+  gap:1rem;
+  font-size:1.2rem;
+}
+.com-likes{
+  display:flex;
+  gap:10px;
+  align-items:flex-start;
+}
+.comment-content{
+  white-space: pre-line;
+  font-size:1.2rem;
+  margin-right:20px;
+}
+
+
+
+.comment-creator{
+
+  font-size:1.2rem;
+}
+
+.create-comment{
+  width:87%;
+  display:flex;
+  gap:20px;
+  margin-top:1rem;
+  margin-bottom:0.4rem;
+}
+
+.create-comment button{
+  display:none;
+}
+
+
+
+
+.create-comment:focus-within button{
+  display:inline-block;
+  border-radius:9px;
+  border:none;
+  outline:none;
+  color:white;
+  font-family: 'Kaisei Opti', serif;
+  background-color:rgb(20, 20, 20);
+  padding:5px;
+}
+
+.create-comment-textarea {
+  padding:2px 5px;
+  margin-left:8rem;
+  flex:1;
+  height:2rem;
+  background-color: rgba(124,121,121,0.6);
+  border:none;
+  outline:none;
+  opacity:0.6;
+  border-radius: 0.8rem;
+  font-family: 'Kaisei Opti', serif;
+  color: white;
+  z-index:2;
+  line-height:normal;
+  vertical-align:center;
+  text-align:right;
+  font-size:1rem;
+}
+
+.create-comment-textarea::placeholder {
+  font-family: 'Kaisei Opti', serif;
+  color: white;
+  opacity:0.4;
+}
+.create-comment-textarea:focus::placeholder {
+  color: transparent;
+}
+
+
+.create-comment-textarea:focus{
+  border:none;
+  outline:none;
+  background-color: rgba(124,121,121,0.6);
+  border-radius: 0.8rem;
+  font-family: 'Kaisei Opti', serif;
+  color: white;
+  z-index:2;
+  line-height:normal;
+  vertical-align:top;
+  text-align:left;
+}
+
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* σκοτεινό φόντο */
+  display: none; /* κρυφό αρχικά */
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* === Εσωτερικό κουτί του popup === */
+.popup-content {
+  background-color: rgb(64, 64, 64);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: popupFadeIn 0.3s ease-out;
+}
+.error-message{
+  margin-bottom:2rem;
+}
+
+.error-btn{
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  margin:1rem;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  font-size:0.8rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+/* === Κουμπί κλεισίματος === */
+.popup-content button {
+  background-color: white;
+  margin: 1rem;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.error-btn:hover{
+  background-color:#555555;
+}
+.popup-content button:hover {
+  background-color:#555555;
+}
+
+/* === Χρώματα επιτυχίας και σφάλματος === */
+/* .popup.success .popup-content { */
+/*   border-top: 5px solid #4CAF50; */
+/* } */
+.popup.error .popup-content {
+  border-top: 5px solid black;
+}
+
+/* === Εμφάνιση === */
+.popup.show {
+  display: flex;
+}
+
+/* === Εφέ εμφάνισης === */
+@keyframes popupFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.bottom-blank{
+  flex:1;
+}
+
+
+
+.footer{
+  padding:10px 20px;
+  font-size:10px;
+}
+
+.edit-comment-btn-container{
+  cursor:pointer;
+  z-index:2000;
+}
+
+
+.delete-comment-btn-container{
+  cursor:pointer;
+  z-index:2000;
+}
+.delete-btn{
+  width:2rem;
+  height:2rem;
+  color:white;
+}
+
+.edit-button{
+  width:2rem;
+  height:2rem;
+  color:white;
+}
+.edit-delete-container{
+  display:flex;
+  gap:20px;
+  justify-content:flex-end;
+}
+.close-comment-edit{
+  width:2rem;
+  height:2rem;
+  color:white;
+  cursor: pointer;            /* pointer on hover */
+}
+.close-comment-edit-button-container{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.comment-content{
+  white-space: pre-line;
+  font-size:1.2rem;
+}
+
+
+
+.comment-creator{
+
+  font-size:1.2rem;
+}
+
+.edit-comment-form{
+  display:flex;
+  gap:20px;
+  padding-left:1rem ;
+  padding-top:2rem;
+  padding-bottom:2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  margin-left:8rem;
+}
+
+.edit-comment-form button{
+  display:none;
+}
+
+
+
+
+.edit-comment-form:focus-within button{
+  display:inline-block;
+  border-radius:9px;
+  border:none;
+  outline:none;
+  color:white;
+  font-family: 'Kaisei Opti', serif;
+  background-color:rgb(20, 20, 20);
+  padding:5px;
+}
+
+.reactions-and-username{
+  display:flex;
+  gap:20px;
+  flex:1;
+}
+
+.edit-comment-textarea{
+  padding:2px 5px;
+  flex:1;
+  height:2rem;
+  background-color: rgba(124,121,121,0.6);
+  border:none;
+  outline:none;
+  opacity:0.6;
+  border-radius: 0.8rem;
+  font-family: 'Kaisei Opti', serif;
+  color: white;
+  z-index:2;
+  line-height:normal;
+  vertical-align:center;
+  text-align:right;
+  font-size:1rem;
+}
+
+.edit-comment-textarea::placeholder {
+  font-family: 'Kaisei Opti', serif;
+  color: white;
+  opacity:0.4;
+}
+.edit-comment-textarea:focus::placeholder {
+  color: transparent;
+}
+
+
+.edit-comment-textarea:focus{
+  border:none;
+  outline:none;
+  background-color: rgba(124,121,121,0.6);
+  border-radius: 0.8rem;
+  font-family: 'Kaisei Opti', serif;
+  color: white;
+  z-index:2;
+  line-height:normal;
+  vertical-align:top;
+  text-align:left;
+}
+
+
+
+
+
+.edit-post-btn-container{
+  cursor:pointer;
+  z-index:2000;
+}
+
+
+.delete-post-btn-container{
+  cursor:pointer;
+  z-index:2000;
+}
+.delete-post-btn{
+  width:2rem;
+  height:2rem;
+  color:white;
+}
+
+.edit-post-button{
+  width:2rem;
+  height:2rem;
+  color:white;
+}
+.edit-delete-post-buttons{
+  display:flex;
+  gap:20px;
+  justify-content:flex-end;
+}
+.close-post-edit{
+  width:2rem;
+  height:2rem;
+  color:white;
+  cursor: pointer;            /* pointer on hover */
+}
+.close-post-edit-button-container{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.edit-post-title {
+background-color: rgba(124,121,121,0.6);
+  padding-top:0px;
+  padding-left:10px;
+  opacity:0.6;
+  border: none;
+  border-radius: 0.8rem;
+  z-index:2;
+  height:2.7rem;
+  font-family: 'Kaisei Opti', serif;
+  font-size:1.5rem;
+  color: white;
+}
+
+.edit-post-title:focus {
+background-color: rgba(124,121,121,0.6);
+  padding-top:0px;
+  padding-left:16px;
+  opacity:0.6;
+  border: none;
+  outline:none;
+  border-radius: 0.8rem;
+  z-index:2;
+  height:2.7rem;
+}
+
+
+
+.edit-post-title::placeholder {
+  font-family: 'Kaisei Opti', serif;
+  font-size:1.5rem;
+  color: white;
+  opacity:0.4;
+}
+.edit-post-title:focus::placeholder {
+  color: transparent;
+}
+
+
+
+.edit-post-content {
+  height:78%;
+background-color: rgba(124,121,121,0.6);
+  opacity:0.6;
+  border: 1px solid #555;
+  padding: 10px;
+  border-radius: 0.8rem;
+  font-family: 'Kaisei Opti', serif;
+  color: white;
+  z-index:2;
+  line-height:normal;
+  vertical-align:top;
+  text-align:left;
+  font-size:1rem;
+}
+
+#content::placeholder {
+  font-family: 'Kaisei Opti', serif;
+  color: white;
+  opacity:0.4;
+}
+#content:focus::placeholder {
+  color: transparent;
+}
+
+
+#content:focus{
+  height:60%;
+  border:none;
+  outline:none;
+background-color: rgba(124,121,121,0.6);
+  opacity:0.6;
+  border: 1px solid #555;
+  padding: 10px;
+  border-radius: 0.8rem;
+  font-family: 'Kaisei Opti', serif;
+  color: white;
+  z-index:2;
+  line-height:normal;
+  vertical-align:top;
+  text-align:left;
+}
+
+
+input[type="checkbox"]{
+  appearance:none;
+  width:0;
+  height:0;
+  border:0;
+}
+label span{
+  font-size:26px;
+  cursor:pointer;
+  padding:0px 20px;
+  opacity:0.6;
+transition: font-size 0.2s ease;
+}
+
+label span:hover{
+  opacity:1;
+  font-size:22px;
+}
+
+input[type="checkbox"]:checked + span {
+  line-height:2rem;
+  font-size: 24px;
+  opacity:1;
+}
+.submit-container{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.submit-btn{
+  padding: 15px 20px;        /* space inside button */
+  font-size: 19px;            /* text size */
+  font-family: 'Kaisei Opti', serif; /* font */
+  font-weight:bold;
+  background-color: white;  /* button color */
+  color: black;               /* text color */
+  border: none;               /* remove default border */
+  border-radius: 2px;         /* rounded corners */
+  cursor: pointer;            /* pointer on hover */
+}
+.edit-image{
+  width: 20rem;
+  height: auto;
+  border-radius: 5px;
+}
+
+.edit-post-form{
+  width:87%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+
+.edit-post-form-upper{
+  display:flex;
+  flex:1;
+  gap:50px;
+  justify-content:space-between;
+  margin-top:1.8rem;
+  margin-bottom:0rem;
+  margin-left:2.4rem;
+  margin-right:3.3rem;
+}
+
+.edit-post-upper-right{
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+  width:86%;
+}
+
+.edit-post-form-lower{
+  display:flex;
+  justify-content:flex-end;
+}
+.close-edit-post-button-container{
+  display:flex;
+  justify-content:flex-end;
+}
+
+.close-post-edit{
+  width:2rem;
+  height:2rem;
+  color:white;
+  cursor: pointer;            /* pointer on hover */
+}
+.edit-post-username{
+  font-size:1.7rem;
+}
+
+.remove-img-checkbox{
+  appearance:none;
+  width:0;
+  height:0;
+  border:0;
+}
+.remove-img-label .remove-img-span{
+  font-size:26px;
+  cursor:pointer;
+  padding:0px 00px;
+  opacity:0.6;
+  transition:null;
+}
+
+.remove-img-label .remove-img-span:hover{
+  opacity:1;
+  font-size:26px;
+}
+
+.remove-img-checkbox:checked + .remove-img-span {
+  line-height:2rem;
+  font-size: 26px;
+  opacity:1;
+}

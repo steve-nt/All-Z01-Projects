@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker - Filtered Results</title>
+    <!-- Link to your CSS file (adjust path if needed): -->
+    <link rel="stylesheet" href="/web/css/pages/filters.css">
+    
+    
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/web/css/images/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/web/css/images/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/web/css/images/favicon/avicon-16x16.png">
+    <link rel="manifest" href="/web/css/images/favicon/site.webmanifest">
+</head>
+
+    <!-- Go Back button in the top-left corner -->
+    <a class="ok" onclick="history.back()">Go Back</a>
+
+    <h1>Filtered Results</h1>
+
+    <!-- Container for the artist “cards” -->
+    <div class="container">
+        {{range .}}
+        <div class="card" data-id="{{.ID}}" data-locations="{{.Locations}}" onclick="goToPage(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="{{.Image}}" alt="{{.Name}} Image">
+                </div>
+                <div class="card-back">
+                    <h2>{{.Name}}</h2>
+                    
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Groupie Tracker - Stay Inspired 🎶</p>
+    </footer>
+    <script src="/web/js/shared.js"></script>
+</body>
+</html>

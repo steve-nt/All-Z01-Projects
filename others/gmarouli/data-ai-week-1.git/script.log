@@ -1,0 +1,18 @@
+Initial data shape: (108, 8)
+Product name normalization done. Unique products before: 14, after: 10
+Standardized dates. Invalid dates removed: -3
+Missing values imputed:
+Before:
+ quantity          5
+price_per_unit    5
+total_price       6
+dtype: int64
+After:
+ quantity          0
+price_per_unit    0
+total_price       0
+dtype: int64
+Duplicates removed: 5
+Outlier handling done. Rows before: 100, after: 100
+Data saved to PostgreSQL. Final shape: (100, 8)
+Cleaned CSV saved as sales_transactions_cleaned.csv

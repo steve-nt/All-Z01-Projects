@@ -1,0 +1,190 @@
+package main
+
+import (
+	"context"
+	"database/sql"
+	"fmt"
+	"log"
+	"net/http"
+	"real-time-forum/handlers"
+	"real-time-forum/middleware"
+	"real-time-forum/models"
+	"real-time-forum/repositories"
+	"real-time-forum/services"
+	"strings"
+	"time"
+
+	_ "github.com/mattn/go-sqlite3"
+)
+
+type Dependencies struct {
+	AuthService       services.AuthService
+	UserService       services.UserService
+	SessionService    services.SessionService
+	PostService       services.PostService
+	CategoriesService services.CategoriesService
+	CommentService    services.CommentsService
+	ChatService       services.ChatService
+}
+
+type Handlers struct {
+	AuthHandler      *handlers.AuthHandler
+	DashboardHandler *handlers.DashboardHandler
+	PostHandler      *handlers.PostHandler
+	CommentsHandler  *handlers.CommentsHandler
+	WebSocketHandler *handlers.WebSocketHandler
+}
+
+type Middlewares struct {
+	LoggingMiddleware *middleware.LoggingMiddleware
+	AuthMiddleware    *middleware.AuthMiddleware
+}
+
+func main() {
+	// Initialize database
+	db, err := sql.Open("sqlite3", "./database/forum.db")
+	if err != nil {
+		panic(err)
+	}
+	defer db.Close()
+
+	// Setup dependencies and handlers
+	deps := SetupDependencies(db)
+
+	go deps.ChatService.Hub.Run() // start the hub
+
+	handlerInstances := SetupHandlers(deps)
+	middlewareInstances := SetupMiddleware(deps)
+
+	// Setup routes
+	mux := http.NewServeMux()
+	Configure(mux, handlerInstances, deps, middlewareInstances)
+
+	// Start background tasks
+	go BackgroundTasks(deps.SessionService, deps.UserService)
+
+	port := ":8080"
+	println("Server listening on", port)
+	println("Open http://localhost:8080 in your browser to view the forum")
+	if err := http.ListenAndServe(port, mux); err != nil {
+		panic(err)
+	}
+}
+
+func Configure(mux *http.ServeMux, h *Handlers, deps *Dependencies, m *Middlewares) {
+
+	// API routes
+	mux.Handle("/register", m.LoggingMiddleware.Log(http.HandlerFunc(h.AuthHandler.Register)))
+	mux.Handle("/login", m.LoggingMiddleware.Log(http.HandlerFunc(h.AuthHandler.Login)))
+	mux.Handle("/logout", m.LoggingMiddleware.Log(m.AuthMiddleware.Authorize(http.HandlerFunc(h.AuthHandler.LogOut))))
+	mux.Handle("/dashboard", m.LoggingMiddleware.Log(m.AuthMiddleware.Authorize(http.HandlerFunc(h.DashboardHandler.Home))))
+	mux.Handle("/dashboard/my-posts", m.LoggingMiddleware.Log(m.AuthMiddleware.Authorize(http.HandlerFunc(h.DashboardHandler.UserPosts))))
+	mux.Handle("/dashboard/all-users", m.LoggingMiddleware.Log(m.AuthMiddleware.Authorize(http.HandlerFunc(h.DashboardHandler.AllUsers))))
+	mux.Handle("/createpost", m.LoggingMiddleware.Log(m.AuthMiddleware.Authorize(http.HandlerFunc(h.PostHandler.CreatePost))))
+	mux.Handle("/post", m.LoggingMiddleware.Log(m.AuthMiddleware.Authorize(http.HandlerFunc(h.PostHandler.ViewPost))))
+	mux.Handle("/post/createcomment", m.LoggingMiddleware.Log(m.AuthMiddleware.Authorize(http.HandlerFunc(h.CommentsHandler.CreateComment))))
+	mux.Handle("/category/", m.LoggingMiddleware.Log(m.AuthMiddleware.Authorize(http.HandlerFunc(h.DashboardHandler.PostsByCategory))))
+
+	mux.Handle("/validate-session", m.LoggingMiddleware.Log(http.HandlerFunc(h.AuthHandler.CheckSession)))
+
+	// WebSocket routes
+	mux.Handle("/chathistory",
+		m.AuthMiddleware.Authorize(
+			m.LoggingMiddleware.Log(http.HandlerFunc(h.WebSocketHandler.ChatHistory)),
+		),
+	)
+	mux.Handle("/ws", m.AuthMiddleware.Authorize(m.LoggingMiddleware.Log(http.HandlerFunc(h.WebSocketHandler.WebSocket))))
+
+	// Static files
+	mux.HandleFunc("/style.css", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "style.css")
+	})
+	mux.HandleFunc("/app.js", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "app.js")
+	})
+
+	// JavaScript modules directory
+	mux.HandleFunc("/js/", func(w http.ResponseWriter, r *http.Request) {
+		// Set proper MIME type for JavaScript files
+		w.Header().Set("Content-Type", "application/javascript")
+		http.ServeFile(w, r, r.URL.Path[1:]) // Remove leading slash
+	})
+
+	// Root handler
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Printf("Root handler: %s %s %s\n", r.Method, r.URL.Path, r.Header.Get("Accept"))
+
+		// If this is a request for JSON data (either through Accept header or query param)
+		wantsJSON := strings.Contains(r.Header.Get("Accept"), "application/json") ||
+			r.URL.Query().Get("format") == "json"
+
+		if r.URL.Path == "/" && wantsJSON {
+			h.DashboardHandler.Home(w, r)
+			return
+		}
+
+		// Serve SPA for HTML requests or when no specific format is requested
+		http.ServeFile(w, r, "index.html")
+	})
+}
+
+func SetupDependencies(db *sql.DB) *Dependencies {
+
+	// Models
+	hub := models.NewHub()
+
+	// Repositories
+	userRepo := repositories.NewUserRepository(db)
+	sessionRepo := repositories.NewSessionRepository(db)
+	postRepo := repositories.NewPostRepository(db)
+	categoriesRepo := repositories.NewCategoriesRepository(db)
+	commentRepo := repositories.NewCommentRepository(db)
+	messagesRepo := repositories.NewMessageRepository(db)
+
+	// Services
+	userService := services.NewUserService(*userRepo)
+	authService := services.NewAuthService(*userRepo)
+	sessionService := services.NewSessionService(*sessionRepo)
+	postService := services.NewPostService(*postRepo)
+	categoriesService := services.NewCategoriesService(*categoriesRepo)
+	commentService := services.NewCommentsService(*commentRepo)
+	chatService := services.NewChatService(messagesRepo, hub)
+
+	return &Dependencies{
+		UserService:       *userService,
+		AuthService:       *authService,
+		SessionService:    *sessionService,
+		PostService:       *postService,
+		CategoriesService: *categoriesService,
+		CommentService:    *commentService,
+		ChatService:       *chatService,
+	}
+}
+
+func SetupHandlers(deps *Dependencies) *Handlers {
+	// Handlers
+	return &Handlers{
+		AuthHandler:      handlers.NewAuthHandler(deps.AuthService, deps.SessionService),
+		CommentsHandler:  handlers.NewCommentsHandler(deps.PostService, deps.CommentService, deps.CategoriesService, deps.UserService),
+		DashboardHandler: handlers.NewDashboardHandler(deps.PostService, deps.CategoriesService, deps.UserService),
+		PostHandler:      handlers.NewPostHandler(deps.PostService, deps.CategoriesService, deps.CommentService, deps.UserService),
+		WebSocketHandler: handlers.NewWebSocketHandler(&deps.ChatService),
+	}
+}
+
+func SetupMiddleware(deps *Dependencies) *Middlewares {
+	return &Middlewares{
+		LoggingMiddleware: middleware.NewLoggingMiddleware(),
+		AuthMiddleware:    middleware.NewAuthMiddleware(deps.UserService),
+	}
+}
+func BackgroundTasks(sessionService services.SessionService, userService services.UserService) {
+	ticker := time.NewTicker(5 * time.Minute)
+	defer ticker.Stop()
+
+	for range ticker.C {
+		if err := sessionService.CleanupExpiredSessions(context.Background()); err != nil {
+			log.Printf("Session cleanup error: %v", err)
+		}
+	}
+}

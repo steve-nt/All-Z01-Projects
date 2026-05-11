@@ -1,0 +1,402 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/profile.page.css" />
+  </head>
+  <body>
+
+
+
+
+
+
+    <!-- here i need to make the navbar -->
+    <nav class="navbar">
+    <div class="navbar-left">
+      <a href="/" class="logo">.Myforum</a>
+      <div class="line"></div>
+    {{if eq .profileresponse.Username "guest"}}
+      <div class="user">Guest</div>
+        {{else}}
+        <a class="user" href="/profile">@{{.profileresponse.Username}}</a>
+        {{end}}
+    </div>
+
+    <div class="navbar-right">
+    {{if eq .profileresponse.Username "guest"}}
+  <a class="btn" href="/signup">Sign Up</a>
+    <a class="btn" href="/login">Log In</a>
+    {{else}}
+        <div id="notification-button" class="notification-container">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="bell">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0M3.124 7.5A8.969 8.969 0 0 1 5.292 3m13.416 0a8.969 8.969 0 0 1 2.168 4.5" />
+</svg>
+
+          {{if gt .profileresponse.UnseenNotifications  0}}
+          <span class="badge">{{.profileresponse.UnseenNotifications}}</span>
+          {{end}}
+        </div>
+    <form id="logoutForm" action="/logout" method="POST" >
+ <button type="submit" class="logout-btn">Logout</button>
+    </form>
+    </div>
+    {{end}}
+    </nav>
+
+
+    <div id="notifications" class="notifications">
+
+      <h2 class="title">Notifications</h2>
+      <div class="not-line"></div>
+    {{ range .profileresponse.Notifications}}
+      <a href="postbyid/{{.Post.ID}}" id="{{.ID}}" name="notification{{if .Seen }}-seen{{end}}" class="notification{{if .Seen }}-seen{{end}}" >
+
+      <div class="notification-description">
+            {{if eq .Comment.ID ""}}
+        {{.Username}} {{.Action}}  "{{.Post.Title}}"
+              {{else}}
+        {{.Username}} {{.Action}} "{{.Comment.Content}}" on post "{{.Post.Title}}"
+              {{end}}
+      </div>
+                  {{if eq .Post.ImagePath "null"}}
+                  {{else}}
+                  <img src="../static{{.Post.ImagePath}}" class="notification-image"/>
+                  {{end}}
+      </a>
+
+      <div class="not-line"></div>
+    {{end}}
+    </div>
+
+    <div class="main-container">
+
+
+      <div class="profile-sections">
+      <h2 class="liked-section" name="liked" id="liked-section">Liked Posts</h2>
+      <h2 class="created-section" name="created" id="created-section">Created Posts</h2>
+      <h2 class="activity-section" name="activity" id="activity-section">Activity</h2>
+      </div>
+      <div class="liked-posts" id="liked-posts">
+          {{ range .profileresponse.LikedPosts }}
+
+
+
+        <div class="post">
+
+          <div class="post-line"></div>
+
+
+            <article id="{{.ID}}">
+
+          <a href="postbyid/{{.ID}}">
+              <div class="post-upper">
+                <div class="post-upper-left">
+            <div class="creator" >
+	      @{{.User_UUID}}
+            </div>
+                  {{if eq .ImagePath "null"}}
+                  {{else}}
+                  <img src="../static{{.ImagePath}}" class="image"/>
+                  {{end}}
+            </div>
+
+                <div class="post-upper-right">
+            <h2 class="post-title">{{.Title}}</h2>
+
+                  <div class="post-categories">
+	      {{ range .Categories}}
+            <div class="post-category">
+                {{.}}
+            </div>
+              {{end}}
+            </div>
+
+            <div class="post-content">
+	      {{.Content}}
+            </div>
+
+
+            </div>
+
+              </div>
+          </a>
+
+
+              <div class="post-lower">
+                <div class="likes">
+            <div>
+	      {{.NumberOfLikes}}
+            </div>
+          {{if  .Liked }}
+                <button name="like-btn" id="{{.ID}}" class="liked">like </button>
+              {{else}}
+                <button name="like-btn" id="{{.ID}}" class="unliked">like</button>
+              {{end}}
+                </div>
+
+                <div class="dislikes">
+            <div>
+	      {{.NumberOfDislikes}}
+            </div>
+              {{if  .Disliked }}
+                <button name="dislike-btn" id="{{.ID}}" class="liked">dislike</button>
+              {{else}}
+                <button name="dislike-btn" id="{{.ID}}" class="unliked">dislike</button>
+              {{end}}
+                  </div>
+
+
+
+
+                <div class="comments">
+            <div>
+	      {{.NumberOfComments}}
+            </div>
+              <div>Comments</div>
+                </div>
+
+            <time class="time" datetime="{{.CreationDate}}">{{.CreationDate}}</time>
+              </div>
+
+
+
+          </article>
+        </div>
+        {{end}}
+
+
+<div class="big-line">
+    </div>
+
+      </div>
+
+      <div class="created-posts" id="created-posts">
+
+          {{ range .profileresponse.CreatedPosts }}
+
+
+
+        <div class="post">
+
+          <div class="post-line"></div>
+
+
+            <article id="{{.ID}}">
+
+          <a href="postbyid/{{.ID}}">
+              <div class="post-upper">
+                <div class="post-upper-left">
+            <div class="creator" >
+	      @{{.User_UUID}}
+            </div>
+                  {{if eq .ImagePath "null"}}
+                  {{else}}
+                  <img src="../static{{.ImagePath}}" class="image"/>
+                  {{end}}
+            </div>
+
+                <div class="post-upper-right">
+            <h2 class="post-title">{{.Title}}</h2>
+
+                  <div class="post-categories">
+	      {{ range .Categories}}
+            <div class="post-category">
+                {{.}}
+            </div>
+              {{end}}
+            </div>
+
+            <div class="post-content">
+	      {{.Content}}
+            </div>
+
+
+            </div>
+
+              </div>
+          </a>
+
+
+              <div class="post-lower">
+                <div class="likes">
+            <div>
+	      {{.NumberOfLikes}}
+            </div>
+          {{if  .Liked }}
+                <button name="like-btn" id="{{.ID}}" class="liked">like </button>
+              {{else}}
+                <button name="like-btn" id="{{.ID}}" class="unliked">like</button>
+              {{end}}
+                </div>
+
+                <div class="dislikes">
+            <div>
+	      {{.NumberOfDislikes}}
+            </div>
+              {{if  .Disliked }}
+                <button name="dislike-btn" id="{{.ID}}" class="liked">dislike</button>
+              {{else}}
+                <button name="dislike-btn" id="{{.ID}}" class="unliked">dislike</button>
+              {{end}}
+                  </div>
+
+
+
+
+                <div class="comments">
+            <div>
+	      {{.NumberOfComments}}
+            </div>
+              <div>Comments</div>
+                </div>
+
+            <time class="time" datetime="{{.CreationDate}}">{{.CreationDate}}</time>
+              </div>
+
+
+
+          </article>
+        </div>
+        {{end}}
+
+
+<div class="big-line">
+    </div>
+
+
+
+
+      </div>
+
+      <div class="activity-elements" id="activity-elements">
+      {{range .profileresponse.Activities}}
+          <div class="post-line"></div>
+        <div class="activity">
+
+          <div class="activity-left">
+          <div class="activity-description">
+        {{if eq .Comment.ID ""}}
+        {{$.profileresponse.Username}} 
+              {{.Action}} post:
+              "{{.Post.Title}}"
+        {{else}}
+        {{$.profileresponse.Username}} 
+              {{.Action}} comment:"{{.Comment.Content}}" on post: 
+              "{{.Post.Title}}"
+    {{end}}
+            </div>
+            <!-- {{if eq .Comment.Content ""}} -->
+            <!-- {{else}} -->
+            <!-- <div class="comment-content">{{.Comment.Content}}</div> -->
+            <!-- {{end}} -->
+          </div>
+          <div class="activity-right">
+        <div class="post">
+
+
+
+            <article id="{{.Post.ID}}">
+
+          <a href="postbyid/{{.Post.ID}}">
+              <div class="post-upper">
+                <div class="post-upper-left">
+            <div class="creator" >
+	      @{{.Post.User_UUID}}
+            </div>
+                  {{if eq .Post.ImagePath "null"}}
+                  {{else}}
+                  <img src="../static{{.Post.ImagePath}}" class="image"/>
+                  {{end}}
+            </div>
+
+                <div class="post-upper-right">
+            <h2 class="post-title">{{.Post.Title}}</h2>
+
+                  <div class="post-categories">
+	      {{ range .Post.Categories}}
+            <div class="post-category">
+                {{.}}
+            </div>
+              {{end}}
+            </div>
+
+            <div class="post-content">
+	      {{.Post.Content}}
+            </div>
+
+
+            </div>
+
+              </div>
+          </a>
+
+
+              <div class="post-lower">
+                <div class="likes">
+            <div>
+	      {{.Post.NumberOfLikes}}
+            </div>
+          {{if  .Post.Liked }}
+                <button name="like-btn" id="{{.Post.ID}}" class="liked">like </button>
+              {{else}}
+                <button name="like-btn" id="{{.Post.ID}}" class="unliked">like</button>
+              {{end}}
+                </div>
+
+                <div class="dislikes">
+            <div>
+	      {{.Post.NumberOfDislikes}}
+            </div>
+              {{if  .Post.Disliked }}
+                <button name="dislike-btn" id="{{.Post.ID}}" class="liked">dislike</button>
+              {{else}}
+                <button name="dislike-btn" id="{{.Post.ID}}" class="unliked">dislike</button>
+              {{end}}
+                  </div>
+
+
+
+
+                <div class="comments">
+            <div>
+	      {{.Post.NumberOfComments}}
+            </div>
+              <div>Comments</div>
+                </div>
+
+            <time class="time" datetime="{{.Post.CreationDate}}">{{.Post.CreationDate}}</time>
+              </div>
+
+
+
+          </article>
+        </div>
+          </div>
+
+
+        </div>
+        {{end}}
+        <div class="big-line"></div>
+      </div>
+
+
+
+
+
+    </div>
+
+      <div class="bottom-blank">
+      </div>
+
+  <footer>
+  <p class="footer">© 2025 Myforum. All rights reserved.</p>
+</footer>
+ <script src="/static/home.page.js"></script>
+ <script src="/static/profile.page.js"></script>
+  </body>
+</html>

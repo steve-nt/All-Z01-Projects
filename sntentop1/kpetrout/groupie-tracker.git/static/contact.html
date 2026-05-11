@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Fredoka+One&family=Poppins:wght@400;700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="/style/styleHome.css">
+    <script src="/style/script.js"></script>
+</head>
+<body>
+    <div class="wrapper">
+        {{ template "header" . }}
+        <div class="container" id="artists">
+            {{range .Dev}}
+                <div class="artist-cards">
+                    <div class="card" data-artist-id="{{.ID}}">
+                        <h2>{{.Name}}</h2>
+                        <img class="DEV" src="{{.Image}}" alt="{{.Name}}">
+                    </div>
+                </div>
+            {{end}}
+        </div>
+        {{ template "footer" . }}
+    </div>
+</body>
+</html>

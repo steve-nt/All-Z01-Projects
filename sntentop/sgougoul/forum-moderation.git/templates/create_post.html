@@ -1,0 +1,52 @@
+{{ define "create_post" }}
+
+<h2 style="margin-top:0;">Create Post ✍️</h2>
+
+<form method="POST" action="/create-post"
+  onsubmit="
+    const checked = this.querySelectorAll('input[name=category_ids]:checked').length;
+    if (!checked) { alert('Please select at least one category.'); return false; }
+    return true;
+  "
+>
+  <input
+    name="title"
+    type="text"
+    placeholder="Post title"
+    required
+    oninvalid="this.setCustomValidity('Please enter a title.')"
+    oninput="this.setCustomValidity('')"
+  />
+
+  <textarea
+    name="content"
+    placeholder="Write your post..."
+    required
+    oninvalid="this.setCustomValidity('Please write some content.')"
+    oninput="this.setCustomValidity('')"
+  ></textarea>
+
+  <div style="margin:12px 0;">
+    <div style="font-weight:700; margin-bottom:8px;">🏷️ Choose categories</div>
+
+    {{ if .Categories }}
+      <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        {{ range .Categories }}
+          <label class="chip" style="cursor:pointer;">
+            <input type="checkbox" name="category_ids" value="{{ .ID }}" style="width:auto; margin-right:8px;">
+            {{ .Name }}
+          </label>
+        {{ end }}
+      </div>
+      <small style="display:block; margin-top:8px; color:var(--muted);">
+        You can select multiple categories.
+      </small>
+    {{ else }}
+      <p style="color:var(--muted);">No categories available.</p>
+    {{ end }}
+  </div>
+
+  <button type="submit">Publish</button>
+</form>
+
+{{ end }}

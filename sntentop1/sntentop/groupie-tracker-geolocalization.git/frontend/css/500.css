@@ -1,0 +1,116 @@
+/* Global Styles */
+body {
+    background-image: url("/frontend/images/home.jpg");
+    background-size: cover;       /* Ensures the image covers the full screen */
+    background-position: center;  /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+    background-attachment: fixed; /* Keeps it fixed while scrolling */
+
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-style: oblique;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: white;
+    text-align: center;
+    backdrop-filter: blur(5px); /* Adds blur effect */
+}
+
+/* Container for Content */
+.container {
+    background: linear-gradient(135deg,#00ffcc, #8000ff);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 30px #e60073;
+    width: 70%;
+    min-height: 40%; /* Use min-height instead of height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+/* Error Text */
+.error-text {
+    font-family: 'Super Shake', Times, serif;
+    font-size: 40px;
+    color: #ff007f; /* Adjust color */
+    user-select: none; /* Prevent selection */
+    animation: glow 0.5s ease-in-out infinite alternate;
+}
+
+/* Message */
+.message {
+    font-size: 36px;
+    font-weight: bold;
+    margin-top: 20px;
+    color: #FFCC00;
+    animation: waveEffect 3s infinite ease-in-out;
+}
+
+/* Description */
+.description {
+    font-size: 20px;
+    margin-top: 10px;
+    max-width: 500px;
+    line-height: 1.5;
+    color: #00ffcc; 
+    animation: waveEffect 3s infinite ease-in-out;
+}
+
+/* Back Button Styling */
+.ok {
+    font-family: 'Super Shake', Times, serif;
+    margin-top: 45px;
+    padding: 12px 24px; /* Adjusts padding for a button-like feel */
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    background: linear-gradient(135deg,#ff007f, #8000ff);
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px #ffcc00;
+    cursor: pointer;
+}
+
+/* Hover Effect */
+.ok:hover {
+    background: linear-gradient(135deg, #8000ff, #ff007f);
+    border-color: #a200ff; /* Neon border */
+    transform: scale(1.05);
+    box-shadow: 0px 4px 8px #ffcc00;
+}
+
+/* Glow Animation */
+@keyframes glow {
+    from {
+        text-shadow: 0 0 20px #fff, 0 0 20px #fff, 0 0 30px #6a1cfbf9, 0 0 40px #4100e6, 0 0 50px #9200e6a8, 0 0 60px #0086e6, 0 0 70px #e60073;
+    }
+    to {
+        text-shadow: 0 0 30px #fff, 0 0 30px #fff, 0 0 40px #6a1cfbf9, 0 0 50px #4100e6, 0 0 60px #9200e6a8, 0 0 70px #0086e6, 0 0 80px #e60073;
+    }
+}
+
+/* Smooth Wavy Animation */
+@keyframes waveEffect {
+    0% { transform: translateY(0px); }
+    25% { transform: translateY(-5px); }
+    50% { transform: translateY(0px); }
+    75% { transform: translateY(5px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Custom Font */
+@font-face {
+    font-family: 'Super Shake';
+    src: url('/frontend/fonts/supershake.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

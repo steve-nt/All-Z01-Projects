@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Root landing page mirrors app visual language and introduces the project before entering the SPA. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Welcome page for clonernews with project overview, implementation highlights, and a link to open the app."
+    />
+    <meta name="theme-color" content="#0b1020" />
+    <title>clonernews - Welcome</title>
+    <!-- Shared app stylesheet keeps the welcome page visually consistent with the runtime shell. -->
+    <link rel="stylesheet" href="/src/app.css" />
+    <style>
+      :root {
+        --phi-xs: 0.62rem;
+        --phi-sm: 1rem;
+        --phi-md: 1.62rem;
+        --phi-lg: 2.62rem;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+      }
+
+      #app,
+      .app-main,
+      .app-feature {
+        height: 100%;
+      }
+
+      .welcome-boot {
+        min-height: calc(100vh - 7.5rem);
+        align-content: start;
+        justify-items: center;
+        text-align: center;
+        width: min(80rem, calc(100% - calc(var(--phi-lg) * 1.2)));
+        padding: calc(var(--phi-md) * 1.15) 0 calc(var(--phi-sm) * 1.2);
+        gap: calc(var(--phi-sm) * 1.1);
+      }
+
+      .welcome-lede,
+      .welcome-supporting {
+        max-width: 58rem;
+      }
+
+      .welcome-tech-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, max-content));
+        justify-content: center;
+        gap: var(--phi-xs);
+      }
+
+      .welcome-panel {
+        width: min(70rem, 100%);
+        margin: 0 auto;
+        padding: calc(var(--phi-sm) * 1.15) calc(var(--phi-md) * 1.1);
+        text-align: left;
+        border: 1px solid var(--color-border);
+        border-radius: 1rem;
+        background: color-mix(in oklab, var(--color-surface), transparent 18%);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .welcome-panel h2 {
+        margin: 0 0 var(--phi-xs);
+        color: var(--color-text-strong);
+        font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+      }
+
+      .welcome-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        column-gap: var(--phi-md);
+        row-gap: var(--phi-xs);
+        margin: var(--phi-md) 0 0;
+        padding-left: var(--phi-md);
+        color: var(--color-text-muted);
+      }
+
+      .welcome-list li {
+        margin: 0;
+        break-inside: avoid;
+      }
+
+      .welcome-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: var(--phi-xs);
+        gap: var(--phi-sm);
+      }
+
+      .welcome-open-app {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.92rem 1.45rem;
+        border-radius: 999px;
+        border: 1px solid transparent;
+        font-size: 1rem;
+        font-weight: 800;
+        text-decoration: none;
+        color: #0a1020;
+        background: linear-gradient(135deg, #f59e0b, #fcd34d);
+        box-shadow: 0 8px 28px rgba(245, 158, 11, 0.28);
+        transition: transform 180ms ease, filter 180ms ease;
+      }
+
+      .welcome-open-app:hover {
+        filter: brightness(1.04);
+        transform: translateY(-1px);
+      }
+
+      @media (max-width: 980px) {
+        .welcome-tech-grid {
+          grid-template-columns: repeat(3, minmax(0, max-content));
+        }
+
+        .welcome-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 640px) {
+        html,
+        body {
+          overflow: auto;
+        }
+
+        #app,
+        .app-main,
+        .app-feature {
+          height: auto;
+        }
+
+        .welcome-tech-grid {
+          grid-template-columns: repeat(2, minmax(0, max-content));
+        }
+
+        .welcome-panel {
+          width: 100%;
+          padding: var(--phi-sm);
+        }
+
+        .welcome-boot {
+          min-height: auto;
+          width: min(82rem, calc(100% - calc(var(--phi-sm) + var(--phi-xs))));
+          padding-top: calc(var(--phi-sm) * 1.15);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header" role="banner">
+        <a href="/" class="app-header__brand" data-testid="app-header-brand">🗞️ clonernews</a>
+      </header>
+      <main class="app-main" role="main">
+        <div class="app-feature">
+          <section class="boot-screen welcome-boot" aria-labelledby="welcome-title">
+            <p class="eyebrow">Welcome · Intro Experience</p>
+            <h1 id="welcome-title" class="display-title">clonernews</h1>
+            <p class="lede welcome-lede">
+              A clean, fast Hacker News client built with vanilla JavaScript, feature-first
+              architecture, and an accessible, typography-driven UI.
+            </p>
+            <div class="welcome-tech-grid" aria-label="Implementation highlights">
+              <span class="pill">⚡ Vite + ESM</span>
+              <span class="pill">🧭 Hash Router</span>
+              <span class="pill">🧪 Vitest</span>
+              <span class="pill">🎭 Playwright</span>
+              <span class="pill">🧹 Biome</span>
+              <span class="pill">🧱 Feature-first architecture</span>
+              <span class="pill">🔒 DOMPurify safety policy</span>
+              <span class="pill">📦 Core / Infra / Shared layers</span>
+              <span class="pill">♻️ Result-pattern API flow</span>
+              <span class="pill">✅ CI quality gates</span>
+            </div>
+            <div class="welcome-panel" aria-label="Project highlights and implementation summary">
+              <h2>What this final deliverable includes</h2>
+              <p class="supporting-copy welcome-supporting">
+                clonernews is a polished static Hacker News client with clear architectural
+                boundaries, expressive UI foundations, and a strict safety posture. The app is
+                organized by domain intent: pure core use-cases, infrastructure adapters for I/O,
+                shared primitives, and feature-local views/controllers.
+              </p>
+              <ul class="welcome-list">
+                <li>Editorial dark visual direction with typography-first design tokens.</li>
+                <li>Hash-based routing for static hosting compatibility.</li>
+                <li>HN API adapter, cache adapter, throttling, and core use-cases are integrated.</li>
+                <li>Feed, post detail, comments, live updates, and audit-friendly test hooks.</li>
+                <li>Live-data notifications are throttled at a 5-second minimum interval.</li>
+                <li>Batch item fetching uses bounded concurrency to keep UI responsive.</li>
+                <li>Network requests use AbortController timeout boundaries.</li>
+                <li>DOM rendering uses safe sinks and sanitized API HTML fields.</li>
+                <li>Vitest, Playwright, and audit traceability map quality to requirements.</li>
+                <li>Static build is deployment-ready for GitHub Pages hosting.</li>
+              </ul>
+            </div>
+            <div class="welcome-actions">
+              <a class="welcome-open-app" href="/clonernews/">Open app</a>
+            </div>
+          </section>
+        </div>
+      </main>
+      <footer class="app-footer" role="contentinfo">
+        <span>© 2026 · Alex Smyroglou · Ertval Karameta · Stefanos Ntentopoulos</span>
+      </footer>
+    </div>
+  </body>
+</html>

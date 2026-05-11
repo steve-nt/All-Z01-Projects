@@ -1,0 +1,5 @@
+*.txt
+read.md
+sofar.md
+/venv
+*.pkl

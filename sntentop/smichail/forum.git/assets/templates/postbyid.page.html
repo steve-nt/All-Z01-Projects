@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/postbyid.css" />
+		<title>Document</title>
+
+
+    <nav class="navbar">
+    <div class="navbar-left">
+      <a href="/" class="logo">.MyForum</a>
+      <div class="line"></div>
+    {{if eq .Homeresponse.Username "guest"}}
+      <div class="user">Guest</div>
+        {{else}}
+        <a class="user" href="/profile">@{{.Response.Username}}</a>
+        {{end}}
+    </div>
+
+    <div class="navbar-right">
+    {{if eq .Homeresponse.Username "guest"}}
+  <a class="btn" href="/signup">Sign Up</a>
+    <a class="btn" href="/login">Log In</a>
+    {{else}}
+    <form id="logoutForm" action="/logout" method="POST" >
+ <button type="submit" class="logout-btn">Logout</button>
+    </form>
+    </div>
+    {{end}}
+
+    </nav>
+
+ <!-- Error Popup -->
+  <div class="popup error" id="error-popup">
+    <div class="popup-content">
+    <h2 class="error-message" >User Action from Guest
+        Please Log In</h2>
+    <a class="error-btn" href="/login">Go to Log In Page</a>
+      <button class="button" onclick="closePopup('error-popup')">Close</button>
+    </div>
+  </div>
+<section class="post-section">
+<div class="big-line-top">
+    </div>
+
+
+
+
+
+
+{{if eq .Response.Post.User_UUID $.Response.Username}}
+
+
+          <form class="edit-post-form" id="edit-post" name="edit-form" action="/edit-post/{{.Response.Post.ID}}" method="POST" enctype="multipart/form-data">
+
+
+
+
+            <div class="close-edit-post-button-container" id="close-edit-post-button-container">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="close-post-edit" name="close-edit" id="close-post-edit">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+            </div>
+
+
+
+
+        <div class="edit-post-form-upper">
+
+
+            <div class="edit-post-upper-left">
+        <div class="edit-post-username">
+                @{{.Response.Post.User_UUID}}
+        </div>
+            </div>
+            <div class="edit-post-upper-right">
+                        <input type="text" name="title" id="title" class="edit-post-title" value="{{.Response.Post.Title}}" placeholder="Title">
+                        <textarea name="content" id="content"  placeholder="Content" class="edit-post-content">{{.Response.Post.Content}}</textarea> 
+                  {{if eq .Response.Post.ImagePath "null"}}
+                  {{else}}
+                  <img src="../static{{.Response.Post.ImagePath}}" class="edit-image"/>
+      <label class="remove-img-label">
+          <input type="checkbox" class="remove-img-checkbox" name="remove-img" id="remove-img" value="1">
+                <span class="remove-img-span">RemoveImage</span>
+      </label>
+                  {{end}}
+<label for="image">Select a different image</label>
+              <input type="file" accept=".jpg,.png,.cvg,.gif" name="image" id="image"/>
+        </div>
+          </div>
+        <div class="edit-post-form-lower">
+            <div class="lower-left">
+            <label><input type="checkbox" name="create-categories" id="Tech-{{.Response.Post.ID}}" value="Tech"><span>TECH</span></label>
+      <label><input type="checkbox"name="create-categories" id="Politics-{{.Response.Post.ID}}" value="Politics"></input><span>POLITICS</span></label>
+      <label><input type="checkbox"name="create-categories" id="Economy-{{.Response.Post.ID}}" value="Economy"></input><span>ECONOMY</span></label>
+      <label><input type="checkbox"name="create-categories" id="Ecology-{{.Response.Post.ID}}" value="Ecology"></input><span>ECOLOGY</span></label>
+          </div>
+            <div class="edit-post-lower-right">
+        <button class="submit-btn" type="submit">Submit Edit</button>
+        </div>
+        </div>
+
+
+
+
+      </form>
+{{end}}
+
+
+
+
+
+    <article class="post" id="post">
+
+      <div class="post-upper">
+
+	  <div class="post-upper-left">
+      <div class="creator">
+	@{{.Response.Post.User_UUID}}
+      </div>
+	  </div>
+
+	  <div class="post-upper-right">
+
+	    {{if eq .Response.Post.User_UUID .Response.Username}}
+
+	    <div class="edit-delete-post-buttons">
+                  <div name="delete-post-btn-container" class="delete-post-btn-container" id="{{.Response.Post.ID}}">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="delete-post-btn">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+</svg>
+                  </div>
+
+                  <!-- <button name="delete-post-btn" class="button" id="{{.ID}}">Delete</button> -->
+                  <div name="edit-post-btn-container" class="edit-post-btn-container" id="{{.ID}}">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" name="edit-post-btn" class="edit-post-button"  id="{{.ID}}">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+</svg>
+                  </div>
+	    </div>
+	    {{end}}
+
+
+      <h2 class="title">{{.Response.Post.Title}}</h2>
+	
+	    <div class="categories">
+	{{range .Response.Post.Categories}}
+                    <div class="post-category" name="post-category"id="{{$.Response.Post.ID}}">
+	{{.}}
+      </div>
+      {{end}}
+	    </div>
+	  </div>
+      </div>
+
+
+
+
+      <div class="post-middle">
+        {{if eq .Response.Post.ImagePath "null"}}
+	{{else}}
+        <img src="../static{{.Response.Post.ImagePath}}" class="image"/>
+	  <div class="image-blank"></div>
+        {{end}}
+      <div class="content">
+	{{.Response.Post.Content}}
+      </div>
+      </div>
+
+
+      <div class="post-lower">
+      <div class="likes">
+	<div class="num">
+	{{.Response.Post.NumberOfLikes}}
+	</div>
+	    {{if .Response.Post.Liked}}
+	    <button class="liked" id="{{.Response.Post.ID}}" name="like-btn">like</button>
+	    {{else}}
+	    <button class="unliked" id="{{.Response.Post.ID}}" name="like-btn">like</button>
+	    {{end}}
+      </div>
+
+      
+      <div class="dislikes">
+	<div class="num">
+	{{.Response.Post.NumberOfDislikes}}
+	</div>
+	    {{if .Response.Post.Disliked}}
+	    <button class="liked" id="{{.Response.Post.ID}}" name="dislike-btn">dislike</button>
+	    {{else}}
+	    <button class="unliked" id="{{.Response.Post.ID}}" name="dislike-btn">dislike</button>
+	    {{end}}
+      </div>
+      <time class="time" datetime="{{.Response.Post.CreationDate}}">{{.Response.Post.CreationDate}}</time>
+      </div>
+
+    </article>
+
+<div class="big-line">
+    </div>
+
+
+
+      <div class="comments-line-container">
+      <div class="comments-line">
+	<div class="like">
+	  Comments
+      </div>
+      <div class="numofcomments">
+	{{.Response.Post.NumberOfComments}}
+	</div>
+    </div>
+      </div>
+
+
+
+<div class="big-line">
+    </div>
+
+
+
+
+
+
+
+      <div class="comments">
+    {{ range .Response.Post.Comments }}
+	{{if eq .User_UUID $.Response.Username}}
+	<form action="/edit-comment/{{.ID}}" class="edit-comment-form" name="edit-comment-form" method="POST" id="edit-comment-{{.ID}}">
+	  <textarea type="text" name="comment-content" id="comment-content" placeholder="Write a Comment..." class="edit-comment-textarea">{{.Content}}</textarea>
+        <button type="submit">Edit Comment</button>
+	  <div class="close-edit-comment-button-container" id="close-edit-comment-button-container-{{.ID}}">
+
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="close-comment-edit" name="close-comment-edit" id="close-comment-edit-{{.ID}}">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m9.75 9.75 4.5 4.5m0-4.5-4.5 4.5M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+            </div>
+    </form>
+	    {{end}}
+	<div class="comment" id="comment-{{.ID}}">
+	  <div class="comment-left">
+	{{if eq .User_UUID $.Response.Username}}
+	    <div class="edit-delete-container">
+	      <div name="delete-comment-btn-container" class="delete-comment-btn-container" id="{{.ID}}">
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="delete-btn">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0" />
+</svg>
+		</div>
+	      <div name="edit-comment-btn-container" class="edit-comment-btn-container" id="{{.ID}}">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" name="edit-post-btn" class="edit-button"  id="{{.ID}}">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+</svg>
+	      </div>
+	    </div>
+	    {{end}}
+	      <div class="reactions-and-username">
+	    <div class="comment-reactions">
+	    <div class="com-likes">
+	  <div class="comment-numoflikes">{{.NumberOfLikes}}</div>
+		{{if .Liked}}
+	  <button class="liked" name="comment-like-btn" id="{{.ID}}">like</button>
+		{{else}}
+	  <button class="unliked" name="comment-like-btn" id="{{.ID}}">like</button>
+		{{end}}
+	    </div>
+	    <div class="com-likes">
+	  <div class="comment-numofdislikes">{{.NumberOfDislikes}}</div>
+		{{if .Disliked}}
+	  <button class="liked" name="comment-dislike-btn" id="{{.ID}}">dislike</button>
+		{{else}}
+	  <button class="unliked" name="comment-dislike-btn" id="{{.ID}}">dislike</button>
+		{{end}}
+	    </div>
+	    </div>
+  <div class="comment-creator">
+	  @{{.User_UUID}}
+	</div>
+	  </div>
+      </div>
+      <div class="comment-content">{{.Content}}</div>
+      </div>
+    {{end}}
+      </div>
+
+    <form action="/create-comment/{{.Response.Post.ID}}" method="POST" class="create-comment">
+        <textarea type="text" name="comment-content" id="comment-content" class="create-comment-textarea" placeholder="Write a Comment..."></textarea>
+        <button type="submit">Submit Comment</button>
+    </form>
+
+<div class="big-line">
+    </div>
+
+
+    </section>
+
+
+      <div class="bottom-blank">
+      </div>
+
+
+
+ <script src="/static/postbyid.page.js"></script>
+  <footer>
+  <p class="footer">© 2025 MyForum. All rights reserved.</p>
+</footer>
+</html>
+
+

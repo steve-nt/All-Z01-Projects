@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOMBASLIME</title>
+  <link rel="icon" type="image/png" href="./textures/tabIcon.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <script type="module" src="./multiplayer.js"></script>
+</head>
+<body>
+  <div id="multiplayer-root"></div>
+  <div id="game-container">
+    <div id="hud-ui">
+
+      <div id="hud">
+        <div class="hud-item">
+          <div class="hud-label">TIME</div>
+          <div id="hud-time" class="hud-value">0</div>
+        </div>
+        <div class="hud-item">
+          <div class="hud-label">SCORE</div>
+          <div id="hud-score" class="hud-value">0</div>
+        </div>
+        <div class="hud-item">
+          <div class="hud-label">LIVES</div>
+          <div id="hud-lives" class="hud-value">3</div>
+        </div>
+        <div class="hud-item">
+          <div class="hud-label">BOMBS</div>
+          <div id="hud-bombs" class="hud-value">5</div>
+        </div>
+        <div class="hud-item">
+          <div class="hud-label">FPS</div>
+          <div id="hud-fps" class="hud-value">60</div>
+        </div>
+      </div>
+      <div id="ui">
+        <div class="ui-item ui-music-item">
+          <button id="ui-music-btn" class="ui-music-btn" aria-pressed="false" title="Toggle music"></button>
+        </div>
+        <div class="ui-item ui-help-item">
+          <button id="ui-help-btn" class="ui-help-btn" type="button"></button>
+        </div>
+      </div>
+    </div>
+
+    <div id="board"></div>
+
+    <!-- Pause Menu -->
+ <div id="pause-menu" class="hidden">
+      <div id="pause-overlay"></div>
+      <div id="pause-content">
+        <h2 id="pause-title">PAUSED</h2>
+        <div id="pause-panel-default" class="pause-panel">
+          <button id="continue-btn" class="pause-btn">CONTINUE</button>
+          <button id="restart-btn" class="pause-btn">RESTART</button>
+        </div>
+
+        <div id="name-entry-panel" class="pause-panel hidden" role="dialog" aria-modal="true">
+          <p id="name-entry-message">Enter your name for the leaderboard.</p>
+          <input id="name-entry-input" class="pause-input" type="text" maxlength="20" autocomplete="off" placeholder="Player">
+          <div id="name-entry-error" class="pause-error hidden">Please enter a name or choose Player.</div>
+          <div class="pause-actions">
+            <button id="name-entry-submit" class="pause-btn" type="button">SUBMIT</button>
+            <button id="name-entry-default" class="pause-btn secondary" type="button">USE PLAYER</button>
+          </div>
+        </div>
+
+        <!-- Scoreboard-Modal -->
+        <div id="scoreboard-panel" class="pause-panel hidden" role="dialog" aria-modal="true">
+          <p id="scoreboard-message">Submit a score to see where you stand!</p>
+          <div id="scoreboard-error" class="pause-error hidden"></div>
+          <table id="scoreboard-table" aria-label="High score table">
+            <thead>
+              <tr>
+                <th scope="col">Rank</th>
+                <th scope="col">Name</th>
+                <th scope="col">Score</th>
+                <th scope="col">Time</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          <div class="scoreboard-pagination">
+            <button id="scoreboard-prev" class="pause-btn" type="button">&larr; PREV</button>
+            <span id="scoreboard-page" class="scoreboard-page-indicator">Page 1 / 1</span>
+            <button id="scoreboard-next" class="pause-btn" type="button">NEXT &rarr;</button>
+          </div>
+          <div class="scoreboard-actions">
+            <button id="scoreboard-play-again" class="pause-btn" type="button">PLAY AGAIN</button>
+            <button id="scoreboard-close" class="pause-btn secondary" type="button">CLOSE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="help-menu" class="hidden">
+      <div id="help-overlay"></div>
+      <div id="help-content">
+        <h2>HELP</h2>
+        <p id="help-text">Find the hidden portal
+          <span class="exit-img"></span> behind the soft walls.</p>
+          <p>step on it to win!</p>
+        <button id="help-close-btn" class="pause-btn">BACK</button>
+      </div>
+    </div>
+
+    <div id="intro-menu">
+      <div id="intro-overlay"></div>
+      <div class="intro-stack">
+        <div id="intro-content">
+          <h2>
+            <img src="./textures/slimeLogo1.png" alt="Slime logo 1" class="intro-logo1">
+            BOMBASLIME
+           <img src="./textures/slimeLogo2.png" alt="Slime logo 2" class="intro-logo2">  
+          </h2>
+          <hr>
+          <p id="intro-text">
+            <span class="intro-line">
+              <img src="./textures/playerIntro.png" alt="Player sprite" class="intro-icon">
+              <span> Move with WASD or the arrow keys.</span>
+            </span>
+            <span class="intro-line">
+              <img src="./textures/bomb.png" alt="bomb sprite" class="intro-icon">
+              <span>Press SPACE to plant bombs.</span>
+            </span>
+            <span class="intro-powerups">
+              <span class="intro-powerup">
+                <span class="intro-powerup-icon powerup-bomb">B</span>
+                <span class="intro-powerup-copy">Bomb Up: carry an extra bomb.</span>
+              </span>
+              <span class="intro-powerup">
+                <span class="intro-powerup-icon powerup-radius">R</span>
+                <span class="intro-powerup-copy">Radius Up: blasts reach farther.</span>
+              </span>
+              <span class="intro-powerup">
+                <span class="intro-powerup-icon powerup-speed">S</span>
+                <span class="intro-powerup-copy">Speed Up: dash away from danger.</span>
+              </span>
+            </span>
+          </p>
+          <button id="intro-start-btn" class="pause-btn">START MISSION</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="story-menu" class="hidden">
+        <div id="story-overlay"></div>
+        <div id="story-content" class="intro-stack">
+          <h2 id="story-title"></h2>
+          <div id="story-text" style="background: rgba(0,0,0,0.8); padding: 15px; border: 2px solid #0f0; margin-bottom: 20px;"></div>
+          <button id="story-continue-btn" class="pause-btn"></button>
+        </div>
+    </div>
+
+  </div>
+</body>
+</html>

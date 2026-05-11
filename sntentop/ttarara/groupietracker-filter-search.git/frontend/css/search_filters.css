@@ -1,0 +1,102 @@
+/* Global Styles */
+body {
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+    background: #0a0a0a; /* Deep dark background */
+    color: #e0e0e0;      /* Light gray text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Use "start" instead of "center" if you have a lot of cards */
+    justify-content: start;
+    min-height: 100vh;
+}
+
+/* Heading Style */
+h1 {
+    text-align: center;
+    color: #00ffcc; /* Neon cyan */
+    margin-top: 70px;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+}
+
+/* Home Button Container */
+.button-home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+/* Home Button (class="ok") */
+.ok {
+    font-family: 'Times New Roman', Times, serif;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff007f, #8000ff);
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.ok:hover {
+    background: linear-gradient(90deg, #8000ff, #ff007f);
+}
+
+/* Container for Artist Cards */
+.container {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding-bottom: 80px; /* if you have a footer, helps avoid overlap */
+}
+
+/* Each Card */
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #1a1a1a;
+    border: 2px solid #00ffcc;
+    border-radius: 8px;
+    padding: 15px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: scale(1.08);
+}
+
+/* Card Image */
+.card img {
+    max-width: 150px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+/* You can add a footer, search bar, etc., as desired */
+.ok {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #00ffcc, #8000ff);
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.ok:hover {
+    background: linear-gradient(90deg, #00ffcc, #0088ff);
+}

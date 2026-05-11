@@ -1,0 +1,145 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
+func main() {
+	// Check for 1 or 2 arguments
+	if len(os.Args) < 2 || len(os.Args) > 3 {
+		fmt.Println("Usage: go run . [STRING] [BANNER]")
+		fmt.Println("EX: go run . something standard")
+		return
+	}
+
+	// Get input string from command-line arguments
+	textFromOutside := os.Args[1]
+
+	// Determine banner type, default to "standard" if not specified
+	banner := "standard"
+	if len(os.Args) == 3 {
+		banner = os.Args[2]
+	}
+
+	// Read ASCII art file for the specified banner
+	fileLines := ReadTxt(banner)
+	if fileLines == nil {
+		fmt.Println("Error loading banner file. Make sure the banner name is correct.")
+		return
+	}
+
+	// Convert lines into a 2D array of ASCII art templates
+	asciiTemplates := return2dASCIIArray(fileLines)
+
+	// Print the ASCII art representation of the input string
+	printAllStringASCII(textFromOutside, asciiTemplates)
+}
+
+// ReadTxt reads the specified banner file and returns its contents as a slice of strings.
+func ReadTxt(banner string) []string {
+	// Define the file name based on the banner type
+	fileName := banner + ".txt"
+	readFile, err := os.Open(fileName)
+	if err != nil {
+		fmt.Println(err) // Handle error if file can't be opened
+		return nil
+	}
+	defer readFile.Close() // Ensure file is closed after reading
+
+	// Scanner to read the file line by line
+	fileScanner := bufio.NewScanner(readFile)
+	fileScanner.Split(bufio.ScanLines)
+	var fileLines []string
+
+	// Append each line to the fileLines slice
+	for fileScanner.Scan() {
+		fileLines = append(fileLines, fileScanner.Text())
+	}
+	return fileLines // Return all lines read from the file
+}
+
+// return2dASCIIArray converts lines read from the file into a 2D array of ASCII templates.
+func return2dASCIIArray(fileLines []string) [][]string {
+	var asciiTemplates [][]string
+	counter := 0
+	var tempAsciArray []string
+
+	// Loop through all lines in the file
+	for _, line := range fileLines {
+		counter++
+		if counter != 1 { // Skip the first line if unnecessary
+			tempAsciArray = append(tempAsciArray, line)
+		}
+		if counter == 9 { // Each character is represented by 9 lines
+			asciiTemplates = append(asciiTemplates, tempAsciArray)
+			counter = 0
+			tempAsciArray = nil
+		}
+	}
+	return asciiTemplates
+}
+
+// printMultipleCharacter prints ASCII art for multiple characters in a string.
+func printMultipleCharacter(s string, asciiTemplates [][]string) {
+	tempIntArrLetter := returnAsciiCodeInt(s)
+	for i := 0; i < 8; i++ {
+		for _, v := range tempIntArrLetter {
+			fmt.Print(asciiTemplates[v][i])
+		}
+		fmt.Println()
+	}
+}
+
+// returnAsciiCodeInt converts each character to its ASCII template index.
+func returnAsciiCodeInt(s string) []int {
+	var tempIntArrLetter []int
+	for _, v := range s {
+		tempIntArrLetter = append(tempIntArrLetter, int(v)-32)
+	}
+	return tempIntArrLetter
+}
+
+// printAllStringASCII handles input string processing and ASCII art printing, including custom newlines.
+func printAllStringASCII(text string, asciiTemplates [][]string) {
+	substrings := returnstring2EndlineArray(text)
+	lenOfsubstrings := len(substrings)
+
+	for index, v := range substrings {
+		if v == "\\n" {
+			if index == lenOfsubstrings-1 || substrings[index-1] == "\\n" {
+				fmt.Println("")
+			}
+		} else {
+			printMultipleCharacter(v, asciiTemplates)
+		}
+	}
+}
+
+// returnstring2EndlineArray splits input text into substrings based on the custom newline delimiter.
+func returnstring2EndlineArray(text string) []string {
+	var substrings []string
+	escapedN := "\\n"
+
+	for {
+		idx := strings.Index(text, escapedN)
+		if idx == -1 {
+			substrings = append(substrings, text)
+			break
+		}
+		substrings = append(substrings, text[:idx])
+		substrings = append(substrings, escapedN)
+		text = text[idx+len(escapedN):]
+	}
+
+	// Filter out any empty strings in the final slice
+	var cleanedSubstrings []string
+	for _, sub := range substrings {
+		if sub != "" {
+			cleanedSubstrings = append(cleanedSubstrings, sub)
+		}
+	}
+	return cleanedSubstrings
+}

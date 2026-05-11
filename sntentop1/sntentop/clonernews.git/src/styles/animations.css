@@ -1,0 +1,70 @@
+/* Motion tokens stay tiny and reusable so the shell has life without becoming distracting.
+   All animations follow a consistent timing curve for predictable motion. */
+
+/* Fade in with gentle upward translation for entrance effects. */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Vertical slide from above without opacity change for layered reveals. */
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Horizontal fade for directional content transitions. */
+@keyframes fade-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Shimmer powers skeleton placeholders in later feature views without hard-coding extra variants.
+   Position shifts left to right to create a wave effect over loading skeletons. */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Pulse animation for interactive feedback and emphasis. */
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* The boot screen animates in lightly so the first paint feels intentional but still fast. */
+.boot-screen {
+  animation: fade-in-up 520ms ease both;
+}

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+EOL=▒
+
+front(){
+    echo "#[bg=0]#[fg=9]▓░"
+}
+
+echo "`front` vD - $(date +%Y.%m.%d_%H:%M:%S) $EOL"

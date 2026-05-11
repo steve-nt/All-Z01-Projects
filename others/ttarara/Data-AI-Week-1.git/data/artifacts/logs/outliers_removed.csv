@@ -1,0 +1,6 @@
+transaction_id,customer_id,product_id,product_name,quantity,price_per_unit,total_price,transaction_date,outlier_column
+9b3a0c89-1a32-4148-9bba-c83856e9b78d,CUST090,PROD-5875,headphones,999,450.55,3153.85,2025-01-04,quantity
+215663ab-c1f2-44b8-adc0-da7a16febaa0,CUST010,PROD-1868,printer,9,491.48,4423.32,2025-04-10,total_price
+37176e84-d977-4993-bc49-d76fcfc6e625,CUST011,PROD-6947,laptop,10,451.57,4515.7,2025-05-07,total_price
+d5627386-528c-4241-a345-ac72eac39204,CUST043,PROD-3893,webcam,3,439.0,99999.99,2025-03-06,total_price
+1095e497-3d79-4f0b-a6cd-3595d4f0d65d,CUST100,PROD-3574,keyboard,10,473.72,4737.2,2025-02-01,total_price

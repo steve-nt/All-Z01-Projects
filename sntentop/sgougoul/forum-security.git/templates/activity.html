@@ -1,0 +1,69 @@
+{{ define "activity" }}
+
+<h2 style="margin-top:0;">My Activity</h2>
+
+<h3>My Posts</h3>
+{{ if .Posts }}
+  {{ range .Posts }}
+    <div class="post">
+      <h3 style="margin-bottom:8px;">
+        <a href="/post?id={{ .ID }}">{{ .Title }}</a>
+      </h3>
+      <p>{{ .Content }}</p>
+      <div class="meta-bar" style="margin:0;">
+        <div class="meta-left">
+          <span class="meta-item">🕒 {{ .CreatedAt }}</span>
+          {{ if .Status }}
+            <span class="meta-item">📌 {{ .Status }}</span>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ else }}
+  <p style="color:var(--muted);">You have not created any posts yet.</p>
+{{ end }}
+
+<div class="divider"></div>
+
+<h3>My Reactions</h3>
+{{ if .Reactions }}
+  {{ range .Reactions }}
+    <div class="post">
+      <p style="margin:0 0 8px 0;">
+        You <strong>{{ .ReactionText }}</strong>:
+        <a href="/post?id={{ .PostID }}">{{ .PostTitle }}</a>
+      </p>
+      <div class="meta-bar" style="margin:0;">
+        <div class="meta-left">
+          <span class="meta-item">🕒 {{ .CreatedAt }}</span>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ else }}
+  <p style="color:var(--muted);">You have not reacted to any posts yet.</p>
+{{ end }}
+
+<div class="divider"></div>
+
+<h3>My Comments</h3>
+{{ if .Comments }}
+  {{ range .Comments }}
+    <div class="post">
+      <p style="margin:0 0 8px 0;">
+        On <a href="/post?id={{ .PostID }}">{{ .PostTitle }}</a>
+      </p>
+      <p>{{ .Content }}</p>
+      <div class="meta-bar" style="margin:0;">
+        <div class="meta-left">
+          <span class="meta-item">🕒 {{ .CreatedAt }}</span>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ else }}
+  <p style="color:var(--muted);">You have not written any comments yet.</p>
+{{ end }}
+
+{{ end }}

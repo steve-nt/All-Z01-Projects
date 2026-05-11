@@ -1,0 +1,92 @@
+{{ define "home" }}
+
+<div style="padding:6px 0 2px 0;">
+  <h1 style="margin:0 0 8px 0;">Welcome to the Forum 👋</h1>
+  <p style="margin:0 0 14px 0; color:var(--muted);">
+    Join discussions, share ideas, react to posts, and connect with other users.
+  </p>
+</div>
+
+<div style="display:flex; gap:10px; flex-wrap:wrap; margin: 10px 0 18px 0;">
+  <a href="/posts"><button type="button">🧭 Browse Posts</button></a>
+
+  {{ if .LoggedIn }}
+    <a href="/create-post"><button type="button">✍️ Create Post</button></a>
+  {{ else }}
+    <a href="/login"><button type="button">🔐 Login to Post</button></a>
+  {{ end }}
+</div>
+
+<!-- Community Guidelines Box -->
+<div class="guidelines-box">
+
+  <h3>🌍 Community Guidelines</h3>
+
+  <p>
+    This forum is a place where users can create posts, share ideas, ask questions,
+    react to discussions, and connect with other members of the community.
+    Participate respectfully and help keep the forum welcoming for everyone.
+  </p>
+
+  <p>Please follow these basic rules:</p>
+
+  <ul class="guidelines-list">
+    <li>Be respectful and constructive when interacting with other members.</li>
+    <li>No verbal abuse, harassment, or personal attacks.</li>
+    <li>Hate speech, racism, discrimination, or offensive language are strictly prohibited.</li>
+    <li>Stay on topic and contribute meaningfully to discussions.</li>
+    <li>Help maintain a positive and helpful environment for everyone.</li>
+  </ul>
+
+</div>
+
+<div class="divider"></div>
+
+<h2 style="margin-top:0;">🔥 Top 5 Most Liked Posts</h2>
+
+{{ if not .TopPosts }}
+  <p style="color:var(--muted);">No posts yet. Be the first to start the discussion.</p>
+{{ else }}
+  {{ range $index, $post := .TopPosts }}
+  <div class="post trending-post">
+
+    <div class="trending-rank">
+      #{{ add $index 1 }}
+    </div>
+
+    <div class="trending-content">
+
+      <h3>
+        <a href="/post?id={{ $post.ID }}">{{ $post.Title }}</a>
+      </h3>
+
+      <p>{{ $post.Preview }}</p>
+
+      {{ if $post.Categories }}
+        <div class="categories">
+          {{ range $post.Categories }}
+            <span>
+              <a href="/posts?category={{ urlquery . }}" style="text-decoration:none;color:inherit;">🏷️ {{ . }}</a>
+            </span>
+          {{ end }}
+        </div>
+      {{ end }}
+
+      <div class="meta-bar" style="margin:10px 0 0 0;">
+        <div class="meta-left">
+          <span class="meta-item">👤 {{ $post.Username }}</span>
+          <span class="meta-item">🕒 {{ $post.CreatedAt }}</span>
+        </div>
+
+        <div class="meta-right">
+          <span class="chip">👍 {{ $post.Likes }} &nbsp; | &nbsp; 👎 {{ $post.Dislikes }}</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+{{ end }}
+{{ end }}
+
+{{ end }}

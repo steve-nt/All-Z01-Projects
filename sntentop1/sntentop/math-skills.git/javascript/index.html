@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistics Calculator</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Upload a File to Calculate Statistics</h2>
+        <!-- File input and button to trigger calculation -->
+        <input type="file" id="fileInput" accept=".txt">
+        <button onclick="calculateStatistics()">Calculate</button>
+        <!-- Display area for results -->
+        <div id="result"></div>
+    </div>
+    <script src="scripts/fileReader.js"></script>
+    <script src="scripts/calculations.js"></script>
+    <script src="scripts/displayResult.js"></script>
+    <script src="scripts/main.js"></script>
+</body>
+</html>

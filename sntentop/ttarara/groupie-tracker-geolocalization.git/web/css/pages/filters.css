@@ -1,0 +1,202 @@
+/* Global Styles */
+body {
+    font-family: 'Courier New', Courier, monospace;    
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(45deg, #00ffcc, #8000ff);
+    color: #e0e0e0; /* Light gray text */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content at the top */
+    min-height: 100vh;
+    overflow: hidden; /* Remove outer scrollbars */
+}
+/* Header Styling */
+h1 {
+    font-family: 'MolaJelly', Courier, monospace;
+    text-align: center;
+    color: #00ffcc; 
+    margin-top: 20px; 
+    margin-bottom: 20px;
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
+/* Home Button Container */
+.button-home {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+/* Home Button (class="ok")  */
+.ok {
+    font-family: 'MolaJelly', Courier, monospace;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: linear-gradient(45deg, #ff007f, #8000ff);
+    color: #ffcc00;
+    text-decoration: none;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.ok:hover {
+    background: linear-gradient(90deg, #8000ff, #ff007f);
+    transform: scale(1.1);
+}
+
+/* Bands Container */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px;
+    overflow-y: auto; /* Enable vertical scrollbar */
+    overflow-x: hidden; /* Disable horizontal scrollbar */
+    max-height: calc(100vh - 200px);     
+    width: 100%; /* Ensure it takes full width */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    background:  #8000ff;
+    box-shadow: 0 4px 25px rgba(0, 255, 204, 0.647); /* Add a shadow around the box */
+    margin-bottom: 0; /* Ensure no extra margin at the bottom */
+    padding-bottom: 80px; /* Remove padding at the bottom */
+}
+
+/* Flip Card Styling */
+.card {
+    width: 200px;
+    height: 260px;
+    perspective: 1200px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    border-radius: 15px;
+    position: relative;
+    z-index: 1; /* Default z-index */
+}
+
+.card:hover {
+    transform: scale(1.08);
+    z-index: 10; /* Bring the hovered card to the front */
+}
+
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+    transform: rotateY(180deg);
+}
+
+/* Front & Back of the Card */
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 2px 4px 6px #ff007f;
+}
+
+/* Front Card Styling */
+.card-front {
+    background: linear-gradient(135deg, #212121, #4e4e4e); /* Dark gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #00ffcc;
+}
+
+.card-front img {
+    max-width: 90%;
+    height: auto;
+    border-radius: 8px;
+}
+
+/* Back Card Styling */
+.card-back {
+    font-family: 'MolaJelly', sans-serif;
+    font-size: 18px;
+    background: linear-gradient(135deg, #212121, #4e4e4e); /* Dark gradient */
+    color: rgb(208, 208, 208);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: rotateY(180deg);
+    text-align: center;
+    padding: 15px;
+    font-weight: bold;
+    border: 4px solid #00ffcc;
+    overflow-wrap: break-word; 
+    white-space: normal; /* Allows text to wrap */
+}
+
+/* Footer Styling */
+.footer {
+    text-align: center;
+    padding: -2px;
+    font-size: 12px;
+    background: linear-gradient(90deg, #8000ff, #ff007f);
+    color: white;
+    width: 100%;
+    font-weight: bold;
+    box-shadow: 0px -2px 5px #ffcc00;
+    position: fixed; /* Fix the footer at the bottom */
+    bottom: 0; /* Position at the bottom */
+    left: 0; /* Align to the left */
+    z-index: 1000; /* Ensure it stays above other content */
+    margin-top: 0px; /* Remove space above the footer */
+}
+
+/* Smooth Scroll */
+::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+    background: transparent; /* Background color of the scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #00ffcc; /* Color of the scrollbar thumb */
+}
+
+::-webkit-scrollbar-track {
+    background: #8000ff; /* Color of the scrollbar track */
+    margin: 4px 0; /* Add padding to the top and bottom */
+}
+
+
+@font-face {
+    font-family: 'MolaJelly';
+    src: url('/web/css/fonts/MolaJelly.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+}
+
+@media (max-width: 768px) {
+  h1 {
+    margin-top: 80px; 
+  }
+
+  .ok {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1001;
+  }
+}
+
+/* Ensure Go Back Button Does Not Overlap Title */
+h1 {
+    margin-top: 80px !important; /* Ensure there's enough space for the fixed button */
+}

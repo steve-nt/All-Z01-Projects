@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fish Tank Hunt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/styles.css" />
+    <link rel="stylesheet" href="style/menu.css" />
+</head>
+
+<body>
+    <div id="game-root">
+        <div id="sky"></div>
+        <div id="game">
+            <div id="decor" aria-hidden="true">
+                <div id="plants-layer"></div>
+                <div id="bubbles-layer"></div>
+                <img id="treasure" src="style/images/treasure.gif" alt="treasure" />
+            </div>
+            <div id="entities" aria-hidden="true"></div>
+            <div id="coral-overlay" aria-hidden="true"></div>
+            <div id="crosshair" aria-hidden="true"></div>
+        </div>
+
+        <div id="hud" role="region" aria-label="Scoreboard">
+            <div class="hud-section">
+                <span class="label">Level</span>
+                <span id="hud-level" class="value">1</span>
+            </div>
+            <div class="hud-section">
+                <span class="label">Time</span>
+                <span id="hud-time" class="value">60.0</span>
+            </div>
+            <div class="hud-section">
+                <span class="label">Score</span>
+                <span id="hud-score" class="value">0</span>
+            </div>
+            <div class="hud-section">
+                <span class="label">Lives</span>
+                <div id="hud-lives" class="value hearts-container">
+                    <span class="heart active">♥</span>
+                    <span class="heart active">♥</span>
+                    <span class="heart active">♥</span>
+                </div>
+            </div>
+            <div class="hud-section">
+                <span class="label">FPS</span>
+                <span id="hud-fps" class="value">60</span>
+            </div>
+            <button id="pause-btn" class="hud-button" aria-haspopup="dialog">Pause</button>
+        </div>
+
+        <div id="combo-display" aria-live="polite"></div>
+
+        <div id="center-notification" aria-live="assertive"></div>
+
+        <div id="story-overlay" role="dialog" aria-modal="true" aria-labelledby="story-title" class="hidden">
+            <!-- Story background elements -->
+            <div class="menu-fish fish1"></div>
+            <div class="menu-fish fish2"></div>
+            <div class="menu-fish fish3"></div>
+            <div class="menu-fish fish4"></div>
+            <div class="menu-fish fish5"></div>
+
+            <!-- Story bubbles -->
+            <div id="story-bubbles"></div>
+
+            <div class="story-card">
+                <div class="story-content">
+                    <h2 id="story-title" class="story-title">The Underwater Adventure</h2>
+                    <div class="story-text" id="story-text">
+                        <p class="story-paragraph">Deep beneath the ocean waves, in a magical coral reef...</p>
+                    </div>
+                    <div class="story-progress">
+                        <div class="story-dots">
+                            <span class="story-dot active" data-scene="0"></span>
+                            <span class="story-dot" data-scene="1"></span>
+                            <span class="story-dot" data-scene="2"></span>
+                            <span class="story-dot" data-scene="3"></span>
+                        </div>
+                    </div>
+                    <div class="story-buttons">
+                        <button id="story-skip-btn" class="menu-btn secondary">Skip Story</button>
+                        <button id="story-next-btn" class="menu-btn primary">Continue</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="start-overlay" role="dialog" aria-modal="true" aria-labelledby="start-title">
+            <!-- Optimized fish count - 5 instead of 8 -->
+            <div class="menu-fish fish1"></div>
+            <div class="menu-fish fish2"></div>
+            <div class="menu-fish fish3"></div>
+            <div class="menu-fish fish4"></div>
+            <div class="menu-fish fish5"></div>
+
+            <!-- Bubbles -->
+            <div id="menu-bubbles"></div>
+
+            <div class="start-card">
+                <div class="game-title">
+                    <h1 id="start-title">Fish Tank Hunt</h1>
+                    <div class="subtitle">Underwater Adventure</div>
+                </div>
+
+               <div class="menu-buttons">
+                <button id="start-btn" class="menu-btn primary">Start Game</button>
+                <button id="instructions-btn" class="menu-btn secondary">How to Play</button>
+                <button id="settings-btn" class="menu-btn tertiary">Settings</button>
+                <button id="credits-btn" class="menu-btn tertiary">Credits</button>
+                </div>
+  
+
+                <!-- REMOVED: All dropdown panels from here -->
+
+                <div class="high-scores">
+                    <h3>High Scores</h3>
+                    <ul class="score-list" id="high-score-list">
+                        <li class="score-item"><span class="score-rank">1.</span><span class="score-value">12,450</span>
+                        </li>
+                        <li class="score-item"><span class="score-rank">2.</span><span class="score-value">10,200</span>
+                        </li>
+                        <li class="score-item"><span class="score-rank">3.</span><span class="score-value">9,850</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- How to Play Popup Window -->
+        <div id="howto-popup" class="popup-window hidden" role="dialog" aria-modal="true" aria-labelledby="howto-popup-title">
+            <div class="popup-content">
+                <button id="close-howto" class="popup-close" aria-label="Close how to play">×</button>
+                <h3 id="howto-popup-title" class="popup-title">How to Play</h3>
+                <div class="howto-content">
+                    <ul class="howto-list">
+                        <li>Move your mouse to aim the net</li>
+                        <li>Left Click (or Space) to shoot</li>
+                        <li>Catch fish for points — different fish give different points</li>
+                        <li>Build combos for bonus score (don't miss!)</li>
+                        <li>Don't let fish escape — you lose lives</li>
+                        <li>ESC to pause • Arrow keys also move the crosshair</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Popup Window -->
+        <div id="settings-popup" class="popup-window hidden" role="dialog" aria-modal="true" aria-labelledby="settings-popup-title">
+            <div class="popup-content">
+                <button id="close-settings" class="popup-close" aria-label="Close settings">×</button>
+                <h3 id="settings-popup-title" class="popup-title">Game Settings</h3>
+                <div class="settings-content">
+                    <div class="setting-row">
+                        <label for="sound-toggle">Sound Effects</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="sound-toggle" checked />
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                    <div class="setting-row">
+                        <label for="volume-slider">Volume</label>
+                        <div class="volume-container">
+                            <span class="volume-icon">🔊</span>
+                            <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.01"
+                                value="0.8" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Credits Popup Window -->
+        <div id="credits-popup" class="popup-window hidden" role="dialog" aria-modal="true" aria-labelledby="credits-popup-title">
+            <div class="popup-content">
+                <button id="close-credits" class="popup-close" aria-label="Close credits">×</button>
+                <h3 id="credits-popup-title" class="popup-title">Credits</h3>
+                <div class="credits-content">
+                    <img src="style/images/credits.png" alt="Game Credits" class="credits-image" />
+                    <div class="credits-names">
+                        <div class="credit-name">Charoula</div>
+                        <div class="credit-name">Sofia</div>
+                        <div class="credit-name">Andy</div>
+                        <div class="credit-name">Georgia</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pause-overlay" role="dialog" aria-modal="true" aria-labelledby="pause-title" class="hidden">
+            <!-- Animated background elements -->
+            <div class="menu-fish fish1"></div>
+            <div class="menu-fish fish2"></div>
+            <div class="menu-fish fish3"></div>
+            <div class="menu-fish fish4"></div>
+            <div class="menu-fish fish5"></div>
+
+            <!-- Bubbles -->
+            <div id="pause-bubbles"></div>
+
+            <div class="start-card">
+                <h2 id="pause-title" class="game-title">Game Paused</h2>
+
+                <div class="menu-stats">
+                    <div class="stat-row">
+                        <span class="label">Level</span>
+                        <span id="menu-level" class="value">1</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="label">Time</span>
+                        <span id="menu-time" class="value">60.0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="label">Score</span>
+                        <span id="menu-score" class="value">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="label">Lives</span>
+                        <span id="menu-lives" class="hearts-container">
+                            <span class="heart active">♥</span>
+                            <span class="heart active">♥</span>
+                            <span class="heart active">♥</span>
+                        </span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="label">FPS</span>
+                        <span id="menu-fps" class="value">60</span>
+                    </div>
+                </div>
+
+                <div class="menu-buttons">
+                    <button id="continue-btn" class="menu-btn">Continue Game</button>
+                    <button id="restart-btn" class="menu-btn">Restart Game</button>
+                    <button id="main-menu-btn" class="menu-btn">Main Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="gameover-overlay" role="dialog" aria-modal="true" aria-labelledby="gameover-title" class="hidden">
+            <!-- Animated background elements -->
+            <div class="menu-fish fish1"></div>
+            <div class="menu-fish fish2"></div>
+            <div class="menu-fish fish3"></div>
+
+            <!-- Bubbles -->
+            <div id="gameover-bubbles"></div>
+
+            <div class="start-card">
+                <!-- Title and subtitle first -->
+                <div class="game-title">
+                    <h2 id="gameover-title">Game Over!</h2>
+                    <div class="subtitle">Your Underwater Adventure Ends Here</div>
+                </div>
+
+                <!-- Octopus gif -->
+                <img id="gameover-octopus" src="style/images/octopus.gif" alt="Octopus" />
+
+                <div class="final-score" id="final-score">0</div>
+
+                <div class="menu-stats">
+                    <div class="stat-row">
+                        <span class="label">Accuracy</span>
+                        <span class="value" id="final-accuracy">0%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="label">Best Combo</span>
+                        <span class="value" id="final-combo">0x</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="label">Level Reached</span>
+                        <span class="value" id="final-level">1</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="label">Fish Caught</span>
+                        <span class="value" id="final-caught">0</span>
+                    </div>
+                </div>
+
+                <div class="menu-buttons-horizontal">
+                    <button id="restart-gameover-btn" class="menu-btn">Play Again</button>
+                    <button id="main-menu-gameover-btn" class="menu-btn">Main Menu</button>
+                </div>
+            </div>
+        </div>
+
+        <script type="module" src="/src/story/story.js"></script>
+        <script type="module" src="main.js"></script>
+</body>
+
+</html>

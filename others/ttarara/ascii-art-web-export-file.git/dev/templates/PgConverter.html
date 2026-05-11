@@ -1,0 +1,141 @@
+{{define "content"}}
+<section>
+    <h1>ASCII-ART-GENERATOR</h1>
+    <form action="/converter" method="post">
+    <center>
+    <div class="outerContainer">
+        <div class="containerBox">
+            <div class="optionsBox">
+              <input type="radio" id="standard" name="banner" value="standard" checked>
+              <label for="standard">Standard</label><br>
+            
+              <input type="radio" id="shadow" name="banner" value="shadow">
+              <label for="shadow">Shadow</label><br>
+            
+              <input type="radio" id="thinkertoy" name="banner" value="thinkertoy">
+              <label for="thinkertoy">Thinkertoy</label><br>
+            
+              <input type="radio" id="stylize" name="banner" value="stylize">
+              <label for="stylize">Stylize</label>
+            </div>
+        </div>
+    </div>
+    </center>
+            <center>
+                <section class="textbox">
+                    <textarea id="freeform" name="ascii-data" placeholder="Enter text here..."></textarea>
+                </section>
+            </center>
+            <sec>
+            <center> <button type="submit">Submit!</button></center> 
+            </sec>
+    </form>
+       <!-- Display ASCII Art Output -->
+   <center> <pre id="asciiArt">{{.First}}</pre> </center>
+   <center> <button onclick="copyToClipboard()">Copy to clipboard</button> 
+            <button onclick="downLoad()">Download txt</button>
+            <button onclick="downLoadZip()">Download zip</button>
+    </center> 
+
+<script>
+    function copyToClipboard() {
+        // Get the content of the <pre> element
+        const asciiArt = document.getElementById("asciiArt").innerText;
+
+        // Copy the content to the clipboard
+        navigator.clipboard.writeText(asciiArt).then(
+            function () {
+                alert("Copied to clipboard!");
+            },
+            function (err) {
+                alert("Failed to copy: " + err);
+            }
+        );
+    }
+    function downLoad() {
+        // Check if the output area is empty
+        const asciiArt = document.getElementById('asciiArt');
+        if (!asciiArt.textContent.trim()) {
+            alert("You should generate your ASCII-ART before downloading.");
+            return;
+        }
+        fetch('/check-file')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('File not found');
+            }
+            // If the file exists, proceed to download
+            return fetch('/download');
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob(); // Get the file as a Blob
+        })
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob); // Create a temporary URL for the file
+            const a = document.createElement('a'); // Create a temporary <a> element
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'output.txt'; // Set the filename for the download
+            document.body.appendChild(a); // Append <a> to the DOM
+            a.click(); // Programmatically click the <a> element
+            document.body.removeChild(a); // Remove the <a> element after clicking
+            window.URL.revokeObjectURL(url); // Revoke the temporary URL
+        })
+        .catch(error => {
+            if (error.message === 'File not found') {
+                alert("The output.txt file is missing. Please generate your ASCII-ART again.");
+            } else {
+                console.error('There was a problem with the download:', error);
+            }
+        });
+    }
+
+    function downLoadZip() {
+    // Check if the output area is empty
+    const asciiArt = document.getElementById('asciiArt');
+    if (!asciiArt.textContent.trim()) {
+        alert("You should generate your ASCII-ART before downloading the ZIP file.");
+        return;
+    }
+
+    // Check if the file exists
+    fetch('/check-file')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('File not found');
+            }
+            // If the file exists, proceed to download the ZIP file
+            return fetch('/export-zip');
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob(); // Get the ZIP file as a Blob
+        })
+        .then(blob => {
+            const url = window.URL.createObjectURL(blob); // Create a temporary URL for the ZIP file
+            const a = document.createElement('a'); // Create a temporary <a> element
+            a.style.display = 'none';
+            a.href = url;
+            a.download = 'output.zip'; // Set the filename for the ZIP file
+            document.body.appendChild(a); // Append <a> to the DOM
+            a.click(); // Programmatically click the <a> element
+            document.body.removeChild(a); // Remove the <a> element after clicking
+            window.URL.revokeObjectURL(url); // Revoke the temporary URL
+        })
+        .catch(error => {
+            if (error.message === 'File not found') {
+                alert("The output.txt file is missing. Please generate your ASCII-ART again.");
+            } else {
+                console.error('There was a problem with the ZIP download:', error);
+            }
+        });
+}
+
+</script>
+</section>
+{{end}}

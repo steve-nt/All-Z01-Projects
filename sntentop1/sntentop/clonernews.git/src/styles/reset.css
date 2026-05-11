@@ -1,0 +1,53 @@
+/* Reset rules keep browser defaults predictable so later feature styles do not fight UA spacing. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Neutralize the default margins on common flow content so layouts start from a clean slate. */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* A minimum viewport width avoids accidental overflow collapse on very small render surfaces. */
+body {
+  min-width: 320px;
+}
+
+/* Media elements stay responsive by default so feature layouts can opt into their own sizing. */
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+/* Form controls inherit the surrounding typography to keep the UI visually coherent. */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Links inherit color because the design system controls emphasis instead of browser defaults. */
+a {
+  color: inherit;
+  text-decoration: none;
+}

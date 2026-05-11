@@ -1,0 +1,68 @@
+
+================================================================================
+STEP 6: Model Training & Evaluation
+================================================================================
+
+>>> Logistic Regression model trained successfully.
+
+>>> Decision Tree model trained successfully.
+
+
+------------------------------------------------------------
+Model: Logistic Regression
+------------------------------------------------------------
+Accuracy:  0.4167
+Precision: 0.4138
+Recall:    0.4000
+
+Confusion Matrix:
+[[13 17]
+ [18 12]]
+
+Detailed Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.42      0.43      0.43        30
+           1       0.41      0.40      0.41        30
+
+    accuracy                           0.42        60
+   macro avg       0.42      0.42      0.42        60
+weighted avg       0.42      0.42      0.42        60
+
+
+------------------------------------------------------------
+Model: Decision Tree
+------------------------------------------------------------
+Accuracy:  0.5000
+Precision: 0.5000
+Recall:    0.8333
+
+Confusion Matrix:
+[[ 5 25]
+ [ 5 25]]
+
+Detailed Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.50      0.17      0.25        30
+           1       0.50      0.83      0.62        30
+
+    accuracy                           0.50        60
+   macro avg       0.50      0.50      0.44        60
+weighted avg       0.50      0.50      0.44        60
+
+
+================================================================================
+MODEL COMPARISON SUMMARY
+================================================================================
+Logistic Regression Accuracy: 0.4167
+Decision Tree Accuracy:       0.5000
+
+✅ Decision Tree performed better overall.
+
+================================================================================
+STEP 6 completed successfully. All logs saved in step6_model_evaluation.log
+================================================================================
+
+
+Trained models have been saved for future use.

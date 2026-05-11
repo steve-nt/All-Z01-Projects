@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <title>Concerts Map</title>
+        <link rel="stylesheet" href="templates/styles.css">
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="">
+           
+        </script>
+
+
+    </head>
+    <body class="map-body">
+
+        <p class="main_title">{{.Display}}</p>
+        
+        <div id="loading" class="floating-div">
+            Loading Markers
+        </div>
+
+        <div class="map" id="map"></div>
+        <div type="hidden" id="artistData" data-id="{{.ID}}"></div>
+
+        <script>
+            var map = L.map('map').setView([51.505, -0.09], 3);
+
+            L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 19,
+                attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+            }).addTo(map);
+
+            const artistId = document.getElementById('artistData').dataset.id;
+            
+            const eventSource = new EventSource(`/markerHandler?artistID=${artistId}`);
+            
+            var bounds = L.latLngBounds();
+
+            eventSource.onmessage = (event) => {
+                const markerData = JSON.parse(event.data);
+                if (markerData.finished == "false"){
+                    //add marker
+                    marker = L.marker([markerData.lat, markerData.lon]).addTo(map);
+                    marker.bindPopup('<b>'+markerData.location+'</b>');
+
+                    bounds.extend([markerData.lat, markerData.lon]);
+
+                    // Adjust the map view to fit all markers
+                    map.fitBounds(bounds);
+                    
+                }else{
+                    //hide loading icon
+                    var d = document.getElementById('loading')
+                    d.textContent = ""
+                    d.hidden = true
+                }
+            };
+
+            eventSource.onerror = () => {
+                eventSource.close();
+            };
+
+            
+            
+            
+       </script>
+
+    
+    </body>
+    
+</html>

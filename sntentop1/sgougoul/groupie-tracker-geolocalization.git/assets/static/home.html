@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker - Home</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+   
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+    <link rel="stylesheet" href="/static/home.css">
+
+    <!-- JS for Choices.js (load once globally) -->
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <input type="text" id="searchBar" class="form-control my-3" placeholder="Search artist, member, location, etc..." list="artistSuggestions">
+            <datalist id="artistSuggestions"></datalist>
+        </div>
+
+        <div class="col-12">
+            <button id="showFiltersBtn" class="btn btn-secondary mb-3">
+                Show Filters
+            </button>
+        </div>
+
+        <div class="col-12">
+            <div class="container" id="filtersContainer"></div>
+        </div>
+        
+    </div>
+    <!-- Suggestions container -->
+    <div id="suggestions" class="list-group" style="position: absolute; width: 100%;"></div>
+
+    
+    
+
+    
+    
+        
+
+    
+
+    <dialog id="errorDialog" class="p-0">
+        <form method="dialog" class="p-3">
+          <h5 class="text-danger">Validation Error</h5>
+          <ul id="errorList" class="mb-3"></ul>
+          <button id="closeError" class="btn btn-secondary">Close</button>
+        </form>
+      </dialog>
+
+
+    <div class="container">
+        <h1 class="my-4 text-center">Artists Gallery</h1>
+        <div class="row" id="gallery"></div> <!-- 🔹 Added Back Gallery Div -->
+    </div>
+
+    <script src="/static/home.js"></script>    
+    </body>
+</html>

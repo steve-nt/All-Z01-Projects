@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="static/styles.css">
+</head>
+
+<body>
+
+
+    <div class="container">
+        <!-- Header with Title -->
+        <header>
+            <h1>Groupie Tracker</h1>
+        </header>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search for artists, members, locations...">
+            </div>
+            <div id="searchSuggestions" class="search-suggestions"></div>
+        </div>
+
+        <!-- Filter Section -->
+        <button id="filterToggleBtn">Filter Options</button>
+        <button id="clearFilters">Clear Filters</button>
+        <div id="filterOptions" style="display: none;">
+            <div class="filter-section">
+                <h3>Creation Date</h3>
+                <div class="range-slider">
+                    <input type="range" id="creationDateMin" min="1958" max="2015" value="1958">
+                    <input type="range" id="creationDateMax" min="1958" max="2015" value="2015">
+                </div>
+                <div class="range-values">
+                    <p style="color:rgb(185, 185, 185);"><span id="creationDateMinValue">1958</span> Min</p>
+                    <p style="color:rgb(185, 185, 185);">Max <span id="creationDateMaxValue">2015</span></p>
+                </div>
+            </div>
+            <div class="filter-section">
+                <h3>First Album Date</h3>
+                <div class="range-slider">
+                    <input type="range" id="firstAlbumDateMin" min="1963" max="2018" value="1963">
+                    <input type="range" id="firstAlbumDateMax" min="1963" max="2018" value="2018">
+                </div>
+                <div class="range-values">
+                    <p style="color:rgb(185, 185, 185);"><span id="firstAlbumDateMinValue">1963</span> Min</p>
+                    <p style="color:rgb(185, 185, 185);">Max <span id="firstAlbumDateMaxValue">2018</span></p>
+                </div>
+            </div>
+            <div class="filter-section">
+                <h3>Number of Members</h3>
+                <div id="memberCheckboxes"></div>
+            </div>
+            <div class="filter-section">
+                <h3>Countries</h3>
+                <div class="countries-dropdown">
+                    <button id="countriesDropdownToggle" class="countries-dropdown-toggle">Select Countries</button>
+                    <div id="countryCheckboxes"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Artist Cards Grid -->
+        <div class="artist-grid">
+            {{ range .Artists }}
+            <div class="artist-card" data-artist-name="{{ .Name }}" data-artist-id="{{ .ID }}">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="artist-name">{{ .Name }}</div>
+                        <div class="artist-image" style="background-image: url('{{ .Image }}');"></div>
+                        <div class="artist-info">
+                            <p>Year Established: <strong>{{ .CreationDate }}</strong></p>
+                            <p>First Album: <strong>{{ .FirstAlbum }}</strong></p>
+                            <p>Members: <strong>{{ len .Members }}</strong></p>
+                        </div>
+                    </div>
+                    <div class="card-members">
+                        <h3 class="category-title">
+                            {{ if eq (len .Members) 1 }}Artist{{ else }}Members{{ end }}
+                        </h3>
+                        <ul>
+                            {{ range .Members }}
+                            <li>{{ . }}</li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                    <div class="card-locations">
+                        <h3 class="category-title">Locations</h3>
+                        <a class="map-button" href="/geo?artistID={{ .ID }}">Map</a>
+                        <ul>
+                            {{ $artistID := .ID }}
+                            {{ range $.Locations }}
+                            {{ if eq .ID $artistID }}
+                            {{ range .Locations }}
+                            <li>{{ FormatLocation . }}</li>
+                            {{ end }}
+                            {{ end }}
+                            {{ end }}
+                        </ul>
+                    </div>
+                    <div class="card-dates">
+                        <h3 class="category-title">Dates</h3>
+                        <ul>
+                            {{ $artistID := .ID }}
+                            {{ range $.Dates }}
+                            {{ if eq .ID $artistID }}
+                            {{ range .Dates }}
+                            <li>{{ FormatDate . }}</li>
+                            {{ end }}
+                            {{ end }}
+                            {{ end }}
+                        </ul>
+                    </div>
+                    <div class="card-relations">
+                        <h3 class="category-title">Dates and Locations</h3>
+                        <ul>
+                            {{ $artistID := .ID }}
+                            {{ range $.Relations }}
+                            {{ if eq .ID $artistID }}
+                            {{ range $locations, $date := .DatesLocations }}
+                            <li>
+                                <strong>{{ FormatLocation $locations }}</strong>:
+                                <ul>
+                                    {{ range $date }}
+                                    <li>{{ . }}</li>
+                                    {{ end }}
+                                </ul>
+                            </li>
+                            {{ end }}
+                            {{ end }}
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    <footer>A Zone01 Project by Uipko, Giannis, Arsen - © All Rights Reserved</footer>
+    <script src="/static/js/script.js"></script>
+    <script src="/static/js/filters.js"></script>
+    <script src="/static/js/search.js"></script>
+</body>
+
+</html>

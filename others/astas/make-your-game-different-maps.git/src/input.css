@@ -1,0 +1,233 @@
+/* src/input.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================= */
+/* ==================== YOUR ORIGINAL ANIMATIONS =============== */
+/* ============================================================= */
+@keyframes ocean-wave {
+  0%   { background-position: 0% 0; }
+  100% { background-position: 500% 0; }
+}
+@keyframes notification-pulse {
+  0%   { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+  50%  { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
+}
+@keyframes bubbleFlood {
+  0%   { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--dx), var(--dy)) scale(.5); opacity: 0; }
+}
+@keyframes flashFade {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes miss-float {
+  0%   { transform: translate3d(-50%,-50%,0) scale(.8); opacity: 0; }
+  50%  { transform: translate3d(-50%,-60%,0) scale(1); opacity: 1; }
+  100% { transform: translate3d(-50%,-80%,0) scale(.8); opacity: 0; }
+}
+@keyframes story-fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================= */
+/* ==================== YOUR ORIGINAL UTILITIES =============== */
+/* ============================================================= */
+@layer utilities {
+  /* Center notification visibility toggle */
+  /* Use higher specificity to override Tailwind's opacity-0 */
+  #center-notification.show,
+  #center-notification.show.opacity-0 { 
+    opacity: 1 !important; 
+  }
+  .sprite {
+    @apply absolute w-16 h-16;
+  }
+  .menu-bubble {
+    @apply absolute rounded-full;
+  }
+  .miss-feedback {
+    @apply absolute font-black text-3xl text-red-500 shadow-2xl pointer-events-none;
+  }
+  .animate-miss-float { animation: miss-float 1.5s ease-out forwards; }
+  .animate-story { animation: story-fade-in 0.8s ease-in-out; }
+}
+
+
+/* ============================================================= */
+/* ==================== NEW GAME-SPECIFIC UTILITIES ============ */
+/* ============================================================= */
+@layer utilities {
+  /* ---------- BUBBLE FLOAT ---------- */
+  @keyframes bubbleFloat {
+    0%   { transform: translateY(0) scale(0.8) rotate(0deg); opacity: 0; }
+    10%  { opacity: 0.8; }
+    90%  { opacity: 0.8; }
+    100% { transform: translateY(-120vh) scale(1.2) rotate(720deg); opacity: 0; }
+  }
+  .animate-bubble {
+    animation: bubbleFloat linear forwards;
+  }
+
+  /* ---------- MISS POP-UP ---------- */
+  @keyframes missFloat {
+    to { transform: translateY(-60px) scale(1.2); opacity: 0; }
+  }
+  .animate-miss {
+    animation: missFloat 1.5s ease-out forwards;
+  }
+
+  /* ---------- HIT FLASH ---------- */
+  @keyframes hitFlash {
+    50% { filter: brightness(3) hue-rotate(300deg); }
+  }
+  .animate-hit {
+    animation: hitFlash 0.2s ease-in-out;
+  }
+
+  /* ---------- TURTLE SPLASH ---------- */
+  @keyframes splashExpand {
+    to { transform: scale(3) rotate(180deg); opacity: 0; }
+  }
+  .animate-splash {
+    animation: splashExpand 0.5s ease-out forwards;
+  }
+
+  /* ---------- PIXEL-ART CRISP ---------- */
+  .pixelated { image-rendering: pixelated; }
+
+  /* ---------- FISH SPRITE BACKGROUNDS ---------- */
+  .fish1 { background-image: url('/style/images/red.png'); }
+  .fish2 { background-image: url('/style/images/purple.png'); }
+  .fish3 { background-image: url('/style/images/yellow.png'); }
+  .fish4 { background-image: url('/style/images/green.png'); }
+  .fish5 { background-image: url('/style/images/blue.png'); }
+  .fish6 { background-image: url('/style/images/honey.png'); }
+  .fish7 { background-image: url('/style/images/brown.png'); }    
+
+  /* ---------- LIFE-FISH (NO EFFECTS) ---------- */
+  .lifeFish {
+    @apply w-20 h-16 bg-contain bg-center bg-no-repeat pixelated;
+    background-image: url('/style/images/extralife.png');
+  }
+
+  .turtle {
+    @apply w-40 h-32 bg-contain bg-center bg-no-repeat pixelated;
+    background-image: url('/style/images/turtle.png');
+  }
+
+  /* ---------- SCORE POPUP ---------- */
+  .score-popup {
+    @apply absolute font-bold text-2xl text-yellow-400 pointer-events-none z-50;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8), 0 0 10px rgba(255,255,0,0.5);
+    animation: scoreFloat 1s ease-out forwards;
+  }
+
+  @keyframes scoreFloat {
+    0% {
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0;
+    }
+    20% {
+      transform: translate(-50%, -70%) scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -120%) scale(1);
+      opacity: 0;
+    }
+  }
+}
+
+/* ============================================================= */
+/* ==================== OPTIONAL COMPONENT ==================== */
+/* ============================================================= */
+@layer components {
+  .sprite {
+    @apply absolute bg-contain bg-center bg-no-repeat pixelated;
+  }
+}
+
+/* ============================================================= */
+/* ==================== BUBBLE BASE STYLES ===================== */
+/* ============================================================= */
+
+.bubble {
+    @apply absolute rounded-full bg-blue-200 opacity-70;
+    width: 12px;
+    height: 12px;
+    animation: bubbleFloat 6s linear forwards;
+  }
+  
+  .bubble.big {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .bubble.small {
+    width: 8px;
+    height: 8px;
+  }
+
+  /* ---------- ARCADE HIGH SCORE STYLING ---------- */
+  .arcade-title {
+    @apply text-xl md:text-2xl font-pressstart;
+    text-shadow: 2px 2px 0px rgba(0,0,0,0.8);
+    letter-spacing: 2px;
+  }
+
+  .arcade-divider {
+    @apply mx-auto;
+    width: 80%;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #888, transparent);
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+
+  .arcade-subtitle {
+    @apply text-sm md:text-base font-pressstart;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
+    letter-spacing: 1px;
+  }
+
+  .arcade-score-list {
+    @apply space-y-1;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .arcade-score-item {
+    @apply font-pressstart text-xs md:text-sm;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 2px 0;
+    text-align: center;
+  }
+
+  .arcade-score-item .score-rank {
+    @apply text-cyan-300;
+    min-width: 20px;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
+  }
+
+  .arcade-score-item .score-value {
+    @apply text-red-500;
+    font-weight: bold;
+    min-width: 80px;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
+    letter-spacing: 1px;
+  }
+
+  .arcade-score-item .score-initials {
+    @apply text-cyan-300;
+    text-shadow: 1px 1px 0px rgba(0,0,0,0.8);
+    letter-spacing: 2px;
+  }
+  

@@ -1,0 +1,40 @@
+version: "3.8"
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: cmd/app/Dockerfile
+    container_name: backend
+    image: backend:latest
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/app/data:Z   
+      - ./static/postimages:/app/static/postimages:Z   
+    env_file:
+      - .env
+    environment:
+      - TZ=UTC
+  frontend:
+    build:
+      context: .
+      dockerfile: cmd/client/Dockerfile
+    container_name: frontend
+    image: frontend:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./static/postimages:/app/static/postimages:Z   
+    depends_on:
+      - backend
+    env_file:
+      - .env
+    environment:
+      - TZ=UTC
+      - BACKEND_URL=http://backend:8080
+
+networks:
+  default:
+    driver: bridge
+

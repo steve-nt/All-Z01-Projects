@@ -1,0 +1,12 @@
+{{define "activity_post"}}
+<div class="container">
+    <div class="activity-highlight">
+        <a href="/post/view/{{.Post.Id}}"><h3>{{.Post.Title}}</h3></a>
+        <pre>{{.Post.Body}}</pre>
+        <div class="reactions">
+            <button disabled>{{.Post.Likes}} {{if .Post.Liked}}👍{{else}}👍🏻{{end}}</button>
+            <button disabled>{{.Post.Dislikes}} {{if .Post.Disliked}}👎{{else}}👎🏻{{end}}</button>
+        </div>
+    </div>
+</div>
+{{end}}

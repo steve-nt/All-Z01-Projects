@@ -1,0 +1,115 @@
+{{define "post_view"}}
+{{template "header" .}}
+{{template "topbar" .}}
+{{if .Error.Has}}
+{{template "error" .}}
+{{end}}
+<div class="container">
+    {{$post := index .Posts 0}}
+    <div class="post" id="{{$post.Id}}">
+        <div class="post-content">
+            <a href="/post/view/{{$post.Id}}"><h3>{{$post.Title}}</h3></a>
+            <div class="post-details">
+                <p>Categories:
+                {{range $post.Categories}}
+                    <a href="/category/view/{{.Id}}">{{.Name}}</a>
+                {{end}}
+                </p>
+                <p>Posted by <strong>{{$post.User.Username}}</strong> on <em>({{$post.TimestampString}})</em></p>
+            </div>
+            <div class=manage-post>
+                {{if eq $.User.Id $post.User.Id}}
+                <form method="GET" action="/post/edit">
+                    <input type="hidden" name="post-id" value="{{$post.Id}}"/>
+                    <button type="submit">Edit Post</button>
+                </form>
+                <form method="POST" action="/post/delete">
+                    <input type="hidden" name="post-id" value="{{$post.Id}}"/>
+                    <button type="submit">Delete Post</button>
+                </form>
+                {{end}}
+            </div>
+            <pre>{{$post.Body}}</pre>
+            {{if $post.ImagePath}}
+                <img src="/{{$post.ImagePath}}" alt="Post image" style="max-width: 100%;"/>
+            {{end}}
+            <div class="manage-post">
+        </div>
+        <div class="reactions">
+            <form method="POST" action="/post/react">
+                <input type="hidden" name="post-id" value="{{$post.Id}}"/>
+                <button type="submit"
+                        name="action"
+                        value="like"
+                        {{if not $.User.LoggedIn }}disabled{{end}}
+                        >{{$post.Likes}} {{if $post.Liked}}👍{{else}}👍🏻{{end}}</button>
+            </form>
+            <form method="POST" action="/post/react">
+                <input type="hidden" name="post-id" value="{{$post.Id}}"/>
+                <button type="submit"
+                        name="action"
+                        value="dislike"
+                        {{if not $.User.LoggedIn }}disabled{{end}}
+                        >{{$post.Dislikes}} {{if $post.Disliked}}👎{{else}}👎🏻{{end}}</button>
+            </form>
+        </div>
+        <div class="comments">
+            {{if $.User.LoggedIn}}
+                {{ template "comment_create" $post}}
+            {{end}}
+            {{range $post.Comments}}
+            <div class="comment" id="comment-{{.Id}}">
+                <span>{{.Username}} ({{.TimestampString}})</span>
+                <div class="manage-comment">
+                    {{if eq $.User.Id .UserId}}
+                    <form method="POST" action="/comment/edit">
+                        <input type="hidden" name="post-id" value="{{$post.Id}}"/>
+                        <input type="hidden" name="comment-id" value="{{.Id}}"/>
+                        <button type="submit">Edit Comment</button>
+                    </form>
+                    <form method="POST" action="/comment/delete">
+                        <input type="hidden" name="post-id" value="{{$post.Id}}"/>
+                        <input type="hidden" name="comment-id" value="{{.Id}}"/>
+                        <button type="submit">Delete Comment</button>
+                    </form>
+                    {{end}}
+                </div>
+                {{if eq $.EditCommentId .Id}}
+                <form method="POST" action="/comment/edit">
+                    <input type="hidden" name="post-id" value="{{$post.Id}}"/>
+                    <input type="hidden" name="comment-id" value="{{.Id}}"/>
+                    <input type="hidden" name="save-comment" value="1"/>
+                    <textarea name="comment" required>{{.Body}}</textarea>
+                    <button type="submit">Save Comment</button>
+                </form>
+                {{else}}
+                <pre>{{.Body}}</pre>
+                {{end}}
+                <div class="reactions">
+                    <form method="POST" action="/comment/react">
+                        <input type="hidden" name="post-id" value="{{$post.Id}}"/>
+                        <input type="hidden" name="comment-id" value="{{.Id}}"/>
+                        <button type="submit"
+                                name="action"
+                                value="like"
+                                {{if not $.User.LoggedIn }}disabled{{end}}
+                                >{{.Likes}} {{if .Liked}}👍{{else}}👍🏻{{end}}</button>
+                    </form>
+                    <form method="POST" action="/comment/react">
+                        <input type="hidden" name="post-id" value="{{$post.Id}}"/>
+                        <input type="hidden" name="comment-id" value="{{.Id}}"/>
+                        <button type="submit"
+                                name="action"
+                                value="dislike"
+                                {{if not $.User.LoggedIn }}disabled{{end}}
+                                >{{.Dislikes}} {{if .Disliked}}👎{{else}}👎🏻{{end}}</button>
+                    </form>
+                </div>
+            </div>
+            {{end}}
+        </div>
+    </div>
+</div>
+</div>
+{{template "ending" .}}
+{{end}}

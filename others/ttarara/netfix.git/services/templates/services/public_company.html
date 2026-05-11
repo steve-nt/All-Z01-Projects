@@ -1,0 +1,68 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ company.user.username }} - Services
+{% endblock %}
+
+{% block content %}
+<div class="public-company-container">
+    <!-- Company Header -->
+    <div class="company-header">
+        <div class="company-info">
+            <h1>{{ company.user.username }}</h1>
+            <div class="company-field-badge">{{ company.field }}</div>
+            <p class="company-email">{{ company.user.email }}</p>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <div class="services-section">
+        <h2 class="section-title">Available Services</h2>
+        
+        {% if services %}
+            <div class="ag-format-container">
+                <div class="ag-courses_box">
+                    {% for service in services %}
+                    <div class="ag-courses_item">
+                        <a href="/services/{{ service.id }}" class="ag-courses-item_link">
+                            <div class="ag-courses-item_bg"></div>
+                            <div class="ag-courses-item_title">
+                                {{ service.name }}
+                            </div>
+                            <div class="ag-courses-item_content">
+                                <div class="detail-row">
+                                    <strong>FIELD:</strong> {{ service.field }}
+                                </div>
+                                <div class="detail-row">
+                                    <strong>PRICE:</strong> €{{ service.price_hour }}/hour
+                                </div>
+                                <div class="service-description">
+                                    {{ service.description }}
+                                </div>
+                                <div class="detail-row">
+                                    <strong>CREATED:</strong> {{ service.date|date:"M d, Y" }}
+                                </div>
+                                <div class="detail-row">
+                                    <strong>BY</strong> {{ service.company.user.username }}
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% else %}
+            <div class="no-services-message">
+                <h3>No services available</h3>
+                <p>This company hasn't created any services yet.</p>
+            </div>
+        {% endif %}
+    </div>
+
+    <!-- Back to Services Link -->
+    <div class="back-link-container">
+        <a href="{% url 'services_list' %}" class="btn">← Back to All Services</a>
+    </div>
+</div>
+{% endblock %}

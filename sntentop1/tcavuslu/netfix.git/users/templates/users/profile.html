@@ -1,0 +1,98 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    User Profile
+{% endblock %}
+
+{% block content %}
+    <div class="profile-header">
+        {% if user.is_customer %}
+            <div class="profile-info">
+                <h1>{{ user.username }}{% if user_age %} ({{ user_age }} y/o){% endif %}</h1>
+                <p class="profile-email">{{ user.email }}</p>
+                <span class="profile-badge customer-badge">Customer</span>
+            </div>
+        {% else %}
+            <div class="profile-info">
+                <h1>{{ user.username }}</h1>
+                <p class="profile-email">{{ user.email }}</p>
+                <span class="profile-badge company-badge">{{ user.company.field }} Company</span>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="profile-content">
+        {% if 'customer' in request.path %}
+            <h2 class="section-title">Previous Service Requests</h2>
+        {% else %}
+            <h2 class="section-title">Available Services</h2>
+        {% endif %}
+
+        {% if user.is_customer %}
+            {% if sh %}
+                <div class="requests-list">
+                    {% for service in sh %}
+                        <div class="request-item">
+                            <div class="request-main">
+                                <div class="request-details">
+                                    <h3 class="service-name">
+                                        <a href="/services/{{ service.service.id }}">{{ service.service.name }}</a>
+                                    </h3>
+                                    <p class="service-field">{{ service.service.field }}</p>
+                                    <div class="request-meta">
+                                        <span class="price">€{{ service.price }}</span>
+                                        <span class="date">{{ service.service_date }}</span>
+                                        <span class="time">{{ service.start_time }} - {{ service.get_end_time }}</span>
+                                        <span class="duration">{{ service.duration_hours }} hour(s)</span>
+                                    </div>
+                                    <p class="request-date">Requested: {{ service.request_date|date:"M d, Y H:i" }}</p>
+                                    <p class="company-info">
+                                        by {{ service.service.company.user.username }}
+                                    </p>
+                                </div>
+                                <div class="request-status">
+                                    <span class="status-badge status-{{ service.status }}">{{ service.get_status_display }}</span>
+                                </div>
+                            </div>
+                            {% if service.address %}
+                                <div class="request-address">
+                                    <strong>Address:</strong> {{ service.address }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="no-requests">
+                    <h3>No service requests yet</h3>
+                    <p>When you request services, they will appear here.</p>
+                    <a href="/services/" class="browse-services-btn">Browse Services</a>
+                </div>
+            {% endif %}
+        {% else %}
+            {% if services %}
+                <div class="services-grid">
+                    {% for service in services %}
+                        <div class="service-card">
+                            <h3><a href="/services/{{ service.id }}">{{ service.name }}</a></h3>
+                            <p class="service-field">{{ service.field }}</p>
+                            <p class="service-price">€{{ service.price_hour }}/hour</p>
+                            <p class="service-description">{{ service.description|truncatewords:15 }}</p>
+                            <p class="service-date">Created: {{ service.date|date:"M d, Y" }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="no-services">
+                    <h3>No services created yet</h3>
+                    {% if is_own_profile %}
+                        <p>Start by creating your first service to attract customers.</p>
+                        <a href="/services/create/" class="create-service-btn">Create Service</a>
+                    {% else %}
+                        <p>This company hasn't created any services yet.</p>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}

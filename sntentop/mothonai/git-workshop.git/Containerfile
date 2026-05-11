@@ -1,0 +1,7 @@
+FROM fedora:latest
+
+RUN sudo dnf install -y python3-sphinx_rtd_theme.noarch
+RUN sudo dnf install -y make
+WORKDIR /app
+ENTRYPOINT ["make","html"]
+

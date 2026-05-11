@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+</head>
+<body>
+    <div id="navlist">
+        <a href="/">Home</a>       
+        <div class="search">
+            <form action="/search" autocomplete="off">
+                <input type="text" placeholder="Search Artist" name="search">
+            </form>
+            <div id="autocomplete-suggestions" style="display: none;"></div>
+        </div>       
+        <span class="title">Groupie Tracker</span>
+           <!-- Filter button and dropdown menu -->
+        <div class="filter-dropdown">
+            <button onclick="toggleDropdown()">Filters</button>
+            <div id="filterMenu" class="dropdown-content">
+                <form id="filterForm" action="/filter" method="get">
+                    <!-- Filter form for Creation Date -->
+                    <div class="filter">
+                        <label for="minCreationDate">Creation Date (min):</label>
+                        <input type="text" autocomplete="off"  id="minCreationDate" name="minCreationDate" placeholder="Enter minimum year (e.g., 1970)">
+                        <label for="maxCreationDate">Creation Date (max):</label>
+                        <input type="text" autocomplete="off" id="maxCreationDate" name="maxCreationDate" placeholder="Enter maximum year (e.g., 1980)">
+                    </div>
+
+                    <!-- Filter form for First Album Date -->
+                    <div class="filter">
+                        <label for="minAlbumDate">First Album Date (min):</label>
+                        <input type="text" autocomplete="off" id="minAlbumDate" name="minAlbumDate" placeholder="Enter minimum year (e.g., 1980)">
+                        <label for="maxAlbumDate">First Album Date (max):</label>
+                        <input type="text" autocomplete="off" id="maxAlbumDate" name="maxAlbumDate" placeholder="Enter maximum year (e.g., 1990)">
+                        </div>
+
+                    <!-- Filter form for Number of Members -->
+                    <div class="filter">
+                        <label>Number of Members:</label><br>
+                        <input type="checkbox" name="members" value="1"> 1<br>
+                        <input type="checkbox" name="members" value="2"> 2<br>
+                        <input type="checkbox" name="members" value="3"> 3<br>
+                        <input type="checkbox" name="members" value="4"> 4<br>
+                        <input type="checkbox" name="members" value="5"> 5<br>
+                        <input type="checkbox" name="members" value="6"> 6<br>
+                        <input type="checkbox" name="members" value="7+"> 7+<br>
+                    </div>
+
+                    <!-- Filter form for Concert Locations -->
+                    <div class="filter">
+                        <label>Had Concerts In:</label>
+                        <div id="locationsContainer" class="scrollable-box">
+                        <!-- Checkboxes will be populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Single filter button -->
+                    <button type="submit">Filter</button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+   
+    <div class="container">
+        {{range .}} 
+        <div class="artist" onclick="toggleDetails(this)">
+            <h2>{{.Name}}</h2>
+
+            <div class="img-area">
+                <img src="{{.Image}}" alt="{{.Name}}">
+            </div>
+
+            <div class="details">
+                <p><strong>Members</strong><br>
+                    {{range .MembersFormatted}}
+                    {{.}}<br>
+                    {{end}}
+                </p>
+
+                <p><strong>First Album</strong><br> 
+                    {{.FirstAlbum}}
+                </p>
+
+                <p><strong>Creation Date</strong><br>
+                    {{.CreationDate}}
+                </p>
+
+                <p><strong>Concerts</strong><br>
+                    {{range .ConcertsFormatted}}
+                    {{.}}
+                    <br>
+                    {{end}}
+                </p>
+
+                <a href="#" class="concert-link" data-location="{{.Name}}">Show on Map</a>
+                <br>
+
+            </div>
+        </div>
+        {{end}} 
+    </div>
+
+    <!-- Popup container for the map -->
+    <div class="popup-container" id="popup">
+        <div id="loading" class="loading" style="display:block;">
+            Loading...
+        </div>
+        <h3>Concert Locations</h3>
+        <div id="map"></div>
+        <button class="close-btn" onclick="closePopup()">Close</button>
+    </div>
+
+    <script src="../static/js/toggledetails.js"></script>
+    <script src="../static/js/suggestions.js"></script>
+    <script src="../static/js/map.js"></script>
+    <script src="../static/js/filters.js"></script> 
+
+</body>
+</html>

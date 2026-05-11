@@ -1,0 +1,74 @@
+{{ define "layout" }}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ .Title }}</title>
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+<header>
+  <div class="topbar">
+    <a class="brand" href="/">
+      <span class="brand-badge"></span>
+      <span>Forum</span>
+    </a>
+
+    <nav>
+      <a class="navlink" href="/">Home</a>
+      <a class="navlink" href="/posts">Posts</a>
+
+      {{ if .LoggedIn }}
+        <a class="navlink" href="/activity">My Activity</a>
+        <a class="navlink" href="/notifications">
+          Notifications
+          {{ if gt .UnreadNotifications 0 }}
+            ({{ .UnreadNotifications }})
+          {{ end }}
+        </a>
+
+        {{ if eq .Role "user" }}
+          <a class="navlink" href="/request-moderator">Request Moderator</a>
+        {{ end }}
+
+        {{ if or (eq .Role "moderator") (eq .Role "admin") }}
+          <a class="navlink" href="/moderation">Moderation</a>
+        {{ end }}
+
+        {{ if eq .Role "admin" }}
+          <a class="navlink" href="/admin">Admin</a>
+        {{ end }}
+
+        <a class="navlink primary" href="/create-post">Create Post</a>
+        <a class="navlink danger" href="/logout">Logout</a>
+      {{ else }}
+        <a class="navlink" href="/register">Register</a>
+        <a class="navlink primary" href="/login">Login</a>
+      {{ end }}
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+  {{ if and .LoggedIn .Username }}
+    <div class="welcome-banner">
+      <span class="welcome-banner-icon">✨</span>
+      <span>
+        Welcome back, <strong>{{ .Username }}</strong>
+        {{ if .Role }}
+          <span style="color:var(--muted);">({{ .Role }})</span>
+        {{ end }}
+      </span>
+    </div>
+  {{ end }}
+
+  <div class="page">
+    {{ .Content }}
+  </div>
+</div>
+</body>
+</html>
+{{ end }}

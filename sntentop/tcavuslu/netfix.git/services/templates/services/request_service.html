@@ -1,0 +1,138 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}
+    Request Service - {{ service.name }}
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1 class="choice_text">Request Service</h1>
+        
+        <!-- Service Information -->
+        <div class="service-info">
+            <h2>{{ service.name }}</h2>
+            <p><strong>Company:</strong> {{ service.company.user.username }}</p>
+            <p><strong>Category:</strong> {{ service.field }}</p>
+            <p><strong>Price:</strong> €{{ service.price_hour }}/hour</p>
+            <p><strong>Description:</strong> {{ service.description }}</p>
+        </div>
+
+        <div class="line"></div>
+
+        <!-- Request Form -->
+        <form method="POST" id="serviceRequestForm">
+            {% csrf_token %}
+            
+            <!-- Address Field -->
+            <div class="form-group">
+                <h3>Service Address</h3>
+                {{ form.address }}
+                {% if form.address.errors %}
+                    <div class="error_message">{{ form.address.errors }}</div>
+                {% endif %}
+                <small class="help-text">Please provide the address where the service should be performed.</small>
+            </div>
+
+            <!-- Service Date Field -->
+            <div class="form-group">
+                <h3>Service Date</h3>
+                <input type="date" name="service_date" id="id_service_date" class="form-input" required min="{% now 'Y-m-d' %}">
+                {% if form.service_date.errors %}
+                    <div class="error_message">{{ form.service_date.errors }}</div>
+                {% endif %}
+                <small class="help-text">Select the date when you need this service (today or future dates only).</small>
+            </div>
+
+            <!-- Start Time Field -->
+            <div class="form-group">
+                <h3>Start Time</h3>
+                {{ form.start_time }}
+                {% if form.start_time.errors %}
+                    <div class="error_message">{{ form.start_time.errors }}</div>
+                {% endif %}
+                <small class="help-text">Select the starting time for your service.</small>
+            </div>
+
+            <!-- Duration Field -->
+            <div class="form-group">
+                <h3>Duration</h3>
+                {{ form.duration_hours }}
+                {% if form.duration_hours.errors %}
+                    <div class="error_message">{{ form.duration_hours.errors }}</div>
+                {% endif %}
+                <small class="help-text">Select how many hours you need this service (maximum 4 hours).</small>
+            </div>
+
+            <!-- Price Information -->
+            <div class="price-preview">
+                <h3>Service Schedule & Pricing</h3>
+                <p>Start Time: <span id="displayStartTime">9:00 AM</span></p>
+                <p>Duration: <span id="displayDuration">1 hour</span></p>
+                <p>End Time: <span id="displayEndTime">10:00 AM</span></p>
+                <p>Price per hour: €{{ service.price_hour }}</p>
+                <p><strong>Total Cost: €<span id="totalPrice">{{ service.price_hour }}</span></strong></p>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="button-group">
+                <button type="submit" class="create_service">Submit</button>
+                <a href="/services/{{ service.id }}" class="create_service cancel-button">CANCEL</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var startTimeSelect = document.getElementById('id_start_time');
+            var durationSelect = document.getElementById('id_duration_hours');
+            var pricePerHour = parseFloat('{{ service.price_hour }}');
+            
+            var displayStartTime = document.getElementById('displayStartTime');
+            var displayDuration = document.getElementById('displayDuration');
+            var displayEndTime = document.getElementById('displayEndTime');
+            var totalPriceDisplay = document.getElementById('totalPrice');
+
+            function convertTo12Hour(time24) {
+                var parts = time24.split(':');
+                var hours = parts[0];
+                var minutes = parts[1];
+                var hour = parseInt(hours);
+                var period = hour >= 12 ? 'PM' : 'AM';
+                hour = hour % 12 || 12;
+                return hour + ':' + minutes + ' ' + period;
+            }
+
+            function calculateEndTime(startTime, duration) {
+                var parts = startTime.split(':');
+                var hours = parts[0];
+                var minutes = parts[1];
+                var hour = parseInt(hours) + parseInt(duration);
+                var endHour = hour.toString().padStart(2, '0');
+                return endHour + ':' + minutes;
+            }
+
+            function updateDisplay() {
+                var startTime = startTimeSelect.value;
+                var duration = parseInt(durationSelect.value);
+                
+                // Update display values
+                displayStartTime.textContent = convertTo12Hour(startTime);
+                displayDuration.textContent = duration + (duration === 1 ? ' hour' : ' hours');
+                
+                // Calculate end time
+                var endTime24 = calculateEndTime(startTime, duration);
+                displayEndTime.textContent = convertTo12Hour(endTime24);
+                
+                // Calculate total price
+                var totalPrice = (duration * pricePerHour).toFixed(2);
+                totalPriceDisplay.textContent = totalPrice;
+            }
+
+            startTimeSelect.addEventListener('change', updateDisplay);
+            durationSelect.addEventListener('change', updateDisplay);
+            
+            // Initial display update
+            updateDisplay();
+        });
+    </script>
+{% endblock %}

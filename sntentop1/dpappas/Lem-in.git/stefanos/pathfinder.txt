@@ -1,0 +1,72 @@
+package pathfinder
+
+import (
+    "lem-in/colony"
+    "slices"
+)
+
+// GeneratePaths builds all valid simple paths from start to end, considering ant efficiency.
+// It stops generating paths once longer paths become inefficient.
+func GeneratePaths(start, end colony.Room, antCount int) [][]string {
+    var allPaths [][]string
+    queue := [][]colony.Room{{start}}
+    pathIndex := 0
+    shortestLength := -1
+    maxAllowedLength := 99999
+
+    for pathIndex < len(queue) {
+        currentPath := queue[pathIndex]
+
+        if len(currentPath) > maxAllowedLength {
+            break
+        }
+
+        lastRoom := currentPath[len(currentPath)-1]
+
+        for , next := range lastRoom.Connections {
+            if slices.Contains(currentPath, next) {
+                continue // Avoid cycles
+            }
+
+            newPath := append([]*colony.Room{}, currentPath...)
+            newPath = append(newPath, next)
+
+            if next == end {
+                var pathNames []string
+                for , room := range newPath {
+                    pathNames = append(pathNames, room.Name)
+                }
+                allPaths = append(allPaths, pathNames)
+
+                if shortestLength == -1 {
+                    shortestLength = len(pathNames) - 1
+                    maxAllowedLength = antCount + shortestLength
+                }
+                continue
+            }
+
+            queue = append(queue, newPath)
+        }
+
+        pathIndex++
+    }
+
+    return allPaths
+}
+
+// PathsIntersect returns true if any two paths share a common room (excluding start and end).
+func PathsIntersect(paths [][]string) bool {
+    visited := make(map[string]struct{})
+
+    for , path := range paths {
+        for i := 1; i < len(path)-1; i++ {
+            name := path[i]
+            if , exists := visited[name]; exists {
+                return true
+            }
+            visited[name] = struct{}{}
+        }
+    }
+
+    return false
+}

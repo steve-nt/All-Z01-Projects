@@ -1,0 +1,10 @@
+{{define "comment_create"}}
+<form method="POST" action="/comment/create">
+    <fieldset>
+        <legend>Leave a comment</legend>
+        <textarea type="text" name="comment" placeholder="Enter your comment" required></textarea>
+        <input type="hidden" name="post-id" value="{{.Id}}"/>
+        <input type="submit" name="submit" value="Post comment"/>
+    </fieldset>
+</form>
+{{end}}

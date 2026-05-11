@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.error405{
+    width: 1200px;
+    height: 630px;
+    background: url("../images/405.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
+}
+body {
+    background-color: rgb(71, 66, 66);
+    height: 100vh; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+/* Back Button Styling */
+.ok {
+    position: fixed; /* Keeps button at the top-left always */
+    top: 20px; /* Positions it from the top */
+    left: 20px; /* Positions it from the left */
+    padding: 12px 24px; /* Adjusts padding for a button-like feel */
+    background: #8000ff; /* Solid Neon Purple */
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 8px;
+    border: 2px solid #4b0082; /* Darker purple border */
+    transition: 0.3s ease-in-out;
+    box-shadow: 0px 4px 8px rgba(128, 0, 255, 0.5);
+    cursor: pointer;
+}
+
+/* Hover Effect */
+.ok:hover {
+    background: #6a00ff; /* Lighter Purple */
+    border-color: #a200ff; /* Neon border */
+    transform: scale(1.05);
+    box-shadow: 0px 6px 12px rgba(162, 0, 255, 0.7);
+}
+
+
+

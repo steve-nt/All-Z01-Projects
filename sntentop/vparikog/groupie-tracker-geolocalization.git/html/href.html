@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artist Details</title>
+    <link rel="stylesheet" href="/css/Artist_Page.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="/JavaScript/map.js"></script>
+
+
+   
+       
+</head>
+
+
+
+<body data-artist-id="{{.ID}}">
+    
+    <div class="header-container">
+        <div class="music-notes">
+            <span class="music-note">🎵</span>
+            <span class="music-note">🎷</span>
+            <span class="music-note">🎺</span>
+            <span class="music-note">🎶</span>
+            <span class="music-note">🎹</span>
+            <span class="music-note">🎧</span>
+            <span class="music-note">🎻</span>
+            <span class="music-note">🎸</span>
+        </div>
+    
+        <h1>{{.Name}}</h1>
+    
+        <button id="back-to-main" onclick="window.location.href='/'">↩️🕑🏠📄</button>
+    </div>
+    <img src="{{.Image}}" alt="{{.Name}}" />
+    <p><strong>Members:</strong> {{range .Members}}{{.}}, {{end}}</p>
+    <p><strong>Creation Date:</strong> {{.CreationDate}}</p>
+    <p><strong>First Album:</strong> {{.FirstAlbum}}</p>
+   
+    <h2> Were you looking for us?</h2>
+
+    <div class="location-cards">
+        
+        {{range $location, $dates := .Relations.Dates_Location}}
+            <div class="location-card">
+               
+                <span  class="location-name">🌍 {{$location}}</span>
+                <div class="dates">
+                    {{range $date := $dates}}
+                        <span class="date">📅 {{$date}}</span><br>
+                    {{end}}
+                </div>
+            </div>
+        {{end}}
+    </div>
+    <div id="map" class="container">
+    </div>
+</body>
+
+</html>

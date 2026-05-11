@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "name": "Player",
+    "score": 4950,
+    "timeSeconds": 88,
+    "position": 1
+  },
+  {
+    "id": 2,
+    "name": "Player",
+    "score": 2550,
+    "timeSeconds": 366,
+    "position": 2
+  },
+  {
+    "id": 5,
+    "name": "i77",
+    "score": 700,
+    "timeSeconds": 88,
+    "position": 3
+  },
+  {
+    "id": 6,
+    "name": "iiilk",
+    "score": 500,
+    "timeSeconds": 65,
+    "position": 4
+  },
+  {
+    "id": 4,
+    "name": "Player",
+    "score": 400,
+    "timeSeconds": 23,
+    "position": 5
+  },
+  {
+    "id": 3,
+    "name": "Player",
+    "score": 200,
+    "timeSeconds": 12,
+    "position": 6
+  },
+  {
+    "id": 7,
+    "name": "gin",
+    "score": 0,
+    "timeSeconds": 70,
+    "position": 7
+  },
+  {
+    "id": 8,
+    "name": "Gin",
+    "score": 0,
+    "timeSeconds": 94,
+    "position": 8
+  },
+  {
+    "id": 9,
+    "name": "Player",
+    "score": 0,
+    "timeSeconds": 23,
+    "position": 9
+  },
+  {
+    "id": 10,
+    "name": "kkflf",
+    "score": 0,
+    "timeSeconds": 169,
+    "position": 10
+  },
+  {
+    "id": 11,
+    "name": "y",
+    "score": 0,
+    "timeSeconds": 226,
+    "position": 11
+  },
+  {
+    "id": 12,
+    "name": "in",
+    "score": 0,
+    "timeSeconds": 124,
+    "position": 12
+  },
+  {
+    "id": 13,
+    "name": "j",
+    "score": 0,
+    "timeSeconds": 143,
+    "position": 13
+  }
+]

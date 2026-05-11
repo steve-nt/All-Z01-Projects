@@ -1,0 +1,691 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap');
+
+body {
+  font-family: 'Kaisei Opti', serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;      /* stays in place while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../static/images/forumbackround.jpg") no-repeat center/cover;
+  opacity: 0.1;        /* adjust transparency */
+  z-index: -1;          /* behind all content */
+}
+.navbar {
+  display: flex;
+  justify-content: space-between; /* pushes left + right groups apart */
+  align-items: center;            /* vertically centers everything */
+  padding: 0px 35px;
+  padding-top:30px;
+  font-family: 'Kaisei Opti', serif;
+  background-color:black;
+}
+.navbar-left {
+  display: flex;
+  gap: 5px; /* space between left items */
+
+}
+
+/* Right group: items side-by-side */
+.navbar-right {
+  display: flex;
+  gap: 15px; /* space between right items */
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.logo{
+  font-weight: normal;
+  font-size:3rem;
+line-height: 1;
+}
+
+
+.user{
+  color:white;
+  text-decoration:none;
+  font-weight: normal;
+  font-size:1.7rem;
+line-height: 3.9rem;
+}
+
+.logout-btn{
+  outline:none;
+  border:none;
+  margin:0.9rem 0px;
+  padding: 14px 16px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size:1.6rem;
+  font-family: 'Kaisei Opti', serif;
+}
+.btn {
+  margin:0.9rem 0px;
+  padding: 14px 16px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size:1.6rem;
+}
+
+.line {
+  width: 1px;
+  height: 45px;
+  background-color: white;
+  margin: 5px 10px;
+}
+.navbar-left {
+  display: flex;
+  gap: 5px; /* space between left items */
+}
+
+.navbar-right {
+  display: flex;
+  gap: 15px; /* space between right items */
+}
+
+
+
+
+.categories{
+  padding-top:8rem;
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+}
+
+.category-images{
+  display:flex;
+  justify-content:space-between;
+  padding:0rem 5rem;
+}
+
+.image-checkbox {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.image-checkbox input[type="checkbox"] {
+  display: none; 
+}
+
+.image-checkbox img {
+  width: 20rem;
+  height: auto;
+  border-radius: 5px;
+  transition: all 0.2s ease;
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.image-checkbox:hover img {
+  filter: grayscale(60%) blur(1px);
+  transform: scale(0.98);
+  opacity: 0.6;
+}
+.image-checkbox input[type="checkbox"]:checked + img {
+  filter: grayscale(60%) blur(1px);
+  transform: scale(1.02);
+  opacity: 0.7;
+}
+
+.image-checkbox:hover .overlay-text,
+.image-checkbox input[type="checkbox"]:checked ~ .overlay-text {
+  opacity: 1;
+}
+
+
+
+.submit-container{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.submit-btn{
+  padding: 15px 20px;        /* space inside button */
+  font-size: 19px;            /* text size */
+  font-family: 'Kaisei Opti', serif; /* font */
+  font-weight:bold;
+  background-color: white;  /* button color */
+  color: black;               /* text color */
+  border: none;               /* remove default border */
+  border-radius: 2px;         /* rounded corners */
+  cursor: pointer;            /* pointer on hover */
+}
+
+.create-post-btn{
+  padding: 15px 10px;        /* space inside button */
+  font-size: 19px;            /* text size */
+  font-family: 'Kaisei Opti', serif; /* font */
+  font-weight:bold;
+  background-color: white;  /* button color */
+  color: black;               /* text color */
+  border: none;               /* remove default border */
+  border-radius: 2px;         /* rounded corners */
+  cursor: pointer;            /* pointer on hover */
+}
+
+
+.main-container{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  align-items:center;
+  font-family: 'Kaisei Opti', serif;
+}
+
+.create-post{
+  width:89vw;
+  flex:1;
+  margin:50px;
+background-color: rgba(124,121,121,0.3);
+  color:white;
+  border-radius:1rem;
+  z-index:1;
+}
+
+
+.form{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+
+.form-upper{
+  display:flex;
+  flex:1;
+  gap:50px;
+  justify-content:space-between;
+  margin-top:1.8rem;
+  margin-bottom:0rem;
+  margin-left:2.4rem;
+  margin-right:3.3rem;
+}
+
+
+.username{
+  font-size:1.7rem;
+
+}
+
+
+
+.upper-right{
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+  width:86%;
+}
+
+
+
+
+
+.form-lower{
+  display:flex;
+  justify-content:flex-end;
+}
+
+
+
+.submit-btn{
+  border:none;
+  margin:1.2rem 1.5rem;
+  padding:3px 45px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size:1.7rem;
+  font-family: 'Kaisei Opti', serif;
+  cursor:pointer;
+}
+
+#title {
+background-color: rgba(124,121,121,0.6);
+  padding-top:0px;
+  padding-left:10px;
+  opacity:0.6;
+  border: none;
+  border-radius: 0.8rem;
+  z-index:2;
+  height:2.7rem;
+  font-family: 'Kaisei Opti', serif;
+  font-size:1.5rem;
+  color: white;
+}
+
+#title:focus {
+background-color: rgba(124,121,121,0.6);
+  padding-top:0px;
+  padding-left:16px;
+  opacity:0.6;
+  border: none;
+  outline:none;
+  border-radius: 0.8rem;
+  z-index:2;
+  height:2.7rem;
+}
+
+
+
+#title::placeholder {
+  font-family: 'Kaisei Opti', serif;
+  font-size:1.5rem;
+  color: white;
+  opacity:0.4;
+}
+#title:focus::placeholder {
+  color: transparent;
+}
+
+
+
+#content {
+  height:78%;
+background-color: rgba(124,121,121,0.6);
+  opacity:0.6;
+  border: 1px solid #555;
+  padding: 10px;
+  border-radius: 0.8rem;
+  font-family: 'Kaisei Opti', serif;
+  color: white;
+  z-index:2;
+  line-height:normal;
+  vertical-align:top;
+  text-align:left;
+  font-size:1rem;
+}
+
+#content::placeholder {
+  font-family: 'Kaisei Opti', serif;
+  color: white;
+  opacity:0.4;
+}
+#content:focus::placeholder {
+  color: transparent;
+}
+
+
+#content:focus{
+  height:60%;
+  border:none;
+  outline:none;
+background-color: rgba(124,121,121,0.6);
+  opacity:0.6;
+  border: 1px solid #555;
+  padding: 10px;
+  border-radius: 0.8rem;
+  font-family: 'Kaisei Opti', serif;
+  color: white;
+  z-index:2;
+  line-height:normal;
+  vertical-align:top;
+  text-align:left;
+}
+
+
+input[type="checkbox"]{
+  appearance:none;
+  width:0;
+  height:0;
+  border:0;
+}
+label span{
+  font-size:26px;
+  cursor:pointer;
+  padding:0px 20px;
+  opacity:0.6;
+transition: font-size 0.2s ease;
+}
+
+label span:hover{
+  opacity:1;
+  font-size:22px;
+}
+
+input[type="checkbox"]:checked + span {
+  line-height:2rem;
+  font-size: 24px;
+  opacity:1;
+}
+
+.lower-left{
+  line-height:2rem;
+  flex:1;
+  align-content:flex-end;
+  padding-left:20rem;
+  padding-bottom:0.5rem;
+}
+
+.posts{
+  display:flex;
+  flex-direction:column;
+  width:87vw;
+}
+
+.blank{
+  width:87%;
+  height:5vh;
+}
+.big-line{
+  width:87vw;
+  height: 1px;
+  background-color: white;
+  margin-top:10px ;
+  opacity:0.7;
+}
+.bottom-blank{
+  flex:1;
+}
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+
+article{
+  display:flex;
+  flex-direction:column;
+}
+
+.post-line{
+  width:87vw;
+  height: 1px;
+  background-color: white;
+  margin-bottom:40px ;
+  margin-top:10px ;
+  opacity:0.7;
+}
+
+.post-upper{
+  display:flex;
+  justify-content:flex-end;
+  padding-bottom:5rem;
+  margin: 0px 10px;
+}
+
+.post-upper-left{
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+  flex:1;
+  font-size:1.5rem;
+}
+.post-categories{
+  display:flex;
+  gap:20px;
+}
+.post-category{
+  padding:0px 9px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+  font-size:0.9rem;
+}
+.post-content {
+  white-space: pre-line;
+  font-size:1.2rem;
+}
+.image{
+  width: 20rem;
+  height: auto;
+  border-radius: 5px;
+}
+.post-upper-right{
+  width:60%;
+}
+.post-title{
+  font-size:2rem;
+}
+.post-lower{
+  display:flex;
+  justify-content:space-between;
+  font-size: 1.5rem;
+  margin: 0px 10px;
+}
+
+
+.likes{
+  display:flex;
+  gap:0.6rem;
+}
+
+
+.dislikes{
+  display:flex;
+  gap:0.6rem;
+}
+
+
+.comments{
+  display:flex;
+  gap:0.6rem;
+}
+
+
+
+.liked{
+background-color: transparent;      /* green background */
+  color: gray;                   /* text color */
+  border: none;                   /* remove default border */
+  cursor: pointer;                /* pointer on hover */
+  font-family: 'Kaisei Opti', serif;
+  font-size: 1.5rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.liked:hover {
+  background-color:transparent;      
+  transform: scale(1.07);         /* subtle zoom effect */
+}
+
+.liked:active {
+  transform: scale(0.95);         /* press-down effect */
+}
+
+
+
+
+.unliked{
+background-color: transparent;      /* green background */
+  color: white;                   /* text color */
+  border: none;                   /* remove default border */
+  cursor: pointer;                /* pointer on hover */
+  font-family: 'Kaisei Opti', serif;
+  font-size: 1.5rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.unliked:hover {
+  background-color:transparent;      
+  transform: scale(1.07);         /* subtle zoom effect */
+}
+
+.unliked:active {
+  transform: scale(0.95);         /* press-down effect */
+}
+
+
+.footer{
+  padding:10px 20px;
+  font-size:10px;
+}
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* σκοτεινό φόντο */
+  display: none; /* κρυφό αρχικά */
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* === Εσωτερικό κουτί του popup === */
+.popup-content {
+  background-color: rgb(64, 64, 64);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: popupFadeIn 0.3s ease-out;
+}
+.error-message{
+  margin-bottom:2rem;
+}
+
+.error-btn{
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  margin:1rem;
+  cursor: pointer;
+  font-weight: bold;
+  border: none;
+  font-size:0.8rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+/* === Κουμπί κλεισίματος === */
+.popup-content button {
+  background-color: white;
+  margin: 1rem;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.error-btn:hover{
+  background-color:#555555;
+}
+.popup-content button:hover {
+  background-color:#555555;
+}
+
+/* === Χρώματα επιτυχίας και σφάλματος === */
+/* .popup.success .popup-content { */
+/*   border-top: 5px solid #4CAF50; */
+/* } */
+.popup.error .popup-content {
+  border-top: 5px solid black;
+}
+
+/* === Εμφάνιση === */
+.popup.show {
+  display: flex;
+}
+
+/* === Εφέ εμφάνισης === */
+@keyframes popupFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.edit-btn-container{
+  cursor:pointer;
+  z-index:2000;
+}
+
+
+.delete-btn-container{
+  cursor:pointer;
+  z-index:2000;
+}
+.delete-btn{
+  width:2rem;
+  height:2rem;
+  color:white;
+}
+
+.edit-button{
+  width:2rem;
+  height:2rem;
+  color:white;
+}
+.delete-edit-container{
+  display:flex;
+  gap:20px;
+  justify-content:flex-end;
+}
+.close-edit{
+  width:2rem;
+  height:2rem;
+  color:white;
+  cursor: pointer;            /* pointer on hover */
+}
+.close-edit-button-container{
+  display:flex;
+  justify-content:flex-end;
+}
+
+
+.edit-post-upper-right{
+  display:flex;
+  flex-direction:column;
+  gap:2rem;
+  width:86%;
+}
+
+
+
+.remove-img-checkbox{
+  appearance:none;
+  width:0;
+  height:0;
+  border:0;
+}
+.remove-img-label .remove-img-span{
+  font-size:26px;
+  cursor:pointer;
+  padding:0px 00px;
+  opacity:0.6;
+  transition:null;
+}
+
+.remove-img-label .remove-img-span:hover{
+  opacity:1;
+  font-size:26px;
+}
+
+.remove-img-checkbox:checked + .remove-img-span {
+  line-height:2rem;
+  font-size: 26px;
+  opacity:1;
+}

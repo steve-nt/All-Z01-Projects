@@ -1,0 +1,25 @@
+-- Drop indexes in reverse order (not critical, but good practice)
+DROP INDEX IF EXISTS idx_sessions_cookie_value;
+DROP INDEX IF EXISTS idx_sessions_user_id;
+DROP INDEX IF EXISTS idx_notifications_created_at;
+DROP INDEX IF EXISTS idx_notifications_is_read;
+DROP INDEX IF EXISTS idx_notifications_user_id;
+DROP INDEX IF EXISTS idx_messages_created_at;
+DROP INDEX IF EXISTS idx_messages_group_id;
+DROP INDEX IF EXISTS idx_messages_recipient_id;
+DROP INDEX IF EXISTS idx_messages_sender_id;
+DROP INDEX IF EXISTS idx_group_members_user_id;
+DROP INDEX IF EXISTS idx_group_members_group_id;
+DROP INDEX IF EXISTS idx_groups_creator_id;
+DROP INDEX IF EXISTS idx_comments_user_id;
+DROP INDEX IF EXISTS idx_comments_post_id;
+DROP INDEX IF EXISTS idx_post_visibility_user_id;
+DROP INDEX IF EXISTS idx_post_visibility_post_id;
+DROP INDEX IF EXISTS idx_posts_privacy;
+DROP INDEX IF EXISTS idx_posts_created_at;
+DROP INDEX IF EXISTS idx_posts_user_id;
+DROP INDEX IF EXISTS idx_followers_status;
+DROP INDEX IF EXISTS idx_followers_following_id;
+DROP INDEX IF EXISTS idx_followers_follower_id;
+DROP INDEX IF EXISTS idx_users_is_public;
+DROP INDEX IF EXISTS idx_users_email;

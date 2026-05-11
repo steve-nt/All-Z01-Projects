@@ -1,0 +1,97 @@
+############################
+# Python
+############################
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+############################
+# Django
+############################
+# Logs
+*.log
+django.log
+logs/
+
+# SQLite
+db.sqlite3
+db.sqlite3-journal
+*.sqlite3
+
+# Local settings
+local_settings.py
+
+# Static and media (collected/generated)
+media/
+staticfiles/
+static_root/
+collectstatic/
+
+############################
+# Environments
+############################
+.env
+.env.*
+.venv
+.venv/
+venv/
+ENV/
+env/
+pip-log.txt
+pip-delete-this-directory.txt
+
+############################
+# Testing / Coverage
+############################
+.tox/
+.nox/
+.pytest_cache/
+.cache/
+coverage.xml
+.coverage
+.coverage.*
+htmlcov/
+nosetests.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+############################
+# Build / Packaging
+############################
+build/
+dist/
+*.egg-info/
+*.egg
+*.spec
+
+############################
+# Type checking
+############################
+.mypy_cache/
+.pyre/
+dmypy.json
+.dmypy.json
+
+############################
+# IDE / Editor
+############################
+.idea/
+.vscode/
+*.iml
+
+############################
+# OS
+############################
+.DS_Store
+Thumbs.db
+
+############################
+# Misc
+############################
+*.local
+*.envrc
+

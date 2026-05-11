@@ -1,0 +1,51 @@
+/* Design tokens centralize the palette, typography, spacing, and elevation used across the app shell.
+   All colors use CSS custom properties for runtime theming support via prefers-color-scheme.
+   Spacing follows a consistent scale: 0.25rem (4px) base unit × factor. */
+:root {
+  /* Typography: Fraunces for editorial headers, Manrope for body copy. */
+  --font-body: "Manrope", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Fraunces", "Georgia", serif;
+
+  /* Dark mode palette: warm accent (#ffb45c) on cool navy background. */
+  --color-canvas: #060816;
+  --color-surface: rgba(14, 18, 36, 0.82);
+  --color-surface-strong: rgba(17, 22, 44, 0.96);
+  --color-text: rgba(226, 232, 240, 0.86);
+  --color-text-strong: #f8fafc;
+  --color-text-muted: rgba(203, 213, 225, 0.72);
+  --color-accent: #ffb45c;
+  --color-accent-soft: #ffd7a2;
+  --color-border: rgba(255, 255, 255, 0.1);
+
+  /* Spacing scale: 0.25rem (4px) base unit for consistent rhythm. */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Border radius for component surfaces. */
+  --radius-sm: 0.75rem;
+  --radius-md: 1.1rem;
+  --radius-lg: 1.6rem;
+
+  /* Shadow for depth and elevation hierarchy. */
+  --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+/* Light mode: invert the palette for users with prefers-color-scheme: light. */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-canvas: #f8f9fa;
+    --color-surface: rgba(245, 247, 250, 0.95);
+    --color-surface-strong: rgba(248, 249, 250, 0.98);
+    --color-text: rgba(30, 41, 59, 0.88);
+    --color-text-strong: #0f172a;
+    --color-text-muted: rgba(71, 85, 105, 0.76);
+    --color-accent: #d97706;
+    --color-accent-soft: #f59e0b;
+    --color-border: rgba(15, 23, 42, 0.08);
+  }
+}

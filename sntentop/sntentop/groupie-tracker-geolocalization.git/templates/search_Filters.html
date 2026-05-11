@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Groupie Tracker - Filtered Results</title>
+    <!-- Link to your CSS file (adjust path if needed): -->
+    <link rel="stylesheet" href="/frontend/css/search_filters.css">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/frontend/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/frontend/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/frontend/images/avicon-16x16.png">
+    <link rel="manifest" href="/frontend/images/site.webmanifest">
+</head>
+
+    <!-- Home button in the top-left corner -->
+        <a class="ok" onclick="history.back()">GO BACK</a>
+
+    <h1>Filtered Results</h1>
+
+    <!-- Container for the artist “cards” -->
+    <div class="container">
+        {{range .}}
+        <div class="card" data-id="{{.ID}}" data-locations="{{.Locations}}" onclick="goToPage(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="{{.Image}}" alt="{{.Name}} Image">
+                </div>
+                <div class="card-back">
+                    <h2>{{.Name}}</h2>
+                    
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Groupie Tracker - Stay Inspired 🎶</p>
+    </footer>
+    
+<script>
+    // Navigate to artist page
+        function goToPage(element) {
+            const id = element.getAttribute('data-id');
+            if (id) {
+                window.location.href = "/Artist/" + id;
+            } else {
+                console.error("ID not found for the clicked card.");
+            }
+        }
+</script>
+
+</body>
+</html>

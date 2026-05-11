@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="/frontend/css/index.css">
+</head>
+<body>
+
+      <!-- Back Button -->
+      <button class="ok"  onclick="history.back()">GO BACK</button>
+
+    <h1>Groupie Tracker</h1>
+
+    <div class="bands">
+        {{range .}}
+        <div class="card" data-id="{{.ID}}" onclick="goToPage(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="{{.Image}}" alt="{{.Name}} Image">
+                </div>
+                <div class="card-back">
+                    <h2>{{.Name}}</h2>
+                </div>
+            </div>
+        </div>
+        {{end}}
+    </div>
+
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Groupie Tracker - Stay Inspired 🎶</p>
+    </footer>
+    
+    <script>
+        document.getElementById("year").innerText = new Date().getFullYear();
+    </script>
+    <script>
+        function goToPage(element) {
+            const id = element.getAttribute('data-id');
+            if (id) {
+                window.location.href = "/Artist/" + id;
+            } else {
+                console.error("ID not found for the clicked card.");
+            }
+        }
+    </script>
+
+</body>
+</html>

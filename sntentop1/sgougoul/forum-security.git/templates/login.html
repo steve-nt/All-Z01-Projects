@@ -1,0 +1,42 @@
+{{ define "login" }}
+
+<h2>Login</h2>
+
+{{ if .RegisteredSuccess }}
+  <div class="meta-bar" style="margin-top:0; margin-bottom:16px;">
+    <div class="meta-left">
+      <span class="meta-item">✅ Registration successful. You can now log in.</span>
+    </div>
+  </div>
+{{ end }}
+
+<div style="display:flex; gap:10px; flex-wrap:wrap; margin: 10px 0 16px 0;">
+  <a href="/auth/google"><button type="button">Login with Google</button></a>
+  <a href="/auth/github"><button type="button">Login with GitHub</button></a>
+</div>
+
+<div class="divider"></div>
+
+<form method="POST" action="/login">
+  <input
+    name="email"
+    type="email"
+    placeholder="Email"
+    required
+    oninvalid="this.setCustomValidity(this.validity.typeMismatch ? 'Please enter a valid email address.' : 'Email is required.')"
+    oninput="this.setCustomValidity('')"
+  />
+
+  <input
+    name="password"
+    type="password"
+    placeholder="Password"
+    required
+    oninvalid="this.setCustomValidity('Password is required.')"
+    oninput="this.setCustomValidity('')"
+  />
+
+  <button type="submit">Login</button>
+</form>
+
+{{ end }}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="/frontend/css/home.css">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/frontend/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/frontend/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/frontend/images/avicon-16x16.png">
+    <link rel="manifest" href="/frontend/images/site.webmanifest">
+</head>
+<body>
+
+    <h1 class="glow" >Groupie Tracker</h2>
+
+    <div class="details-card">
+        <p>
+                <h2>Discover Your Favorite Artists</h2>
+                <br>Explore detailed information about various artists, including their concert locations and dates!
+                <br>Start your journey by clicking the button below to find the artist you love.      
+        </p>
+    </div>
+
+    <!-- Navigation Buttons -->
+    <div class="button-container">
+        <a href="/index" class="btn">Find an Artist</a>
+        <a href="/about" class="btn">About Us</a>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Created by <b>Ttarara</b>, <b>Sbusho</b>, and <b>Sntentop</b> 🔥💙🎶</p>
+    </footer>
+
+    <script>
+        document.getElementById("year").innerText = new Date().getFullYear();
+    </script>
+
+</body>
+</html>

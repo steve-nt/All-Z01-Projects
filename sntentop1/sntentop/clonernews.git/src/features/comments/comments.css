@@ -1,0 +1,310 @@
+/* Purpose: Style the standalone recursive comments feature for TC-4. */
+/* Public API: Class names owned by comments-tree.view.js only. */
+/* Constraints: Styles stay scoped to the comments feature and rely on depth variables for indentation. */
+
+/* The section reads like a secondary detail block so comments feel connected to the post page. */
+.comments-tree {
+  position: relative;
+  display: grid;
+  gap: 1rem;
+  max-width: 100%;
+  padding: clamp(1.2rem, 3vw, 1.8rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 24%), var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(12px);
+  overflow: clip;
+  animation: fade-in-up 420ms ease both;
+}
+
+/* A warm ambient bloom stops the section from reading like a generic stacked card. */
+.comments-tree::before {
+  content: "";
+  position: absolute;
+  inset: -3rem -5rem auto auto;
+  width: min(18rem, 55vw);
+  height: min(9rem, 28vh);
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 180, 92, 0.16), transparent 68%);
+  filter: blur(18px);
+  opacity: 0.75;
+}
+
+/* A thin accent rule ties the comments block back to the editorial detail header styling. */
+.comments-tree::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 0.18rem;
+  background: linear-gradient(90deg, var(--color-accent), rgba(255, 180, 92, 0));
+  opacity: 0.88;
+}
+
+/* The heading keeps the section legible without competing with the main post title. */
+.comments-tree__heading {
+  position: relative;
+  margin: 0;
+  color: var(--color-text-strong);
+  font-family: var(--font-display);
+  font-size: clamp(1.35rem, 2vw, 1.75rem);
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+/* The root list strips browser defaults so depth styling stays fully controlled by the feature. */
+.comments-tree__list,
+.comments-tree__children {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The top-level list spaces sibling comments cleanly without leaking margins to the section wrapper. */
+.comments-tree__list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+/* Each comment item derives its indentation from the depth variable supplied by the view layer. */
+.comments-tree__item {
+  box-sizing: border-box;
+  position: relative;
+  inline-size: 100%;
+  min-width: 0;
+  padding-inline-start: min(calc(var(--comment-depth, 0) * 1.05rem), 6rem);
+}
+
+/* Comment cards get a clear reading surface so nested threads remain readable deep into the tree. */
+.comments-tree__comment {
+  display: grid;
+  gap: 0.65rem;
+  min-width: 0;
+  max-width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  background:
+    linear-gradient(135deg, rgba(255, 180, 92, 0.06), transparent 42%), rgba(255, 255, 255, 0.03);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 10px 24px rgba(0, 0, 0, 0.16);
+  animation: fade-in-left 320ms ease both;
+}
+
+/* Top-level comments get a little extra prominence so the thread starts with a stronger rhythm. */
+.comments-tree__item[data-depth="0"] > .comments-tree__comment {
+  border-radius: var(--radius-md);
+}
+
+/* Nested comments pick up a warm edge so the hierarchy reads visually before the eye tracks the indent. */
+.comments-tree__item:not([data-depth="0"]) > .comments-tree__comment {
+  border-inline-start: 3px solid rgba(255, 180, 92, 0.2);
+}
+
+/* The metadata row keeps author and time close together while allowing wrapping on narrow screens. */
+.comments-tree__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+  min-width: 0;
+  align-items: baseline;
+}
+
+/* Header chips can contain long IDs, so each segment must be allowed to wrap. */
+.comments-tree__header > * {
+  min-width: 0;
+}
+
+/* Author names are emphasized because they are the primary metadata anchor for each comment. */
+.comments-tree__author {
+  color: var(--color-text-strong);
+  font-size: 0.94rem;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* Parent labels make reply targeting explicit for audits while staying visually secondary to author identity. */
+.comments-tree__parent {
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
+}
+
+/* Relative-time labels stay quieter so they support the author label instead of competing with it. */
+.comments-tree__time {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+
+/* Comment bodies use relaxed typography because HN text can contain longer rich-text replies. */
+.comments-tree__body {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Sanitized descendants inherit container width constraints so long anchors/tokens cannot overflow cards. */
+.comments-tree__body * {
+  max-width: 100%;
+}
+
+/* Trim top spacing so sanitized first children align tightly with the comment card padding. */
+.comments-tree__body > :first-child {
+  margin-top: 0;
+}
+
+/* Trim final spacing so nested cards do not look vertically over-padded. */
+.comments-tree__body > :last-child {
+  margin-bottom: 0;
+}
+
+/* Rich-text lists keep their structure without collapsing into the default browser look. */
+.comments-tree__body ul,
+.comments-tree__body ol {
+  margin: 0.9rem 0;
+  padding-left: 1.25rem;
+}
+
+/* Inline code stays legible while preserving the established glassy editorial palette. */
+.comments-tree__body code {
+  padding: 0.12rem 0.32rem;
+  border-radius: 0.42rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-strong);
+  font-size: 0.92em;
+}
+
+/* Code blocks get a darker slab so longer technical comments remain readable and scroll safely. */
+.comments-tree__body pre {
+  margin: 1rem 0;
+  max-width: 100%;
+  padding: 0.95rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: calc(var(--radius-sm) - 0.05rem);
+  background: rgba(5, 8, 20, 0.56);
+  overflow-x: auto;
+}
+
+/* Nested code inside pre inherits the block treatment instead of double-styling. */
+.comments-tree__body pre code {
+  padding: 0;
+  background: transparent;
+}
+
+/* Quotes get a warm spine to echo the broader article styling used in post detail. */
+.comments-tree__body blockquote {
+  margin: 1rem 0;
+  padding: 0.18rem 0 0.18rem 0.9rem;
+  border-left: 3px solid rgba(255, 180, 92, 0.5);
+  color: var(--color-text-muted);
+}
+
+/* Images inside sanitized comment content should never break the thread column. */
+.comments-tree__body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius-sm) - 0.15rem);
+}
+
+/* Links inside sanitized content stay visibly interactive while matching the project palette. */
+.comments-tree__body a {
+  color: var(--color-accent-soft);
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  overflow-wrap: anywhere;
+}
+
+/* Hover feedback reinforces interactive links without introducing extra motion. */
+.comments-tree__body a:hover {
+  color: var(--color-accent);
+}
+
+/* Keyboard focus stays visible for sanitized outbound links rendered inside comment content. */
+.comments-tree__body a:focus-visible {
+  outline: 2px solid rgba(255, 180, 92, 0.72);
+  outline-offset: 3px;
+}
+
+/* Nested lists add vertical rhythm while leaving hierarchy to indentation and card-edge accents. */
+.comments-tree__children {
+  position: relative;
+  display: grid;
+  gap: 0.75rem;
+  min-width: 0;
+  margin-top: 0.25rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Light mode lowers contrast on borders and fills so the thread remains crisp on bright surfaces. */
+@media (prefers-color-scheme: light) {
+  .comments-tree {
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), transparent 28%), var(--color-surface);
+  }
+
+  .comments-tree::before {
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.1), transparent 68%);
+  }
+
+  .comments-tree__comment {
+    border-color: rgba(15, 23, 42, 0.08);
+    background:
+      linear-gradient(135deg, rgba(217, 119, 6, 0.06), transparent 42%), rgba(15, 23, 42, 0.02);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.72),
+      0 10px 22px rgba(15, 23, 42, 0.06);
+  }
+
+  .comments-tree__item:not([data-depth="0"]) > .comments-tree__comment {
+    border-inline-start-color: rgba(217, 119, 6, 0.18);
+  }
+
+  .comments-tree__body code {
+    background: rgba(15, 23, 42, 0.06);
+  }
+
+  .comments-tree__body pre {
+    border-color: rgba(15, 23, 42, 0.08);
+    background: rgba(15, 23, 42, 0.04);
+  }
+
+  .comments-tree__children {
+    border-top-color: rgba(15, 23, 42, 0.08);
+  }
+}
+
+/* Mobile layouts reduce indentation so deep threads stay usable on small screens. */
+@media (max-width: 640px) {
+  .comments-tree {
+    padding: 1rem;
+  }
+
+  .comments-tree__item {
+    padding-inline-start: min(calc(var(--comment-depth, 0) * 0.62rem), 2.4rem);
+  }
+
+  .comments-tree__comment {
+    padding: 0.85rem 0.9rem;
+  }
+}
+
+/* Reduced motion keeps the visual polish without forcing animated transitions on sensitive users. */
+@media (prefers-reduced-motion: reduce) {
+  .comments-tree,
+  .comments-tree__comment {
+    animation: none;
+  }
+}

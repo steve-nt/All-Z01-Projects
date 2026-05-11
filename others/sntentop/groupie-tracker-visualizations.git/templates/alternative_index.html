@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="/frontend/css/index.css">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/frontend/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/frontend/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/frontend/images/avicon-16x16.png">
+    <link rel="manifest" href="/frontend/images/site.webmanifest">
+</head>
+</head>
+<body>
+    <body>
+        <div class="top-bar"></div>
+        <button class="ok" onclick="history.back()">HOME</button>
+        <button class="filter-btn" onclick="openFilter()">Filter</button>
+        <div class="searchContainer">
+          <input type="search" id="search" name="search" placeholder="Search..." />
+          <div id="suggestions"></div>
+          <!-- Το κουμπί Reset θα προστεθεί δυναμικά εδώ -->
+        </div>
+        
+        <div id="modalBackdrop"></div>
+        <div id="filterModal" class="modal">
+          <div class="modal-content">
+            <span class="close" onclick="closeFilter()">&times;</span>
+            <h2>Filter Options</h2>
+            <form action="/filters" method="get" novalidate>
+              <label for="locationsfilter">Locations:</label>
+              <input type="search" list="search1" id="locationsfilter" name="filter" autocomplete="off" />
+              <datalist id="search1"></datalist>
+              <div id="customDropdown" class="dropdown"></div>
+      
+              <div id="popup-container" class="popup-container"></div>
+      
+              <label>Creation Date:</label>
+              <input type="number" name="creationDateStart" id="creationStart" placeholder="From" />
+              <input type="number" name="creationDateEnd" id="creationEnd" placeholder="To" />
+      
+              <label>First Album Year:</label>
+              <input type="number" name="firstAlbumDateStart" id="albumStart" placeholder="From" />
+              <input type="number" name="firstAlbumDateEnd" id="albumEnd" placeholder="To" />
+      
+              <fieldset id="membersFieldset">
+                <legend>Number of Members:</legend>
+              </fieldset>
+      
+              <input type="submit" value="Apply Filters" />
+              <input type="button" id="resetFilters" value="Reset Filters" />
+            </form>
+          </div>
+        </div>
+        <div class="bands">
+          {{range .}}
+          <div class="card" data-id="{{.ID}}" data-locations="{{.Locations}}" onclick="goToPage(this)">
+            <div class="card-inner">
+              <div class="card-front">
+                <img src="{{.Image}}" alt="{{.Name}} Image" />
+              </div>
+              <div class="card-back">
+                <h2>{{.Name}}</h2>
+              </div>
+            </div>
+          </div>
+          {{end}}
+        </div>
+        <footer class="footer">
+          <p>&copy; <span id="year"></span> Groupie Tracker - Stay Inspired 🎶</p>
+        </footer>
+        <script>
+          document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById("search");
+            const suggestionsBox = document.getElementById("suggestions");
+            const resetButton = document.getElementById("resetFilters");
+          
+            let currentFocus = -1;
+            let currentSuggestions = [];
+            let defaultValues = {};
+          
+            // === Autocomplete Search ===
+            searchInput.addEventListener("input", function () {
+              const query = searchInput.value.trim().toLowerCase();
+          
+              if (query.length === 0) {
+                showAllCards();
+                suggestionsBox.innerHTML = "";
+                return;
+              }
+          
+              fetch(`/search?q=${query}`)
+                .then(response => response.json())
+                .then(results => {
+                  suggestionsBox.innerHTML = "";
+                  currentSuggestions = results;
+          
+                  results.sort((a, b) => {
+                    const priority = { artist: 1, member: 2, location: 3 };
+                    const aP = priority[a.type] || 99;
+                    const bP = priority[b.type] || 99;
+                    if (aP !== bP) return aP - bP;
+          
+                    const aStarts = a.display.toLowerCase().startsWith(query);
+                    const bStarts = b.display.toLowerCase().startsWith(query);
+                    return bStarts - aStarts;
+                  });
+          
+                  results.forEach(item => {
+                    const div = document.createElement("div");
+                    div.textContent = item.display;
+                    div.classList.add("suggestion-item");
+          
+                    div.addEventListener("click", function () {
+                      searchInput.value = item.display;
+                      suggestionsBox.innerHTML = "";
+                      handleSearchSelection(item);
+                    });
+          
+                    suggestionsBox.appendChild(div);
+                  });
+          
+                  currentFocus = -1;
+                })
+                .catch(error => console.error("Search error:", error));
+            });
+          
+            searchInput.addEventListener("keydown", function (e) {
+              const suggestions = document.querySelectorAll(".suggestion-item");
+          
+              if (e.key === "ArrowDown") {
+                e.preventDefault();
+                currentFocus = (currentFocus + 1) % suggestions.length;
+                setActiveSuggestion(suggestions);
+                scrollSuggestionIntoView(suggestions[currentFocus]);
+              } else if (e.key === "ArrowUp") {
+                e.preventDefault();
+                currentFocus = (currentFocus - 1 + suggestions.length) % suggestions.length;
+                setActiveSuggestion(suggestions);
+                scrollSuggestionIntoView(suggestions[currentFocus]);
+              } else if (e.key === "Enter") {
+  const suggestions = document.querySelectorAll(".suggestion-item");
+  if (currentSuggestions.length > 0) {
+    e.preventDefault();
+
+    // Αν δεν υπάρχει selected (↑↓), δείξε όλα
+    if (currentFocus === -1) {
+      showCardsForSuggestions(currentSuggestions);
+      suggestionsBox.innerHTML = "";
+    } else if (suggestions[currentFocus]) {
+      suggestions[currentFocus].click();
+    }
+  }
+}
+
+
+            });
+          
+            function setActiveSuggestion(suggestions) {
+              suggestions.forEach((suggestion, index) => {
+                suggestion.classList.toggle("suggestion-active", index === currentFocus);
+              });
+            }
+          
+            function scrollSuggestionIntoView(suggestion) {
+              if (suggestion) {
+                suggestion.scrollIntoView({ behavior: "smooth", block: "nearest" });
+              }
+            }
+          
+            function showCardsForSuggestions(suggestions) {
+  const cards = document.querySelectorAll(".card");
+  cards.forEach(card => (card.style.display = "none"));
+
+  suggestions.forEach(suggestion => {
+    const card = document.querySelector(`.card[data-id="${suggestion.artistId}"]`);
+    if (card) card.style.display = "block";
+  });
+}
+
+          
+            function showAllCards() {
+              const cards = document.querySelectorAll(".card");
+              cards.forEach(card => (card.style.display = "block"));
+          
+              searchInput.value = "";
+              suggestionsBox.innerHTML = "";
+            }
+          
+            const showAllButton = document.createElement("button");
+            showAllButton.textContent = "Reset";
+            showAllButton.id = "show-all-button";
+            showAllButton.addEventListener("click", showAllCards);
+            document.querySelector(".searchContainer").appendChild(showAllButton);
+          
+            // === Reset Filters ===
+            resetButton.addEventListener("click", function () {
+              document.getElementById("creationStart").value = defaultValues.minCreation;
+              document.getElementById("creationEnd").value = defaultValues.maxCreation;
+              document.getElementById("albumStart").value = defaultValues.minAlbum;
+              document.getElementById("albumEnd").value = defaultValues.maxAlbum;
+              document.getElementById("locationsfilter").value = "";
+          
+              document.querySelectorAll("input[name='Member']").forEach(cb => cb.checked = false);
+            });
+          
+            // === Load Default Values ===
+            fetch("/api/minmax")
+              .then(res => res.json())
+              .then(data => {
+                defaultValues = data;
+              })
+              .catch(err => console.error("Error fetching min/max data:", err));
+          
+            // === Load Locations ===
+            fetch("/all_locations")
+              .then(res => res.json())
+              .then(locations => {
+                const dataList = document.getElementById("search1");
+                dataList.innerHTML = "";
+                locations.forEach(loc => {
+                  const option = document.createElement("option");
+                  option.value = loc;
+                  dataList.appendChild(option);
+                });
+              })
+              .catch(err => console.error("Error fetching all_locations:", err));
+          
+            // === Load Member Checkboxes ===
+            fetch("/api/maxmembers")
+              .then(res => res.json())
+              .then(data => {
+                const max = data.maxMembers;
+                const container = document.getElementById("membersFieldset");
+          
+                container.innerHTML = "";
+                const legend = document.createElement("legend");
+                legend.textContent = "Number of Members:";
+                container.appendChild(legend);
+          
+                for (let i = 1; i <= max; i++) {
+                  const label = document.createElement("label");
+                  label.style.marginRight = "8px";
+                  label.innerHTML = `<input type="checkbox" name="Member" value="${i}"> ${i}`;
+                  container.appendChild(label);
+                }
+              })
+              .catch(err => console.error("Error fetching maxmembers:", err));
+          
+            // === Validation ===
+            document.querySelector("form").addEventListener("submit", function (e) {
+              const fields = ["creationStart", "creationEnd", "albumStart", "albumEnd"];
+              let isValid = true;
+          
+              fields.forEach((id) => {
+                const value = document.getElementById(id).value.trim();
+                if (value && !/^\d{4}$/.test(value)) {
+                  alert("Please input 4-digit years (e.g. 1985).");
+                  isValid = false;
+                }
+              });
+          
+              if (!isValid) e.preventDefault();
+            });
+          });
+          
+          // === Modal Handlers ===
+          function openFilter() {
+            document.getElementById("filterModal").style.display = "block";
+            document.getElementById("modalBackdrop").style.display = "block";
+          }
+          
+          function closeFilter() {
+            document.getElementById("filterModal").style.display = "none";
+            document.getElementById("modalBackdrop").style.display = "none";
+          }
+          
+          // === Go To Card Page ===
+          function goToPage(element) {
+            const id = element.getAttribute("data-id");
+            if (id) {
+              window.location.href = "/Artist/" + id;
+            } else {
+              console.error("ID not found for the clicked card.");
+            }
+          }
+          </script>
+          
+      </body>
+      </html>

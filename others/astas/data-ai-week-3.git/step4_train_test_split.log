@@ -1,0 +1,23 @@
+
+================================================================================
+STEP 4: Train/Test Split with Stratification
+================================================================================
+
+Dataset successfully split with stratification on 'churn'.
+
+Training set shape: X_train=(140, 10), y_train=(140,)
+Testing set shape:  X_test=(60, 10), y_test=(60,)
+
+----------------------------------------
+
+>>> Churn distribution (%):
+Overall dataset: {1: 50.0, 0: 50.0}
+Training set:   {0: 50.0, 1: 50.0}
+Testing set:    {1: 50.0, 0: 50.0}
+
+Maximum churn proportion difference between train and test: 0.0000%
+
+================================================================================
+STEP 4 completed successfully. All logs saved in step4_train_test_split.log
+================================================================================
+

@@ -1,0 +1,167 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strings"
+)
+
+var colorCodes = map[string]string{
+	"red":     "\033[31m",
+	"green":   "\033[32m",
+	"yellow":  "\033[33m",
+	"blue":    "\033[34m",
+	"magenta": "\033[35m",
+	"cyan":    "\033[36m",
+	"orange":  "\033[38;5;214m",
+	"reset":   "\033[0m",
+}
+
+func main() {
+	if len(os.Args) < 4 {
+		fmt.Println("Usage: go run . --color=<color> <substring> <string> <filename>")
+		return
+	}
+
+	var color, textFromOutside, substringToColor, filename string
+
+	// Parse filename as the last argument
+	filename = os.Args[len(os.Args)-1]
+	if _, err := os.Stat(filename); os.IsNotExist(err) {
+		fmt.Println("File not found:", filename)
+		return
+	}
+
+	// Check for color flag formats `--color=<color>` or `--color <color>`
+	if strings.HasPrefix(os.Args[1], "--color=") {
+		color = strings.TrimPrefix(os.Args[1], "--color=")
+		substringToColor = os.Args[2]
+		textFromOutside = strings.Join(os.Args[3:len(os.Args)-1], " ")
+	} else if os.Args[1] == "--color" && len(os.Args) >= 5 {
+		color = os.Args[2]
+		substringToColor = os.Args[3]
+		textFromOutside = strings.Join(os.Args[4:len(os.Args)-1], " ")
+	} else {
+		fmt.Println("Usage: go run . --color=<color> <substring> <string> <filename>")
+		return
+	}
+
+	// Validate color
+	if colorCodes[color] == "" {
+		fmt.Printf("Invalid color: %s\n", color)
+		fmt.Println("Available colors: red, green, yellow, blue, magenta, cyan, orange")
+		return
+	}
+
+	fileLines := ReadTxt(filename)
+	asciiTemplates := return2dASCIIArray(fileLines)
+	printAllStringASCII(textFromOutside, asciiTemplates, color, substringToColor)
+}
+
+// Helper function to read the file
+func ReadTxt(filename string) []string {
+	readFile, err := os.Open(filename)
+	if err != nil {
+		fmt.Println(err)
+		return nil
+	}
+	defer readFile.Close()
+
+	fileScanner := bufio.NewScanner(readFile)
+	var fileLines []string
+	for fileScanner.Scan() {
+		fileLines = append(fileLines, fileScanner.Text())
+	}
+	return fileLines
+}
+
+// Converts text into ASCII art templates
+func return2dASCIIArray(fileLines []string) [][]string {
+	var asciiTemplates [][]string
+	counter := 0
+	var tempAsciArray []string
+	for _, line := range fileLines {
+		counter++
+		if counter != 1 {
+			tempAsciArray = append(tempAsciArray, line)
+		}
+		if counter == 9 {
+			asciiTemplates = append(asciiTemplates, tempAsciArray)
+			counter = 0
+			tempAsciArray = nil
+		}
+	}
+	return asciiTemplates
+}
+
+// Print function to color specific substrings within characters
+func printMultipleCharacter(s string, asciiTemplates [][]string, color, substringToColor string) {
+	tempIntArrLetter := returnAsciiCodeInt(s)
+	colorCode := colorCodes[color]
+	resetCode := colorCodes["reset"]
+
+	for i := 0; i < 8; i++ {
+		j := 0
+		for j < len(tempIntArrLetter) {
+			// Check if the substring to color matches at this position
+			if strings.HasPrefix(s[j:], substringToColor) {
+				for _, v := range tempIntArrLetter[j : j+len(substringToColor)] {
+					fmt.Print(colorCode + asciiTemplates[v][i] + resetCode)
+				}
+				j += len(substringToColor)
+			} else {
+				fmt.Print(asciiTemplates[tempIntArrLetter[j]][i])
+				j++
+			}
+		}
+		fmt.Println()
+	}
+}
+
+func returnAsciiCodeInt(s string) []int {
+	var tempIntArrLetter []int
+	for _, v := range s {
+		tempIntArrLetter = append(tempIntArrLetter, int(v)-32)
+	}
+	return tempIntArrLetter
+}
+
+func printAllStringASCII(text string, asciiTemplates [][]string, color, substringToColor string) {
+	substrings := returnstring2EndlineArray(text)
+	lenOfsubstrings := len(substrings)
+
+	for index, v := range substrings {
+		if v == "\\n" {
+			if index == lenOfsubstrings-1 || substrings[index-1] == "\\n" {
+				fmt.Println("")
+			}
+		} else {
+			printMultipleCharacter(v, asciiTemplates, color, substringToColor)
+		}
+	}
+}
+
+func returnstring2EndlineArray(text string) []string {
+	substrings := make([]string, 0)
+	escapedN := "\\n"
+
+	for {
+		idx := strings.Index(text, escapedN)
+		if idx == -1 {
+			substrings = append(substrings, text)
+			break
+		}
+		substrings = append(substrings, text[:idx])
+		substrings = append(substrings, escapedN)
+		text = text[idx+len(escapedN):]
+	}
+
+	var cleanedSubstrings []string
+	for _, sub := range substrings {
+		if sub != "" {
+			cleanedSubstrings = append(cleanedSubstrings, sub)
+		}
+	}
+	return cleanedSubstrings
+}

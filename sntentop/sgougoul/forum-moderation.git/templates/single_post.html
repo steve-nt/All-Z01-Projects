@@ -1,0 +1,153 @@
+{{ define "single_post" }}
+
+<h2 style="margin:0 0 10px 0;">{{ .Post.Title }}</h2>
+
+{{ if .Post.Categories }}
+  <div style="margin: 0 0 10px 0; color: var(--muted); font-weight: 700;">
+    🏷️ Categories
+  </div>
+  <div class="categories">
+    {{ range .Post.Categories }}
+      <span>
+        <a href="/posts?category={{ urlquery . }}" style="text-decoration:none;color:inherit;">
+          {{ . }}
+        </a>
+      </span>
+    {{ end }}
+  </div>
+{{ end }}
+
+{{ if ne .Post.Status "approved" }}
+  <div class="meta-bar" style="margin-top:0;">
+    <div class="meta-left">
+      <span class="meta-item">📌 Moderation status: <strong>{{ .Post.Status }}</strong></span>
+    </div>
+  </div>
+{{ end }}
+
+<div class="meta-bar">
+  <div class="meta-left">
+    <span class="meta-item">👤 {{ .Post.Username }}</span>
+    <span class="meta-item">🕒 {{ .Post.CreatedAt }}</span>
+    <span class="meta-item">💬 Discussion</span>
+  </div>
+
+  <div class="meta-right">
+    <span class="chip">👍 {{ .PostLikes }} &nbsp; | &nbsp; 👎 {{ .PostDislikes }}</span>
+
+    {{ if .LoggedIn }}
+      <form method="POST" action="/react-post" style="display:inline;">
+        <input type="hidden" name="post_id" value="{{ .Post.ID }}">
+        <input type="hidden" name="value" value="1">
+        <button type="submit">👍 Like</button>
+      </form>
+
+      <form method="POST" action="/react-post" style="display:inline;">
+        <input type="hidden" name="post_id" value="{{ .Post.ID }}">
+        <input type="hidden" name="value" value="-1">
+        <button type="submit">👎 Dislike</button>
+      </form>
+
+      {{ if .IsPostOwner }}
+        <a href="/edit-post?id={{ .Post.ID }}"><button type="button">✏️ Edit</button></a>
+      {{ end }}
+
+      {{ if or .IsPostOwner .IsPrivileged }}
+        <form method="POST" action="/delete-post" style="display:inline;" onsubmit="return confirm('Delete this post?');">
+          <input type="hidden" name="post_id" value="{{ .Post.ID }}">
+          <button type="submit">🗑️ Delete</button>
+        </form>
+      {{ end }}
+
+      {{ if .CanReport }}
+  <div style="display:inline-block; margin-left:6px;">
+    <form method="POST" action="/reports/create" style="display:inline;">
+      <input type="hidden" name="post_id" value="{{ .Post.ID }}">
+      <input
+        name="reason"
+        type="text"
+        placeholder="Report reason"
+        required
+        style="width:auto; min-width:180px; margin-right:6px;"
+      />
+      <button type="submit">🚩 Report to Admin</button>
+    </form>
+  </div>
+{{ end }}
+    {{ else }}
+      <span style="color:var(--muted);"><a href="/login">Login</a> to react.</span>
+    {{ end }}
+  </div>
+</div>
+
+<div class="single-content">
+  <p style="margin:0;">{{ .Post.Content }}</p>
+</div>
+
+<div class="divider"></div>
+
+<h3 style="margin-top:0;">💬 Comments</h3>
+
+{{ if .CommentViews }}
+  {{ range .CommentViews }}
+    <div class="comment">
+      <p style="margin:0 0 8px 0;">{{ .Comment.Content }}</p>
+
+      <div class="meta-bar" style="margin:0; padding:10px;">
+        <div class="meta-left">
+          <span class="meta-item">👤 {{ .Comment.Username }}</span>
+          <span class="meta-item">🕒 {{ .Comment.CreatedAt }}</span>
+        </div>
+
+        <div class="meta-right">
+          <span class="chip">👍 {{ .Likes }} &nbsp; | &nbsp; 👎 {{ .Dislikes }}</span>
+
+          {{ if $.LoggedIn }}
+            <form method="POST" action="/react-comment" style="display:inline;">
+              <input type="hidden" name="post_id" value="{{ $.Post.ID }}">
+              <input type="hidden" name="comment_id" value="{{ .Comment.ID }}">
+              <input type="hidden" name="value" value="1">
+              <button type="submit">👍</button>
+            </form>
+
+            <form method="POST" action="/react-comment" style="display:inline;">
+              <input type="hidden" name="post_id" value="{{ $.Post.ID }}">
+              <input type="hidden" name="comment_id" value="{{ .Comment.ID }}">
+              <input type="hidden" name="value" value="-1">
+              <button type="submit">👎</button>
+            </form>
+
+            {{ if .IsOwner }}
+              <a href="/edit-comment?id={{ .Comment.ID }}"><button type="button">✏️ Edit</button></a>
+            {{ end }}
+
+            {{ if or .IsOwner $.IsPrivileged }}
+              <form method="POST" action="/delete-comment" style="display:inline;" onsubmit="return confirm('Delete this comment?');">
+                <input type="hidden" name="comment_id" value="{{ .Comment.ID }}">
+                <button type="submit">🗑️ Delete</button>
+              </form>
+            {{ end }}
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ else }}
+  <p style="color:var(--muted);">No comments yet.</p>
+{{ end }}
+
+<div class="divider"></div>
+
+<h3 style="margin-top:0;">✍️ Add a comment</h3>
+
+{{ if .LoggedIn }}
+<form method="POST" action="/comment">
+  <input type="hidden" name="post_id" value="{{ .Post.ID }}">
+  <textarea name="content" placeholder="Write a comment..." required></textarea>
+  <button type="submit">Comment</button>
+</form>
+{{ else }}
+<p style="color:var(--muted);"><a href="/login">Login</a> to comment.</p>
+{{ end }}
+
+{{ end }}

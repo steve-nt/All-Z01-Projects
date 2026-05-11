@@ -1,0 +1,233 @@
+[
+  {
+    "id": 1,
+    "name": "AWA",
+    "score": 130,
+    "timeSeconds": 27,
+    "createdAt": "2025-11-13T19:47:32.23845428Z"
+  },
+  {
+    "id": 2,
+    "name": "LLL",
+    "score": 1175,
+    "timeSeconds": 17,
+    "createdAt": "2025-11-13T19:49:15.534137491Z"
+  },
+  {
+    "id": 3,
+    "name": "PPL",
+    "score": 305,
+    "timeSeconds": 12,
+    "createdAt": "2025-11-13T19:50:19.094575662Z"
+  },
+  {
+    "id": 4,
+    "name": "GEO",
+    "score": 295,
+    "timeSeconds": 5,
+    "createdAt": "2025-11-16T15:44:16.451795782Z"
+  },
+  {
+    "id": 5,
+    "name": "GEO",
+    "score": 120,
+    "timeSeconds": 27,
+    "createdAt": "2025-11-16T15:47:00.48244235Z"
+  },
+  {
+    "id": 6,
+    "name": "GIN",
+    "score": 203155,
+    "timeSeconds": 11,
+    "createdAt": "2025-11-16T16:00:19.062665637Z"
+  },
+  {
+    "id": 7,
+    "name": "GEO",
+    "score": 189800,
+    "timeSeconds": 10,
+    "createdAt": "2025-11-16T21:17:39.762967114Z"
+  },
+  {
+    "id": 8,
+    "name": "Anon",
+    "score": 80,
+    "timeSeconds": 18,
+    "createdAt": "2025-11-16T21:22:59.330043986Z"
+  },
+  {
+    "id": 9,
+    "name": "Anon",
+    "score": 0,
+    "timeSeconds": 13,
+    "createdAt": "2025-11-16T21:23:43.529632238Z"
+  },
+  {
+    "id": 10,
+    "name": "AAA",
+    "score": 4200,
+    "timeSeconds": 95,
+    "createdAt": "2025-11-17T09:30:46.650738299Z"
+  },
+  {
+    "id": 11,
+    "name": "MOM",
+    "score": 311375,
+    "timeSeconds": 30,
+    "createdAt": "2025-11-19T10:13:30.918593965Z"
+  },
+  {
+    "id": 12,
+    "name": "NBN",
+    "score": 1315,
+    "timeSeconds": 4,
+    "createdAt": "2025-11-19T10:14:47.477510529Z"
+  },
+  {
+    "id": 13,
+    "name": "VVV",
+    "score": 83875,
+    "timeSeconds": 10,
+    "createdAt": "2025-11-19T10:20:03.235464732Z"
+  },
+  {
+    "id": 14,
+    "name": "WWW",
+    "score": 1300,
+    "timeSeconds": 21,
+    "createdAt": "2025-11-19T10:21:04.723223775Z"
+  },
+  {
+    "id": 15,
+    "name": "MLB",
+    "score": 390,
+    "timeSeconds": 12,
+    "createdAt": "2025-11-19T10:22:10.62965473Z"
+  },
+  {
+    "id": 16,
+    "name": "FFF",
+    "score": 140,
+    "timeSeconds": 3,
+    "createdAt": "2025-11-26T18:58:01.927846985Z"
+  },
+  {
+    "id": 17,
+    "name": "GHG",
+    "score": 240,
+    "timeSeconds": 7,
+    "createdAt": "2025-11-26T19:01:40.127146338Z"
+  },
+  {
+    "id": 18,
+    "name": "DFF",
+    "score": 235,
+    "timeSeconds": 7,
+    "createdAt": "2025-11-26T19:02:49.494505308Z"
+  },
+  {
+    "id": 19,
+    "name": "FGF",
+    "score": 80,
+    "timeSeconds": 27,
+    "createdAt": "2025-11-26T19:04:43.373456534Z"
+  },
+  {
+    "id": 20,
+    "name": "FFD",
+    "score": 775,
+    "timeSeconds": 27,
+    "createdAt": "2025-11-26T19:07:55.166277184Z"
+  },
+  {
+    "id": 21,
+    "name": "PPP",
+    "score": 45,
+    "timeSeconds": 24,
+    "createdAt": "2025-11-26T19:11:21.9974703Z"
+  },
+  {
+    "id": 22,
+    "name": "KJK",
+    "score": 70,
+    "timeSeconds": 1,
+    "createdAt": "2025-11-26T19:18:18.993523507Z"
+  },
+  {
+    "id": 23,
+    "name": "GDG",
+    "score": 65,
+    "timeSeconds": 29,
+    "createdAt": "2025-11-26T19:18:56.595907516Z"
+  },
+  {
+    "id": 24,
+    "name": "GD",
+    "score": 80,
+    "timeSeconds": 30,
+    "createdAt": "2025-11-26T19:19:35.820394002Z"
+  },
+  {
+    "id": 25,
+    "name": "FDF",
+    "score": 70,
+    "timeSeconds": 2,
+    "createdAt": "2025-11-26T19:20:30.311041005Z"
+  },
+  {
+    "id": 26,
+    "name": "TTT",
+    "score": 85,
+    "timeSeconds": 6,
+    "createdAt": "2025-11-26T19:24:53.764837991Z"
+  },
+  {
+    "id": 27,
+    "name": "FEF",
+    "score": 0,
+    "timeSeconds": 20,
+    "createdAt": "2025-11-26T19:25:43.060946468Z"
+  },
+  {
+    "id": 28,
+    "name": "ROI",
+    "score": 105,
+    "timeSeconds": 5,
+    "createdAt": "2025-11-26T19:31:53.467409643Z"
+  },
+  {
+    "id": 29,
+    "name": "BBB",
+    "score": 0,
+    "timeSeconds": 22,
+    "createdAt": "2025-11-26T19:33:12.795898542Z"
+  },
+  {
+    "id": 30,
+    "name": "FEF",
+    "score": 0,
+    "timeSeconds": 25,
+    "createdAt": "2025-11-26T19:34:48.408010695Z"
+  },
+  {
+    "id": 31,
+    "name": "---",
+    "score": 35,
+    "timeSeconds": 28,
+    "createdAt": "2025-11-26T19:38:19.504795398Z"
+  },
+  {
+    "id": 32,
+    "name": "---",
+    "score": 45,
+    "timeSeconds": 23,
+    "createdAt": "2025-11-26T19:39:20.606352Z"
+  },
+  {
+    "id": 33,
+    "name": "FDF",
+    "score": 295,
+    "timeSeconds": 9,
+    "createdAt": "2025-11-26T19:42:17.592748982Z"
+  }
+]

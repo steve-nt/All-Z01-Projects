@@ -1,0 +1,6 @@
+{{define "category"}}
+<div class="category" id="{{.Id}}">
+    <a href="/category/view/{{.Id}}"><h2>{{.Name}}</h2></a>
+    {{if .Description}}<p class="category-description">{{.Description}}</p>{{end}}
+</div>
+{{end}}

@@ -1,0 +1,86 @@
+.title {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.toggle-checkbox {
+  display: none;
+}
+
+.open {
+  position: absolute;
+  bottom: 0;
+  transform: translate(-50%);
+  background-color: #000000;
+  color: #ab197d;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  font-family: 'Fredoka One', cursive;
+  z-index: 101;
+}
+
+.start {
+  position: absolute;
+  bottom: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: all ease-in-out 0.3s;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.start a {
+  text-shadow: 0px 0px 20px rgb(255 128 212);
+  background-clip: text;
+  cursor: pointer;
+  font-size: 30px;
+  transition: all ease-in-out 0.3s;
+}
+
+.start a:hover {
+  scale: 1.1;
+}
+
+.top {
+  background-color: #111111;
+  position: fixed;
+  bottom: 50%;
+  top: 0px;
+  width: 100%;
+  padding: 15px 20px;
+  border-bottom: 6px solid #000000;
+  z-index: 100;
+  transition: bottom 0.3s ease-in-out;
+}
+
+.main-footer.welcome {
+  position: fixed;
+  top: 50%;
+  transition: top 0.3s ease-in-out;
+}
+
+.top.active{
+  bottom: 65%;
+}
+
+.main-footer.welcome.active {
+  top: 65%;
+}
+
+.start.active {
+  transform: translate(-50%)  scale(1.2);
+  opacity: 1;
+}
+
+.open:hover {
+  background-color: #ab197d;
+  color: #000000;
+}

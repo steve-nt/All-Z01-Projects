@@ -1,0 +1,21 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    {{ field }} Services
+{% endblock %}
+{% block content %}
+    <p class="title">{{ field }} Services</p>
+    <div class='services_list'>
+        {% for service in services.all %}
+            <div style="display: ruby;">
+                <div class='service_list_info'>
+                    <li><a href="/services/{{ service.id }}">{{ service.name }}</a> -- {{ service.price_hour }}€/hour</li>
+                    <pre>{{ service.description }}</pre>
+                </div>
+                <p style="display:block; margin: 0; float: right;font-size: small; margin-right: 30px;">by <a href="/company/{{ service.company.user.username }}" style="color: #007bff; text-decoration: none;">{{ service.company.user.username }}</a></p>
+            </div>
+            {% if not forloop.last %}
+                <div class="line"></div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

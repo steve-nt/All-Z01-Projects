@@ -1,0 +1,19 @@
+# CGI-enabled config: dispatches *.py to /usr/bin/python3.
+
+[[server]]
+listen = ["127.0.0.1:8080"]
+client_max_body_size = 1048576
+
+[[server.route]]
+path = "/"
+methods = ["GET"]
+root = "www"
+index = "index.html"
+
+[[server.route]]
+path = "/cgi-bin"
+methods = ["GET", "POST"]
+root = "www/cgi-bin"
+[server.route.cgi]
+extension = ".py"
+interpreter = "/usr/bin/python3"

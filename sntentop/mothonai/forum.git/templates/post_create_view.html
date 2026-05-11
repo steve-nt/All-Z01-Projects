@@ -1,0 +1,35 @@
+{{define "post_create_view"}}
+{{template "header" .}}
+{{template "topbar" .}}
+<div class="container">
+    {{$editing := .EditPost}}
+    {{if .Error.Has}}
+        {{template "error" .}}
+    {{end}}
+    <form method="POST" action="{{if $editing}}/post/edit/{{(index .Posts 0).Id}}{{else}}/post/create{{end}}" enctype="multipart/form-data">
+        <fieldset>
+            <legend>{{if $editing}}Edit post{{else}}New post{{end}}</legend>
+            {{if $editing}}
+            <input type="hidden" name="post-id" value="{{(index .Posts 0).Id}}"/>
+            <input type="hidden" name="save-post" value="1"/>
+            {{end}}
+            <input type="text" name="title" placeholder="Your title here" value="{{if $editing}}{{(index .Posts 0).Title}}{{end}}" required/>
+                {{ range .Categories }}
+                <div class="inline">
+                    <input type="checkbox" id="category-{{.Id}}" name="category-{{.Id}}" {{if .Selected}}checked{{end}}/>
+                    <label for="category-{{.Id}}">{{.Name}}</label>
+                </div>
+                {{ end }}
+            <textarea name="body" placeholder="Your post here" required>{{if $editing}}{{(index .Posts 0).Body}}{{end}}</textarea>
+            {{if $editing}}
+                {{if (index .Posts 0).ImagePath}}
+                    <img src="/{{(index .Posts 0).ImagePath}}" alt="Post image" style="max-width: 100%;"/>
+                {{end}}
+            {{end}}
+            <input type="file" name="image" accept="image/jpeg,image/png,image/gif"/>
+            <input type="submit" value="{{if $editing}}Save post{{else}}Create post{{end}}"/>
+        </fieldset>
+    </form>
+</div>
+{{template "ending" .}}
+{{end}}

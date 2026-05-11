@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "name": "Player",
+    "score": 4950,
+    "timeSeconds": 88,
+    "position": 1
+  },
+  {
+    "id": 2,
+    "name": "Player",
+    "score": 2550,
+    "timeSeconds": 366,
+    "position": 2
+  },
+  {
+    "id": 4,
+    "name": "Player",
+    "score": 400,
+    "timeSeconds": 23,
+    "position": 3
+  },
+  {
+    "id": 3,
+    "name": "Player",
+    "score": 200,
+    "timeSeconds": 12,
+    "position": 4
+  }
+]

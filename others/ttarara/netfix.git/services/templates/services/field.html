@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    {{ field }} Services
+{% endblock %}
+{% block content %}
+    <h1 class="title">{{ field }} Services</h1>
+    
+    {% if services.all %}
+        <div class="ag-format-container">
+            <div class="ag-courses_box">
+                {% for service in services.all %}
+                <div class="ag-courses_item">
+                    <a href="/services/{{ service.id }}" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+                        <div class="ag-courses-item_title">
+                            {{ service.name }}
+                        </div>
+                        <div class="ag-courses-item_content">
+                            <div class="detail-row">
+                                <strong>FIELD:</strong> {{ service.field }}
+                            </div>
+                            <div class="detail-row">
+                                <strong>PRICE:</strong> €{{ service.price_hour }}/hour
+                            </div>
+                            <div class="service-description">
+                                {{ service.description }}
+                            </div>
+                            <div class="detail-row">
+                                <strong>CREATED:</strong> {{ service.date|date:"M d, Y" }}
+                            </div>
+                            <div class="detail-row">
+                                <strong>BY:</strong> {{ service.company.user.username }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="no-services">
+            <h3>No services available in this category yet.</h3>
+            <p>Check back later!</p>
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap');
+body {
+  font-family: 'Kaisei Opti', serif;
+    text-align: center;
+  background: url("../static/images/forumbackround.jpg") no-repeat center/cover;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+h1 {
+    color: "{{if .Success}}#4CAF50{{else}}#F44336{{end}}";
+ }
+
+ a {
+     text-decoration: none;
+    color: #2196F3;
+}
+
+.bottom-blank{
+  /* width:100vw; */
+  height:6vh;
+}
+.footer{
+
+  padding:10px 20px;
+  font-size:10px;
+}
+
+        footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 10px 20px;
+}
+
+.footer {
+  font-size: 10px;
+  margin: 0;
+  text-align: left;
+  color: #fefefe;
+}
+
+/* Update the bottom-blank to provide space above footer */
+.bottom-blank {
+  height: 60px; /* Adjust this value based on your footer height */
+}

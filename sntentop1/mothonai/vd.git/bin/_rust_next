@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+function rust_next(){
+    if [ -z $1 ] || [ ! -n "$1" ]
+    then
+        echo "Usage:"
+        echo ""
+        echo "$(basename $0) <project_name>"
+        return 1
+    fi
+    cd ..
+    cargo new --lib $1
+    cd $1
+    if [ ! -d ../../../public ]
+    then
+        git clone --depth=1 \
+            https://github.com/01-edu/public \
+            ../../../public
+    fi
+    cp \
+        ../../../public/subjects/$(basename $(pwd))/README.md \
+        src/lib.rs
+    sed -i -e 's/^/\/\/ /g' src/lib.rs
+    if [ ! -d ../../../rust-tests ]
+    then
+        git clone --depth=1 \
+            https://github.com/01-edu/rust-tests \
+            ../../../rust-tests
+    fi
+    mkdir tests
+    cp \
+        ../../../rust-tests/tests/$(basename $(pwd))_test/src/lib.rs \
+        tests/$(basename $(pwd))_test.rs
+}

@@ -1,0 +1,446 @@
+/* The detail page keeps the app's editorial tone while narrowing the layout for long-form reading. */
+.post-detail {
+  width: min(54rem, calc(100% - 2rem));
+  max-width: 100%;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 5rem) 0 clamp(3rem, 8vw, 6rem);
+  display: grid;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+/* A subtle ambient glow helps the detail screen feel intentional without adding extra DOM. */
+.post-detail::before {
+  content: "";
+  position: fixed;
+  inset: 0 auto auto 50%;
+  width: min(40rem, 70vw);
+  height: min(20rem, 35vh);
+  transform: translateX(-50%);
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 180, 92, 0.12), transparent 68%);
+  filter: blur(18px);
+  opacity: 0.8;
+}
+
+/* The header is the main reading card, using the shared surface tokens for consistency with the shell. */
+.post-detail__header {
+  position: relative;
+  display: grid;
+  gap: 0.9rem;
+  min-width: 0;
+  padding: clamp(1.4rem, 3vw, 2.1rem);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(135deg, rgba(255, 180, 92, 0.08), transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 24%), var(--color-surface-strong);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(14px);
+  overflow: clip;
+}
+
+/* The accent rule makes the header read like a feature article instead of a generic card. */
+.post-detail__header::after {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 0.22rem;
+  background: linear-gradient(90deg, var(--color-accent), rgba(255, 180, 92, 0));
+  opacity: 0.92;
+}
+
+/* The back button stays compact and tactile so it reads as navigation rather than primary content. */
+.post-detail__back-button {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.65rem 0.95rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-strong);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    border-color 160ms ease,
+    background-color 160ms ease;
+}
+
+/* Hover movement is minimal so the interface feels deliberate rather than jumpy. */
+.post-detail__back-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 180, 92, 0.42);
+  background: rgba(255, 180, 92, 0.1);
+}
+
+/* Keyboard focus uses the shared accent palette for a visible but polished outline. */
+.post-detail__back-button:focus-visible,
+.post-detail__url-link:focus-visible,
+.post-detail__text-body a:focus-visible {
+  outline: 2px solid rgba(255, 180, 92, 0.72);
+  outline-offset: 3px;
+}
+
+/* The title inherits the app's display serif so detail pages feel like articles instead of list rows. */
+.post-detail__title {
+  margin: 0;
+  color: var(--color-text-strong);
+  font-family: var(--font-display);
+  font-size: clamp(2.3rem, 4vw, 4rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+}
+
+/* Status copy sits quietly under the title for loading, empty, and error messaging. */
+.post-detail__status {
+  margin: 0;
+  color: var(--color-text-muted);
+  font-size: 0.98rem;
+  overflow-wrap: anywhere;
+}
+
+/* Status row keeps copy and progress signal aligned in one scan line. */
+.post-detail__status-row {
+  display: inline-flex;
+  min-width: 0;
+  width: fit-content;
+  align-items: center;
+  gap: 0.52rem;
+}
+
+/* Loading mode keeps status copy and motion grouped so progress reads immediately. */
+.post-detail--loading .post-detail__status {
+  color: var(--color-accent-soft);
+}
+
+/* Inline dots provide lightweight loading motion without shifting layout. */
+.post-detail__loading-indicator {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* Dot color stays warm so the motion aligns with the rest of the live-update accents. */
+.post-detail__loading-dot {
+  width: 0.56rem;
+  height: 0.56rem;
+  border-radius: 999px;
+  background: rgba(255, 180, 92, 0.86);
+  box-shadow: 0 0 0 0 rgba(255, 180, 92, 0.48);
+  animation: post-detail-loading-dot-bounce 1.05s ease-in-out infinite;
+}
+
+/* Done state keeps a stable, non-moving indicator after comments/post data fully load. */
+.post-detail__loading-indicator--done .post-detail__loading-dot {
+  animation: none;
+  transform: none;
+  background: rgba(46, 184, 122, 0.92);
+  box-shadow: 0 0 0 0 rgba(46, 184, 122, 0);
+  opacity: 1;
+}
+
+/* Staggering keeps the loading rhythm organic instead of synchronous blinking. */
+.post-detail__loading-dot--second {
+  animation-delay: 120ms;
+}
+
+.post-detail__loading-dot--third {
+  animation-delay: 240ms;
+}
+
+@keyframes post-detail-loading-dot-bounce {
+  0%,
+  80%,
+  100% {
+    transform: translateY(0) scale(0.9);
+    box-shadow: 0 0 0 0 rgba(255, 180, 92, 0.36);
+    opacity: 0.75;
+  }
+
+  40% {
+    transform: translateY(-0.3rem) scale(1);
+    box-shadow: 0 0 0 0.25rem rgba(255, 180, 92, 0);
+    opacity: 1;
+  }
+}
+
+/* Metadata is styled as a compact editorial byline with strong contrast and controlled spacing. */
+.post-detail__metadata {
+  margin: 0;
+  color: var(--color-accent-soft);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* The URL block becomes a secondary card so external links stay visible without dominating the page. */
+.post-detail__url,
+.post-detail__text {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-surface);
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(12px);
+}
+
+/* Link cards stay compact while leaving enough room for long story URLs to wrap cleanly. */
+.post-detail__url {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  min-width: 0;
+  padding: 1rem 1.1rem;
+}
+
+/* The source label separates metadata from the raw URL so the outbound action is immediately understood. */
+.post-detail__url-label {
+  white-space: nowrap;
+  flex: 0 0 auto;
+  color: var(--color-accent-soft);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+/* The visible URL text is clearly interactive without relying on unsafe styling tricks. */
+.post-detail__url-link {
+  min-width: 0;
+  flex: 1 1 auto;
+  color: var(--color-accent-soft);
+  font-weight: 700;
+  line-height: 1.45;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Hover states reinforce clickability while staying inside the established palette. */
+.post-detail__url-link:hover,
+.post-detail__text-body a:hover {
+  color: var(--color-accent);
+}
+
+/* The body card gets generous padding because jobs and story text can be long-form content. */
+.post-detail__text {
+  padding: clamp(1.2rem, 3vw, 2rem);
+}
+
+/* Rich-text typography is tuned for readability across paragraphs, lists, and code blocks. */
+.post-detail__text-body {
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+/* Paragraph spacing preserves a relaxed reading rhythm for long job descriptions. */
+.post-detail__text-body > :first-child {
+  margin-top: 0;
+}
+
+/* Ending spacing is trimmed so the card edge looks deliberate rather than padded by accident. */
+.post-detail__text-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* Lists need extra inset to maintain hierarchy inside sanitized content. */
+.post-detail__text-body ul,
+.post-detail__text-body ol {
+  margin: 1rem 0;
+  padding-left: 1.35rem;
+}
+
+/* Inline code stays readable against the surface without looking like a separate component system. */
+.post-detail__text-body code {
+  padding: 0.14rem 0.34rem;
+  border-radius: 0.45rem;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-text-strong);
+  font-size: 0.92em;
+}
+
+/* Code blocks get their own darker slab so pasted job specs remain legible and scrollable. */
+.post-detail__text-body pre {
+  margin: 1.2rem 0;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  background: rgba(5, 8, 20, 0.6);
+  overflow-x: auto;
+}
+
+/* Code nested inside pre inherits the block styling instead of double-wrapping visually. */
+.post-detail__text-body pre code {
+  padding: 0;
+  background: transparent;
+}
+
+/* Blockquotes get a warm accent edge to keep quoted text inside the same visual family. */
+.post-detail__text-body blockquote {
+  margin: 1.2rem 0;
+  padding: 0.2rem 0 0.2rem 1rem;
+  border-left: 3px solid rgba(255, 180, 92, 0.55);
+  color: var(--color-text-muted);
+}
+
+/* Images in sanitized content should never overflow the reading column. */
+.post-detail__text-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border-radius: calc(var(--radius-sm) - 0.15rem);
+}
+
+/* Floating action keeps long-scroll detail pages ergonomically aligned with the feed experience. */
+.post-detail__scroll-top-button {
+  position: fixed;
+  right: clamp(0.85rem, 1.8vw, 1.35rem);
+  bottom: calc(3.15rem + env(safe-area-inset-bottom, 0px));
+  z-index: 120;
+  display: inline-flex;
+  min-height: 2.45rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.88rem;
+  border: 1px solid rgba(255, 180, 92, 0.36);
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-surface-strong), rgba(255, 180, 92, 0.18));
+  color: var(--color-text-strong);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(10px);
+  transition:
+    transform 140ms ease,
+    border-color 140ms ease,
+    background-color 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.post-detail__scroll-top-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255, 180, 92, 0.5);
+  background: color-mix(in oklab, var(--color-surface-strong), rgba(255, 180, 92, 0.26));
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.32);
+}
+
+.post-detail__scroll-top-button:focus-visible {
+  outline: 2px solid rgba(255, 180, 92, 0.78);
+  outline-offset: 3px;
+}
+
+/* Light mode lowers surface opacity and shadows so cards stay crisp on bright backgrounds. */
+@media (prefers-color-scheme: light) {
+  .post-detail::before {
+    background: radial-gradient(circle, rgba(217, 119, 6, 0.08), transparent 68%);
+  }
+
+  .post-detail__header {
+    background:
+      linear-gradient(135deg, rgba(217, 119, 6, 0.08), transparent 34%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.92), transparent 28%),
+      var(--color-surface-strong);
+  }
+
+  .post-detail__back-button {
+    background: rgba(15, 23, 42, 0.03);
+  }
+
+  .post-detail__back-button:hover {
+    background: rgba(217, 119, 6, 0.08);
+  }
+
+  .post-detail__text-body code {
+    background: rgba(15, 23, 42, 0.06);
+  }
+
+  .post-detail__text-body pre {
+    border-color: rgba(15, 23, 42, 0.08);
+    background: rgba(15, 23, 42, 0.04);
+  }
+
+  .post-detail__loading-dot {
+    background: rgba(217, 119, 6, 0.86);
+  }
+
+  .post-detail__loading-indicator--done .post-detail__loading-dot {
+    background: rgba(22, 163, 74, 0.9);
+  }
+
+  .post-detail__scroll-top-button {
+    border-color: rgba(217, 119, 6, 0.3);
+    background: color-mix(in oklab, var(--color-surface-strong), rgba(217, 119, 6, 0.16));
+  }
+
+  .post-detail__scroll-top-button:hover {
+    border-color: rgba(217, 119, 6, 0.42);
+    background: color-mix(in oklab, var(--color-surface-strong), rgba(217, 119, 6, 0.24));
+    box-shadow: 0 16px 32px rgba(15, 23, 42, 0.16);
+  }
+}
+
+/* Tablet-down spacing compresses the vertical rhythm so long posts stay comfortable on smaller screens. */
+@media (max-width: 48rem) {
+  .post-detail {
+    width: min(54rem, calc(100% - 1rem));
+    padding-top: 1.4rem;
+  }
+
+  .post-detail__header,
+  .post-detail__text {
+    padding: 1rem;
+  }
+
+  .post-detail__url {
+    padding: 0.9rem 1rem;
+  }
+}
+
+/* Small-screen typography tightens slightly so the serif headline does not overwhelm the viewport. */
+@media (max-width: 32rem) {
+  .post-detail__title {
+    font-size: clamp(1.85rem, 11vw, 2.55rem);
+  }
+
+  .post-detail__metadata {
+    font-size: 0.82rem;
+  }
+
+  .post-detail__text-body {
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+
+  .post-detail__status-row {
+    flex-wrap: wrap;
+    gap: 0.42rem;
+  }
+}
+
+/* Reduced-motion users still get the loading indicator without animated movement. */
+@media (prefers-reduced-motion: reduce) {
+  .post-detail__loading-dot {
+    animation: none;
+    opacity: 1;
+  }
+}

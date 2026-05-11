@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    Services List
+{% endblock %}
+{% block content %}
+    <div class="navigation-links">
+        <a href="/services/most-requested/" class="nav-link">🔥 Most Requested Services</a>
+    </div>
+
+    <div class="content">
+        {% if request.user.is_company %}
+            <a href="/services/create/" class="create_service">Create Service</a>
+        {% endif %}
+        
+        <h1 class="title">Services List</h1>
+        
+        {% if services %}
+            <div class="services-container">
+                {% for service in services %}
+                    <div class="service-item">
+                        <h3><a href="/services/{{ service.id }}">{{ service.name }}</a></h3>
+                        <p class="service-field">{{ service.field }}</p>
+                        <p class="service-price">€{{ service.price_hour }}/hour</p>
+                        <p class="service-description">{{ service.description|truncatewords:15 }}</p>
+                        <p class="service-created-date" style="font-size: small; color: #666; margin: 5px 0;">Created: {{ service.date|date:"M d, Y" }}</p>
+                        <p style="display:block; margin: 0; float: right;font-size: small; margin-right: 30px;">by <a href="/company/{{ service.company.user.username }}" style="color: #007bff; text-decoration: none;">{{ service.company.user.username }}</a></p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-services">
+                <h3>No services available yet</h3>
+                <p>Check back later for new services!</p>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

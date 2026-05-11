@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../public/output.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="../public/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../public/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../public/favicon-16x16.png">
+    <link rel="manifest" href="../public/site.webmanifest">
+    <title>{{.Artist.Name}}</title>
+    <style>
+        .data-section {
+            display: none;
+        }
+
+        .data-section.active {
+            display: block;
+        }
+
+        .active {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-white py-24 sm:py-32">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8">
+            <div class="mx-auto max-w-4xl sm:text-center">
+                <h2 class="text-pretty text-5xl font-semibold tracking-tight text-gray-900 sm:text-balance sm:text-6xl">
+                    {{.Artist.Name}}</h2>
+            </div>
+            <div
+                class="mx-auto mt-16 max-w-2xl rounded-3xl ring-1 ring-gray-200 sm:mt-20 lg:mx-0 lg:flex lg:max-w-none">
+                <div class="p-8 sm:p-10 lg:flex-auto">
+                    <h3 class="text-3xl font-semibold tracking-tight text-gray-900">Start Year : {{.Artist.StartYear}}
+                    </h3>
+                    <p class="mt-6 text-2xl text-gray-600">First Album: {{.Artist.FirstAlbum}} </p>
+                    <div class="flex flex-row gap-x-2 pt-4">
+                        <button type="button" onclick="showSection('members')"
+                            class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-people" viewBox="0 0 16 16">
+                                <path
+                                    d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1zm-7.978-1L7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002-.014.002zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0M6.936 9.28a6 6 0 0 0-1.23-.247A7 7 0 0 0 5 9c-4 0-5 3-5 4q0 1 1 1h4.216A2.24 2.24 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816M4.92 10A5.5 5.5 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275ZM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0m3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4" />
+                            </svg>
+                            Members
+                        </button>
+                        <button type="button" onclick="showSection('locations')"
+                            class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-geo-alt" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A32 32 0 0 1 8 14.58a32 32 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10" />
+                                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
+                            </svg>
+                            Locations
+                        </button>
+                        <button type="button" onclick="showSection('dates')"
+                            class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-calendar-range" viewBox="0 0 16 16">
+                                <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1M1 9h4a1 1 0 0 1 0 2H1z" />
+                                <path
+                                    d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                            </svg>
+                            Dates
+                        </button>
+                        <button type="button" onclick="showSection('relations')"
+                            class="inline-flex items-center gap-x-1.5 rounded-md bg-indigo-600 px-2.5 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-database" viewBox="0 0 16 16">
+                                <path
+                                    d="M4.318 2.687C5.234 2.271 6.536 2 8 2s2.766.27 3.682.687C12.644 3.125 13 3.627 13 4c0 .374-.356.875-1.318 1.313C10.766 5.729 9.464 6 8 6s-2.766-.27-3.682-.687C3.356 4.875 3 4.373 3 4c0-.374.356-.875 1.318-1.313M13 5.698V7c0 .374-.356.875-1.318 1.313C10.766 8.729 9.464 9 8 9s-2.766-.27-3.682-.687C3.356 7.875 3 7.373 3 7V5.698c.271.202.58.378.904.525C4.978 6.711 6.427 7 8 7s3.022-.289 4.096-.777A5 5 0 0 0 13 5.698M14 4c0-1.007-.875-1.755-1.904-2.223C11.022 1.289 9.573 1 8 1s-3.022.289-4.096.777C2.875 2.245 2 2.993 2 4v9c0 1.007.875 1.755 1.904 2.223C4.978 15.71 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13zm-1 4.698V10c0 .374-.356.875-1.318 1.313C10.766 11.729 9.464 12 8 12s-2.766-.27-3.682-.687C3.356 10.875 3 10.373 3 10V8.698c.271.202.58.378.904.525C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777A5 5 0 0 0 13 8.698m0 3V13c0 .374-.356.875-1.318 1.313C10.766 14.729 9.464 15 8 15s-2.766-.27-3.682-.687C3.356 13.875 3 13.373 3 13v-1.302c.271.202.58.378.904.525C4.978 12.71 6.427 13 8 13s3.022-.289 4.096-.777c.324-.147.633-.323.904-.525" />
+                            </svg>
+                            Relations
+                        </button>
+                    </div>
+                    <div id="members" class="data-section active">
+                        <div class="mt-10 flex items-center gap-x-4">
+                            <h4 class="flex-none text-lg/6 font-semibold text-indigo-600">Members</h4>
+                            <div class="h-px flex-auto bg-gray-100"></div>
+                        </div>
+                        <ul role="list"
+                            class="mt-8 grid grid-cols-1 gap-4 text-sm/6 text-gray-600 sm:grid-cols-2 sm:gap-6">
+                            {{range .Artist.Members}}
+                            <li class="flex gap-x-3 items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-person" viewBox="0 0 16 16">
+                                    <path
+                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z" />
+                                </svg>
+                                {{.}}
+                            </li>
+                            {{end}}
+                        </ul>
+                    </div>
+                    <div id="locations" class="data-section">
+                        <div class="mt-10 flex items-center gap-x-4 pb-4">
+                            <h4 class="flex-none text-lg/6 font-semibold text-indigo-600">Locations</h4>
+                            <div class="h-px flex-auto bg-gray-100"></div>
+                        </div>
+                        </ul>
+                        <div class="max-w-4xl mx-auto p-4 bg-white border rounded-lg shadow-md">
+                            <div id="map" class="w-full h-80 rounded-lg"></div>
+                        </div>
+                    </div>
+                    <div id="dates" class="data-section">
+                        <div class="mt-10 flex items-center gap-x-4">
+                            <h4 class="flex-none text-lg/6 font-semibold text-indigo-600">Dates</h4>
+                            <div class="h-px flex-auto bg-gray-100"></div>
+                        </div>
+                        <ul role="list"
+                            class="mt-8 grid grid-cols-1 gap-4 text-sm/6 text-gray-600 sm:grid-cols-2 sm:gap-6">
+                            {{range .Dates.Dates}}
+                            <li class="flex gap-x-3 items-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-calendar-range" viewBox="0 0 16 16">
+                                    <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1M1 9h4a1 1 0 0 1 0 2H1z" />
+                                    <path
+                                        d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z" />
+                                </svg>
+                                {{.}}
+                            </li>
+                            {{end}}
+                        </ul>
+                    </div>
+                    <div id="relations" class="data-section">
+                        <div class="mt-10 flex items-center gap-x-4">
+                            <h4 class="flex-none text-lg/6 font-semibold text-indigo-600">Relations</h4>
+                            <div class="h-px flex-auto bg-gray-100"></div>
+                        </div>
+                        <div class="mt-8 grid grid-cols-1 gap-4 text-sm/6 text-gray-600 sm:grid-cols-2 sm:gap-6">
+                            {{range $country, $countryData := .Relations.Countries}}
+                            <div>
+                                <div class="flex flex-col">
+                                    <!-- Country Heading -->
+                                    <h5 class="text-lg font-semibold">{{$country}}</h5>
+
+                                    <!-- Town and Dates -->
+                                    <div class="flex flex-col gap-y-2">
+                                        {{range $town, $townData := $countryData.Towns}}
+
+                                        <div class="flex flex-row gap-x-2">
+                                            <div id="{{$town}}" class="relative z-10 active"
+                                                aria-labelledby="modal-title" role="dialog" aria-modal="true">
+                                                <div class="fixed inset-0 bg-gray-500/75 transition-opacity"
+                                                    aria-hidden="true"></div>
+
+                                                <div class="fixed inset-0 z-10 w-screen overflow-y-auto">
+                                                    <div
+                                                        class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+                                                        <div
+                                                            class="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+                                                            <div>
+                                                                <div class="mt-3 text-center sm:mt-5">
+                                                                    <h3 class="text-base font-semibold text-gray-900"
+                                                                        id="modal-title">{{$town}} Concert Dates</h3>
+                                                                    <div class="mt-2">
+                                                                        {{range $townData.Dates}}
+                                                                        <p class="text-xl text-gray-600">{{.}}</p>
+                                                                        {{end}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mt-5 sm:mt-6">
+                                                                <button type="button" onclick="closeModal('{{$town}}')"
+                                                                    class="inline-flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <button type="button" onclick="showModal('{{$town}}')"
+                                                    class="rounded bg-indigo-600 px-2 py-1 text-xs font-semibold text-white shadow-sm hover:bg-indigo-500 ">
+                                                    {{$town}}
+                                                </button>
+                                            </div>
+                                        </div>
+                                        {{end}}
+                                    </div>
+                                </div>
+                            </div>
+                            {{end}}
+                        </div>
+                    </div>
+                </div>
+                <div class="-mt-2 p-2 lg:mt-0 lg:w-full lg:max-w-md lg:shrink-0">
+                    <div
+                        class="rounded-2xl bg-gray-50 py-10 text-center ring-1 ring-inset ring-gray-900/5 lg:flex lg:flex-col lg:justify-center lg:py-16">
+                        <div class="mx-auto max-w-xs px-8">
+                            <img src="{{.Artist.Image}}" alt="{{.Artist.Name}}" style="width:auto;height:auto;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="items-center text-center pt-4">
+                <button type="button" onclick="history.back()"
+                    class="inline-flex items-center gap-x-2 rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-arrow-90deg-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M1.146 4.854a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H12.5A2.5 2.5 0 0 1 15 6.5v8a.5.5 0 0 1-1 0v-8A1.5 1.5 0 0 0 12.5 5H2.707l3.147 3.146a.5.5 0 1 1-.708.708z" />
+                    </svg>
+                    Back to home
+                </button>
+            </div>
+        </div>
+
+    </div>
+    <script src="/public/app.js"></script>
+    <script >
+        const concerts = "{{.ConcertsJSON}}"
+        const concertData = JSON.parse(concerts)
+    </script>
+    <script>
+        const maps = "{{.Maps}}"
+        const towns = JSON.parse(maps)
+    </script>
+    <script src="/public/maps.js"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCUBGSAboy446uQZ33BdHTTLnVbiUsy3zI&loading=async&callback=initMap&libraries=marker"></script>
+    </script>
+</body>
+
+</html>

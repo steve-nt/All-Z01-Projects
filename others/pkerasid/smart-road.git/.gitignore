@@ -1,0 +1,17 @@
+# Rust build output
+/target/
+
+# Editor swap / temp files
+*.swp
+*.swo
+*~
+
+# IDE project files
+.vscode/
+.idea/
+*.iml
+
+# Environment files
+.env
+.env.local
+

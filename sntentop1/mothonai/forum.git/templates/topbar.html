@@ -1,0 +1,36 @@
+{{define "topbar"}}
+<div class="topbar">
+    <div class="title">
+        <a href="/"><h1>{{.WebsiteName}}</h1></a>
+    </div>
+    <div class="menu">
+        <ul>
+            {{if .User.LoggedIn }}
+            <li>
+                <a href="/user">{{.User.Username}}</a>
+            </li>
+            <li>
+                <ul>
+                    <li><a href="/post/create">Create post</a></li>
+                    <li><a href="/user/activity">My activity</a></li>
+                    <li><a href="/user/posts">My posts</a></li>
+                    <li><a href="/user/likes">My likes</a></li>
+                    <li><details>
+                        <summary>Notifications 🔔 {{if .User.UnreadNotificationsCount}}({{.User.UnreadNotificationsCount}}){{end}}</summary>
+                        {{if .User.Notifications}}
+                        {{template "notifications" .User}}
+                        {{end}}
+                    </details></li>
+                    <li><a href="/user/logout">Log out</a></li>
+                </ul>
+            </li>
+            {{else}}
+            <li><a href="/user/login">Log in</a></li>
+            <li><a href="/user/register">Register</a></li>
+            {{end}}
+        </ul>
+
+    </div>
+</div>
+{{end}}
+

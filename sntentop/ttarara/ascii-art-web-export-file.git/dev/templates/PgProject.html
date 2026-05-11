@@ -1,0 +1,45 @@
+{{define "content"}}
+
+    <section>
+        <h1>OUR MISSION</h1>
+        <p>
+            Ascii-art-web is a project that we are creating and running a server, in which it will be possible to use a 
+            web GUI (graphical user interface) version of our previous project, ASCII-ART.
+        </p>
+        <p>Our webpage allows the use of the different banners:</p>
+        <ul>
+            <li>shadow</li>
+            <li>standard</li>
+            <li>thinkertoy</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>Main Page Features:</h3>
+        <p>The main page must include:</p>
+        <ul>
+            <li>A box for text input.</li>
+            <li>Radio buttons to switch between banners.</li>
+            <li>A button to send a POST request to <code>/ascii-art</code> 
+            <li>An area to display the result.</li>
+        </ul>
+    </section>
+
+<section>
+    <h3>HTTP Endpoints:</h3>
+    <ul>
+        <li>GET /: Sends HTML response, the main page.</li>
+        <li>POST /ascii-art: Sends data to Go server (text and a banner).</li>
+    </ul>
+</section>
+
+<section>
+    <h3>HTTP Status Codes</h3>
+    <ul>
+        <li><strong>200 OK</strong>: If everything went without errors.</li>
+        <li><strong>404 Not Found</strong>: If templates or banners are not found. (example: try a random url) </li>
+        <li><strong>400 Bad Request</strong>: For incorrect requests. (example: using non ASCII characters like <b>漢</b> )</li>
+        <li><strong>500 Internal Server Error</strong>: For unhandled errors. (example: try selecting "stylize" option in the converter)</li>
+    </ul>
+</section>
+{{end}}

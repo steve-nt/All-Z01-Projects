@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ASCII Art Web</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    
+    <form method="POST" action="/ascii-art">
+        <label for="text" class="large-label">Enter text:</label><br>
+        <input type="text" id="text" name="text"><br><br>
+
+        <label for="banner" class="small-label">Choose a banner:</label><br>
+        <select id="banner" name="banner">
+            <option value="shadow">shadow</option>
+            <option value="standard">standard</option>
+            <option value="thinkertoy">thinkertoy</option>
+        </select><br><br>
+
+        <button type="submit">Generate</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Kaisei+Opti&display=swap');
+
+body {
+  font-family: 'Kaisei Opti', serif;
+}
+
+body::before {
+  content: "";
+  position: fixed;      /* stays in place while scrolling */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("../static/images/forumbackround.jpg") no-repeat center/cover;
+  opacity: 0.1;        /* adjust transparency */
+  z-index: -1;          /* behind all content */
+}
+.navbar {
+  display: flex;
+  justify-content: space-between; /* pushes left + right groups apart */
+  align-items: center;            /* vertically centers everything */
+  padding: 0px 35px;
+  padding-top:30px;
+  font-family: 'Kaisei Opti', serif;
+  background-color:black;
+}
+.navbar-left {
+  display: flex;
+  gap: 5px; /* space between left items */
+
+}
+
+/* Right group: items side-by-side */
+.navbar-right {
+  display: flex;
+  gap: 15px; /* space between right items */
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+.logo{
+  font-weight: normal;
+  font-size:3rem;
+line-height: 1;
+}
+
+
+.user{
+  color:white;
+  text-decoration:none;
+  font-weight: normal;
+  font-size:1.7rem;
+line-height: 3.9rem;
+}
+
+.logout-btn{
+  outline:none;
+  border:none;
+  margin:0.9rem 0px;
+  padding: 14px 16px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size:1.6rem;
+  font-family: 'Kaisei Opti', serif;
+}
+.btn {
+  margin:0.9rem 0px;
+  padding: 14px 16px;
+  background-color: white;
+  color: black;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: bold;
+  font-size:1.6rem;
+}
+
+.line {
+  width: 1px;
+  height: 45px;
+  background-color: white;
+  margin: 5px 10px;
+}
+.navbar-left {
+  display: flex;
+  gap: 5px; /* space between left items */
+}
+
+.navbar-right {
+  display: flex;
+  gap: 15px; /* space between right items */
+}
+
+.social-btn svg {
+  height: 20px;
+  width: 20px;
+}
+.social-description{
+  margin-bottom:0.5rem;
+
+}
+.social-login{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.social-btn{
+  width:30%;
+  padding:1rem 1rem;
+  border-radius:10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.google-btn {
+  background: #db4437; 
+}
+
+.google-btn:hover {
+  background: #c33d31; 
+}
+
+.github-btn {
+  background: #24292e; 
+}
+
+.github-btn:hover {
+  background: #000; 
+}
+
+.facebook-btn {
+  background: #1877f2; 
+}
+
+.facebook-btn:hover {
+  background: #145db8; 
+}
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* σκοτεινό φόντο */
+  display: none; /* κρυφό αρχικά */
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* === Εσωτερικό κουτί του popup === */
+.popup-content {
+  background: #000;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  animation: popupFadeIn 0.3s ease-out;
+}
+
+/* === Κουμπί κλεισίματος === */
+.popup-content button {
+  margin-top: 1rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.popup-content button:hover {
+  background-color: #0056b3;
+}
+
+/* === Εμφάνιση === */
+.popup.show {
+  display: flex;
+}
+
+/* === Εφέ εμφάνισης === */
+@keyframes popupFadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.center-container{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.login-container{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  width:33vw;
+  padding:3rem;
+  padding-top:4rem;
+  padding-bottom:3rem;
+ background-color: rgba(255,255,255,0.1);
+  border-radius:2.5rem;
+}
+h1{
+  display:inline-block;
+}
+
+.login-form{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  margin-top:2rem;
+  margin-bottom:2.5rem;
+  gap:1.5rem;
+
+}
+
+.username{
+  display:flex;
+  width:100%;
+}
+.password{
+  display:flex;
+  width:100%;
+}
+.username-input{
+  height:2rem;
+  flex:1;
+}
+
+.password-input{
+  flex:1;
+  height:2rem;
+}
+
+.login-btn{
+  height:3rem;
+  width:40%;
+  font-size: 19px;            /* text size */
+  font-family: 'Kaisei Opti', serif; /* font */
+  font-weight:bold;
+}
+.social-login{
+  width:100%
+}
+.social-buttons{
+  width:90%;
+  display:flex;
+  justify-content:space-between;
+}
+.username-label{
+  margin:3px;
+}
+
+.password-label{
+  margin:3px;
+}

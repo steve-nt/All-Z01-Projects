@@ -1,0 +1,32 @@
+# Node.js
+node_modules/
+npm-debug.log*
+
+# Build outputs
+frontend/dist/
+*.css.map
+
+# Go
+*.exe
+*.exe~
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.DS_Store
+
+# Environment variables
+.env
+
+# Logs
+*.log
+logs/
+
+# OS
+Thumbs.db
+.DS_Store
+

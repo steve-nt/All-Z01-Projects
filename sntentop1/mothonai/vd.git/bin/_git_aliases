@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+function gpob(){
+    git push origin $(git branch --show-current)
+}

@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    {{ service.name }}
+{% endblock %}
+{% block content %}
+    <div style="position: relative; z-index: 1;">
+        <h1>{{ service.name }}</h1>
+        <h5>by <a href="/company/{{ service.company.user.username }}" style="color: #007bff; text-decoration: none;">{{ service.company.user.username }}</a> | <span class="service-created-date">Created: {{ service.date|date:"F d, Y" }}</span></h5>
+        <p class="subtitle">{{ service.field }}</p>
+        <p class="service-price">€{{ service.price_hour }}/hour</p>
+        <p class="service-desc">{{ service.description }}</p>
+        
+        {% if request.user.is_customer %}
+            <a href="/services/{{ service.id }}/request_service/" class="like_button">Request Service</a>
+        {% endif %}
+    </div>
+{% endblock %}

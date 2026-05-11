@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Ascii Art</title>
+        <link href="/static/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <h1 style="text-align: center;">Ascii Art Generator</h1>
+        <form action="/ascii-art" method="post">
+            <div class="box">
+                <input type="radio" id="standard" name="fonts" value="standard" checked>
+                <label for="standard">Standard</label><br>
+
+                <input type="radio" id="shadow" name="fonts" value="shadow">
+                <label for="shadow">Shadow</label><br>
+
+                <input type="radio" id="thinkertoy" name="fonts" value="thinkertoy">
+                <label for="thinkertoy">Thinkertoy</label><br>
+
+                <input type="radio" id="stylize" name="fonts" value="stylize">
+                <label for="stylize">Stylize</label><br>
+
+                <div class="textbox">
+                    <textarea id="freeform" name="ascii-data" placeholder="Enter text here..."></textarea>
+                </div>
+                <button type="submit">Submit!</button>
+            </div>
+        </form>
+
+        <div id="marquees">
+            <marquee behavior="scroll" direction="right" scrollamount="12">
+                <h3>Ascii Art Generator</h3>
+            </marquee>
+            <marquee behavior="scroll" direction="left" scrollamount="12">
+                <h3>Zone01 ~~ Created by Ttarara & Xkissas & Sntentop ~~ Zone01</h3>
+            </marquee>
+        </div>
+
+        <!-- Display ASCII Art Output -->
+       <center> <pre>{{.First}}</pre> </center>
+    </body>
+</html>

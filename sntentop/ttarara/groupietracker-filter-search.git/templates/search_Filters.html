@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Groupie Tracker - Filtered Results</title>
+    <!-- Link to your CSS file (adjust path if needed): -->
+    <link rel="stylesheet" href="/frontend/css/search_filters.css">
+</head>
+<body>
+
+    <!-- Home button in the top-left corner -->
+        <a class="ok" onclick="history.back()">GO BACK</a>
+
+    <h1>Filtered Results</h1>
+
+    <!-- Container for the artist “cards” -->
+    <div class="container">
+        {{range .}}
+            <div class="card">
+                <a href="/Artist/{{.ID}}">
+                    <img src="{{.Image}}" alt="{{.Name}}">
+                </a>
+                <p>{{.Name}}</p>
+            </div>
+        {{end}}
+    </div>
+
+</body>
+</html>

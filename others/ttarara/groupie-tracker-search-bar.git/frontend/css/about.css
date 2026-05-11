@@ -1,0 +1,210 @@
+/* Background Styling */
+body {
+    background-image: url("/frontend/images/home.jpg");
+    background-size: cover;       /* Ensures the image covers the full screen */
+    background-position: center;  /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repetition */
+    background-attachment: fixed; /* Keeps it fixed while scrolling */
+    
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    backdrop-filter: blur(5px); /* Adds blur effect */
+}
+
+/* Smooth Wave Effect for Title */
+h1.glow {
+    font-family: 'Super Shake', Times, serif;
+    font-size: 50px;
+    color: #8000ff;
+    text-shadow: 0 0 15px #FFCC00;
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    animation: waveEffect 3s infinite ease-in-out;
+}
+
+/* Smooth Wavy Animation */
+@keyframes waveEffect {
+    0% { transform: translateY(0px); }
+    25% { transform: translateY(-5px); }
+    50% { transform: translateY(0px); }
+    75% { transform: translateY(5px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Developer Cards Container */
+.developer-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    padding: 50px;
+    overflow-y: auto; /* Enable vertical scrollbar */
+    overflow-x: hidden; /* Disable horizontal scrollbar */
+    max-height: calc(100vh - 200px);     
+    width: 100%; /* Ensure it takes full width */
+    box-sizing: border-box; /* Include padding in the width calculation */
+    /* background:  #8000ff; */
+    background:linear-gradient(90deg,#ff008037, #8000ff, #8000ff, #ff008031, #8000ff,  #8000ff, #ff008034);
+    box-shadow: 0 4px 25px rgba(0, 255, 204, 0.647); /* Add a shadow around the box */
+    margin-bottom: 0; /* Ensure no extra margin at the bottom */
+    padding-bottom: 50px; /* Remove padding at the bottom */
+}
+
+/* Developer Card */
+.developer-card {
+    width: 200px;
+    height: 260px;
+    perspective: 1200px;
+    cursor: pointer;
+    transition: transform 0.3s, z-index 0.3s; 
+    border-radius: 15px;
+    position: relative; 
+    z-index: 1; /* Default z-index */
+}
+
+.developer-card:hover {
+    transform: scale(1.08);
+    z-index: 10; /* Bring the hovered card to the front */
+}
+
+.developer-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.developer-card:hover .developer-card-inner {
+    transform: rotateY(180deg);
+    
+}
+
+/* Card Front and Back */
+.developer-card-front, .developer-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 2px 4px 6px #ff007f;
+}
+
+/* Front Card Styling */
+.developer-card-front {
+    background: linear-gradient(135deg, #212121, #4e4e4e); /* Dark gradient */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid #00ffcc;
+}
+
+.developer-card-front img {
+    width: 100%; /* Ensure the image takes the full width of the card */
+    height: 100%; /* Ensure the image takes the full height of the card */
+    object-fit: cover; /* Ensures the image covers the area without distortion */
+    border-radius: 8px;
+}
+
+/* Back Card Styling */
+.developer-card-back {
+    background: linear-gradient(135deg, #212121, #4e4e4e); /* Dark gradient */
+    color: white;
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    transform: rotateY(180deg);
+    text-align: center; /* Center text within each line */
+    padding: 5px;
+    border: 4px solid #00ffcc;
+    word-wrap: break-word; /* Ensures long words break and wrap */
+    overflow-wrap: break-word; /* Alternative to word-wrap for better browser support */
+    white-space: normal; /* Allows text to wrap */
+    box-sizing: border-box; /* Include padding in the width and height */
+}
+
+.developer-card-back h1 {
+    font-family: 'Super Shake', Times, serif;
+    font-size: 1.2rem;
+    margin: 0 0 5px 0;
+    color: #ff007f;
+}
+
+.developer-card-back p {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 0.9rem;
+    margin: 5px 0; /* Adjusted margin for paragraphs */
+}
+
+.developer-card {
+    width: 200px;
+    height: 260px;
+    perspective: 1200px;
+    cursor: pointer;
+    transition: transform 0.3s, z-index 0.3s;
+    border-radius: 15px;
+    position: relative;
+    z-index: 1; /* Default z-index */
+}
+
+
+
+/* Button Styling */
+.button-container {
+    margin-top: 30px;
+}
+
+.btn {
+    font-family: 'Super Shake', Times, serif;
+    padding: 12px 24px;
+    font-size: 16px;
+    color: #00ffcc;
+    background: linear-gradient(90deg, #ff007f, #ff5e62);
+    border-radius: 8px;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(255, 0, 127, 0.6);
+    transition: all 0.3s ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: linear-gradient(90deg, #ff5e62, #ff007f);
+    box-shadow: 0 0 15px rgba(255, 0, 127, 0.8);
+    transform: scale(1.05);
+}
+
+/* Footer Styling */
+.footer {
+    text-align: center;
+    padding: -2px;
+    font-size: 12px;
+    background: linear-gradient(90deg, #8000ff, #ff007f);
+    color: white;
+    width: 100%;
+    font-weight: bold;
+    box-shadow: 0px -2px 5px rgba(0, 255, 204, 0.3);
+    position: fixed; /* Fix the footer at the bottom */
+    bottom: 0; /* Position at the bottom */
+    left: 0; /* Align to the left */
+    z-index: 1000; /* Ensure it stays above other content */
+}
+
+
+@font-face {
+    font-family: 'Super Shake';
+    src: url('/frontend/fonts/supershake.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

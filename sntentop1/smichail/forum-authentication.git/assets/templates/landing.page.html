@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>.Myforum</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <link rel="stylesheet" href="/static/landing.page.css" />
+    <script>
+      function confirmLogout() {
+        if (confirm("Are you sure you want to logout?")) {
+          document.getElementById('logoutForm').submit();
+        }
+      }
+    </script>
+  </head>
+  <body>
+
+
+
+    <!-- here i need to make the navbar -->
+<nav class="navbar">
+    <div class="navbar-left">
+      <a href="/" class="logo">.Myforum</a>
+      <div class="line"></div>
+    {{if eq .Homeresponse.Username "guest"}}
+      <div class="user">Guest</div>
+        {{else}}
+        <a class="user" href="/profile">@{{.Homeresponse.Username}}</a>
+        {{end}}
+    </div>
+
+    <div class="navbar-right">
+    {{if eq .Homeresponse.Username "guest"}}
+  <a class="btn" href="/signup">Sign Up</a>
+    <a class="btn" href="/login">Log In</a>
+    {{else}}
+    <form id="logoutForm" action="/logout" method="POST" >
+ <button type="submit" class="logout-btn">Logout</button>
+    </form>
+    </div>
+    {{end}}
+    <!-- {{if eq .Homeresponse.Username "guest"}} -->
+    <!--   <div> -->
+    <!--     Guest -->
+    <!--   </div> -->
+    <!--     <button><a href="/signup">Sign Up</a></button> -->
+    <!--     <button><a href="/login">Login</a></button> -->
+    <!-- {{else}} -->
+    <!--   <div> -->
+    <!--    @{{.Homeresponse.Username}} -->
+    <!--   </div> -->
+    <!--     <button onclick="confirmLogout()">Logout</button> -->
+    <!-- {{end}} -->
+
+    </nav>
+
+    <div class="theme">
+      <div class="theme-left">
+        <div class="description">
+          A Free Speech forum
+          where everyone can share
+          thoughts.
+        </div>
+        <a class="get-started" href="/posts">Get Started</a>
+      </div>
+
+
+      <div class="theme-right">
+        <div class="theme-photo"></div>
+      </div>
+
+    </div>
+    <!-- and here the navbar ends -->
+
+
+
+
+    <!-- this is the category form startes here -->
+    <form class="categories" action="/posts" method="GET">
+      <div class="category-images">
+        <label class="image-checkbox">
+          <input type="checkbox"name="categories" id="Tech" value="Tech"></input>
+          <img src="../static/images/newtech.jpg" alt="Tech" />
+          <span class="overlay-text">TECH</span>
+        </label>
+        <label class="image-checkbox">
+          <input type="checkbox"name="categories" id="Politics" value="Politics"></input>
+          <img src="../static/images/newpolitics.jpg" alt="Politics" />
+          <span class="overlay-text">POLITICS</span>
+        </label>
+        <label class="image-checkbox">
+          <input type="checkbox"name="categories" id="Economy" value="Economy"></input>
+          <img src="../static/images/neweconomy.jpg" alt="Economy" />
+          <span class="overlay-text">ECONOMY</span>
+        </label>
+        <label class="image-checkbox">
+          <input type="checkbox"name="categories" id="Ecology" value="Ecology"></input>
+          <img src="../static/images/newecology.jpg" alt="Ecology" />
+          <span class="overlay-text">ECOLOGY</span>
+        </label>
+    </div>
+      <div class="submit-container">
+        <button class="submit-btn" type="submit">Submit Category Filter</button>
+    </div>
+    </form>
+    <!-- and ends here-->
+      <div class="bottom-blank">
+      </div>
+
+
+
+    <footer>
+      <p class="footer">© 2025 Myforum. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

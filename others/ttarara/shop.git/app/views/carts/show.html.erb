@@ -1,0 +1,44 @@
+<% content_for :header do %>
+  <section class="hero is-warning">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">Your Cart</h1>
+      </div>
+    </div>
+  </section>
+<% end %>
+
+<section class="section">
+  <% if @cart.cart_items.any? %>
+    <table class="table is-fullwidth">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @cart.cart_items.includes(:product).each do |item| %>
+          <tr>
+            <td><%= link_to item.product.title, product_path(item.product) %></td>
+            <td><%= number_to_currency(item.product.price) %></td>
+            <td><%= item.quantity %></td>
+            <td><%= number_to_currency(item.subtotal) %></td>
+            <td><%= button_to "Remove", cart_item_path(item), method: :delete, class: "button is-small is-danger is-light" %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <p class="title is-5 has-text-right">Total: <%= number_to_currency(@cart.total) %></p>
+    <div class="is-flex is-justify-content-flex-end mt3">
+      <%= button_to "Empty Cart", empty_cart_path, method: :delete, class: "button is-light" %>
+    </div>
+  <% else %>
+    <p class="subtitle is-5">Your cart is empty.</p>
+    <%= link_to "Back to products", products_path, class: "button is-warning" %>
+  <% end %>
+</section>

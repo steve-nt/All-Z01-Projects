@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Design System Demo - CSS Tokens, Colors, Spacing, and Animations" />
+    <title>clonernews Design System</title>
+    <link rel="stylesheet" href="/src/app.css" />
+    <style>
+      /* Demo-specific styles for showcasing design tokens and animations. */
+      .demo-container {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .demo-section {
+        margin-bottom: 3rem;
+        animation: fade-in-up 520ms ease both;
+      }
+
+      .demo-section h2 {
+        font-family: var(--font-display);
+        font-size: 2rem;
+        color: var(--color-text-strong);
+        margin-bottom: 1.5rem;
+        border-bottom: 1px solid var(--color-border);
+        padding-bottom: 1rem;
+      }
+
+      .color-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .color-swatch {
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        border: 1px solid var(--color-border);
+        animation: fade-in-left 520ms ease both;
+      }
+
+      .color-swatch h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--color-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .color-swatch p {
+        margin: 0;
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+        font-family: "Courier New", monospace;
+        word-break: break-all;
+      }
+
+      .color-preview {
+        width: 100%;
+        height: 60px;
+        border-radius: var(--radius-sm);
+        margin-bottom: 0.75rem;
+        border: 1px solid var(--color-border);
+      }
+
+      .spacing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 1rem;
+      }
+
+      .spacing-item {
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: var(--radius-md);
+        padding: 1rem;
+        animation: fade-in-left 520ms ease both;
+      }
+
+      .spacing-item h3 {
+        margin: 0 0 0.75rem 0;
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--color-text-muted);
+        text-transform: uppercase;
+      }
+
+      .spacing-visual {
+        background: var(--color-accent);
+        border-radius: var(--radius-sm);
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-canvas);
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+
+      .spacing-label {
+        margin-top: 0.5rem;
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+        font-family: "Courier New", monospace;
+      }
+
+      .animation-demo {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .animation-box {
+        background: linear-gradient(135deg, var(--color-accent), var(--color-accent-soft));
+        border-radius: var(--radius-md);
+        padding: 2rem;
+        text-align: center;
+        color: var(--color-canvas);
+        font-weight: 700;
+        border: 1px solid var(--color-border);
+      }
+
+      .animation-fade-in-up {
+        animation: fade-in-up 1s ease both;
+      }
+
+      .animation-fade-in-left {
+        animation: fade-in-left 1s ease both;
+      }
+
+      .animation-slide-down {
+        animation: slide-down 1s ease both;
+      }
+
+      .animation-pulse {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      .animation-shimmer {
+        background: linear-gradient(
+          90deg,
+          var(--color-surface),
+          var(--color-surface-strong),
+          var(--color-surface)
+        );
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite;
+      }
+
+      .skeleton-demo {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .skeleton {
+        background: linear-gradient(
+          90deg,
+          var(--color-surface),
+          var(--color-surface-strong),
+          var(--color-surface)
+        );
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite;
+        border-radius: var(--radius-sm);
+        height: 1rem;
+      }
+
+      .skeleton-title {
+        height: 1.5rem;
+        width: 60%;
+      }
+
+      .demo-button {
+        background: var(--color-accent);
+        color: var(--color-canvas);
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: var(--radius-md);
+        font-weight: 700;
+        cursor: pointer;
+        transition: opacity 150ms ease;
+      }
+
+      .demo-button:hover {
+        opacity: 0.9;
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .radius-demo {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+        gap: 1rem;
+      }
+
+      .radius-box {
+        height: 80px;
+        background: var(--color-accent);
+        border-radius: var(--radius-md);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--color-canvas);
+        font-size: 0.75rem;
+        font-weight: 700;
+        animation: fade-in-left 520ms ease both;
+      }
+
+      .radius-box-sm {
+        border-radius: var(--radius-sm);
+      }
+
+      .radius-box-lg {
+        border-radius: var(--radius-lg);
+      }
+
+      .type-sample {
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        background: var(--color-surface);
+        border-radius: var(--radius-md);
+        border: 1px solid var(--color-border);
+        animation: fade-in-up 520ms ease both;
+      }
+
+      .type-display {
+        font-family: var(--font-display);
+        font-size: 2.5rem;
+        font-weight: 700;
+        line-height: 1.1;
+        color: var(--color-text-strong);
+        margin: 0 0 1rem 0;
+      }
+
+      .type-body {
+        font-family: var(--font-body);
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--color-text);
+        margin: 0 0 1rem 0;
+      }
+
+      .type-label {
+        font-size: 0.75rem;
+        color: var(--color-text-muted);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="demo-container">
+      <!-- Header -->
+      <header class="boot-screen" style="padding: 2rem 0; min-height: auto">
+        <p class="eyebrow">Design System</p>
+        <h1 class="display-title">CSS Tokens & Global Styles</h1>
+        <p class="lede">
+          Complete design system with dark/light mode support, comprehensive spacing scale,
+          distinctive typography pairing, and smooth micro-animations.
+        </p>
+      </header>
+
+      <!-- Color Palette -->
+      <section class="demo-section">
+        <h2>Color Palette</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: 1.5rem">
+          Primary: warm accent (#ffb45c) on dark navy. Light mode variants provided via
+          prefers-color-scheme media query.
+        </p>
+
+        <h3 style="color: var(--color-text); font-size: 1.125rem; margin-bottom: 1rem">
+          Dark Mode (Default)
+        </h3>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <h3>Canvas</h3>
+            <div class="color-preview" style="background-color: #060816"></div>
+            <p>#060816</p>
+          </div>
+          <div class="color-swatch">
+            <h3>Surface</h3>
+            <div class="color-preview" style="background-color: rgba(14, 18, 36, 0.82)"></div>
+            <p>rgba(14, 18, 36, 0.82)</p>
+          </div>
+          <div class="color-swatch">
+            <h3>Text</h3>
+            <div class="color-preview" style="background-color: rgba(226, 232, 240, 0.86)"></div>
+            <p>rgba(226, 232, 240, 0.86)</p>
+          </div>
+          <div class="color-swatch">
+            <h3>Accent (Warm)</h3>
+            <div class="color-preview" style="background-color: #ffb45c"></div>
+            <p>#ffb45c</p>
+          </div>
+          <div class="color-swatch">
+            <h3>Accent Soft</h3>
+            <div class="color-preview" style="background-color: #ffd7a2"></div>
+            <p>#ffd7a2</p>
+          </div>
+          <div class="color-swatch">
+            <h3>Border</h3>
+            <div class="color-preview" style="background-color: rgba(255, 255, 255, 0.1)"></div>
+            <p>rgba(255, 255, 255, 0.1)</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Spacing Scale -->
+      <section class="demo-section">
+        <h2>Spacing Scale</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: 1.5rem">
+          Consistent spacing rhythm: 0.25rem (4px) base unit × multiplier for predictable layouts.
+        </p>
+        <div class="spacing-grid">
+          <div class="spacing-item">
+            <h3>XS (0.25rem)</h3>
+            <div class="spacing-visual" style="height: 4px">4px</div>
+            <div class="spacing-label">--space-xs</div>
+          </div>
+          <div class="spacing-item">
+            <h3>SM (0.5rem)</h3>
+            <div class="spacing-visual" style="height: 8px">8px</div>
+            <div class="spacing-label">--space-sm</div>
+          </div>
+          <div class="spacing-item">
+            <h3>MD (1rem)</h3>
+            <div class="spacing-visual" style="height: 16px">16px</div>
+            <div class="spacing-label">--space-md</div>
+          </div>
+          <div class="spacing-item">
+            <h3>LG (1.5rem)</h3>
+            <div class="spacing-visual" style="height: 24px">24px</div>
+            <div class="spacing-label">--space-lg</div>
+          </div>
+          <div class="spacing-item">
+            <h3>XL (2rem)</h3>
+            <div class="spacing-visual" style="height: 32px">32px</div>
+            <div class="spacing-label">--space-xl</div>
+          </div>
+          <div class="spacing-item">
+            <h3>2XL (3rem)</h3>
+            <div class="spacing-visual" style="height: 48px">48px</div>
+            <div class="spacing-label">--space-2xl</div>
+          </div>
+          <div class="spacing-item">
+            <h3>3XL (4rem)</h3>
+            <div class="spacing-visual" style="height: 64px">64px</div>
+            <div class="spacing-label">--space-3xl</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Typography -->
+      <section class="demo-section">
+        <h2>Typography</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: 1.5rem">
+          Fraunces (display) + Manrope (body) provides distinctive, intentional visual hierarchy.
+        </p>
+
+        <div class="type-sample">
+          <div class="type-label">Display (Fraunces)</div>
+          <div class="type-display">Distinctive Editorial</div>
+        </div>
+
+        <div class="type-sample">
+          <div class="type-label">Body (Manrope)</div>
+          <div class="type-body">
+            Clean, readable copy that scales from mobile to desktop. Perfect for articles, feeds,
+            and content-driven interfaces.
+          </div>
+        </div>
+      </section>
+
+      <!-- Border Radius -->
+      <section class="demo-section">
+        <h2>Border Radius</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: 1.5rem">
+          Three levels of roundness for consistent surface and interactive element styling.
+        </p>
+        <div class="radius-demo">
+          <div class="radius-box radius-box-sm">
+            <div>SM (0.75rem)</div>
+          </div>
+          <div class="radius-box">
+            <div>MD (1.1rem)</div>
+          </div>
+          <div class="radius-box radius-box-lg">
+            <div>LG (1.6rem)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Animations -->
+      <section class="demo-section">
+        <h2>Animations</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: 1.5rem">
+          Smooth micro-animations bring intentional motion to entrance effects, transitions, and
+          loading states.
+        </p>
+
+        <h3 style="color: var(--color-text); font-size: 1.125rem; margin: 1.5rem 0 1rem 0">
+          Entrance Animations
+        </h3>
+        <div class="animation-demo">
+          <div class="animation-box animation-fade-in-up">
+            <div>fade-in-up (520ms)</div>
+          </div>
+          <div class="animation-box animation-fade-in-left">
+            <div>fade-in-left (520ms)</div>
+          </div>
+          <div class="animation-box animation-slide-down">
+            <div>slide-down (520ms)</div>
+          </div>
+        </div>
+
+        <h3 style="color: var(--color-text); font-size: 1.125rem; margin: 1.5rem 0 1rem 0">
+          Continuous Animations
+        </h3>
+        <div class="animation-demo">
+          <div class="animation-box animation-pulse">
+            <div>pulse (2s loop)</div>
+          </div>
+          <div class="animation-box animation-shimmer">
+            <div>shimmer (loading state)</div>
+          </div>
+        </div>
+
+        <h3 style="color: var(--color-text); font-size: 1.125rem; margin: 1.5rem 0 1rem 0">
+          Skeleton Loading
+        </h3>
+        <div style="background: var(--color-surface); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--color-border)">
+          <div class="skeleton-demo">
+            <div class="skeleton skeleton-title"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton" style="width: 80%"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Components -->
+      <section class="demo-section">
+        <h2>Components</h2>
+        <p style="color: var(--color-text-muted); margin-bottom: 1.5rem">
+          Sample interactive elements using tokens. All follow no-!important constraint.
+        </p>
+
+        <div class="button-row">
+          <button type="button" class="demo-button">Primary Button</button>
+          <button type="button" class="demo-button" style="opacity: 0.7">Disabled State</button>
+        </div>
+
+        <div class="pill-row" style="margin-top: 2rem">
+          <span class="pill">⚡ Vite</span>
+          <span class="pill">🧭 Hash routing</span>
+          <span class="pill">🧪 Vitest</span>
+          <span class="pill">🎨 Design tokens</span>
+        </div>
+      </section>
+
+      <!-- Validation -->
+      <section class="demo-section">
+        <h2>Acceptance Criteria</h2>
+        <ul style="color: var(--color-text); line-height: 1.8">
+          <li>✓ Dark mode primary palette with warm accent (#ffb45c) on navy</li>
+          <li>✓ Spacing scale with 0.25rem (4px) base unit (7 levels: xs through 3xl)</li>
+          <li>✓ Google Font pairing: Fraunces (display) + Manrope (body) — distinctive, not Inter</li>
+          <li>✓ CSS custom properties for all tokens (colors, spacing, radius, shadows)</li>
+          <li>✓ Smooth micro-animation keyframes: fade-in-up, slide-down, fade-in-left, shimmer, pulse</li>
+          <li>✓ Global reset: box-sizing, margin reset, font-smoothing</li>
+          <li>✓ No !important directives in entire stylesheet</li>
+          <li>✓ Light mode support via prefers-color-scheme media query</li>
+          <li>✓ Design tokens render correctly on this test page</li>
+        </ul>
+      </section>
+    </div>
+  </body>
+</html>

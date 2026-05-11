@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Statistics Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+    <div class="container">
+        <h1>Data Statistics Calculator</h1>
+        
+        <!-- File input for data file -->
+        <input type="file" id="fileInput" accept=".txt">
+        
+        <!-- Button to trigger calculations -->
+        <button onclick="calculateStatistics()">Calculate Statistics</button>
+        
+        <!-- Display calculated statistics -->
+        <div class="results">
+            <p>Average: <span id="average">N/A</span></p>
+            <p>Median: <span id="median">N/A</span></p>
+            <p>Variance: <span id="variance">N/A</span></p>
+            <p>Standard Deviation: <span id="stdDev">N/A</span></p>
+        </div>
+        
+        <!-- Canvas for data visualization -->
+        <canvas id="dataChart" width="400" height="200"></canvas>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

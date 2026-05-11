@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>PLAYER 1 — ZONE01</title>
+    <link rel="stylesheet" href="static/css/retro.css" />
+  </head>
+  <body class="retro-body crt">
+    <div class="stars" aria-hidden="true"></div>
+    <div class="page-wrap">
+      <header class="retro-header">
+        <p class="subtag" style="color: var(--retro-magenta); margin: 0">◆ 1-PLAYER ARCADE NET ◆</p>
+        <h1>ZONE 01</h1>
+        <p class="tagline">Insert credentials to continue</p>
+      </header>
+
+      <div class="arcade-cabinet" role="main">
+        <h2 class="arcade-title" style="text-align: center; margin: 0 0 0.5rem; font-size: 0.65rem">
+          CREDIT(S) 00 — HIGH SCORE PENDING
+        </h2>
+        <form id="loginForm" class="arcade-form" autocomplete="on" novalidate>
+          <label for="identifier">Player ID / Email</label>
+          <input
+            id="identifier"
+            name="username"
+            type="text"
+            inputmode="email"
+            autocapitalize="off"
+            autocomplete="username"
+            required
+            spellcheck="false"
+            placeholder="PLAYER@ZONE"
+          />
+
+          <label for="password">Password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="current-password"
+            required
+            placeholder="••••••••"
+          />
+
+          <button type="submit" id="loginBtn" class="btn-coin" aria-label="Log in and start">▶ START / LOGIN</button>
+          <p id="errorMessage" class="error-arcade hidden" role="alert" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+    <script type="module" src="static/src/controllers/auth_controller.js"></script>
+  </body>
+</html>

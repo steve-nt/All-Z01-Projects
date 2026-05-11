@@ -1,0 +1,51 @@
+{% extends 'main/base.html' %}
+{% block title %}
+    Most Requested Services
+{% endblock %}
+{% block content %}
+    <h1 class="title">Most Requested Services</h1>
+    <p class="subtitle">Popular services based on customer demand</p>
+
+    {% if services %}
+        <div class="ag-format-container">
+            <div class="ag-courses_box">
+                {% for service in services %}
+                <div class="ag-courses_item">
+                    <a href="/services/{{ service.id }}" class="ag-courses-item_link">
+                        <div class="ag-courses-item_bg"></div>
+                        <div class="ag-courses-item_title">
+                            {{ service.name }}
+                        </div>
+                        <div class="ag-courses-item_content">
+                            <div class="detail-row">
+                                <strong>🔥 REQUESTS:</strong> {{ service.request_count }} request{{ service.request_count|pluralize }}
+                            </div>
+                            <div class="detail-row">
+                                <strong>FIELD:</strong> {{ service.field }}
+                            </div>
+                            <div class="detail-row">
+                                <strong>PRICE:</strong> €{{ service.price_hour }}/hour
+                            </div>
+                            <div class="service-description">
+                                {{ service.description }}
+                            </div>
+                            <div class="detail-row">
+                                <strong>CREATED:</strong> {{ service.date|date:"M d, Y" }}
+                            </div>
+                            <div class="detail-row">
+                                <strong>BY:</strong> {{ service.company.user.username }}
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% else %}
+        <div class="no-services">
+            <h2>No services have been requested yet</h2>
+            <p>Be the first to request a service and help build our popular services list!</p>
+            <a href="/services/" class="btn">Browse All Services</a>
+        </div>
+    {% endif %}
+{% endblock %} 

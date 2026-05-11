@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Fredoka+One&family=Poppins:wght@400;700&family=Quicksand:wght@400;700&display=swap" rel="stylesheet">
+    <title>Groupie Tracker</title>
+    <link rel="stylesheet" href="/style/styleHome.css">
+    <script src="/style/script.js"></script>
+    <script src="/style/map.js"></script>
+    <script>
+        window.artistsData = {{ .ArtistsJSON }};
+    </script>
+    <script src="{{.Src}}" async defer></script>
+</head>
+<body>
+    <div class="wrapper">
+        {{template "header" . }}
+
+        <div class="artist-card">
+            {{range .Artists}}
+            <h1>{{.Name}}</h1>
+            <img src="{{.Image}}" alt="{{.Name}}" class="artist-image">
+
+            <div class="artist-info">
+                <div class="artist-dates">
+                    <p id="headers">Creation Date</p>
+                    <p>{{.CreationDate}}</p>
+                </div>
+                <div class="artist-dates">
+                    <p id="headers">First Album</p>
+                    <p>{{.FirstAlbum}}</p>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="artist-buttons">
+            <div class="dropdowns">
+                <details class="dropdown">
+                    <summary class="dropdown-btn">Band's Members</summary>
+                    <div class="dropdown-content">
+                        {{range .Members}}
+                            <a href="https://en.wikipedia.org/wiki/{{.}}"><p>{{.}}</p></a>
+                        {{end}}
+                    </div>
+                </details>
+                <!-- <div class="locations"> -->
+                    <details class="dropdown">
+                        <summary class="dropdown-btn">Artist's lives</summary>
+                        <div class="dropdown-content">
+                            {{range $key, $value := .Relations}}
+                                <details class="dropdown">
+                                    <summary class="nested-dropdown-btn">{{$key}}</summary>
+                                    <div class="nested-dropdown-content">
+                                        {{range $elem := $value}}
+                                        <div>{{ $elem }}</div>
+                                        {{end}}
+                                    </div>
+                                </details>
+                            {{end}}
+                        </div>
+                    </details>
+            </div>
+                    <button class="map-btn" id="map-btn">
+                        <img src="/style/media/icons/map.png" alt="Map Icon" class="map-icon">
+                    </button>
+                <!-- </div> -->
+        </div>    
+        {{end}}
+        <div id="map"></div>
+
+        {{ template "footer" . }}
+    </div>
+</body>
+</html>

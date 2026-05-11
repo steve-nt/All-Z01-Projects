@@ -1,0 +1,185 @@
+.range_container {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin: 50px auto;
+  }
+  
+  .sliders_control {
+    position: relative;
+    min-height: 50px;
+  }
+  
+  .form_control {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    color: #635a5a;
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    pointer-events: all;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #C6C6C6;
+    cursor: pointer;
+  }
+  
+  input[type=range]::-moz-range-thumb {
+    -webkit-appearance: none;
+    pointer-events: all;
+    width: 24px;
+    height: 24px;
+    background-color: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #C6C6C6;
+    cursor: pointer;  
+  }
+  
+  input[type=range]::-webkit-slider-thumb:hover {
+    background: #f7f7f7;
+  }
+  
+  input[type=range]::-webkit-slider-thumb:active {
+    box-shadow: inset 0 0 3px #691468, 0 0 9px #691468;
+    -webkit-box-shadow: inset 0 0 3px #691468, 0 0 9px #691468;
+  }
+  
+  input[type="number"] {
+    color: #474444;
+    width: 70px;
+    height: 30px;
+    font-size: 20px;
+    border: none;
+  }
+  
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type=number]::-webkit-outer-spin-button {  
+     opacity: 1;
+  }
+  
+  input[type="range"] {
+    -webkit-appearance: none; 
+    appearance: none;
+    height: 2px;
+    width: 100%;
+    position: absolute;
+    background-color: #C6C6C6;
+    pointer-events: none;
+  }
+  
+  #fromSlider {
+    height: 0;
+    z-index: 1;
+  }
+
+#fromAlbumSlider {
+    height: 0;
+    z-index: 1;
+}
+
+
+
+/* Button to open the filter popup */
+
+  #openFilterBtn {
+    padding: 10px 20px;
+    background-color: #741e73;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Filter popup container */
+.filter-popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed to the screen */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    overflow-y: auto;
+    
+}
+
+/* Popup content box */
+.filter-popup-content {
+    align-items: center;
+    background-color: rgb(207, 207, 207);
+    padding: 20px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    
+}
+
+.loc-container {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    text-align: center;
+    width: 80%;
+    align-items: center;
+}
+
+.city-select {
+}
+
+#citySelect, #countrySelect {
+    text-align: center;
+    height: 30px;
+    width: 200px;
+}
+
+
+
+
+
+/* Close button (X) */
+.close-btn {
+    font-size: 30px;
+    color: #606060;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+/* Range slider container */
+.slider-container {
+    margin: 10px 0;
+}
+
+/* Button to apply the filter */
+#applyFilterBtn {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#applyFilterBtn:hover {
+    background-color: #218838;
+}
+
+
+/* Button to clear the filters */
+#clearFilterBtn {
+  padding: 5px 10px;
+  background-color: #be2025;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

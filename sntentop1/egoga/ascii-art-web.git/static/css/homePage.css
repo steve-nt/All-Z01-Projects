@@ -1,0 +1,182 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+	height: 100vh;
+	background: linear-gradient(334deg, #6b97f7, #7525e2, #f7137e);
+	background-size: 180% 180%;
+	animation: gradient-animation 6s ease infinite;
+   
+    
+}
+
+@keyframes gradient-animation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.container {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
+    
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    color: #ada4a4;
+    margin: 0;
+}
+
+.form-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-label {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ada4a4;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.form-select {
+    width: 50%;
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+.form-input {
+    height: 40px;
+    width: 100%;
+    padding: 0px;
+    font-size: 1rem;
+    border: 5px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+
+.form-input:focus,
+.form-select:focus {
+    border-color: #dd77eb;
+}
+
+.submit-btn {
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    background-color: #dd77eb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: #2592c5;
+}
+
+.banner-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.banner-btn {
+    padding: 8px 16px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.banner-btn.selected {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+}
+
+
+.output-container {
+    width: 100%;
+    max-width: 600px;
+    padding: 5px;
+    background-color: #f4f4f4;
+    border: 5px solid #c678da;
+    border-radius: 5px;
+    margin-top: 20px;
+    box-sizing: border-box;
+}
+
+.ascii-output {
+        width: 95%;
+        height: 200px;
+        font-family: monospace;
+        white-space: pre;
+        overflow: auto;
+        margin: 0;
+        padding: 10px;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 14px;
+        line-height: 1.4;
+}
+
+.download-btn {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.download-btn button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #4CAF50;  
+    color: white;               
+    font-size: 16px;            
+    font-weight: bold;
+    text-align: center;
+    border: none;              
+    border-radius: 5px;         
+    cursor: pointer;            
+    transition: background-color 0.3s ease;
+}
+
+.download-btn button:hover {
+    background-color: #45a049;
+}
+
+.download-btn button:active {
+    background-color: #3e8e41; 
+}

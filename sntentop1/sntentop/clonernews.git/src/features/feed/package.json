@@ -1,0 +1,9 @@
+{
+  "name": "@clonernews/feed-feature",
+  "private": true,
+  "exports": {
+    ".": "./feed.view.js",
+    "./controller": "./feed.controller.js",
+    "./styles": "./feed.css"
+  }
+}

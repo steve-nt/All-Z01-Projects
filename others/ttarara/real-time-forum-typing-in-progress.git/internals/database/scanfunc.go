@@ -1,0 +1,73 @@
+// Package database: scan helpers for translating SQL row data into typed structs.
+// Responsibilities: define ScanRows methods for database structs so handlers can map query results cleanly.
+package database
+
+import (
+	"database/sql"
+)
+
+type Table interface {
+	ScanRows(rows *sql.Rows) error
+}
+
+// User structure
+func (u *User) ScanRows(rows *sql.Rows) error {
+	return rows.Scan(
+		&u.UserID,
+		&u.Username,
+		&u.Age,
+		&u.Gender,
+		&u.FirstName,
+		&u.LastName,
+		&u.Email,
+		&u.PasswordHash,
+		&u.RegistrationDate,
+		&u.ResetToken,
+	)
+}
+
+// Post structure
+func (p *Post) ScanRows(rows *sql.Rows) error {
+	return rows.Scan(&p.PostID, &p.UserID, &p.Title, &p.Content, &p.CreationDate)
+}
+
+// Comment structure
+func (c *Comment) ScanRows(rows *sql.Rows) error {
+	return rows.Scan(&c.CommentID, &c.PostID, &c.UserID, &c.Content, &c.CreationDate)
+}
+
+// Category structure
+func (cat *Category) ScanRows(rows *sql.Rows) error {
+	return rows.Scan(&cat.CategoryID, &cat.Name)
+}
+
+// PstCategory structure
+func (pc *PostCategory) ScanRows(rows *sql.Rows) error {
+	return rows.Scan(&pc.PostID, &pc.CategoryID)
+}
+
+// LikeDislike structure
+func (ld *LikeDislike) ScanRows(rows *sql.Rows) error {
+	return rows.Scan(&ld.LikeDislikeID, &ld.PostID, &ld.CommentID, &ld.UserID, &ld.LikeDislikeType, &ld.CreationDate)
+}
+
+// Session structure
+func (s *Session) ScanRows(rows *sql.Rows) error {
+	return rows.Scan(&s.SessionID, &s.UserID, &s.Cookie_value, &s.ExpirationDate)
+}
+
+// Notification structure
+func (n *Notification) ScanRows(rows *sql.Rows) error {
+	return rows.Scan(
+		&n.NotificationID,
+		&n.UserID,
+		&n.Type,
+		&n.Title,
+		&n.Message,
+		&n.RelatedPostID,
+		&n.RelatedCommentID,
+		&n.RelatedUserID,
+		&n.IsRead,
+		&n.CreationDate,
+	)
+}

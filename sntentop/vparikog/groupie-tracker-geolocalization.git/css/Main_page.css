@@ -1,0 +1,167 @@
+/* Main_page.css */
+
+/* General body styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #000000 0%, #190420 100%);
+    color: #2c3e50;
+}
+
+/* Header styling */
+h1 {
+    
+    font-size: 3em;
+    margin: 0px 0;
+    color: #dde9ff;
+    text-shadow: 2px 2px 4px rgb(50, 13, 196);
+    font-weight: bold;
+    border-bottom: 4px solid rgba(36, 35, 35, 0.742);
+    border-top: 4px solid rgba(36, 35, 35, 0.742);;
+    padding-bottom: 10px;
+    background:linear-gradient(135deg, #000000 0%, #260431 100%);
+   
+}
+
+/* Container for all artists */
+.artist-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+}
+
+/* Individual artist card */
+.artist-card {
+    background: linear-gradient(135deg, #220022 0%, #440044 100%);
+    border: 3px solid #000000;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 6px 12px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    width: auto;
+    height: auto;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.artist-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 18px rgba(255, 255, 255, 0.2);
+}
+
+/* Image styling */
+.artist-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 3px solid #1a1919;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.artist-card:hover img {
+    transform: scale(1.04);
+    border-color: #d1d8e0;
+}
+
+/* Artist name styling */
+.artist-card h2 {
+    font-size: 1.4em;
+    color: #ffffff;
+    margin: 15px 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgba(0, 44, 156, 0.6);
+    border-bottom: 2px solid #2f2f2f;
+    padding-bottom: 5px;
+}
+
+.artist-card h2:hover {
+    font-size: 1.4em;
+    color: #c8c8c877;
+    margin: 15px 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 2px rgb(2, 27, 136);
+    border-bottom: 2px solid #fdfdfd;
+    padding-bottom: 5px;
+}
+
+/* Anchor tag styling */
+.artist-card a {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    padding: 10px 0;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+.artist-card a:hover {
+    background: rgba(0, 0, 0, 0.05);
+    
+    border-radius: 8px;
+}
+
+
+
+/* Style for the search suggestions dropdown */
+.search-container {
+    position: relative; /* Ensures the dropdown appears below the search bar */
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#search-bar {
+    padding: 10px;
+    width: 70%; /* Adjust width as needed */
+    max-width: 500px; /* Prevents search box from stretching too far */
+    border-radius: 8px;
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+#clearButton {
+    padding: 10px 20px;
+    background-color: #741e73;
+    color: rgb(245, 244, 244);
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%; /* Drop below the search bar */
+    left: 0;
+    width: 100%;
+    max-height: 250px; /* Limit max height of dropdown */
+    overflow-y: auto; /* Enable scrolling */
+    background-color: rgba(0, 0, 0, 0.9); /* Slightly transparent background */
+    color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 8px 16px rgba(98, 16, 105, 0.5);
+    display: none; /* Hidden by default */
+    padding: 0;
+    margin-top: 5px;
+    z-index: 10;
+    transition: opacity 0.3s ease-in-out; /* Smooth fade-in effect */
+}
+
+.dropdown-menu .result-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    text-align: center; /* Align the text to the left */
+    transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
+}
+
+.dropdown-menu .result-item:hover {
+    background-color: #333333;
+}
+
+/* Optional: You can add this to style the input field and dropdown */
+#search-bar:focus + .dropdown-menu {
+    display: block; /* Ensure the dropdown appears when focused */
+}

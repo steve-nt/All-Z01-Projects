@@ -1,0 +1,82 @@
+{% extends 'main/base.html' %}
+
+{% block title %}
+    Create New Service
+{% endblock %}
+
+{% block content %}
+    <h1 class="title">Create New Service</h1>
+    
+    <!-- Company Information -->
+    <div class="service-info">
+        <h3 class="service-name">Company Information</h3>
+        <div class="price-detail-row">
+            <span class="detail-label">Company Type</span>
+            <span class="detail-value">{{ company.field }}</span>
+        </div>
+        {% if company.field == 'All in One' %}
+            <div class="price-detail-row">
+                <span class="detail-label">Service Categories</span>
+                <span class="detail-value">All categories (except "All in One")</span>
+            </div>
+        {% else %}
+            <div class="price-detail-row">
+                <span class="detail-label">Service Categories</span>
+                <span class="detail-value">{{ company.field }} only</span>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="line"></div>
+
+    <!-- Create Service Form -->
+    <form method="POST">
+        {% csrf_token %}
+        
+        <!-- Service Name Field -->
+        <div class="form-group">
+            <h3>Service Name</h3>
+            {{ form.name }}
+            {% if form.name.errors %}
+                <div class="error_message">{{ form.name.errors }}</div>
+            {% endif %}
+            <small class="help-text">Enter a clear, descriptive name for your service.</small>
+        </div>
+
+        <!-- Service Category Field -->
+        <div class="form-group">
+            <h3>Service Category</h3>
+            {{ form.field }}
+            {% if form.field.errors %}
+                <div class="error_message">{{ form.field.errors }}</div>
+            {% endif %}
+            <small class="help-text">Select the category that best describes your service.</small>
+        </div>
+
+        <!-- Price per Hour Field -->
+        <div class="form-group">
+            <h3>Price per Hour (€)</h3>
+            {{ form.price_hour }}
+            {% if form.price_hour.errors %}
+                <div class="error_message">{{ form.price_hour.errors }}</div>
+            {% endif %}
+            <small class="help-text">Set your hourly rate for this service.</small>
+        </div>
+
+        <!-- Description Field -->
+        <div class="form-group">
+            <h3>Service Description</h3>
+            {{ form.description }}
+            {% if form.description.errors %}
+                <div class="error_message">{{ form.description.errors }}</div>
+            {% endif %}
+            <small class="help-text">Provide a detailed description of what your service includes.</small>
+        </div>
+
+        <!-- Submit Buttons -->
+        <div class="button-group">
+            <button type="submit" class="btn">Create Service</button>
+            <a href="{% url 'services_list' %}" class="btn">Cancel</a>
+        </div>
+    </form>
+{% endblock %} 

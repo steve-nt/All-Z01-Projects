@@ -1,0 +1,1 @@
+ALTER TABLE reactions ADD COLUMN timestamp TEXT NOT NULL DEFAULT '0';

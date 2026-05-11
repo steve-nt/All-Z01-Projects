@@ -1,0 +1,8 @@
+Fotr Thermal Tab
+Instead of 
+cat /proc/acpi/ibm/thermal
+
+Run
+cat /sys/class/thermal/thermal_zone0/temp
+# or
+cat /sys/class/hwmon/hwmon0/temp1_input

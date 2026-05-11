@@ -1,0 +1,175 @@
+{{ define "admin" }}
+
+<h2 style="margin-top:0;">Admin Dashboard</h2>
+
+<p style="color:var(--muted); margin-bottom:16px;">
+  Manage forum roles, moderator requests, categories, and moderator reports.
+</p>
+
+<div class="divider"></div>
+
+<h3>User Role Management</h3>
+
+{{ if .Users }}
+  {{ range .Users }}
+    <div class="post">
+      <p style="margin:0 0 8px 0;">
+        <strong>{{ .Username }}</strong> — {{ .Email }}
+      </p>
+
+      <div class="meta-bar" style="margin:0;">
+        <div class="meta-left">
+          <span class="meta-item">Current role: <strong>{{ .Role }}</strong></span>
+        </div>
+
+        <div class="meta-right">
+          <form method="POST" action="/admin/update-role" style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            <input type="hidden" name="user_id" value="{{ .ID }}">
+
+            <select name="role">
+              <option value="user" {{ if eq .Role "user" }}selected{{ end }}>user</option>
+              <option value="moderator" {{ if eq .Role "moderator" }}selected{{ end }}>moderator</option>
+              <option value="admin" {{ if eq .Role "admin" }}selected{{ end }}>admin</option>
+            </select>
+
+            <button type="submit">Update Role</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ else }}
+  <p style="color:var(--muted);">No users found.</p>
+{{ end }}
+
+<div class="divider"></div>
+
+<h3>Moderator Requests</h3>
+
+{{ if .Requests }}
+  {{ range .Requests }}
+    <div class="post">
+      <p style="margin:0 0 8px 0;">
+        <strong>{{ .Username }}</strong> requested moderator access
+      </p>
+
+      <div class="meta-bar" style="margin:0;">
+        <div class="meta-left">
+          <span class="meta-item">📌 {{ .Status }}</span>
+          <span class="meta-item">🕒 {{ .CreatedAt }}</span>
+
+          {{ if and .ReviewedAt (ne .ReviewedAt "") }}
+            <span class="meta-item">✅ Reviewed: {{ .ReviewedAt }}</span>
+          {{ end }}
+        </div>
+
+        <div class="meta-right">
+          {{ if eq .Status "pending" }}
+            <form method="POST" action="/admin/requests/approve" style="display:inline;">
+              <input type="hidden" name="request_id" value="{{ .ID }}">
+              <button type="submit">✅ Approve</button>
+            </form>
+
+            <form method="POST" action="/admin/requests/reject" style="display:inline;">
+              <input type="hidden" name="request_id" value="{{ .ID }}">
+              <button type="submit">❌ Reject</button>
+            </form>
+          {{ else }}
+            <span class="chip">Handled</span>
+          {{ end }}
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ else }}
+  <p style="color:var(--muted);">No moderator requests.</p>
+{{ end }}
+
+<div class="divider"></div>
+
+<h3>Category Management</h3>
+
+<form method="POST" action="/admin/categories/create" style="margin-bottom:16px;">
+  <input
+    name="name"
+    type="text"
+    placeholder="New category name"
+    required
+  />
+  <button type="submit">Create Category</button>
+</form>
+
+{{ if .Categories }}
+  {{ range .Categories }}
+    <div class="post">
+      <div class="meta-bar" style="margin:0;">
+        <div class="meta-left">
+          <span class="meta-item">🏷️ {{ .Name }}</span>
+        </div>
+
+        <div class="meta-right">
+          <form method="POST" action="/admin/categories/delete" style="display:inline;" onsubmit="return confirm('Delete this category?');">
+            <input type="hidden" name="category_id" value="{{ .ID }}">
+            <button type="submit">🗑️ Delete</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  {{ end }}
+{{ else }}
+  <p style="color:var(--muted);">No categories found.</p>
+{{ end }}
+
+<div class="divider"></div>
+
+<h3>Moderator Reports</h3>
+
+{{ if .Reports }}
+  {{ range .Reports }}
+    <div class="post">
+      <p style="margin:0 0 8px 0;">
+        <strong>{{ .ReporterName }}</strong> reported:
+        <a href="/post?id={{ .PostID }}">{{ .PostTitle }}</a>
+      </p>
+
+      <p style="margin:0 0 8px 0; color:var(--muted);">
+        Reason: {{ .Reason }}
+      </p>
+
+      <div class="meta-bar" style="margin:0 0 12px 0;">
+        <div class="meta-left">
+          <span class="meta-item">📌 {{ .Status }}</span>
+          <span class="meta-item">🕒 {{ .CreatedAt }}</span>
+          {{ if and .ReviewedAt (ne .ReviewedAt "") }}
+            <span class="meta-item">✅ Reviewed: {{ .ReviewedAt }}</span>
+          {{ end }}
+        </div>
+      </div>
+
+      {{ if eq .Status "pending" }}
+        <form method="POST" action="/admin/reports/resolve">
+          <input type="hidden" name="report_id" value="{{ .ID }}">
+          <textarea
+            name="response"
+            placeholder="Write your admin response..."
+            required
+          ></textarea>
+          <button type="submit">Resolve Report</button>
+        </form>
+      {{ else }}
+        <div class="meta-bar" style="margin:0;">
+          <div class="meta-left">
+            <span class="meta-item">📝 Admin response:</span>
+          </div>
+        </div>
+        <p style="margin:10px 0 0 0; color:var(--text);">
+          {{ .AdminResponse }}
+        </p>
+      {{ end }}
+    </div>
+  {{ end }}
+{{ else }}
+  <p style="color:var(--muted);">No reports found.</p>
+{{ end }}
+
+{{ end }}
