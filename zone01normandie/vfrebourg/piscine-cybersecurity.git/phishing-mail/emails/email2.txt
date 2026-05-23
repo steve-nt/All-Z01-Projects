@@ -1,0 +1,15 @@
+From: tracking@amaz0n-delivery.com
+To: you@example.com
+Subject: Your package is held – Action required
+
+Hello,
+
+Your package with tracking ID #AMZ-8492011 is currently on hold due to an incomplete delivery address.
+
+To confirm your information and avoid return, please click the link below:
+https://amaz0n-delivery.com/update-address
+
+Failure to act within 48 hours will result in cancellation.
+
+Thank you,
+Amazon Delivery Support

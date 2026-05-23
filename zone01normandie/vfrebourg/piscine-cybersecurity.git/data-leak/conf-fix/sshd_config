@@ -1,0 +1,6 @@
+# OpenSSH server configuration
+Port 22
+PermitRootLogin yes
+PasswordAuthentication yes
+UsePAM yes
+X11Forwarding yes

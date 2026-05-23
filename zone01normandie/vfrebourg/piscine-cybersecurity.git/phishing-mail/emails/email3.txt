@@ -1,0 +1,15 @@
+De : alertes@credit-agricoIe.fr  
+À : vous@example.com  
+Objet : Problème de sécurité détecté sur votre compte
+
+Madame, Monsieur,
+
+Une activité inhabituelle a été détectée sur votre compte Crédit Agricole. Par mesure de précaution, nous avons temporairement limité l’accès à vos services en ligne.
+
+Merci de vérifier votre identité via le lien sécurisé ci-dessous :  
+https://credit-agricole-verif.net/securite
+
+Sans réponse de votre part sous 24h, votre compte sera suspendu.
+
+Cordialement,  
+Le service sécurité Crédit Agricole

@@ -1,0 +1,10 @@
+Return-Path: <no-reply@github.com>
+Received: from mail.github.com (mail.github.com. [140.82.114.3])
+        by mx.google.com with ESMTPS id k10si9876543qki.52.2025.07.22.17.33.10
+        for <user@example.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Tue, 22 Jul 2025 17:33:10 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=pass header.d=github.com header.s=selector1 header.b=def456;
+       spf=pass (google.com: domain of no-reply@github.com designates 140.82.114.3 as permitted sender) smtp.mailfrom=no-reply@github.com;
+       dmarc=pass (p=reject disallowed) header.from=github.com

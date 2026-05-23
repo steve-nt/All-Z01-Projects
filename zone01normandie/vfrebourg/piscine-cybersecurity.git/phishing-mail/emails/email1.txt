@@ -1,0 +1,16 @@
+From: support@micr0soft-secure.com
+To: you@example.com
+Subject: Urgent: Your account has been compromised
+
+Dear user,
+
+We detected a suspicious login attempt to your Microsoft account from an unknown location. For your security, we have temporarily locked your account.
+
+Please click on the link below to verify your identity and restore access:
+http://microsoft-security-verification.com/login
+
+If you do not act within 24 hours, your account will be permanently suspended.
+
+Thank you for your cooperation.
+
+Microsoft Security Team

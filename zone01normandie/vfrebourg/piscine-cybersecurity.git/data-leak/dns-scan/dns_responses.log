@@ -1,0 +1,7 @@
+2025-07-20T10:15:30Z example.com 93.184.216.34
+2025-07-20T10:15:31Z example.net 2606:2800:220:1:248:1893:25c8:1946
+2025-07-20T10:16:00Z suspiciousdata.evil.com 192.168.1.100
+2025-07-20T10:16:05Z normal-site.com 93.184.216.34
+2025-07-20T10:17:00Z example.com 93.184.216.34
+2025-07-20T10:20:10Z mail.example.com 192.0.2.1
+2025-07-20T10:21:00Z data-exfiltration.evil.com 10.0.0.5

@@ -1,0 +1,20 @@
+### Extracurricular Project: Certification Workshop
+#### Description
+
+The Certification Workshop explains the certification process, including the required skill blocks that learners need to validate and how to complete them. The goal is to ensure that participants understand the certification framework and the steps required to achieve their diploma.
+
+---
+### What is expected?
+
+##### General Information
+
+###### Can the participant explain what the certification entails and its purpose?
+###### Can they describe the different skill blocks that need to be validated?
+
+---
+
+##### Certification Process
+
+###### Does the participant understand the steps required to validate their certification?
+###### Can they identify key strategies for completing the required assessments?
+###### Can they highlight the most important takeaways from the workshop presentation?

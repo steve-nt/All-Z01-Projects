@@ -1,0 +1,10 @@
+Return-Path: <admin@paypa1.com>
+Received: from smtp10.fakehost.com (smtp10.fakehost.com. [203.0.113.45])
+        by mx.google.com with ESMTPS id g21si5432167qki.21.2025.07.21.11.45.00
+        for <user@example.com>
+        (version=TLS1_2 cipher=ECDHE-RSA-AES128-GCM-SHA256 bits=128/128);
+        Mon, 21 Jul 2025 11:45:00 -0700 (PDT)
+Authentication-Results: mx.google.com;
+       dkim=fail header.d=paypa1.com header.s=selector1 header.b=xyz789;
+       spf=fail (google.com: domain of admin@paypa1.com does not designate 203.0.113.45 as permitted sender) smtp.mailfrom=admin@paypa1.com;
+       dmarc=fail (p=none disallowed) header.from=paypa1.com

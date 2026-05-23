@@ -1,0 +1,17 @@
+Tasks to classify:
+
+1. Monitor incoming SIEM alerts and escalate suspicious activity.
+2. Create new detection rules based on emerging threat intelligence.
+3. Coordinate containment after a confirmed ransomware infection.
+4. Perform deep log analysis on escalated incidents.
+5. Prepare monthly SOC performance reports for executives.
+6. Investigate lateral movement inside the network.
+7. Proactively search for indicators of compromise (IOCs).
+8. Validate false positives from automated alerts.
+9. Lead crisis communication during a major data breach.
+10. Tune SIEM correlation rules to reduce noise.
+11. Review SOC analyst performance and workload.
+12. Conduct forensic analysis on compromised endpoints.
+13. Handle first-level triage of phishing reports.
+14. Develop new threat hunting hypotheses.
+15. Ensure SLA compliance and process improvement within the SOC.

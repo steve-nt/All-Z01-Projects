@@ -1,0 +1,14 @@
+From: billing@cloudhost.net
+To: you@example.com
+Subject: Invoice #548291 - Due immediately
+
+Dear customer,
+
+Your invoice #548291 for hosting services is overdue. Please review the attached document and complete payment within 24 hours to avoid service interruption.
+
+Attachment: Invoice_548291.docm
+
+If you have already paid, please disregard this message.
+
+Regards,  
+CloudHost Billing Department
