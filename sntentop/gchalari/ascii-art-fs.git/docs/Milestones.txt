@@ -1,0 +1,62 @@
+# MILESTONES — ascii-art-fs
+
+## Milestone 1 — Project Preparation
+
+- Reuse the existing project structure from the previous ascii-art project (ascii-art-output).
+- Keep the ascii package and banner files.
+- Verify all banner files exist:
+    - standard.txt
+    - shadow.txt
+    - thinkertoy.txt
+
+---
+
+## Milestone 2 — Argument Parsing Update
+
+- Adapt the existing parseArgs() logic for the new project requirements.
+- Support:
+    - [STRING]
+    - [STRING] [BANNER]
+- Remove --output flag handling.
+- Validate argument count and invalid formats.
+- Handle unsupported banner names.
+
+---
+
+## Milestone 3 — Banner Selection
+
+- Load the correct banner based on the second argument, using LoadBanner().
+- Use `standard` as the default banner when no banner is provided.
+- Return the usage message if an unsupported banner is passed.
+
+---
+
+## Milestone 4 — ASCII-Art Rendering
+
+- Render the input string using `ascii.Render()`.
+- Support literal \n line breaks.
+- Print the result to stdout using `fmt.Print()`.
+
+---
+
+## Milestone 5 — Testing
+
+- Update unit tests for the new argument rules.
+- Verify rendering with:
+    - standard
+    - shadow
+    - thinkertoy
+- Test:
+    - empty string,
+    - invalid formats,
+    - newline handling (\n),
+    - unsupported banners.
+
+---
+
+## Milestone 6 — Final Validation
+
+- Verify audit examples.
+- Ensure output formatting matches exactly.
+- Confirm only standard Go packages are used.
+- Review code structure and readability.
